@@ -111,6 +111,10 @@ nnoremap <leader>- :new<CR> " Create a Hotizontal Split
 
 
 
+" Wrap word in douple quotes (same functionality as tpope's surround yss"
+"noremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+
+
 noremap <leader>j <C-w>j| "switching to below window 
 noremap <leader>k <C-w>k| "switching to above window
 noremap <leader>l <C-w>l| "switching to right window 
