@@ -1,6 +1,7 @@
 #Ignore Large bundle files
 vim/bundle
-
+vim/backup
+vim/swapfiles
 
 #Ignore DS.Store files
 **/.DS_Store
