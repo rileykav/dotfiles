@@ -7,6 +7,7 @@ core_install_list=(
     zsh
     tmux
     python # Don't think you need to specifiy name
+    git
 )
 
 
