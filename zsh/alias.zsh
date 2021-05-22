@@ -139,6 +139,22 @@ alias author-cbz="for i in **; do cd $i;zip *.cbz cover.jpg; cd ..; done"
 alias dot-backup="/bin/zsh /Users/riley/riley-dotfiles/install/new_backup.sh"
 
 
+
+
+
+
+
+# git aliases
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gs='git status'
+
+
+
+
+
+
 # ----------------------
 # Git Aliase https://www.reddit.com/r/commandline/comments/nf898c/why_does_iterm_show_a_when_i_restore_the_session/
 # ----------------------

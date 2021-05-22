@@ -8,10 +8,9 @@ For files ending with a "symlink" extension, you want to symlink from the home d
 I.e. each of these dotfiles in the home directory are symlinks putting to the this directory. Most other files that don't need to be on the home directory are stored as file.zsh ro file.vim etc.
 To corretctly set up these links:
 
-
-```javascript I'm A tab
 console.log('Code Tab A');
+
+```zsh
+ln -s ~/.zshrc ~/.dotfiles/zsh/zshrc.symlink
 ```
-```javascript I'm tab B
-console.log('Code Tab B');
-```
+PLEASE CONFIRM THIS and add find(symlinks)
