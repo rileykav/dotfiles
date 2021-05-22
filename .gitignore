@@ -3,9 +3,7 @@ vim/bundle
 vim/backup
 vim/swapfiles
 vim/undo
-
-*.cbz
-*.cbr
+vim/private.vim
 
 #Ignore DS.Store files
 **/.DS_Store

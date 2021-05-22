@@ -66,8 +66,11 @@ au FocusGained,BufEnter * checktime
 """"""""""""""""""""""""""""""""""""""""""""""
 
 
-" Leader Key !!!
+" Leader Key !!! (local leader used for local file settings, i.e. a python specific mapping or something, not currently used)
 let mapleader = ','
+let maplocalleader = "\\"
+
+
 
 " Quick Saving (note: all maps should be nore, this means noremap dd dd wont be recursive)
 nnoremap <leader>w :w<cr>
@@ -103,15 +106,19 @@ nnoremap <leader>r :source ~/.vimrc<cr>
 nnoremap <CR> :noh<CR><CR>
 
 " Spliting New Panes
-nnoremap <leader>v :vs<CR> " Create a vertical Split
-nnoremap <leader>- :split<CR> " Create a Hotizontal Split
+nnoremap <leader>v :vnew<CR> " Create a vertical Split
+nnoremap <leader>- :new<CR> " Create a Hotizontal Split
 
 
 
-no <leader>j <C-w>j| "switching to below window 
-no <leader>k <C-w>k| "switching to above window
-no <leader>l <C-w>l| "switching to right window 
-no <leader>h <C-w>h| "switching to left window
+noremap <leader>j <C-w>j| "switching to below window 
+noremap <leader>k <C-w>k| "switching to above window
+noremap <leader>l <C-w>l| "switching to right window 
+noremap <leader>h <C-w>h| "switching to left window
+
+
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
 set splitright
 set splitbelow
 " noremap <silent> <C-h> <Plug>WinMoveLeft
@@ -136,12 +143,9 @@ noremap <leader><Tab> :tabnext<cr>
 
 
 " Move current line up or down
-nnoremap _ ddkP
-nnoremap - ddp
 
 
 
-vnoremap \ U
 
 
 " Parenthesis and Brackets
@@ -307,6 +311,39 @@ let g:VtrAppendNewline = 1
 
 "nmap <leader>ta :call VtrSendLinesToRunner()<cr>
 let g:VtrUseVtrmaps = 1
+
+
+
+
+
+
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" Private
+""""""""""""""""""""""""""""""""""""""""""""""
+
+if filereadable(expand("~/.dotfiles/vim/private.vim"))
+    source ~/.dotfiles/vim/private.vim
+endif
+
+
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" Abreviations
+""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+source ~/.dotfiles/vim/abreviations.vim
+
+
+
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " Visuals
