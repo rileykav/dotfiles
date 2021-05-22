@@ -143,7 +143,6 @@ eval "$(rbenv init -)"
 
 
 
-
 if [[ $SYSTEM_NAME == 'Darwin' ]]; then
     source "$DOTFILES/zsh/local/macos.zsh"
 elif [[ $SYSTEM_NAME == 'Linux' ]]; then

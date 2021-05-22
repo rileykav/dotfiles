@@ -2,6 +2,7 @@
 vim/bundle
 vim/backup
 vim/swapfiles
+vim/undo
 
 *.cbz
 *.cbr

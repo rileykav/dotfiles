@@ -39,6 +39,10 @@ set backupdir=~/.dotfiles/vim/backup
 " tell vim where to put swap files
 set dir=~/.dotfiles/vim/swapfiles
 
+" tell vim where to put undo files
+set undodir=~/.vim/undodir
+set undofile
+
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
@@ -130,6 +134,9 @@ map 0 ^
 "" Aliases
 :command Vimrc :vs ~/.vimrc
 :command Zshrc :vs ~/.zshrc
+:command Zshfunctions :vs ~/.dotfiles/zsh/functions.zsh
+:command Zshalias :vs ~/.dotfiles/zsh/alias.zsh
+:command Zshdefinitions :vs ~/.dotfiles/zsh/definitions.zsh
 :command Tmuxrc :vs ~/.tmux.conf
 :command Dotfiles :vs ~/.dotfiles/
 :command VimPlugins :vs ~/.dotfiles/vim/plugins.vim
