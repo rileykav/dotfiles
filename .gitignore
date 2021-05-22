@@ -4,6 +4,7 @@ vim/backup
 vim/swapfiles
 
 *.cbz
+*.cbr
 
 #Ignore DS.Store files
 **/.DS_Store
