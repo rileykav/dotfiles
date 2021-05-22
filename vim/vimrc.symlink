@@ -333,9 +333,8 @@ source ~/.dotfiles/vim/filetypes.vim
 " Unknown
 """"""""""""""""""""""""""""""""""""""""""""""
 
-" What does this do???
-:imap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
+" What does this do??? Without nore it broke things ...
+":inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 
 
