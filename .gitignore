@@ -3,6 +3,8 @@ vim/bundle
 vim/backup
 vim/swapfiles
 
+*.cbz
+
 #Ignore DS.Store files
 **/.DS_Store
 .DS_Store
