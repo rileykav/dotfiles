@@ -140,7 +140,8 @@ alias dot-backup="/bin/zsh /Users/riley/riley-dotfiles/install/new_backup.sh"
 
 
 
-
+# Open vim cheatsheet
+alias vim-cheat="open ~/Programming/Vim/vi-vim-tutorial.pdf"
 
 
 

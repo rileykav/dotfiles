@@ -142,11 +142,11 @@ eval "$(rbenv init -)"
 
 
 
-
+# System specific zshrc files, may overide some settings above
 if [[ $SYSTEM_NAME == 'Darwin' ]]; then
     source "$DOTFILES/zsh/local/macos.zsh"
 elif [[ $SYSTEM_NAME == 'Linux' ]]; then
     source "$DOTFILES/zsh/local/linux.zsh"
-elif [[ $SYSTEM_NAME == 'Android' ]]; then
+elif [[ $SYSTEM_NAME == 'Android' ]]; then # not working need to do ($ uname -o) but that 
     source "$DOTFILES/zsh/local/phone.zsh"
 fi

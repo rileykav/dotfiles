@@ -28,7 +28,7 @@ set pastetoggle=<leader>v
 set timeoutlen=1000 ttimeoutlen=0
         
 " Sets how many lines of history VIM has to remember
-set history=500
+set history=1000
 
 " Tells vim to keep a backup file
 set backup
@@ -51,6 +51,16 @@ filetype indent on
 set autoread
 au FocusGained,BufEnter * checktime
 
+
+" Underlines cursor line in insert mode (I don't love it)
+"autocmd InsertEnter,InsertLeave * set cul!
+
+" iTerm2 blinking? cursor as a vertical line instead of 1
+"let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+"let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+"let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+
 """"""""""""""""""""""""""""""""""""""""""""""
 " Core Vim Keybindings / Rebinds
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -60,27 +70,44 @@ au FocusGained,BufEnter * checktime
 " Leader Key !!!
 let mapleader = ','
 
-" Quick Saving
-nmap <leader>w :w<cr>
+" Quick Saving (note: all maps should be nore, this means noremap dd dd wont be recursive)
+nnoremap <leader>w :w<cr>
 
 " Quick Quit
-nmap <leader>q :q<cr>
+nnoremap <leader>q :q<cr>
 
 " Quick Quit no save
-nmap <leader>Q :q!<cr>
+nnoremap <leader>Q :q!<cr>
 
 " Quick Save & Quit
-nmap <leader>x :x<cr>
+nnoremap <leader>x :x<cr>
 
 " Open Vim terminal split
-nmap <leader>t :term<cr>
+nnoremap <leader>t :term<cr>
+
+" Undo and Redo
+nnoremap <leader>u :redo<cr>
+
+inoremap <C-y> <esc>:redo<cr>i
+inoremap <C-z> <esc>ui
+
+
+
+" Capatalise current word
+inoremap <C-u> <esc>mmviwU`ma
+nnoremap <C-u> mmviwU`m
+
+
+
+" Re-sourse vimrc file (reloads settings) Seems kinda broke though (no colours on status line)
+nnoremap <leader>r :source ~/.vimrc<cr> 
 
 " Clears search highlighting
 nnoremap <CR> :noh<CR><CR>
 
 " Spliting New Panes
-nmap <leader>v :vs<CR> " Create a vertical Split
-nmap <leader>- :split<CR> " Create a Hotizontal Split
+nnoremap <leader>v :vs<CR> " Create a vertical Split
+nnoremap <leader>- :split<CR> " Create a Hotizontal Split
 
 
 
@@ -90,45 +117,58 @@ no <leader>l <C-w>l| "switching to right window
 no <leader>h <C-w>h| "switching to left window
 set splitright
 set splitbelow
-" map <silent> <C-h> <Plug>WinMoveLeft
-" map <silent> <C-j> <Plug>WinMoveDown
-" map <silent> <C-k> <Plug>WinMoveUp
-" map <silent> <C-l> <Plug>WinMoveRight
+" noremap <silent> <C-h> <Plug>WinMoveLeft
+" noremap <silent> <C-j> <Plug>WinMoveDown
+" noremap <silent> <C-k> <Plug>WinMoveUp
+" noremap <silent> <C-l> <Plug>WinMoveRight
 
 
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <C-space> ?
+" noremap <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
+noremap <space> /
+noremap <C-space> ?
 
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader><Tab> :tabnext<cr>
+" Useful noremappings for managing tabs
+noremap <leader>tn :tabnew<cr>
+noremap <leader>to :tabonly<cr>
+noremap <leader>tc :tabclose<cr>
+noremap <leader>tm :tabmove 
+noremap <leader><Tab> :tabnext<cr>
+
+
+
+
+
+" Move current line up or down
+nnoremap _ ddkP
+nnoremap - ddp
+
+
+
+vnoremap \ U
+
 
 " Parenthesis and Brackets
 
-"vnoremap $1 <esc>`>a)<esc>`<i(<esc>
-"vnoremap $2 <esc>`>a]<esc>`<i[<esc>
-"vnoremap $3 <esc>`>a}<esc>`<i{<esc>
-"vnoremap $$ <esc>`>a"<esc>`<i"<esc>
-"vnoremap $q <esc>`>a'<esc>`<i'<esc>
-"vnoremap $e <esc>`>a"<esc>`<i"<esc>
+"vnorenoremap $1 <esc>`>a)<esc>`<i(<esc>
+"vnorenoremap $2 <esc>`>a]<esc>`<i[<esc>
+"vnorenoremap $3 <esc>`>a}<esc>`<i{<esc>
+"vnorenoremap $$ <esc>`>a"<esc>`<i"<esc>
+"vnorenoremap $q <esc>`>a'<esc>`<i'<esc>
+"vnorenoremap $e <esc>`>a"<esc>`<i"<esc>
 
-" Map auto complete of (, ", ', [
-"inoremap $1 ()<esc>i
-"inoremap $2 []<esc>i
-"inoremap $3 {}<esc>i
-"inoremap $4 {<esc>o}<esc>O
-"inoremap $q ''<esc>i
-"inoremap $e ""<esc>i
-
-
+" noremap auto complete of (, ", ', [
+"inorenoremap $1 ()<esc>i
+"inorenoremap $2 []<esc>i
+"inorenoremap $3 {}<esc>i
+"inorenoremap $4 {<esc>o}<esc>O
+"inorenoremap $q ''<esc>i
+"inorenoremap $e ""<esc>i
 
 
-" Remap VIM 0 to first non-blank character (not literal start)
-map 0 ^
+
+
+" Renoremap VIM 0 to first non-blank character (not literal start)
+noremap 0 ^
 
 
 "" Aliases
@@ -173,7 +213,7 @@ endif
 
 
 " Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
+noremap <leader>ss :setlocal spell!<cr>
 
 
 
@@ -207,10 +247,10 @@ fun! RunCurrentScript()
     "<cr>
 endfun
 
-nmap <leader>z :call RunCurrentScript()<cr>
+nnoremap <leader>z :call RunCurrentScript()<cr>
 
 " Runs but doesnt save
-"nmap <leader>z :call VimuxRunCommandInDir("run-script", 1)<cr>
+"nnoremap <leader>z :call VimuxRunCommandInDir("run-script", 1)<cr>
 let g:VimuxOrientation = "v"
         
 
@@ -269,7 +309,7 @@ let g:VtrClearEmptyLines = 0
 let g:VtrAppendNewline = 1
 
 "nmap <leader>ta :call VtrSendLinesToRunner()<cr>
-let g:VtrUseVtrMaps = 1
+let g:VtrUseVtrmaps = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " Visuals
@@ -297,7 +337,7 @@ source ~/.dotfiles/vim/filetypes.vim
 """"""""""""""""""""""""""""""""""""""""""""""
 
 " What does this do???
-:inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+:imap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 
 
@@ -315,8 +355,30 @@ source ~/.dotfiles/vim/temp.vim
 """"""""""""""""""""""""""""""""""""""""""""""
 
 " Clear highlighted search
-"noremap <space> :set hlsearch! h1seach?<cr>
+"map <space> :set hlsearch! h1seach?<cr>
 
 " markdown to html
 "nmap <leader>md :%!markdown --html4tags <cr>
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

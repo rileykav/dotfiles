@@ -71,6 +71,7 @@ bind-key -T copy-mode-vi 'C-\' select-pane -l
 
 
 
+
 source ~/.dotfiles/tmux/base16.sh 
 
 
