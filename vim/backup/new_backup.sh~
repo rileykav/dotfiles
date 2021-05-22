@@ -1,0 +1,35 @@
+#!/bin/zsh
+
+DOTFILES=$HOME/.dotfiles
+BACKUP_DIR=$HOME/dotfiles-backup
+
+set -e # Exit immediately if a command exits with a non-zero status
+find $DOTFILES/temp -mindepth 1 -depth -exec rm -rf {} ';'
+current_date=$(date +%Y-%b-%d)
+
+
+
+for (( i = 1; i <= 101; i++  )) do
+    if ! [[ -d "$BACKUP_DIR/backup-$current_date ($i*" ]] ; then
+        user_message=read("Would you like to add a message to this backup [message | <empty>]? ")
+        backup="$BACKUP_DIR/backup-$current_date ($i)$user_message"
+        echo "Archive number $i of $current_date"
+        mkdir $backup
+        current_files=($( find -H "$DOTFILES" -mindepth 1 -maxdepth 3 -name "*.*" -not -path "$DOTFILES/vim/bundle/*" -not -name '*.swp' -not -name '*~'  ))
+        for file in $current_files ; do
+            file_relative="$BACKUP_DIR/backup-$current_date/$( realpath --relative-to="$DOTFILES" "$file" )"
+            #echo "$file_relative"
+            cp $file $backup
+        done
+        echo "!!!Backed up to Archive backup-$current_date"
+        break
+
+    elif [[ i = 101 ]]; then
+        echo "ARCHIVE FULL, PLEASE REMOVE OLD FILES!!!!"
+        exit
+    else
+        echo "Archive $i full"
+    fi
+done
+
+

@@ -1,0 +1,19 @@
+#/data/data/com.termux/files/usr/bin/bash
+core_install_list=(
+    coreutils
+    termux-services
+    man
+    vim
+    zsh
+    tmux
+    python
+)
+
+
+more_install_list=(
+    openssh
+    nmap
+)
+
+
+pkg install $core_install_list -y

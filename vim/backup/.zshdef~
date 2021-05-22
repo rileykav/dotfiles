@@ -1,0 +1,12 @@
+
+
+#DEFUNCT
+#######################################################
+# Stating Default Apps
+#######################################################
+
+DEFAULT_PDF='/System/Applications/Preview.app'
+DEFAULT_IMG='/System/Applications/Preview.app'
+DEFAULT_VID='/Applications/VLC.app'
+DEFAULT_SVG='/Applications/SVGViewer.app'
+

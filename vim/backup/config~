@@ -1,0 +1,27 @@
+Host rileys-macbook
+    HostName 192.168.1.210
+    User riley
+
+Host lily-desktop
+    HostName 192.168.1.211
+    User lily
+
+Host pi-rasberry
+    Hostname 192.168.1.113
+    User pi
+    
+Host pi-rasberry-eth
+    Hostname 192.168.1.101
+    User pi
+
+Host freenas
+    Hostname 192.168.1.212
+    User root
+
+Host doran-desktop
+    Hostname 192.168.1.213
+    User cormac
+
+Host kav-desktop
+    Hostname 192.168.1.130
+    User userkav619

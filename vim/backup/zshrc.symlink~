@@ -1,0 +1,155 @@
+#######################################################
+# Import dotfiles
+#######################################################
+
+
+
+source $HOME/.dotfiles/zsh/zshdefinitions.symlink
+source $DOTFILES/zsh/zshfunctions.symlink
+source $DOTFILES/zsh/zshenv.symlink
+
+
+
+
+
+
+SYSTEM_NAME=$(uname -s)
+
+
+
+if [[ -d $DOTFILES/zsh/functions ]]; then
+    for func in $DOTFILES/zsh/functions/*(:t); autoload -U $func
+fi
+
+
+#######################################################
+# Configuration
+#######################################################
+# Dont think i use these ever, but i'll leave them here in case i want to 
+COLOR_BLACK="\e[0;30m"
+COLOR_BLUE="\e[0;34m"
+COLOR_GREEN="\e[0;32m"
+COLOR_CYAN="\e[0;36m"
+COLOR_PINK="\e[0;35m"
+COLOR_RED="\e[0;31m"
+COLOR_PURPLE="\e[0;35m"
+COLOR_BROWN="\e[0;33m"
+COLOR_LIGHTGRAY="\e[0;37m"
+COLOR_DARKGRAY="\e[1;30m"
+COLOR_LIGHTBLUE="\e[1;34m"
+COLOR_LIGHTGREEN="\e[1;32m"
+COLOR_LIGHTCYAN="\e[1;36m"
+COLOR_LIGHTRED="\e[1;31m"
+COLOR_LIGHTPURPLE="\e[1;35m"
+COLOR_YELLOW="\e[1;33m"
+COLOR_WHITE="\e[1;37m"
+COLOR_NONE="\e[0m"
+
+#if [ -z "$TMUX" ]; then
+#export TERM="xterm-256colour"
+#else
+#    export TERM=tmux-256colour
+#fi
+
+if [ "$(uname)" = "Linux" ]; then
+	eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
+
+
+
+#######################################################
+# Prompt
+#######################################################
+# Default MacOS Prompt
+# PROMPT='%n@%m %1~ %#'
+
+# Default but in colour
+# PROMPT='%F{blue}%n@%m %1%f~ %#'
+
+
+# Everthing between %F and %f will be in the colour specified
+# no %f changes the entire terminal
+
+words=("Linux" "VIM ♥ " "You should use Zsh" "~" "/")
+rand_int="$((1+ RANDOM % $(($#words))))"
+
+
+
+trans_lprompt="%F{116}%m%f %F{225}%2~ %f%# "
+trans_rprompt="%F{116}P%f%F{225}r%f%F{15}i%f%F{225}d%f%F{116}e%f"
+lgbt_rprompt="%F{9}L%f%F{208}G%f%F{220}B%f%F{28}T%f%F{27}Q%f%F{90}+%f"
+non_binary_1_rprompt="%F{11}E%f%F{15}N%f%F{98}B%f%F{0}Y%f"
+non_binary_2_rprompt="%F{11}Th%f%F{15}ey%f %F{98}Th%f%F{0}em%f"
+non_binary_3_rprompt="%F{11}Be%f %F{15}Gay%f %F{98}Do%f%F{0} Crime%f"
+pan_rprompt="%F{199}P%f%F{220}a%f%F{39}n%f %F{133}♥♥♥%f"
+gender_queer_rprompt="%F{140}Gen%f%F{15}der%f%F{70}queer%f"
+
+
+
+my_lprompt="%F{30}%m%f %F{247}%2~ %f%# "
+my_rprompt="%F{1}${words[$rand_int]}"
+
+flags=(
+    $lgbt_rprompt
+    $non_binary_1_rprompt
+    $non_binary_2_rprompt
+    $non_binary_3_rprompt
+    $pan_rprompt
+    $gender_queer_rprompt
+
+)
+rand_flag="$((1+ RANDOM % $#flags))"
+
+rand_rprompy="${flags[$rand_flag]}"
+
+
+
+PROMPT=$trans_lprompt
+RPROMPT=$rand_rprompy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# I think this is important to set up ruby ? Check if Ruby is installed
+if [[ ! $SYSTEM_NAME == 'Android']]; then
+    if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if [[ $SYSTEM_NAME == 'Darwin' ]]; then
+    source "$DOTFILES/zsh/local/macos.zsh"
+elif [[ $SYSTEM_NAME == 'Linux' ]]; then
+    source "$DOTFILES/zsh/local/linux.zsh"
+elif [[ $SYSTEM_NAME == 'Android' ]]; then
+    source "$DOTFILES/zsh/local/phone.zsh"
+fi

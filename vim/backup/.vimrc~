@@ -1,0 +1,315 @@
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" Add Plugins (seems important to put this hear
+""""""""""""""""""""""""""""""""""""""""""""""
+
+source ~/.dotfiles/vim/plugins.vim
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" Core Vim Setting
+""""""""""""""""""""""""""""""""""""""""""""""
+
+" When searching through a fie, do it recurisvly
+set path+=**
+
+" Add yank to normal clipboard
+set clipboard=unnamed
+
+" Allow mouse to jump cursor
+set mouse=a
+      
+" Line number relative to current line
+set number relativenumber
+
+" seet paste toggle
+set pastetoggle=<leader>v
+        
+" Sets delay for <esc> ke
+set timeoutlen=1000 ttimeoutlen=0
+        
+" Sets how many lines of history VIM has to remember
+set history=500
+
+" Sets vim to keep a backup file
+set backup
+
+" tell vim where to put its backup files
+set backupdir=~/.dotfiles/vim/backup
+
+" tell vim where to put swap files
+set dir=~/.dotfiles/vim/swapfiles
+
+" Enable filetype plugins
+filetype plugin on
+filetype indent on
+
+" Set to auto read when a file is changed from the outside
+set autoread
+au FocusGained,BufEnter * checktime
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" Core Vim Keybindings / Rebinds
+""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+" Leader Key !!!
+let mapleader = ','
+
+" Quick Saving
+nmap <leader>w :w<cr>
+
+" Quick Quit
+nmap <leader>q :q<cr>
+
+" Quick Quit no save
+nmap <leader>Q :q!<cr>
+
+" Quick Save & Quit
+nmap <leader>x :x<cr>
+
+" Open Vim terminal split
+nmap <leader>t :term<cr>
+
+" Clears search highlighting
+nnoremap <CR> :noh<CR><CR>
+
+" Spliting New Panes
+nmap <leader>v :vs<CR> " Create a vertical Split
+nmap <leader>- :split<CR> " Create a Hotizontal Split
+
+
+
+no <leader>j <C-w>j| "switching to below window 
+no <leader>k <C-w>k| "switching to above window
+no <leader>l <C-w>l| "switching to right window 
+no <leader>h <C-w>h| "switching to left window
+set splitright
+set splitbelow
+" map <silent> <C-h> <Plug>WinMoveLeft
+" map <silent> <C-j> <Plug>WinMoveDown
+" map <silent> <C-k> <Plug>WinMoveUp
+" map <silent> <C-l> <Plug>WinMoveRight
+
+
+" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
+map <space> /
+map <C-space> ?
+
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove 
+map <leader><Tab> :tabnext<cr>
+
+" Parenthesis and Brackets
+
+"vnoremap $1 <esc>`>a)<esc>`<i(<esc>
+"vnoremap $2 <esc>`>a]<esc>`<i[<esc>
+"vnoremap $3 <esc>`>a}<esc>`<i{<esc>
+"vnoremap $$ <esc>`>a"<esc>`<i"<esc>
+"vnoremap $q <esc>`>a'<esc>`<i'<esc>
+"vnoremap $e <esc>`>a"<esc>`<i"<esc>
+
+" Map auto complete of (, ", ', [
+"inoremap $1 ()<esc>i
+"inoremap $2 []<esc>i
+"inoremap $3 {}<esc>i
+"inoremap $4 {<esc>o}<esc>O
+"inoremap $q ''<esc>i
+"inoremap $e ""<esc>i
+
+
+
+
+" Remap VIM 0 to first non-blank character (not literal start)
+map 0 ^
+
+
+"" Aliases
+:command Vimrc :vs ~/.vimrc
+:command Zshrc :vs ~/.zshrc
+:command Tmuxrc :vs ~/.tmux.conf
+:command Dotfiles :vs ~/.dotfiles/
+:command VimPlugins :vs ~/.dotfiles/vim/plugins.vim
+:command TempVim :vs ~/.dotfiles/vim/temp.vim
+
+
+
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" Useful
+""""""""""""""""""""""""""""""""""""""""""""""
+
+" Return to last edit position when opening files (You want this!)
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+
+" Delete trailing white space on save, useful for some filetypes ;)
+fun! CleanExtraSpaces()
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    silent! %s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+endfun
+
+
+if has("autocmd")
+    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+endif
+
+
+
+" Pressing ,ss will toggle and untoggle spell checking
+map <leader>ss :setlocal spell!<cr>
+
+
+
+
+
+" Turn persistent undo on 
+" means that you can undo even when you close a buffer/VIM
+try
+    set undodir=~/.vim_runtime/temp_dirs/undodir
+    set undofile
+catch
+endtry
+
+
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins
+""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin Rules
+""""""""""""""""""""""""""""""""""""""""""""""
+"" Vimux
+
+" Saves file Run script in tmux shell bellow (doesnt need executible if sh or py)
+fun! RunCurrentScript()
+    w
+    call VimuxRunCommandInDir("run-script", 1)
+    "<cr>
+endfun
+
+nmap <leader>z :call RunCurrentScript()<cr>
+
+" Runs but doesnt save
+"nmap <leader>z :call VimuxRunCommandInDir("run-script", 1)<cr>
+let g:VimuxOrientation = "v"
+        
+
+
+
+
+
+"" Vimtex
+" Set tex type to latex
+let g:tex_flavor = 'latex' "Never got working
+
+    
+
+
+
+"" NERDTree 
+" Show hidden files in NERDTree
+let g:NERDTreeShowHidden=1
+
+"autocmd vimenter * NERDTree
+"nmap <C-\> :NERDTreeToggle<CR>
+"Closes vim if NERDTree is only window
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let g:NERDTreeWinPos = "left"
+
+
+nmap <silent> <leader>y :NERDTreeFind<cr>
+"nmap <leader>n :NERDTreeToggle<cr>
+nmap <silent> <leader>\ :NERDTreeToggle<cr>
+
+
+
+
+
+
+
+"" YouCompleteMe
+" Closes YCM window i think???
+let g:ycm_autoclose_preview_window_after_completion = 1
+
+" Find out how to move this preview to the bottom
+set completeopt-=preview
+
+
+
+"" Vim-Tmux-Navigator
+" Write all buffers before navigating from Vim to tmux pane
+let g:tmux_navigator_save_on_switch = 1
+
+
+
+"" vim-tmux-runner (Use VIMUX to doe this?)
+" Helps make python work right
+let g:VtrStripLeadingWhitespace = 0
+let g:VtrClearEmptyLines = 0
+let g:VtrAppendNewline = 1
+
+"nmap <leader>ta :call VtrSendLinesToRunner()<cr>
+let g:VtrUseVtrMaps = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" Visuals
+""""""""""""""""""""""""""""""""""""""""""""""
+
+
+source ~/.dotfiles/vim/visuals.vim
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" Filetypes
+""""""""""""""""""""""""""""""""""""""""""""""
+
+
+source ~/.dotfiles/vim/filetypes.vim
+
+
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" Unknown
+""""""""""""""""""""""""""""""""""""""""""""""
+
+" What does this do???
+:inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" Temp Vimrc File (used to quickly add a temp vimrc line)
+""""""""""""""""""""""""""""""""""""""""""""""
+
+source ~/.dotfiles/vim/temp.vim
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" Dont Want?
+""""""""""""""""""""""""""""""""""""""""""""""
+
+" Clear highlighted search
+"noremap <space> :set hlsearch! h1seach?<cr>
+
+" markdown to html
+"nmap <leader>md :%!markdown --html4tags <cr>
+        

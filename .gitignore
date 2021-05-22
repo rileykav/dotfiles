@@ -1,0 +1,7 @@
+#Ignore Large bundle files
+vim/bundle
+
+
+#Ignore DS.Store files
+**/.DS_Store
+.DS_Store
