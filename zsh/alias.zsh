@@ -96,6 +96,8 @@ alias thelp='echo "ta    = Attach to most recent\ntls   = List current tmux sess
 # dotfile aliases
 alias zshrc="vim $HOME/.zshrc"
 alias zshalias="vim $HOME/.dotfiles/zsh/alias.zsh"
+alias zshfunctions="vim $HOME/.dotfiles/zsh/functions.zsh"
+alias zshdefinitions="vim $HOME/.dotfiles/zsh/definitions.zsh"
 alias vimrc="vim $HOME/.vimrc"
 alias tmuxrc="vim $HOME/.tmux.conf"
 alias tmuxbase16="vim $HOME/.dotfiles/tmux/base16.sh"

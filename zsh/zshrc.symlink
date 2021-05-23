@@ -11,7 +11,17 @@ source $HOME/.zshenv
 
 
 
-SYSTEM_NAME=$(uname -s)
+
+if [[ -a $HOME/.localname ]]; then
+    source $HOME/.localname
+else
+    echo 'You do not have a ~/.localname file'
+    SYSTEM_NAME=$(read -E 'REPLY?What system are you on [macos/linux/andorid/other]: ')
+    echo "SYSTEM_NAME='$SYSTEM_NAME'" >> $HOME/.localname
+fi
+
+
+
 
 
 
@@ -121,20 +131,13 @@ RPROMPT=$rand_rprompy
 
 
 # I think this is important to set up ruby ? Check if Ruby is installed
-#if [[ ! $SYSTEM_NAME == 'Android']]; then
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-#fi
-
-
-
-
-
-
-
-
-
+if [[ ! $SYSTEM_NAME == 'android' ]]; then
+    if which rbenv > /dev/null; then 
+        eval "$(rbenv init -)" 
+    fi
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+fi
 
 
 
@@ -143,10 +146,10 @@ eval "$(rbenv init -)"
 
 
 # System specific zshrc files, may overide some settings above
-if [[ $SYSTEM_NAME == 'Darwin' ]]; then
+if [[ $SYSTEM_NAME == 'macos' ]]; then
     source "$DOTFILES/zsh/local/macos.zsh"
-elif [[ $SYSTEM_NAME == 'Linux' ]]; then
+elif [[ $SYSTEM_NAME == 'linux' ]]; then
     source "$DOTFILES/zsh/local/linux.zsh"
-elif [[ $SYSTEM_NAME == 'Android' ]]; then # not working need to do ($ uname -o) but that 
+elif [[ $SYSTEM_NAME == 'android' ]]; then # not working need to do ($ uname -o) but that 
     source "$DOTFILES/zsh/local/phone.zsh"
 fi
