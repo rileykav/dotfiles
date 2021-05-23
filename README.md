@@ -15,4 +15,4 @@ add find(symlinks)
 
 
 
-![github-qrcode](git/github-qrcode.png)
+The qr-code for this github repo: ![github-qrcode](git/github-qrcode.png)
