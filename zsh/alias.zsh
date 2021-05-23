@@ -154,7 +154,8 @@ alias gs='git status'
 
 
 
-
+# prompt
+alias prompt-clear='PROMPT="~ " && RPROMPT=""'
 
 # ----------------------
 # Git Aliase https://www.reddit.com/r/commandline/comments/nf898c/why_does_iterm_show_a_when_i_restore_the_session/
