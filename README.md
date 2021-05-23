@@ -12,3 +12,7 @@ To corretctly set up these links:
 ln -s ~/.dotfiles/zsh/zshrc.symlink ~/.zshrc 
 ```
 add find(symlinks)
+
+
+
+![github-qrcode](git/github-qrcode.png)
