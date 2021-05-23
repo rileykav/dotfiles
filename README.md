@@ -9,6 +9,6 @@ I.e. each of these dotfiles in the home directory are symlinks putting to the th
 To corretctly set up these links:
 
 ```zsh I'm a Code block
-ln -s ~/.zshrc ~/.dotfiles/zsh/zshrc.symlink
+ln -s ~/.dotfiles/zsh/zshrc.symlink ~/.zshrc 
 ```
 PLEASE CONFIRM THIS and add find(symlinks)

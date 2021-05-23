@@ -59,9 +59,11 @@ COLOR_NONE="\e[0m"
 #    export TERM=tmux-256colour
 #fi
 
-if [ "$(uname)" = "Linux" ]; then
-	eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-fi
+
+# Broke Phone, maybe move to linux.zsh?
+#if [ "$(uname)" = "Linux" ]; then
+#	eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+#fi
 
 
 
