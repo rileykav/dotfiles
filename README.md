@@ -11,4 +11,4 @@ To corretctly set up these links:
 ```zsh I'm a Code block
 ln -s ~/.dotfiles/zsh/zshrc.symlink ~/.zshrc 
 ```
-PLEASE CONFIRM THIS and add find(symlinks)
+add find(symlinks)
