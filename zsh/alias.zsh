@@ -1,6 +1,10 @@
 #######################################################
 # Aliases
 #######################################################
+# Source definitions for place names
+source $HOME/.dotfiles/zsh/definitions.zsh
+
+
 # Find what type of ls in use
 if ls --color > /dev/null 2>&1; then # GNU ls
     colourflag="--color"
@@ -182,5 +186,27 @@ else
 echo "Please specify project name - 1 argument only"
 fi
 }
+
+# Macbook specific (move?)
+alias for-beltalowda="/Applications/VLC.app/Contents/MacOS/VLC $HOME/Torrents/YouTube\ Playlists/For\ Beltalowda/000\ -\ VideoPlaylist "
+alias lofi="/Applications/VLC.app/Contents/MacOS/VLC $HOME/Torrents/YouTube\ Playlists/lofi/000\ -\ VideoPlaylist"
+alias critical-role-lofi="/Applications/VLC.app/Contents/MacOS/VLC $HOME/Torrents/YouTube\ Playlists/Critical\ Role\ Lofi/000\ -\ VideoPlaylist "
+alias music-compilation="/Applications/VLC.app/Contents/MacOS/VLC $HOME/Torrents/YouTube\ Playlists/Music\ Compilation/000\ -\ VideoPlaylist "
+alias music="/Applications/VLC.app/Contents/MacOS/VLC $HOME/Torrents/YouTube\ Playlists/Music/000\ -\ VideoPlaylist"
+alias asmr="/Applications/VLC.app/Contents/MacOS/VLC $HOME/Torrents/YouTube\ Playlists/ASMR\ Studying\ Together/000\ -\ VideoPlaylist"
+
+
+
+
+
+alias expanse="/Users/riley/Torrents/YouTube\ Playlists/For\ Beltalowda/000\ -\ VideoPlaylist"
+
+
+
+alias vlc-playing="osascript -l JavaScript $HOME/.dotfiles/tmux/vlc.js"
+alias mult-vlc-playing="osascript -l JavaScript $HOME/.dotfiles/tmux/mult-vlc.js"
+
+
+
 
 

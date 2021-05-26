@@ -5,6 +5,11 @@ vim/swapfiles
 vim/undo
 vim/private.vim
 
+
+#Ignore sub git repos
+**/.git
+
+
 #Ignore DS.Store files
 **/.DS_Store
 .DS_Store

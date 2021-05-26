@@ -2,6 +2,7 @@
 core_install_list=(
     coreutils
     termux-services
+    termux-api
     man
     vim
     zsh

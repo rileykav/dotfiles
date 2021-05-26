@@ -22,7 +22,7 @@ set mouse=a
 set number relativenumber
 
 " seet paste toggle
-set pastetoggle=<leader>v
+"set pastetoggle=<leader>v
         
 " Sets delay for <esc> ke
 set timeoutlen=1000 ttimeoutlen=0
@@ -74,7 +74,7 @@ let maplocalleader = "\\"
 
 " Quick Saving (note: all maps should be nore, this means noremap dd dd wont be recursive)
 nnoremap <leader>w :w<cr>
-
+inoremap <c-w> <esc>:w<cr>a
 " Quick Quit
 nnoremap <leader>q :q<cr>
 
@@ -83,6 +83,7 @@ nnoremap <leader>Q :q!<cr>
 
 " Quick Save & Quit
 nnoremap <leader>x :x<cr>
+noremap <c-x> <esc>:x<cr>
 
 " Open Vim terminal split
 nnoremap <leader>t :term<cr>
@@ -106,7 +107,7 @@ nnoremap <leader>r :source ~/.vimrc<cr>
 nnoremap <CR> :noh<CR><CR>
 
 " Spliting New Panes
-nnoremap <leader>v :vnew<CR> " Create a vertical Split
+" nnoremap <leader>v :vnew<CR> " Create a vertical Split
 nnoremap <leader>- :new<CR> " Create a Hotizontal Split
 
 
@@ -121,7 +122,7 @@ noremap <leader>l <C-w>l| "switching to right window
 noremap <leader>h <C-w>h| "switching to left window
 
 
-nnoremap <leader>sv :source $MYVIMRC<cr>
+"nnoremap <leader>sv :source $MYVIMRC<cr>
 
 set splitright
 set splitbelow
@@ -186,7 +187,8 @@ noremap 0 ^
 :command Dotfiles :vs ~/.dotfiles/
 :command VimPlugins :vs ~/.dotfiles/vim/plugins.vim
 :command TempVim :vs ~/.dotfiles/vim/temp.vim
-
+:command Tabis2 :set shiftwidth=2
+:command Tabis4 :set shiftwidth=4
 
 
 
@@ -314,10 +316,16 @@ let g:VtrClearEmptyLines = 0
 let g:VtrAppendNewline = 1
 
 "nmap <leader>ta :call VtrSendLinesToRunner()<cr>
-let g:VtrUseVtrmaps = 1
+" Default Keybinds (not working, set manually below)
+" Run :help vim-tmux.txt to view
+"let g:VtrUseVtrmaps = 1
 
-
-
+noremap <leader>va :VtrAttachToPane<cr>
+noremap <leader>sl :VtrSendLinesToRunner<cr>
+noremap <leader>cr :VtrClearRunner<cr>
+"nnoremap <leader>
+"nnoremap <leader>
+"nnoremap <leader>
 
 
 

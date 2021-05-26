@@ -1,10 +1,10 @@
 #######################################################
 # Import dotfiles
 #######################################################
-
+# Definitions sourced in alias
 source $HOME/.dotfiles/zsh/definitions.zsh
-source $DOTFILES/zsh/functions.zsh
 source $DOTFILES/zsh/alias.zsh
+source $DOTFILES/zsh/functions.zsh
 source $HOME/.zshenv
 
 
@@ -96,7 +96,7 @@ gender_queer_rprompt="%F{140}Gen%f%F{15}der%f%F{70}queer%f"
 
 
 
-my_lprompt="%F{30}%m%f %F{247}%2~ %f%# "
+eary_lprompt="%F{30}%m%f %F{247}%2~ %f%# "
 my_rprompt="%F{1}${words[$rand_int]}"
 
 flags=(

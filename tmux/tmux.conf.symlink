@@ -14,6 +14,18 @@ set -g prefix C-a
 
 ### Key Bindings
 
+
+# Default Bindings
+#<prefix>? Show default key-bindings...
+#<prefix>, rename-window
+#<prefix>x delete-pane
+#<prefix>c create-window
+#<prefix>) move to next session
+#<prefix>( move to previous session
+
+
+
+
 # Split window and fix path for tmux 1.9
 bind | split-window -h -c "#{pane_current_path}"
 bind - split-window -v -c "#{pane_current_path}"
@@ -30,8 +42,22 @@ bind -r J resize-pane -D 10
 bind -r K resize-pane -U 10
 bind -r F resize-pane -R 10
 
-#restart pane
+# Restart pane and Re-sourcing config file
 bind r respawn-pane -k
+bind R source ~/.tmux.conf
+
+
+# Tmux tabs (two keys for previous window so it works for both keyboards.)
+bind -r Tab next-window
+bind -r § previous-window
+bind -r ` previous-window
+bind -r E swap-window -d -t +1
+bind -r Q swap-window -d -t -1
+
+
+# Synchronise current panes, send key output to all panes.
+bind A setw synchronize-panes
+
 
 
 # Enable mosue pane selection 
@@ -43,6 +69,15 @@ set -g default-terminal "screen-256color"
 
 #set -g default-terminal "tmux-256color"
 #set -as terminal-overrides ',xterm*:Tc:sitm=\E[3m'
+
+
+
+
+
+
+
+
+
 
 
 # Smart pane switching with awareness of Vim splits.
