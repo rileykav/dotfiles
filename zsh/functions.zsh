@@ -113,8 +113,10 @@ function run-script(){
         /bin/zsh $1
     elif [[ $FILE_EXT == 'py' ]]; then
         /usr/local/bin/python3.9 $1
+    elif [[ $FILE_EXT == 'scpt' ]]; then
+        osascript $1
     else
-        echo "Not python or zsh file, please edit run-script in zshrc"
+        echo "Not python, applesctipy or zsh file, please edit run-script in zshrc"
         echo "$1"
     fi
 }

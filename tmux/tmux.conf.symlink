@@ -45,7 +45,7 @@ bind -r F resize-pane -R 10
 # Restart pane and Re-sourcing config file
 bind r respawn-pane -k
 bind R source ~/.tmux.conf
-
+bind K kill-session
 
 # Tmux tabs (two keys for previous window so it works for both keyboards.)
 bind -r Tab next-window
@@ -58,7 +58,8 @@ bind -r Q swap-window -d -t -1
 # Synchronise current panes, send key output to all panes.
 bind A setw synchronize-panes
 
-
+# Source primary-session.tmux
+bind S source ~/.dotfiles/tmux/primary-session.tmux
 
 # Enable mosue pane selection 
 #setw -g mouse on 
@@ -108,6 +109,5 @@ bind-key -T copy-mode-vi 'C-\' select-pane -l
 
 
 source ~/.dotfiles/tmux/base16.sh 
-
 
 

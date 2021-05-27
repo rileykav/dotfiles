@@ -70,10 +70,17 @@ alias firefox='/Applications/Firefox.app'
 alias ta='tmux attach'
 alias tls='tmux ls'
 alias tat='tmux attach -t'
-alias tns='tmux new-session -A -s'
+alias tes='tmux new-session -A -s'
+function tns(){
+    tmux new-session -A -s $1 \; \
+        source $HOME/.dotfiles/tmux/primary-session.tmux
+}
 alias tka='tmux kill-server'
 alias tko='tmux kill-session -a'
 alias thelp='echo "ta    = Attach to most recent\ntls   = List current tmux sessions\ntat   = Attach with -t\ntns   = start new session (give name)\ntka   = Kill all current tmux sessions\ntko   = Kill all other tmux sessions\nthelp = List current tmux aliases"'
+
+
+
 #alias tns2='
 #    if [ $1 ]; then
 #        echo "$1 Exists, attaching"
