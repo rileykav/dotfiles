@@ -148,7 +148,9 @@ noremap <leader>tc :tabclose<cr>
 noremap <leader>tm :tabmove 
 noremap <leader><Tab> :tabnext<cr>
 
-
+" Add line above/below line without entiering insert mode
+nnoremap <leader>o o<esc>
+nnoremap <leader>O O<esc>
 
 
 
