@@ -60,6 +60,11 @@ au FocusGained,BufEnter * checktime
 "let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 "let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
+" Keep buffers around?
+set hidden
+
+
+
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " Core Vim Keybindings / Rebinds
@@ -175,6 +180,19 @@ noremap <leader><Tab> :tabnext<cr>
 
 " Renoremap VIM 0 to first non-blank character (not literal start)
 noremap 0 ^
+
+
+
+
+" Show open buffers
+nnoremap <leader><leader> :ls<cr>
+
+
+
+
+
+
+
 
 
 "" Aliases
@@ -330,7 +348,11 @@ noremap <leader>cr :VtrClearRunner<cr>
 
 
 
-
+" Ctrl-P
+"<c-P> activates Ctrl-P
+"<c-s> open file in horizontal split
+"<c-v> open file in vertical split
+"<c-t> open file in new tab split
 
 
 """"""""""""""""""""""""""""""""""""""""""""""
