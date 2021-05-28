@@ -71,10 +71,12 @@ alias ta='tmux attach'
 alias tls='tmux ls'
 alias tat='tmux attach -t'
 alias tes='tmux new-session -A -s'
+
 function tns(){
     tmux new-session -A -s $1 \; \
         source $HOME/.dotfiles/tmux/primary-session.tmux
 }
+
 alias tka='tmux kill-server'
 alias tko='tmux kill-session -a'
 alias thelp='echo "ta    = Attach to most recent\ntls   = List current tmux sessions\ntat   = Attach with -t\ntns   = start new session (give name)\ntka   = Kill all current tmux sessions\ntko   = Kill all other tmux sessions\nthelp = List current tmux aliases"'
@@ -164,6 +166,11 @@ alias gc='git commit'
 alias gp='git push'
 alias gs='git status'
 
+
+
+
+# Copy Podcasts-downloads
+alias pod-copy="cp $HOME/Library/Group\ Containers/243LU875E5.groups.com.apple.podcasts/Library/Cache/*.mp3 ~/Downloads"
 
 
 

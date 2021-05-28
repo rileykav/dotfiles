@@ -54,6 +54,8 @@ bind -r ` previous-window
 bind -r E swap-window -d -t +1
 bind -r Q swap-window -d -t -1
 
+# Records tmux command history
+set -g history-file ~/.dotfiles/tmux/history.tmux
 
 # Synchronise current panes, send key output to all panes.
 bind A setw synchronize-panes
