@@ -38,28 +38,8 @@ alias du="du -h -c" # Disk usage of folder
 
 
 # pdfunite to merge pdf's
-
-# Hiding and showing Desktop
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
-
-
-# Hiding and showing Hidden Files
-alias hidehiddenfiles='defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder'
-alias showhiddenfiles='defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder'
-
-# Disable and enable .DS_STORE files
-alias disabledsstore='defaults write com.apple.desktopservices DSDontWriteNetworkStores true'
-alias enabledsstore='defaults write com.apple.desktopservices DSDontWriteNetworkStores false'
-
 # Remove those pesky .DS_STORE files (Needs some work)
 alias cleanup="find . -name '*.DS_STORE' -type f -ls -delete"
-
-
-# Use macvim if on MacOS
-if [[ "$(uname)" == "Darwin" ]]; then
-    alias vim='mvim -v'
-fi
 
 # Application aliases
 alias firefox='/Applications/Firefox.app'
@@ -126,20 +106,6 @@ alias py='python3.9'
 alias chm7='chmod 700'
 
 
-# opening applications
-alias spotify='open /Applications/Spotify.app'
-alias calibre='open /Applications/Calibre.app'
-alias calendar='open /Applications/Calendar.app'
-alias calculator='open /Applications/Calculator.app'
-alias discord='open /Applications/Discord.app'
-alias firefox='open /Applications/Firefox.app'
-alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
-alias texmaker='open /Applications/texmaker.app'
-alias whatsapp='open /Applications/WhatsApp.app'
-alias vsc='/Applications/Visual\ Studio\ Code.app'
-alias gimp='/Applications/GIMP-2.10.app'
-
-
 # timer
 alias alarm='~/Programming/zsh_scripts/alarm.sh'
 
@@ -150,8 +116,8 @@ alias author-cbz="for i in **; do cd $i;zip *.cbz cover.jpg; cd ..; done"
 
 
 
-# Backup dotfiles
-alias dot-backup="/bin/zsh /Users/riley/riley-dotfiles/install/new_backup.sh"
+# Backup dotfiles (defunct now that .dotfiles git is working)
+alias dot-backup="/bin/zsh $HOME/riley-dotfiles/install/new_backup.sh"
 
 
 
@@ -167,6 +133,45 @@ alias gp='git push'
 alias gs='git status'
 
 
+
+
+
+# Macos Specific Aliases
+
+
+# Use macvim if on MacOS
+if [[ "$(uname)" == "Darwin" ]]; then
+    alias vim='mvim -v'
+fi
+
+
+# Hiding and showing Desktop
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+
+# Hiding and showing Hidden Files
+alias hidehiddenfiles='defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder'
+alias showhiddenfiles='defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder'
+
+# Disable and enable .DS_STORE files
+alias disabledsstore='defaults write com.apple.desktopservices DSDontWriteNetworkStores true'
+alias enabledsstore='defaults write com.apple.desktopservices DSDontWriteNetworkStores false'
+
+
+
+# opening applications
+alias spotify='open /Applications/Spotify.app'
+alias calibre='open /Applications/Calibre.app'
+alias calendar='open /Applications/Calendar.app'
+alias calculator='open /Applications/Calculator.app'
+alias discord='open /Applications/Discord.app'
+alias firefox='open /Applications/Firefox.app'
+alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
+alias texmaker='open /Applications/texmaker.app'
+alias whatsapp='open /Applications/WhatsApp.app'
+alias vsc='/Applications/Visual\ Studio\ Code.app'
+alias gimp='/Applications/GIMP-2.10.app'
 
 
 # Copy Podcasts-downloads
