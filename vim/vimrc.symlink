@@ -63,7 +63,6 @@ au FocusGained,BufEnter * checktime
 " Keep buffers around?
 set hidden
 
-
 " Remove ~ Character indicating screen lines that are not in buffer (I like ~ as an indicator for this, though numbers also do it)
 "set fillchars=eob:\ ,
 
