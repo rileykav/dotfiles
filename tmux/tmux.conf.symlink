@@ -41,11 +41,12 @@ bind -r H resize-pane -L 10
 bind -r J resize-pane -D 10
 bind -r K resize-pane -U 10
 bind -r F resize-pane -R 10
+bind -r L resize-pane -R 10
 
 # Restart pane and Re-sourcing config file
 bind r respawn-pane -k
 bind R source ~/.tmux.conf
-bind K kill-session
+bind X kill-session
 
 # Tmux tabs (two keys for previous window so it works for both keyboards.)
 bind -r Tab next-window
@@ -64,13 +65,13 @@ bind A setw synchronize-panes
 bind S source ~/.dotfiles/tmux/primary-session.tmux
 
 # Enable mosue pane selection 
-#setw -g mouse on 
+setw -g mouse on 
 
 set -g default-terminal "screen-256color"
 
 #set -g default-terminal "xterm-256color"
 
-#set -g default-terminal "tmux-256color"
+#set -g default-terminal "tmux-256color
 #set -as terminal-overrides ',xterm*:Tc:sitm=\E[3m'
 
 
@@ -85,27 +86,27 @@ set -g default-terminal "screen-256color"
 
 # Smart pane switching with awareness of Vim splits.
 # See: https://github.com/christoomey/vim-tmux-navigator
-is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+#is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
     | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
-bind-key -n 'C-h' if-shell "$is_vim" 'send-keys C-h'  'select-pane -L'
-bind-key -n 'C-j' if-shell "$is_vim" 'send-keys C-j'  'select-pane -D'
-bind-key -n 'C-k' if-shell "$is_vim" 'send-keys C-k'  'select-pane -U'
-bind-key -n 'C-l' if-shell "$is_vim" 'send-keys C-l'  'select-pane -R'
-tmux_version='$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")'
-if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
+#bind-key -n 'C-h' if-shell "$is_vim" 'send-keys C-h'  'select-pane -L'
+#bind-key -n 'C-j' if-shell "$is_vim" 'send-keys C-j'  'select-pane -D'
+#bind-key -n 'C-k' if-shell "$is_vim" 'send-keys C-k'  'select-pane -U'
+#bind-key -n 'C-l' if-shell "$is_vim" 'send-keys C-l'  'select-pane -R'
+#tmux_version='$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")'
+#if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
     "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\'  'select-pane -l'"
-if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
+#if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
     "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
 
 #bind-key -T copy-mode-vi 'C-h' select-pane -L
-bind-key -T copy-mode-vi 'C-j' select-pane -D
-bind-key -T copy-mode-vi 'C-k' select-pane -U
-bind-key -T copy-mode-vi 'C-l' select-pane -R
-bind-key -T copy-mode-vi 'C-\' select-pane -l
+#bind-key -T copy-mode-vi 'C-j' select-pane -D
+#bind-key -T copy-mode-vi 'C-k' select-pane -U
+#bind-key -T copy-mode-vi 'C-l' select-pane -R
+#bind-key -T copy-mode-vi 'C-\' select-pane -l
 
 
-
-
+# Prevents delay on vim <esc>
+set -s escape-time 0
 
 
 

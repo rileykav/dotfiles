@@ -1,6 +1,6 @@
 
 """"""""""""""""""""""""""""""""""""""""""""""
-" Add Plugins (seems important to put this hear
+" Add Plugins (seems important to put this hear)
 """"""""""""""""""""""""""""""""""""""""""""""
 
 source ~/.dotfiles/vim/plugins.vim
@@ -11,6 +11,8 @@ source ~/.dotfiles/vim/plugins.vim
 
 " When searching through a fie, do it recurisvly
 set path+=**
+
+
 
 " Add yank to normal clipboard
 set clipboard=unnamed
@@ -25,7 +27,7 @@ set number relativenumber
 "set pastetoggle=<leader>v
         
 " Sets delay for <esc> ke
-set timeoutlen=1000 ttimeoutlen=0
+set timeoutlen=10 ttimeoutlen=0
         
 " Sets how many lines of history VIM has to remember
 set history=1000
@@ -74,6 +76,8 @@ set hidden
 " Leader Key !!! (local leader used for local file settings, i.e. a python specific mapping or something, not currently used)
 let mapleader = ','
 let maplocalleader = "\\"
+" Set a second leader key?
+"nmap § <leader>
 
 
 
@@ -101,10 +105,21 @@ inoremap <C-z> <esc>ui
 
 " Capatalise current word
 inoremap <C-u> <esc>mmviwU`ma
-nnoremap <C-u> mmviwU`m
+noremap <C-u> mmviwU`m
 
 
+inoremap <C-q> <esc>
+"inoremap <esc> <esc>:echo "don't use escape"<cr>i
 
+" Spelling
+:set spell spelllang=en_gb
+:nnoremap ? z=
+:nnoremap < [s
+:nnoremap > ]s
+
+" Replace all occurances of current word
+"nnoremap gw :%s/\<<c-r><c-w>\>//g<left><left>
+"nnoremap ge "zye:%s/<C-R>z/
 " Re-sourse vimrc file (reloads settings) Seems kinda broke though (no colours on status line)
 nnoremap <leader>r :source ~/.vimrc<cr> 
 
@@ -127,7 +142,7 @@ noremap <leader>l <C-w>l| "switching to right window
 noremap <leader>h <C-w>h| "switching to left window
 
 
-"nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
 set splitright
 set splitbelow
@@ -148,9 +163,15 @@ noremap <leader>tc :tabclose<cr>
 noremap <leader>tm :tabmove 
 noremap <leader><Tab> :tabnext<cr>
 
-" Add line above/below line without entiering insert mode
-nnoremap <leader>o o<esc>
-nnoremap <leader>O O<esc>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -184,19 +205,6 @@ nnoremap <leader>O O<esc>
 noremap 0 ^
 
 
-
-
-" Show open buffers
-nnoremap <leader><leader> :ls<cr>
-
-
-
-
-
-
-
-
-
 "" Aliases
 :command Vimrc :vs ~/.vimrc
 :command Zshrc :vs ~/.zshrc
@@ -207,9 +215,8 @@ nnoremap <leader><leader> :ls<cr>
 :command Dotfiles :vs ~/.dotfiles/
 :command VimPlugins :vs ~/.dotfiles/vim/plugins.vim
 :command TempVim :vs ~/.dotfiles/vim/temp.vim
-:command Tabis2 :set shiftwidth=2
-:command Tabis4 :set shiftwidth=4
-
+:command PyBoiler :vs ~/.dotfiles/vim/boilerplate/python/riley_base.py
+:command TexBoiler :vs ~/.dotfiles/vim/boilerplate/latex/riley_base.tex
 
 
 
@@ -232,12 +239,24 @@ fun! CleanExtraSpaces()
     call setreg('/', old_query)
 endfun
 
+" Adds python boilerplate
+autocmd BufNewFile *.py 0r /Users/riley/.dotfiles/vim/boilerplate/python/riley_base.py
+autocmd BufNewFile *.tex 0r /Users/riley/.dotfiles/vim/boilerplate/latex/riley_base.tex
 
 if has("autocmd")
     autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 endif
 
+autocmd QuitPre *.tex {
+    call CleanCurrentTex()
+    }
+"autocmd VimLeavePre *.tex {
+    "call CleanCurrentTex()
+    "}
 
+autocmd VimEnter *.tex {
+    echo "Hello"
+    }
 
 " Pressing ,ss will toggle and untoggle spell checking
 noremap <leader>ss :setlocal spell!<cr>
@@ -271,10 +290,57 @@ endtry
 fun! RunCurrentScript()
     w
     call VimuxRunCommandInDir("run-script", 1)
-    "<cr>
+endfun
+fun! CleanCurrentTex()
+    w
+    call VimuxRunCommandInDir("cleantex", 1)
+endfun
+fun! OpenTexPdf()
+    w
+    call VimuxRunCommandInDir("opentexpdf", 1)
+endfun
+fun! OpenCurrentTexmaker()
+    w
+    call VimuxRunCommandInDir("opencurrenttexmaker", 1)
+endfun
+fun! RunCurrentScriptandOpenTexPdf()
+    w
+    call VimuxRunCommandInDir("run-script", 1)
+    call VimuxRunCommandInDir("opentexpdf", 1)
+endfun
+fun! RunCurrentScriptandUpdatePreview()
+    w
+    call VimuxRunCommandInDir("run-script", 1)
+    call VimuxRunCommandInDir("opentexpdf", 1)
+    call VimuxRunCommandInDir("touchpreview", 1)
+endfun
+fun! CdToFileDirectory()
+    w
+    call VimuxRunCommandInDir("cdtofile", 1)
 endfun
 
+fun! TexOpenCitations()
+    call VimuxRunCommandInDir("open Citations/*", 0)
+endfun
+
+
 nnoremap <leader>z :call RunCurrentScript()<cr>
+nnoremap <leader>~ :call RunCurrentScriptandOpenTexPdf()<cr>
+nnoremap <leader>` :call RunCurrentScriptandUpdatePreview()<cr>
+nnoremap <leader>c :call CleanCurrentTex()<cr>
+nnoremap <leader>o :call OpenTexPdf()<cr>
+nnoremap <leader>m :call OpenCurrentTexmaker()<cr>
+nnoremap <leader>tc :call TexOpenCitations()<cr>
+"nnoremap <leader>d :call CdToFileDirectory()<cr>
+
+"inoremap <C-`> <esc>:call RunCurrentScriptandOpenTexPdf()<cr>
+
+let dir = expand('%:p:h')
+
+nnoremap <leader>d :call VimuxRunCommand("cd '" . dir . "'")<cr>
+
+nnoremap <leader><leader> :call VimuxPromptCommand()<cr>
+
 
 " Runs but doesnt save
 "nnoremap <leader>z :call VimuxRunCommandInDir("run-script", 1)<cr>
@@ -289,13 +355,14 @@ let g:VimuxOrientation = "v"
 " Set tex type to latex
 let g:tex_flavor = 'latex' "Never got working
 
-    
+
+
 
 
 
 "" NERDTree 
 " Show hidden files in NERDTree
-let g:NERDTreeShowHidden=1
+let g:NERDTreeShowHidden=0
 
 "autocmd vimenter * NERDTree
 "nmap <C-\> :NERDTreeToggle<CR>
@@ -336,25 +403,49 @@ let g:VtrClearEmptyLines = 0
 let g:VtrAppendNewline = 1
 
 "nmap <leader>ta :call VtrSendLinesToRunner()<cr>
-" Default Keybinds (not working, set manually below)
-" Run :help vim-tmux.txt to view
-"let g:VtrUseVtrmaps = 1
-
-noremap <leader>va :VtrAttachToPane<cr>
-noremap <leader>sl :VtrSendLinesToRunner<cr>
-noremap <leader>cr :VtrClearRunner<cr>
-"nnoremap <leader>
-"nnoremap <leader>
-"nnoremap <leader>
+let g:VtrUseVtrmaps = 1
 
 
 
+colorscheme xcodedark
 
-" Ctrl-P
-"<c-P> activates Ctrl-P
-"<c-s> open file in horizontal split
-"<c-v> open file in vertical split
-"<c-t> open file in new tab split
+
+" Vimtex 
+" info).
+syntax enable
+
+" Viewer options: One may configure the viewer either by specifying a built-in
+" viewer method:
+let g:vimtex_view_method = 'skim'
+let g:vimtex_compiler_method = 'latexmk'
+let maplocalleader = ","
+let g:vimtex_indent_enabled = 0
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+
+
+
+
+
+
+nnoremap <leader>bb i\begin{align}<esc>o\end{align}<esc>O<tab><backspace>
+nnoremap <leader>bl i\begin{itemize}<esc>o\end{itemize}<esc>O<tab><backspace><backspace>\item<space>
+nnoremap <leader>be i\begin{enumerate}<esc>o\end{enumerate}<esc>O<backspace>\item<space>
+nnoremap <leader>bi i\begin{figure}<esc>o\end{figure}<esc>O\centering<cr>\includegraphics{images/}<cr>\label{fig1}<esc>kA<esc>i
+
+"inoremap <C-i> <cr><backspace>\item<space>
+nnoremap <leader>// mm0eea[\checkmark]<esc>`m12l
+nnoremap <leader>/\ mm0eea[\XSolidBrush]<esc>`m14l
+nnoremap <leader>/. 0et]di]hxx 
+nnoremap <leader>aa mmA\\<esc>0t=a&<esc>`ml
+vnoremap <C-w> g<C-g>
+
+
+
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -428,8 +519,6 @@ source ~/.dotfiles/vim/temp.vim
 
 " markdown to html
 "nmap <leader>md :%!markdown --html4tags <cr>
-
-
 
 
 

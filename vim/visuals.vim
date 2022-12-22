@@ -2,7 +2,7 @@
 " User Interface
 """""""""""""""""""""""""""""""""""""""""""""""
 " Sets bottom limit for scrolling (i.e. min number of lines below cursor)
-set so=20
+set so=5
 
 " Auto indents in relavent places
 set autoindent 
@@ -18,7 +18,6 @@ set noshowmode
 
 " Set terminal title (see :help title)
 set title
-
 
 "Set language to english
 let $LANG='en' 
@@ -156,6 +155,9 @@ set wrap "Wrap lines
 
 
 
+" Set red bar at 80 characters.
+"set textwidth=80
+"set colorcolumn=+1
 
 
 
@@ -203,7 +205,7 @@ set laststatus=2
 
 set background=dark
 
-source ~/.dotfiles/vim/colourscheme/peaksea.vim
+"source ~/.dotfiles/vim/colourscheme/peaksea.vim
 
 let g:lightline = {
       \ 'colorscheme': 'solarized',

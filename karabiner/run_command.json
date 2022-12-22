@@ -1,0 +1,39 @@
+{   
+    "title": "My Rules",
+    "type": "basic",
+    "rules": [
+        {"description": "Test-Shell Command",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "simultaneous": [
+                            {
+                                "key_code": "non_us_backslash"
+                            },
+                            {
+                                "key_code": "1"
+                            }
+                        ],
+                        "simultaneous_options": {
+                            "key_down_order": "strict"
+                        },
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },   
+                    "parameters": {
+                        "basic.simultaneous_threshold_milliseconds": 5000
+                    },
+                    "to": [
+                        {
+                            "shell_command": "zsh $HOME/.dotfiles/karabiner/scripts/test.sh"
+                        }
+                    ]
+                }   
+            ]
+        }
+    ]
+}
+
+

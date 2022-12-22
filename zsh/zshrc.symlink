@@ -8,7 +8,7 @@ source $DOTFILES/zsh/functions.zsh
 source $HOME/.zshenv
 
 
-
+PATH="$HOME/bin:$PATH"
 
 
 
@@ -85,7 +85,13 @@ rand_int="$((1+ RANDOM % $(($#words))))"
 
 
 
-trans_lprompt="%F{116}%m%f %F{225}%2~ %f%# "
+empty_lprompt="%2~ "
+trans_lprompt="%F{116}"$USER"s-macbook%f %F{225}%2~ %f%# "
+
+
+
+
+#trans_lprompt="%F{116}%m%f %F{225}%2~ %f%# "
 trans_rprompt="%F{116}P%f%F{225}r%f%F{15}i%f%F{225}d%f%F{116}e%f"
 lgbt_rprompt="%F{9}L%f%F{208}G%f%F{220}B%f%F{28}T%f%F{27}Q%f%F{90}+%f"
 non_binary_1_rprompt="%F{11}E%f%F{15}N%f%F{98}B%f%F{0}Y%f"
@@ -96,17 +102,27 @@ gender_queer_rprompt="%F{140}Gen%f%F{15}der%f%F{70}queer%f"
 
 
 
+
+she_her_rprompt="%F{200}She%f%F{208}Her%f"
+
+
 eary_lprompt="%F{30}%m%f %F{247}%2~ %f%# "
 my_rprompt="%F{1}${words[$rand_int]}"
 
 flags=(
+    $lgbt_rprompt
+    $lgbt_rprompt
+    $lgbt_rprompt
     $lgbt_rprompt
     $non_binary_1_rprompt
     $non_binary_2_rprompt
     $non_binary_3_rprompt
     $pan_rprompt
     $gender_queer_rprompt
-
+    $she_her_rprompt
+    $she_her_rprompt
+    $she_her_rprompt
+    $she_her_rprompt
 )
 rand_flag="$((1+ RANDOM % $#flags))"
 
@@ -155,3 +171,23 @@ elif [[ $SYSTEM_NAME == 'linux' ]]; then
 elif [[ $SYSTEM_NAME == 'android' ]]; then # not working need to do ($ uname -o) but that 
     source "$DOTFILES/zsh/local/phone.zsh"
 fi
+
+
+
+#m4b-tool   # Used to convert m4a to m4b
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/riley/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/riley/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/riley/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/riley/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

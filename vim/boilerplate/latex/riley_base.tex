@@ -1,0 +1,93 @@
+\documentclass[11pt]{article}
+%\documentclass[11pt,epsfig,number,sort&compress]{article}
+%\documentclass[aps,prd,twocolumn,superscriptaddress,nofootinbib]{revtex4}
+%\documentclass[aps,prd,twocolumn,groupedaddress,nofootinbib]{revtex4}
+%\documentclass[aps,prd,twocolumn,groupedaddress]{revtex4}
+%\pdfoutput=1  %
+\usepackage{graphicx,color}
+\usepackage[margin=2.5cm]{geometry} % [margin=2.5cm] to chage the margin size
+\usepackage{relsize}
+%\usepackage{psfrag}
+\usepackage{appendix}
+\usepackage{latexsym,bbding,amsmath,amssymb,graphicx,booktabs}
+\usepackage{epsfig,latexsym,cite}
+\usepackage{float}
+%\usepackage[symbol]{footmisc}
+\usepackage[colorlinks=true,linkcolor=black,anchorcolor=black,citecolor=black,filecolor=black,menucolor=black,runcolor=black,urlcolor=black]{hyperref}
+\usepackage{cleveref}
+%\usepackage[style=authoryear - comp]{bib latex}
+\numberwithin{equation}{section}
+\usepackage[utf8]{inputenc}
+%\usepackage[english]{babel}
+\usepackage{xcolor}
+\usepackage{todonotes}
+\usepackage{tikz,tikz-cd,tikz-feynman}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\setlength{\unitlength}{1mm}
+%\textwidth 17.0 true cm
+%\textheight 22.0 true cm
+%\headheight 0 cm
+%\headsep 0 cm
+%\topmargin 0.4 true in
+%\oddsidemargin 0.25 true in
+%\input epsf
+%\thispagestyle{empty}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage{latexsym}
+\usepackage{lipsum}  
+
+\usepackage{mathtools} % Added for proper :=
+
+\usepackage[UKenglish]{datetime} % added for manual time format
+%%%%% User Definitions
+% unit vector
+\newcommand{\unit}{\hat{1\!\1}}
+
+
+\newcommand{\ind}{\hspace{2em}}
+
+% d'alembert symbol
+\def\square{\kern1pt\vbox{\hrule height 1.2pt\hbox{\vrule width 1.2pt\hskip 3pt
+   \vbox{\vskip 6pt}\hskip 3pt\vrule width 0.6pt}\hrule height 0.6pt}\kern1pt}
+
+% sign operator
+\DeclareMathOperator{\sign}{sgn}
+
+
+% Time Formating
+\newdateformat{atoday}{%
+\ordinaldate{\THEDAY}\ \shortmonthname[\THEMONTH], \THEYEAR}
+
+%\ddmmyydate 	% Format: 18/02/22
+\atoday			% Format: 18^th Oct, 2022
+
+
+% removes indentation
+\setlength{\parindent}{0pt}
+
+
+
+\graphicspath{ {./plots/} }
+\begin{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

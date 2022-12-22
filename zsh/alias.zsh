@@ -5,13 +5,27 @@
 source $HOME/.dotfiles/zsh/definitions.zsh
 
 
+
 # Find what type of ls in use
 if ls --color > /dev/null 2>&1; then # GNU ls
     colourflag="--color"
 else # macos ls
     colorflag="-G"
 fi
+# Macos Specific Aliases
 
+
+# Use macvim if on MacOS
+if [[ "$(uname)" == "Darwin" ]]; then
+    alias vim='mvim -v'
+fi
+
+# prompt
+alias prompt-clear='PROMPT="%2~ " && RPROMPT=""'
+
+
+
+### Terminal Usage
 # Filesystem Navigation
 alias /="cd /"
 alias ..="cd .."
@@ -19,30 +33,45 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+# Terminal "Handeling"
+alias ,x="exit"
+alias zshempty="zsh -f"
+alias chm7='chmod 700'
+
 # File Listing
-alias l="ls -GpF $colorflag"
-alias la="ls -AF $colorflag"
-alias ll="ls -lFh $colorflag"
-alias lla="ls -lahF $colorflag"
+#alias l="ls -GpFp $colorflag"
+alias la="ls -GAFp $colorflag"
+alias ll="ls -GlFhp $colorflag"
+alias lls="ls -GlFhp | rev|sort|rev"
+alias lla="ls -GlahF $colorflag"
 alias lld="ls -lF $colorflag | grep ^d"
-alias lt="tree | less"
-alias lt1="tree -L 1"
-alias lt2="tree -L 2 | less"
-alias lt3="tree -L 3 | less"
-alias lt4="tree -L 4 | less"
-alias lt5="less -L 5 | less"
+alias lt="tree -C"
+alias ltl="tree | less"
+alias lt1="tree -L 1 -C"
+alias lt2="tree -L 2 -C"
+alias lt3l="tree -L 3 -C | less"
+alias lt4l="tree -L 4 -C | less"
+alias lt5l="less -L 5 -C | less"
+alias treehere="tree . -oN file-tree.txt"
+alias vtree="tree file-tree.txt"
 
 alias grep="grep --color=auto"
 alias df="df -h" # Disk free in bytes
 alias du="du -h -c" # Disk usage of folder
+alias duriley="du -d 1 $HOME"
+alias duhere="du -d 1"
 
+alias o="open ."
+alias cl='clear'
+
+# Disable and enable .DS_STORE files
+alias disabledsstore='defaults write com.apple.desktopservices DSDontWriteNetworkStores true'
+alias enabledsstore='defaults write com.apple.desktopservices DSDontWriteNetworkStores false'
 
 # pdfunite to merge pdf's
 # Remove those pesky .DS_STORE files (Needs some work)
 alias cleanup="find . -name '*.DS_STORE' -type f -ls -delete"
 
-# Application aliases
-alias firefox='/Applications/Firefox.app'
 
 
 
@@ -52,41 +81,17 @@ alias tls='tmux ls'
 alias tat='tmux attach -t'
 alias tes='tmux new-session -A -s'
 
-function tns(){
-    tmux new-session -A -s $1 \; \
-        source $HOME/.dotfiles/tmux/primary-session.tmux
-}
 
-alias tka='tmux kill-server'
-alias tko='tmux kill-session -a'
+alias tk='tmux kill-session'
+alias ,k='tmux kill-session'
+alias tka='tmux kill-session -a'
+alias tks='tmux kill-server'
 alias thelp='echo "ta    = Attach to most recent\ntls   = List current tmux sessions\ntat   = Attach with -t\ntns   = start new session (give name)\ntka   = Kill all current tmux sessions\ntko   = Kill all other tmux sessions\nthelp = List current tmux aliases"'
 
 
 
-#alias tns2='
-#    if [ $1 ]; then
-#        echo "$1 Exists, attaching"
-#        sleep 1
-#        ta $1
-#    else
-#        echo "$1 Does not exist, creating"
-#        sleep 1
-#        tmux new-session -s $1
-#    fi
-#
-#'
-#function tns(){
-#    if [ tmux has-session -t $1 2>/dev/null == 2 ]; then
-#        tmux new-session -s $1
-#    else
-#        echo "$2 Exists, attaching"
-#        sleep 1
-#        tat $1
-#    fi
-#}
-
-
 # dotfile aliases
+alias dotfiles="cd $HOME/.dotfiles"
 alias zshrc="vim $HOME/.zshrc"
 alias zshalias="vim $HOME/.dotfiles/zsh/alias.zsh"
 alias zshfunctions="vim $HOME/.dotfiles/zsh/functions.zsh"
@@ -94,16 +99,16 @@ alias zshdefinitions="vim $HOME/.dotfiles/zsh/definitions.zsh"
 alias vimrc="vim $HOME/.vimrc"
 alias tmuxrc="vim $HOME/.tmux.conf"
 alias tmuxbase16="vim $HOME/.dotfiles/tmux/base16.sh"
-alias rc-help='echo "zshrc
-vimrc
-tmuxrc
-tmuxbase16"'
+alias rcloneignore="vim $HOME/.dotfiles/rclone/filter-list.txt"
+alias rc-help='echo "zshrc\nvimrc\ntmuxrc\ntmuxbase16"'
 
-# python aliases
-alias py='python3.9'
+
+
+alias current="vim $HOME/current.txt"
+
+
 
 # chmod aliases
-alias chm7='chmod 700'
 
 
 # timer
@@ -111,6 +116,11 @@ alias alarm='~/Programming/zsh_scripts/alarm.sh'
 
 
 
+
+
+
+
+### Specific Use Case
 # Dublicating the cover in a cbz file
 alias author-cbz="for i in **; do cd $i;zip *.cbz cover.jpg; cd ..; done"
 
@@ -126,25 +136,30 @@ alias vim-cheat="open ~/Programming/Vim/vi-vim-tutorial.pdf"
 
 
 
-# git aliases
+### Git
+#git init #to initialise the repo
 alias ga='git add'
 alias gc='git commit'
-alias gp='git push'
-alias gs='git status'
+alias gph='git push'
+alias gpl='git push'
+alias gst='git status'
+alias ghp='echo "ga = git add\ngc = git commit\ngph= git push\ngpl= git push\ngst= git status"    
+'
 
 
 
 
 
-# Macos Specific Aliases
+### Python
+#Specifing a Python Version
+alias py='python3.9'
+alias python='python3.9'
+# Virtual Enviornments
+alias act="source env/bin/activate"
+alias deact="deactivate"
 
 
-# Use macvim if on MacOS
-if [[ "$(uname)" == "Darwin" ]]; then
-    alias vim='mvim -v'
-fi
-
-
+### Finder And GUI
 # Hiding and showing Desktop
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
@@ -154,13 +169,14 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 alias hidehiddenfiles='defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder'
 alias showhiddenfiles='defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder'
 
-# Disable and enable .DS_STORE files
-alias disabledsstore='defaults write com.apple.desktopservices DSDontWriteNetworkStores true'
-alias enabledsstore='defaults write com.apple.desktopservices DSDontWriteNetworkStores false'
+
+#Unmount Drives
+alias unmountseagate='diskutil unmount /Volumes/Seagate\ 4TB'
+alias ejectseagate='diskutil eject /Volumes/Seagate\ 4TB'
+#alias unmountall  #Not sure how to work this, see https://stackoverflow.com/questions/2049758/is-there-a-way-to-eject-all-external-hard-drives-from-the-command-line-os-x
 
 
-
-# opening applications
+# Opening applications
 alias spotify='open /Applications/Spotify.app'
 alias calibre='open /Applications/Calibre.app'
 alias calendar='open /Applications/Calendar.app'
@@ -173,57 +189,86 @@ alias whatsapp='open /Applications/WhatsApp.app'
 alias vsc='/Applications/Visual\ Studio\ Code.app'
 alias gimp='/Applications/GIMP-2.10.app'
 
-
-# Copy Podcasts-downloads
-alias pod-copy="cp $HOME/Library/Group\ Containers/243LU875E5.groups.com.apple.podcasts/Library/Cache/*.mp3 ~/Downloads"
-
-
-
-# prompt
-alias prompt-clear='PROMPT="~ " && RPROMPT=""'
-
-# ----------------------
-# Git Aliase https://www.reddit.com/r/commandline/comments/nf898c/why_does_iterm_show_a_when_i_restore_the_session/
-# ----------------------
-alias ga='git add .'
-alias gm='git commit -m'
-# This is a function to automate the creation of new a project folder,
-# git init, create github repo and push
-function gnew () {
-if [ $# -eq 1 ]
-then
-mkdir $1
-cd $1
-git init
-touch README.md
-git add .
-git commit -m 'first commit'
-git branch -M main
-gh repo create $1 --confirm --public
-git push --set-upstream origin main
-else
-echo "Please specify project name - 1 argument only"
-fi
-}
-
-# Macbook specific (move?)
-alias for-beltalowda="/Applications/VLC.app/Contents/MacOS/VLC $HOME/Torrents/YouTube\ Playlists/For\ Beltalowda/000\ -\ VideoPlaylist "
-alias lofi="/Applications/VLC.app/Contents/MacOS/VLC $HOME/Torrents/YouTube\ Playlists/lofi/000\ -\ VideoPlaylist"
-alias critical-role-lofi="/Applications/VLC.app/Contents/MacOS/VLC $HOME/Torrents/YouTube\ Playlists/Critical\ Role\ Lofi/000\ -\ VideoPlaylist "
-alias music-compilation="/Applications/VLC.app/Contents/MacOS/VLC $HOME/Torrents/YouTube\ Playlists/Music\ Compilation/000\ -\ VideoPlaylist "
-alias music="/Applications/VLC.app/Contents/MacOS/VLC $HOME/Torrents/YouTube\ Playlists/Music/000\ -\ VideoPlaylist"
-alias asmr="/Applications/VLC.app/Contents/MacOS/VLC $HOME/Torrents/YouTube\ Playlists/ASMR\ Studying\ Together/000\ -\ VideoPlaylist"
-
-
-
-
-
+alias timetable="open $HOME/Utrecht/Timetable/*.png"
+alias uutimetable="open $HOME/Utrecht/Timetable/*.png"
+#
+# Macbook specific i.e. requires applescript (move?) 
+alias for-beltalowda="vlc $HOME/Torrents/YouTube\ Playlists/For\ Beltalowda/000\ -\ VideoPlaylist "
+alias lofi="vlc $HOME/Torrents/YouTube\ Playlists/lofi/000\ -\ VideoPlaylist"
+alias critical-role-lofi="vlc $HOME/Torrents/YouTube\ Playlists/Critical\ Role\ Lofi/000\ -\ VideoPlaylist "
+alias music-compilation="vlc $HOME/Torrents/YouTube\ Playlists/Music\ Compilation/000\ -\ VideoPlaylist "
+alias music="vlc $HOME/Torrents/YouTube\ Playlists/Music/000\ -\ VideoPlaylist"
+alias asmr="vlc $HOME/Torrents/YouTube\ Playlists/ASMR\ Studying\ Together/000\ -\ VideoPlaylist"
+alias orchestra="vlc $HOME/Torrents/YouTube\ Playlists/Orchestra/000\ -\ VideoPlaylist"
 alias expanse="/Users/riley/Torrents/YouTube\ Playlists/For\ Beltalowda/000\ -\ VideoPlaylist"
-
-
-
 alias vlc-playing="osascript -l JavaScript $HOME/.dotfiles/tmux/vlc.js"
 alias mult-vlc-playing="osascript -l JavaScript $HOME/.dotfiles/tmux/mult-vlc.js"
+
+
+
+
+
+
+
+alias grmerge="/bin/zsh $HOME/Utrecht/NS-TP428M\ -\ General\ Relativity/Problem\ Sheets/.joingr.sh"
+alias sftmerge="/bin/zsh $HOME/Utrecht/NS-TP402M\ -\ Statistical\ Field\ Theory/Problem\ Solving/.joinsft.sh"
+alias qftmerge="/bin/zsh $HOME/Utrecht/NS-TP401M\ -\ Quantum\ Field\ Theory/Problem\ Sheets/.joinqft.sh"
+alias stmerge="/bin/zsh $HOME/Utrecht/NS-TP526M\ -\ String\ Theory/Problem\ Sheets/.joinst.sh"
+alias cmmerge="/bin/zsh $HOME/Utrecht/NS-TP430M\ -\ Cosmology/Problem\ Sheets/.joincm.sh"
+
+
+# Quickly navigate to class folder
+alias mt="cd $HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis"
+alias stsem="cd $HOME/Utrecht/NS-TP504M\ -\ Student\ Seminar"
+alias datata="cd $HOME/Utrecht/Teaching\ Assistant/NS-109B\ -\ Data/Problem\ Sheets/My-Solutions"
+
+
+alias ld="cd $HOME/Bookshelf/Italiano/langdeck"
+
+alias modgif="convert -delay 10 -l
+oop 0 plots/*.png spin.gif"
+
+
+
+alias uupload="rclone -P sync $HOME/Utrecht/ mydrive:Utrecht --filter-from $HOME/.dotfiles/rclone/filter-list.txt"
+
+
+
+alias grindupload="rclone -P sync $HOME/Bookshelf/Grinds/ mydrive:Grinds"
+
+alias storage="osascript $HOME/.dotfiles/tmux/disk-usage.scpt"
+
+# Italiano
+alias ittest="(cd $HOME/Bookshelf/Italiano && py test-words.py)"
+
+
+
+
+
+
+
+
+
+# Anaconda 
+alias base_ana=". /Users/riley/opt/anaconda3/bin/activate && conda activate /Users/riley/opt/anaconda3;"
+alias anaconda3=". /Users/riley/opt/anaconda3/bin/activate && conda activate /opt/anaconda3;"
+alias anapy="/opt/anaconda3/bin/python" 
+
+
+
+
+
+
+
+
+
+# Images in Terminal
+alias img="imgcat"
+
+
+
+
+
 
 
 

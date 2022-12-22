@@ -18,6 +18,13 @@ au FileType python map <buffer> <leader>1 /class
 au FileType python map <buffer> <leader>2 /def 
 au FileType python map <buffer> <leader>C ?class 
 au FileType python map <buffer> <leader>D ?def 
+au FileType python nnoremap <leader>; mmgI#<esc>`mh 
+au FileType python nnoremap <leader>' mmgI<esc>x`mh 
+
+au FileType c  nnoremap <leader>; mmgI//<esc>`mh 
+au FileType c  nnoremap <leader>' mmgI<esc>xx`mh 
+
+
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " Javascript Section
