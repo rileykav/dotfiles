@@ -1,0 +1,7 @@
+[user]
+	name = Riley
+	email = lykavanagh1@gmail.com
+[github]
+    user = rileykav
+[credential]
+	helper = osxkeychain
