@@ -16,9 +16,9 @@ fi
 
 
 # Use macvim if on MacOS
-if [[ "$(uname)" == "Darwin" ]]; then
-    alias vim='mvim -v'
-fi
+#if [[ "$(uname)" == "Darwin" ]]; then
+    #alias vim='mvim -v'
+#fi
 
 # prompt
 alias prompt-clear='PROMPT="%2~ " && RPROMPT=""'
@@ -45,6 +45,7 @@ alias ll="ls -GlFhp $colorflag"
 alias lls="ls -GlFhp | rev|sort|rev"
 alias lla="ls -GlahF $colorflag"
 alias lld="ls -lF $colorflag | grep ^d"
+alias l.="ls -GFd $colorflag .*"
 alias lt="tree -C"
 alias ltl="tree | less"
 alias lt1="tree -L 1 -C"
@@ -57,7 +58,7 @@ alias vtree="tree file-tree.txt"
 
 alias grep="grep --color=auto"
 alias df="df -h" # Disk free in bytes
-alias du="du -h -c" # Disk usage of folder
+alias du="du -hc -d 1 2>/dev/null" # Disk usage of folder
 alias duriley="du -d 1 $HOME"
 alias duhere="du -d 1"
 
@@ -97,6 +98,7 @@ alias zshalias="vim $HOME/.dotfiles/zsh/alias.zsh"
 alias zshfunctions="vim $HOME/.dotfiles/zsh/functions.zsh"
 alias zshdefinitions="vim $HOME/.dotfiles/zsh/definitions.zsh"
 alias vimrc="vim $HOME/.vimrc"
+alias vimfiletypes="vim $HOME/.dotfiles/vim/filetypes.vim"
 alias tmuxrc="vim $HOME/.tmux.conf"
 alias tmuxbase16="vim $HOME/.dotfiles/tmux/base16.sh"
 alias rcloneignore="vim $HOME/.dotfiles/rclone/filter-list.txt"
@@ -105,6 +107,14 @@ alias rc-help='echo "zshrc\nvimrc\ntmuxrc\ntmuxbase16"'
 
 
 alias current="vim $HOME/current.txt"
+
+alias pydir="cd $HOME/Coding/Python"
+alias cdir="cd $HOME/Coding/C"
+alias zshdir="cd $HOME/Coding/Zsh"
+alias osascriptdir="cd $HOME/Coding/Applescript"
+
+
+
 
 
 
@@ -152,8 +162,9 @@ alias ghp='echo "ga = git add\ngc = git commit\ngph= git push\ngpl= git push\ngs
 
 ### Python
 #Specifing a Python Version
-alias py='python3.9'
-alias python='python3.9'
+alias py='python3.10'
+alias python='python3.10'
+alias pip='pip3.10'
 # Virtual Enviornments
 alias act="source env/bin/activate"
 alias deact="deactivate"
@@ -168,6 +179,8 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 # Hiding and showing Hidden Files
 alias hidehiddenfiles='defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder'
 alias showhiddenfiles='defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder'
+#https://www.chriswrites.com/how-to-place-any-dashboard-widget-on-your-macs-desktop/
+#alias hidewidgets="defaults write com.apple.dashboard && devmode YES"
 
 
 #Unmount Drives
@@ -230,7 +243,6 @@ oop 0 plots/*.png spin.gif"
 
 
 
-alias uupload="rclone -P sync $HOME/Utrecht/ mydrive:Utrecht --filter-from $HOME/.dotfiles/rclone/filter-list.txt"
 
 
 
@@ -252,7 +264,7 @@ alias ittest="(cd $HOME/Bookshelf/Italiano && py test-words.py)"
 # Anaconda 
 alias base_ana=". /Users/riley/opt/anaconda3/bin/activate && conda activate /Users/riley/opt/anaconda3;"
 alias anaconda3=". /Users/riley/opt/anaconda3/bin/activate && conda activate /opt/anaconda3;"
-alias anapy="/opt/anaconda3/bin/python" 
+alias anapy="/Users/riley/opt/anaconda3/bin/python" 
 
 
 
@@ -269,8 +281,8 @@ alias img="imgcat"
 
 
 
-
-
-
+# Vim Stuff
+alias vimswps="lla $HOME/.dotfiles/vim/swapfiles"
+alias vimrmswps="rm $HOME/.dotfiles/vim/swapfiles/*"
 
 

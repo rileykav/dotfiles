@@ -15,7 +15,7 @@ select-pane -t 0
 new-window -n "music"
 split-window -h -p 50
 select-pane -t 0
-new-window -n "dotfiles"
+new-window -n "dotfiles
 send-keys "cd ~/.dotfiles && clear" enter
 split-window -v -p 25
 select-pane -t 0

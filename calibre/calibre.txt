@@ -1,0 +1,12 @@
+# In tweaks set:
+title_series_sorting = 'strictly_alphabetic'
+save_template_title_series_sorting = 'strictly_alphabetic'
+
+
+### Save to disk setting
+# Universe/Series/n. Title - Authors.*
+
+{#universe:||/}{series}{series_index:|/|. }{title:'re($, ':', ' -')'} - {authors}/{title:'re($, ':', ' -')'} - {authors}
+
+# Non universe/series books are automatically dumped 1 diractory higher
+

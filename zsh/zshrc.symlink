@@ -5,7 +5,7 @@
 source $HOME/.dotfiles/zsh/definitions.zsh
 source $DOTFILES/zsh/alias.zsh
 source $DOTFILES/zsh/functions.zsh
-source $HOME/.zshenv
+#source $HOME/.zshenv
 
 
 PATH="$HOME/bin:$PATH"
@@ -21,7 +21,8 @@ else
 fi
 
 
-
+# don't check for new mail
+MAILCHECK=0
 
 
 
@@ -74,7 +75,7 @@ COLOR_NONE="\e[0m"
 # PROMPT='%n@%m %1~ %#'
 
 # Default but in colour
-# PROMPT='%F{blue}%n@%m %1%f~ %#'
+PROMPT='%F{blue}%n@%m %1%f~ %#'
 
 
 # Everthing between %F and %f will be in the colour specified
@@ -87,6 +88,7 @@ rand_int="$((1+ RANDOM % $(($#words))))"
 
 empty_lprompt="%2~ "
 trans_lprompt="%F{116}"$USER"s-macbook%f %F{225}%2~ %f%# "
+new_lprompt="%F{70}"$USER"s-macbook%f %F{90}%2~ %f%# "
 
 
 
@@ -110,18 +112,6 @@ eary_lprompt="%F{30}%m%f %F{247}%2~ %f%# "
 my_rprompt="%F{1}${words[$rand_int]}"
 
 flags=(
-    $lgbt_rprompt
-    $lgbt_rprompt
-    $lgbt_rprompt
-    $lgbt_rprompt
-    $non_binary_1_rprompt
-    $non_binary_2_rprompt
-    $non_binary_3_rprompt
-    $pan_rprompt
-    $gender_queer_rprompt
-    $she_her_rprompt
-    $she_her_rprompt
-    $she_her_rprompt
     $she_her_rprompt
 )
 rand_flag="$((1+ RANDOM % $#flags))"
@@ -130,7 +120,7 @@ rand_rprompy="${flags[$rand_flag]}"
 
 
 
-PROMPT=$trans_lprompt
+PROMPT=$new_lprompt
 RPROMPT=$rand_rprompy
 
 
@@ -149,13 +139,13 @@ RPROMPT=$rand_rprompy
 
 
 # I think this is important to set up ruby ? Check if Ruby is installed
-if [[ ! $SYSTEM_NAME == 'android' ]]; then
-    if which rbenv > /dev/null; then 
-        eval "$(rbenv init -)" 
-    fi
-    export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
-fi
+#if [[ ! $SYSTEM_NAME == 'android' ]]; then
+#    if which rbenv > /dev/null; then 
+#        eval "$(rbenv init -)" 
+#    fi
+#    export PATH="$HOME/.rbenv/bin:$PATH"
+#    eval "$(rbenv init -)"
+#fi
 
 
 
@@ -190,4 +180,5 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
 

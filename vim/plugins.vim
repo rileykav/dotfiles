@@ -18,6 +18,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'vim-syntastic/syntastic'	" Was getting error, try again?
 Plugin 'ajh17/VimCompletesMe'
 "Plugin 'neoclide/coc.nvim'
+"Plugin 'vim-latex/vim-latex'
 Plugin 'lervag/vimtex'
 Plugin 'preservim/vimux'
 Plugin 'itchyny/lightline.vim'
@@ -25,10 +26,12 @@ Plugin 'tpope/vim-surround'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'christoomey/vim-tmux-runner'
 Plugin 'pulkomandy/c.vim'
+" Colourshemes
 Plugin 'arzg/vim-colors-xcode' "Highly Reccomend
+Plugin 'sainnhe/everforest'
 Plugin 'pseewald/vim-anyfold'
 Plugin 'aclements/latexrun'
-Plugin 'sirver/UltiSnips'
+"Plugin 'sirver/UltiSnips'
 Plugin 'honza/vim-snippets'
 """"""""" End of Plugins
 call vundle#end()

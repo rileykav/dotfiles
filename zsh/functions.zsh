@@ -124,7 +124,9 @@ function cleantex(){
         zsh "$dir/.clean_tex.sh"
     fi
     filename="${1%.*}"
-    rm -f "$filename.aux" "$filename.fls" "$filename.log" "$filename.toc" "$filename.out" "$filename.fdb_latexmk" "$filename.synctex.gz" ".latexrun*"  "$filename.bcf" "$filename.blg" "$filename.run.xml" "pdfa.xmpi"
+    # Ensures the wildfire matches something
+    touch pdflatextmp.txt
+    rm -f "$filename.aux" "$filename.fls" "$filename.log" "$filename.toc" "$filename.out" "$filename.fdb_latexmk" "$filename.synctex.gz" ".latexrun*"  "$filename.bcf" "$filename.blg" "$filename.run.xml" "$filename.synctex (busy)" "pdfa.xmpi" pdflatex*
 }
 
 function opentexpdf(){
@@ -134,11 +136,12 @@ function opentexpdf(){
     else
         filename="${1%.*}"
         open "$filename.pdf"
+        osascript "$HOME/.dotfiles/applescript/scripts/preview-remove-sidebar.scpt"
     fi
 }
-function touchpreview(){
-    filename="${1%.*}"
+function touchpreviewnosidebar(){
     open /System/Applications/Preview.app 
+    osascript "$HOME/.dotfiles/applescript/scripts/preview-remove-sidebar.scpt"
     open /Applications/iTerm.app 
 }
 
@@ -155,7 +158,8 @@ function cdtofile(){
 
 
 function touchpreview(){
-    open /System/Applications/Preview.app
+    #open /System/Applications/Preview.app
+    osascript "$HOME/.dotfiles/applescript/scripts/preview-remove-sidebar.scpt"
     open /Applications/iTerm.app
 }
 
@@ -178,15 +182,17 @@ function run-script(){
     if [[ $FILE_EXT == 'sh' ]]; then
         /bin/zsh $1
     elif [[ $FILE_EXT == 'py' ]]; then
-        /usr/local/bin/python3.9 $1
+        /usr/local/bin/python3.10 $1
     elif [[ $FILE_EXT == 'scpt' ]]; then
         osascript $1
     elif [[ $FILE_EXT == 'c' ]]; then
         runc $1 
     elif [[ $FILE_EXT == 'tex' ]]; then
         runtex $1 
+    elif [[ $FILE_EXT == 'R' ]]; then
+        Rscript $1 
     else
-        echo "Not python, applesctipy or zsh file, please edit run-script in zshrc"
+        echo "Not python, applesctipt, zsh, tex or R file, please edit run-script in zshrc"
         echo "$1"
     fi
 }
@@ -402,6 +408,10 @@ function tns(){
     tmux new-session -A -s $1 \; \
         source $HOME/.dotfiles/tmux/primary-session.tmux
 }
+function tnsuu(){
+    tmux new-session -A -s Utrecht \; \
+        source $HOME/.dotfiles/tmux/utrecht-session.tmux
+}
 
 function thesis(){
     cd $HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Latex/General\ Writing
@@ -419,5 +429,23 @@ function imgshow(){
     cat .img.out
 }
 alias dogs="imgshow $HOME/Pictures/dogs.jpeg"
+
+function phdapp(){
+    cp $HOME/Utrecht/General/Phd\ Applications/UU\ Multimessenger/Motivation/uu-mm-phd-motivation.pdf $HOME/Desktop
+    cp $HOME/Utrecht/General/CV:Resume/AltaCV-Template/riley-cv.pdf $HOME/Desktop
+}
+
+
+
+function uupload(){
+    rclone -P sync $HOME/Utrecht/ mydrive:Utrecht --filter-from $HOME/.dotfiles/rclone/filter-list.txt 
+    osascript "$HOME/.dotfiles/automator/sync-uu.scpt"
+}
+
+
+
+
+
+
 
 

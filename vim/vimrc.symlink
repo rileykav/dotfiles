@@ -74,7 +74,7 @@ set hidden
 
 
 " Leader Key !!! (local leader used for local file settings, i.e. a python specific mapping or something, not currently used)
-let mapleader = ','
+let mapleader=','
 let maplocalleader = "\\"
 " Set a second leader key?
 "nmap § <leader>
@@ -83,9 +83,11 @@ let maplocalleader = "\\"
 
 " Quick Saving (note: all maps should be nore, this means noremap dd dd wont be recursive)
 nnoremap <leader>w :w<cr>
+command W w
 inoremap <c-w> <esc>:w<cr>a
 " Quick Quit
 nnoremap <leader>q :q<cr>
+command Q q!
 
 " Quick Quit no save
 nnoremap <leader>Q :q!<cr>
@@ -120,7 +122,7 @@ inoremap <C-q> <esc>
 " Replace all occurances of current word
 "nnoremap gw :%s/\<<c-r><c-w>\>//g<left><left>
 "nnoremap ge "zye:%s/<C-R>z/
-" Re-sourse vimrc file (reloads settings) Seems kinda broke though (no colours on status line)
+" Re-source vimrc file 
 nnoremap <leader>r :source ~/.vimrc<cr> 
 
 " Clears search highlighting
@@ -153,8 +155,12 @@ set splitbelow
 
 
 " noremap <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
+" In vim to get a hex code for a certain combination do (for <C-u> here):
+"  <C-v><C-u><C-c>ga
+" You need to do this for <S-space> command to work and map iterms mapping in profile to the hex key
 noremap <space> /
-noremap <C-space> ?
+noremap <c-f> :vs *
+noremap <c-space> ?
 
 " Useful noremappings for managing tabs
 noremap <leader>tn :tabnew<cr>
@@ -162,7 +168,6 @@ noremap <leader>to :tabonly<cr>
 noremap <leader>tc :tabclose<cr>
 noremap <leader>tm :tabmove 
 noremap <leader><Tab> :tabnext<cr>
-
 
 
 
@@ -207,13 +212,15 @@ noremap 0 ^
 
 "" Aliases
 :command Vimrc :vs ~/.vimrc
+:command VimPlugins :vs ~/.dotfiles/vim/plugins.vim
+:command VimFiletypes :vs ~/.dotfiles/vim/filetypes.vim
+:command VimSpellDict :vs ~/.dotfiles/vim/bundle/Vundle.vim/spell/en.utf-8.add
 :command Zshrc :vs ~/.zshrc
 :command Zshfunctions :vs ~/.dotfiles/zsh/functions.zsh
 :command Zshalias :vs ~/.dotfiles/zsh/alias.zsh
 :command Zshdefinitions :vs ~/.dotfiles/zsh/definitions.zsh
 :command Tmuxrc :vs ~/.tmux.conf
 :command Dotfiles :vs ~/.dotfiles/
-:command VimPlugins :vs ~/.dotfiles/vim/plugins.vim
 :command TempVim :vs ~/.dotfiles/vim/temp.vim
 :command PyBoiler :vs ~/.dotfiles/vim/boilerplate/python/riley_base.py
 :command TexBoiler :vs ~/.dotfiles/vim/boilerplate/latex/riley_base.tex
@@ -239,9 +246,6 @@ fun! CleanExtraSpaces()
     call setreg('/', old_query)
 endfun
 
-" Adds python boilerplate
-autocmd BufNewFile *.py 0r /Users/riley/.dotfiles/vim/boilerplate/python/riley_base.py
-autocmd BufNewFile *.tex 0r /Users/riley/.dotfiles/vim/boilerplate/latex/riley_base.tex
 
 if has("autocmd")
     autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
@@ -250,13 +254,7 @@ endif
 autocmd QuitPre *.tex {
     call CleanCurrentTex()
     }
-"autocmd VimLeavePre *.tex {
-    "call CleanCurrentTex()
-    "}
 
-autocmd VimEnter *.tex {
-    echo "Hello"
-    }
 
 " Pressing ,ss will toggle and untoggle spell checking
 noremap <leader>ss :setlocal spell!<cr>
@@ -281,84 +279,91 @@ endtry
 """"""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin Rules
-""""""""""""""""""""""""""""""""""""""""""""""
+
 "" Vimux
+let dir = expand('%:p:h')
+
+nnoremap <leader>d :call VimuxRunCommand("cd '" . dir . "'")<cr>
+nnoremap <leader><leader> :call VimuxPromptCommand()<cr>
+let g:VimuxOrientation = "v"
 
 " Saves file Run script in tmux shell bellow (doesnt need executible if sh or py)
 fun! RunCurrentScript()
     w
     call VimuxRunCommandInDir("run-script", 1)
+    set cmdheight=2
+    echo "Script Complete"
+    set cmdheight=1
 endfun
-fun! CleanCurrentTex()
-    w
-    call VimuxRunCommandInDir("cleantex", 1)
-endfun
-fun! OpenTexPdf()
-    w
-    call VimuxRunCommandInDir("opentexpdf", 1)
-endfun
-fun! OpenCurrentTexmaker()
-    w
-    call VimuxRunCommandInDir("opencurrenttexmaker", 1)
-endfun
-fun! RunCurrentScriptandOpenTexPdf()
-    w
-    call VimuxRunCommandInDir("run-script", 1)
-    call VimuxRunCommandInDir("opentexpdf", 1)
-endfun
-fun! RunCurrentScriptandUpdatePreview()
-    w
-    call VimuxRunCommandInDir("run-script", 1)
-    call VimuxRunCommandInDir("opentexpdf", 1)
-    call VimuxRunCommandInDir("touchpreview", 1)
-endfun
-fun! CdToFileDirectory()
-    w
-    call VimuxRunCommandInDir("cdtofile", 1)
-endfun
-
-fun! TexOpenCitations()
-    call VimuxRunCommandInDir("open Citations/*", 0)
-endfun
-
-
-nnoremap <leader>z :call RunCurrentScript()<cr>
-nnoremap <leader>~ :call RunCurrentScriptandOpenTexPdf()<cr>
-nnoremap <leader>` :call RunCurrentScriptandUpdatePreview()<cr>
-nnoremap <leader>c :call CleanCurrentTex()<cr>
-nnoremap <leader>o :call OpenTexPdf()<cr>
-nnoremap <leader>m :call OpenCurrentTexmaker()<cr>
-nnoremap <leader>tc :call TexOpenCitations()<cr>
-"nnoremap <leader>d :call CdToFileDirectory()<cr>
-
-"inoremap <C-`> <esc>:call RunCurrentScriptandOpenTexPdf()<cr>
-
-let dir = expand('%:p:h')
-
-nnoremap <leader>d :call VimuxRunCommand("cd '" . dir . "'")<cr>
-
-nnoremap <leader><leader> :call VimuxPromptCommand()<cr>
-
-
-" Runs but doesnt save
-"nnoremap <leader>z :call VimuxRunCommandInDir("run-script", 1)<cr>
-let g:VimuxOrientation = "v"
-        
-
-
 
 
 
 "" Vimtex
+" To use with MacTex run the following:
+"   % type latexmk
+"   latexmk is /usr/loval/bin/latexmk
+"   % sudo ln -s /usr/../latexmk /usr/local/bin
+"
+" Or try the directory: /Library/TeX/texbin/latexmk
+" Might be the same file ?
+"
+" For multifle support, use one of the following
+" 1. Set up a main.tex file, and the following to your vimrc
+"   autocmd BufReadPre *.tex let b:vimtex_main = 'main.tex'
+"
+" 2. At the start of all none main files include as the first line:
+"   %! TEX root = <main-tex-file-name>.tex
+"
+" I have the second set up so that my tex files follow a patern of name.tex 
+" as the main file, and all subiles are name.appendix.tex, name.bib.tex etc.
+"
+"
 " Set tex type to latex
 let g:tex_flavor = 'latex' "Never got working
+let g:vimtex_compiler_enabled = 1 " Disables Compiler
+let g:vimtex_compiler_method = 'latexmk' "Default setting
+"let g:vimtex_compiler_latexmk = {
+        "\ 'build_dir' : '',
+        "\ 'callback' : 1,
+        "\ 'continuous' : 1,
+        "\ 'executable' : 'latexmk',
+        "\ 'hooks' : [],
+        "\ 'options' : [
+        "\   '-verbose',
+        "\   '-file-line-error',
+        "\   '-synctex=1',
+        "\   '-interaction=nonstopmode',
+        "\ ],
+        "\}
+syntax enable
+" Viewer options: One may configure the viewer either by specifying a built-in
+" viewer method:
+let maplocalleader = ","
+let g:vimtex_indent_enabled = 0
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+" Ignores unnecessary warnings
+let g:vimtex_quickfix_ignore_filters = [
+  \'Underfull \\hbox (badness [0-9]*) in ',
+  \'Overfull \\hbox ([0-9]*.[0-9]*pt too wide) in ',
+  \'Overfull \\vbox ([0-9]*.[0-9]*pt too high) detected ',
+  \'Package hyperref Warning: Token not allowed in a PDF string',
+  \'Package typearea Warning: Bad type area settings!',
+  \'Marginpar on page[0-9]* moved',
+  \'Marginpar on page[0-9]* moved',
+  \'Marginpar',
+  \'Overfull',
+  \'tikz-feynman Warning',
+  \"`h' float specifier",
+  \]
 
+" Vim-Latex " Disabled
+set iskeyword+=: "Enables fig:<autocompletion> with <C-n> 
 
-
-
+"let b:suppress_latex_suite = 1 "Disables vim-latex
 
 "" NERDTree 
 " Show hidden files in NERDTree
@@ -374,8 +379,6 @@ let g:NERDTreeWinPos = "left"
 nmap <silent> <leader>y :NERDTreeFind<cr>
 "nmap <leader>n :NERDTreeToggle<cr>
 nmap <silent> <leader>\ :NERDTreeToggle<cr>
-
-
 
 
 
@@ -407,45 +410,7 @@ let g:VtrUseVtrmaps = 1
 
 
 
-colorscheme xcodedark
-
-
-" Vimtex 
-" info).
-syntax enable
-
-" Viewer options: One may configure the viewer either by specifying a built-in
-" viewer method:
-let g:vimtex_view_method = 'skim'
-let g:vimtex_compiler_method = 'latexmk'
-let maplocalleader = ","
-let g:vimtex_indent_enabled = 0
-" UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-
-
-
-
-
-
-nnoremap <leader>bb i\begin{align}<esc>o\end{align}<esc>O<tab><backspace>
-nnoremap <leader>bl i\begin{itemize}<esc>o\end{itemize}<esc>O<tab><backspace><backspace>\item<space>
-nnoremap <leader>be i\begin{enumerate}<esc>o\end{enumerate}<esc>O<backspace>\item<space>
-nnoremap <leader>bi i\begin{figure}<esc>o\end{figure}<esc>O\centering<cr>\includegraphics{images/}<cr>\label{fig1}<esc>kA<esc>i
-
-"inoremap <C-i> <cr><backspace>\item<space>
-nnoremap <leader>// mm0eea[\checkmark]<esc>`m12l
-nnoremap <leader>/\ mm0eea[\XSolidBrush]<esc>`m14l
-nnoremap <leader>/. 0et]di]hxx 
-nnoremap <leader>aa mmA\\<esc>0t=a&<esc>`ml
-vnoremap <C-w> g<C-g>
-
-
-
-
+:command VimVisuals :vs ~/.dotfiles/vim/visuals.vim
 
 
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -536,7 +501,23 @@ source ~/.dotfiles/vim/temp.vim
 
 
 
+" Word Count
 
 
+"new in vim 7.4.1042
+let g:word_count=wordcount().words
+function WordCount()
+    if has_key(wordcount(),'visual_words')
+        let g:word_count=wordcount().visual_words."/".wordcount().words " count selected words
+    else
+        let g:word_count=wordcount().cursor_words."/".wordcount().words " or shows words 'so far'
+    endif
+    return g:word_count
+endfunction
+
+set statusline+=\ w:%{WordCount()},
+set laststatus=2 " show the statusline
+
+nnoremap <leader>W :echo WordCount()<cr>
 
 

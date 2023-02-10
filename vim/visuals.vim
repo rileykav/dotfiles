@@ -61,7 +61,7 @@ set mat=1
 set noerrorbells
 set novisualbell
 set t_vb=
-set tm=500
+set tm=5000
 
 " Properly disable sound on errors on MacVim
 if has("gui_macvim")
@@ -89,7 +89,8 @@ endif
 
 
 "colorscheme peaksea
-
+colorscheme xcodedark
+"colorscheme xcodewwdc
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -183,6 +184,7 @@ function! CustomizedTabLine()
         let s .= file
         let s .= ' '
         let i = i + 1
+        let s .= 'Number of Words: '
     endwhile
     let s .= '%T%#TabLineFill#%='
     let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
@@ -207,17 +209,36 @@ set background=dark
 
 "source ~/.dotfiles/vim/colourscheme/peaksea.vim
 
+let g:word_count2=wordcount().words
+function WordCount2()
+    if has_key(wordcount(),'visual_words')
+        let g:word_count=wordcount().visual_words."/".wordcount().words " count selected words
+    else
+        let g:word_count=wordcount().cursor_words."/".wordcount().words " or shows words 'so far'
+    endif
+    return g:word_count
+endfunction
+fun MyStatus()
+    let l:status = ""
+    let l:status .= WordCount2()
+    "return l:status
+    return ""
+endfun
+    
+
+
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ ['mode', 'paste'],
       \             ['fugitive', 'readonly', 'filename', 'modified'] ],
-      \   'right': [ [ 'lineinfo' ], ['percent'] ]
+      \   'right': [ [ 'lineinfo' ], ['percent'], ['custom']]
       \ },
       \ 'component': {
       \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
+      \   'custom': MyStatus()
       \ },
       \ 'component_visible_condition': {
       \   'readonly': '(&filetype!="help"&& &readonly)',

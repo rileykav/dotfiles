@@ -17,11 +17,14 @@
 \usepackage{cleveref}
 %\usepackage[style=authoryear - comp]{bib latex}
 \numberwithin{equation}{section}
-\usepackage[utf8]{inputenc}
+%\usepackage[utf8]{inputenc} % Apparently no longer needed 
 %\usepackage[english]{babel}
 \usepackage{xcolor}
+\usepackage{color}
 \usepackage{todonotes}
-\usepackage{tikz,tikz-cd,tikz-feynman}
+\usepackage{tikz,tikz-cd}
+\usepackage[compat=1.1.0]{tikz-feynman}
+\tikzfeynmanset{warn luatex=false}
 \usepackage{caption}
 \usepackage{subcaption}
 
@@ -51,6 +54,10 @@
 
 
 \newcommand{\ind}{\hspace{2em}}
+\renewcommand{\hbar}{\hslash}
+\DeclareMathOperator{\ii}{\textit{i}}   % Dotted i
+%\DeclareMathOperator{\ii}{\imath}       % Dotless i
+\newcommand{\finish}{{\color{red}FINISH}}
 
 % d'alembert symbol
 \def\square{\kern1pt\vbox{\hrule height 1.2pt\hbox{\vrule width 1.2pt\hskip 3pt
