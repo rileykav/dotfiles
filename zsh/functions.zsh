@@ -485,7 +485,7 @@ function tnsuu(){
 }
 
 function generalwriting(){
-    cd $HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Latex/General\ Writing
+    cd $HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Project Code/General\ Writing
     vim general-writing.main.tex
 }
 function notes(){
@@ -493,15 +493,15 @@ function notes(){
     vim notes.main.tex
 }
 function paper(){
-    cd $HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Latex/Paper\ Draft
+    cd $HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Project Code/Paper\ Draft
     vim paper.thoughts.tex
 }
 function cdpaper(){
-    cd $HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Latex/
+    cd $HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Project Code/
 }
 
 function thesis(){
-    cd $HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Latex/Thesis
+    cd $HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Project Code/Thesis
     vim thesis.thoughts.tex
 }
 function resume(){
@@ -596,16 +596,16 @@ function paperArchive(){
 
 function runDiff(){
     setopt localoptions rmstarsilent
-    DiffLocation=$HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Latex/Paper\ Draft/Diff
+    DiffLocation=$HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Project Code/Paper\ Draft/Diff
     rm -rf $DiffLocation
     mkdir $DiffLocation
 
     here=$(pwd)
     cd $DiffLocation
 
-    ZipLocation=$HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Latex/Paper\ Archive
+    ZipLocation=$HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Project Code/Paper\ Archive
     OldZip=$(<$ZipLocation/.archive_recent)
-    New=/Users/riley/Utrecht/NS-TP551\ -\ Masters\ Thesis/Latex/Paper\ Draft/paper.tex 
+    New=/Users/riley/Utrecht/NS-TP551\ -\ Masters\ Thesis/Project Code/Paper\ Draft/paper.tex 
     cleantex $New
 #     echo $New
 #     echo "$ZipLocation/$OldZip" 
