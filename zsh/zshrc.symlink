@@ -5,6 +5,8 @@
 source $HOME/.dotfiles/zsh/definitions.zsh
 source $DOTFILES/zsh/alias.zsh
 source $DOTFILES/zsh/functions.zsh
+
+
 #source $HOME/.zshenv
 
 
@@ -88,7 +90,7 @@ rand_int="$((1+ RANDOM % $(($#words))))"
 
 empty_lprompt="%2~ "
 trans_lprompt="%F{116}"$USER"s-macbook%f %F{225}%2~ %f%# "
-new_lprompt="%F{70}"$USER"s-macbook%f %F{90}%2~ %f%# "
+greenpurple_lprompt="%F{70}"$USER"s-macbook%f %F{90}%2~ %f%# "
 
 
 
@@ -119,13 +121,82 @@ rand_flag="$((1+ RANDOM % $#flags))"
 rand_rprompy="${flags[$rand_flag]}"
 
 
+new_lprompt="%F{80}"$USER"s-macbook%f %F{78}%2~ %f"
+
 
 PROMPT=$new_lprompt
 RPROMPT=$rand_rprompy
 
 
 
+# autoload -Uz vcs_info
+# 
+# zstyle ':vcs_info:*' enable git 
+# zstyle ':vcs_info:*' actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+# zstyle ':vcs_info:*' formats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
+# zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+# precmd () { vcs_info }
+# PS1="%F{80}$USER"'s-macbook%f %F{78}%2~%f ${vcs_info_msg_0_}%f%#'
+autoload -Uz vcs_info
+precmd() { vcs_info }
+# 
+zstyle ':vcs_info:git:*' formats '(%b) '
+# 
+setopt PROMPT_SUBST
+# 
+# PROMPT='%F{80}'$USER's-macbook%f %F{78}%2~ %f%F{red}%B${vcs_info_msg_0_}%b%f'
+# 
 
+prompt_vcs_info_on=true
+
+if [[ $prompt_vcs_info_on = true ]]; then
+    precmd() {
+        vcs_info
+        if [[ -n ${vcs_info_msg_0_} ]]; then
+            STATUS=$(command git status --porcelain 2> /dev/null | tail -n1)
+            if [[ -n $STATUS ]]; then
+                col='red' 
+                PROMPT='%F{80}'$USER's-macbook%f %F{78}%2~%f %F{124}%B${vcs_info_msg_0_}%b%f'
+            else
+                PROMPT='%F{80}'$USER's-macbook%f %F{78}%2~%f %F{242}%B${vcs_info_msg_0_}%b%f'
+            fi
+        fi
+    }
+else
+    PROMPT='%F{80}'$USER's-macbook%f %F{78}%2~%f '
+fi
+
+# precmd() {vcs_info}
+
+### Git Integration into Prompt
+### Autoload zsh add-zsh-hook and vcs_info functions (-U autoload w/o substition, -z use zsh style)
+# autoload -Uz add-zsh-hook vcs_info
+### Enable substitution in the prompt.
+# setopt prompt_subst
+### Run vcs_info just before a prompt is displayed (precmd)
+# add-zsh-hook precmd vcs_info
+### add ${vcs_info_msg_0} to the prompt
+## e.g. here we add the Git information in red  
+# PROMPT=$PROMPT'%F{red}${vcs_info_msg_0_}%f %# '
+
+
+
+### Enable checking for (un)staged changes, enabling use of %u and %c
+# zstyle ':vcs_info:*' check-for-changes true
+### Set custom strings for an unstaged vcs repo changes (*) and staged changes (+)
+# zstyle ':vcs_info:*' unstagedstr ' *'
+# zstyle ':vcs_info:*' stagedstr ' +'
+### Set the format of the Git information for vcs_info
+# zstyle ':vcs_info:git:*' formats       '(%b%u%c)'
+# zstyle ':vcs_info:git:*' actionformats '(%b|%a%u%c)'
+# 
+# source "$HOME/.dotfiles/zsh/zsh-git-prompt-master/zshrc.sh"
+
+
+#######################################################
+# Language Paths
+#######################################################
+export PYTHONPATH=/usr/local/bin/python3.10
 
 
 
@@ -148,9 +219,8 @@ RPROMPT=$rand_rprompy
 #fi
 
 
-
-
-
+## Git
+autoload -Uz compinit && compinit
 
 
 # System specific zshrc files, may overide some settings above
@@ -182,3 +252,23 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
+
+source $DOTFILES/zsh/LS_COLORS-master/lscolors.sh
+
+
+
+
+
+
+
+
+
+
+# Constant Clock, bit weird
+# while sleep 1;do tput sc;tput cup 0 $(($(tput cols)-11));echo -e "\e[31m`date +%r`\e[39m";tput rc;done &
+#
+#
+#
+#
+# Crontab 
+# 00 12 * * * zsh ~/.dotfiles/automator/auto_uu_sync.sh

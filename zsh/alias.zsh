@@ -40,6 +40,8 @@ alias chm7='chmod 700'
 
 # File Listing
 #alias l="ls -GpFp $colorflag"
+
+alias ls="ls -G $colorflag"
 alias la="ls -GAFp $colorflag"
 alias ll="ls -GlFhp $colorflag"
 alias lls="ls -GlFhp | rev|sort|rev"
@@ -105,8 +107,10 @@ alias rcloneignore="vim $HOME/.dotfiles/rclone/filter-list.txt"
 alias rc-help='echo "zshrc\nvimrc\ntmuxrc\ntmuxbase16"'
 
 
-
+# txt files
 alias current="vim $HOME/current.txt"
+alias journal="vim $HOME/journal.txt"
+alias dutch="vim $HOME/dutch.txt"
 
 alias pydir="cd $HOME/Coding/Python"
 alias cdir="cd $HOME/Coding/C"
@@ -116,7 +120,8 @@ alias osascriptdir="cd $HOME/Coding/Applescript"
 
 
 
-
+#--------------- Vim Aliases  ---------------#
+alias vimclean="vim -u NONE"
 
 # chmod aliases
 
@@ -155,7 +160,12 @@ alias gpl='git push'
 alias gst='git status'
 alias ghp='echo "ga = git add\ngc = git commit\ngph= git push\ngpl= git push\ngst= git status"    
 '
+alias glg='git lg'
 
+
+# Github (gh)
+alias gi='gh issue'
+alias gp='gh project'
 
 
 
@@ -169,6 +179,8 @@ alias pip='pip3.10'
 alias act="source env/bin/activate"
 alias deact="deactivate"
 
+### Octave
+# alias octave='octave-cli'  # Breaks plotting
 
 ### Finder And GUI
 # Hiding and showing Desktop
@@ -234,7 +246,8 @@ alias cmmerge="/bin/zsh $HOME/Utrecht/NS-TP430M\ -\ Cosmology/Problem\ Sheets/.j
 alias mt="cd $HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis"
 alias stsem="cd $HOME/Utrecht/NS-TP504M\ -\ Student\ Seminar"
 alias datata="cd $HOME/Utrecht/Teaching\ Assistant/NS-109B\ -\ Data/Problem\ Sheets/My-Solutions"
-
+alias icsnotes="vim $HOME'/Utrecht/WI-SB356 - Introduction to Scientific Computing/Notes/ics-notes.tex'"
+alias ics="cd $HOME'/Utrecht/WI-SB356 - Introduction to Scientific Computing/Coding/Octave'"
 
 alias ld="cd $HOME/Bookshelf/Italiano/langdeck"
 
@@ -252,6 +265,16 @@ alias storage="osascript $HOME/.dotfiles/tmux/disk-usage.scpt"
 
 # Italiano
 alias ittest="(cd $HOME/Bookshelf/Italiano && py test-words.py)"
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -286,3 +309,29 @@ alias vimswps="lla $HOME/.dotfiles/vim/swapfiles"
 alias vimrmswps="rm $HOME/.dotfiles/vim/swapfiles/*"
 
 
+
+
+# Testing Directory
+alias testing="cd $HOME/Coding/Testing"
+
+
+
+# Wacom Quick Change
+alias wacom-vert="open /Users/riley/.dotfiles/wacom/Preferences-portrait.wacomprefs/"
+alias wacom-horiz="open /Users/riley/.dotfiles/wacom/Preferences-landscape.wacomprefs/"
+
+
+# Clamshell Mode
+# Install via https://github.com/pirj/noclamshell
+alias clamshelloff="brew services start noclamshell &>/dev/null"
+alias clamshellon="brew services stop noclamshell &>/dev/null"
+
+
+
+
+
+
+
+# Cursor
+alias showcursor="tput cnorm"
+alias hidecursor="tput civis"

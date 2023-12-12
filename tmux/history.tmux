@@ -34,3 +34,11 @@ command:Rename
 command:rename-window
 command:rename-window CV
 command:w
+command:resize-pane 
+command:resize-pane -Z
+command:Thesis
+command:Other
+command:Thesis
+command:q
+command:w
+command:Paper

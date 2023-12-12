@@ -8,5 +8,8 @@ save_template_title_series_sorting = 'strictly_alphabetic'
 
 {#universe:||/}{series}{series_index:|/|. }{title:'re($, ':', ' -')'} - {authors}/{title:'re($, ':', ' -')'} - {authors}
 
+## Alternatively, seperates non-universe books by author name
+{#universe:ifempty({authors})}/{series}{series_index:|/|. }{title:'re($, ':', ' -')'} - {authors}/{title:'re($, ':', ' -')'} - {authors}
+
 # Non universe/series books are automatically dumped 1 diractory higher
 

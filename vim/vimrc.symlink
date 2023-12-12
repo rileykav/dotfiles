@@ -1,9 +1,9 @@
-
 """"""""""""""""""""""""""""""""""""""""""""""
 " Add Plugins (seems important to put this hear)
 """"""""""""""""""""""""""""""""""""""""""""""
 
 source ~/.dotfiles/vim/plugins.vim
+
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " Core Vim Setting
@@ -11,8 +11,6 @@ source ~/.dotfiles/vim/plugins.vim
 
 " When searching through a fie, do it recurisvly
 set path+=**
-
-
 
 " Add yank to normal clipboard
 set clipboard=unnamed
@@ -54,19 +52,55 @@ set autoread
 au FocusGained,BufEnter * checktime
 
 
+
 " Underlines cursor line in insert mode (I don't love it)
 "autocmd InsertEnter,InsertLeave * set cul!
 
-" iTerm2 blinking? cursor as a vertical line instead of 1
-"let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-"let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-"let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+
+
+
+
+
+
+
+
 
 " Keep buffers around?
 set hidden
 
+" Save file when changing buffer
+" set autowriteall
+
 " Remove ~ Character indicating screen lines that are not in buffer (I like ~ as an indicator for this, though numbers also do it)
 "set fillchars=eob:\ ,
+
+" Makes i<esc> not move the cursor, while a<esc> shifts one right (Nice but weird)
+"inoremap <Esc> <Esc>`^
+
+
+
+" Reduce Message Size
+set shortmess=at
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" Buffer Variables
+""""""""""""""""""""""""""""""""""""""""""""""
+"" doesn't really work with multiple files in the buffer.
+let w:filenamedotextension=expand("%")
+let w:filename=expand("%:r")
+
+fun! LocalFilename()
+    let l:filename=expand("%:r")
+    let l:filenamedotextension=expand("%")
+    return l:filename
+endfun
+
+
+
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " Core Vim Keybindings / Rebinds
@@ -83,6 +117,7 @@ let maplocalleader = "\\"
 
 " Quick Saving (note: all maps should be nore, this means noremap dd dd wont be recursive)
 nnoremap <leader>w :w<cr>
+nnoremap <esc> :w<cr>
 command W w
 inoremap <c-w> <esc>:w<cr>a
 " Quick Quit
@@ -110,7 +145,7 @@ inoremap <C-u> <esc>mmviwU`ma
 noremap <C-u> mmviwU`m
 
 
-inoremap <C-q> <esc>
+" inoremap <C-q> <esc>
 "inoremap <esc> <esc>:echo "don't use escape"<cr>i
 
 " Spelling
@@ -143,6 +178,11 @@ noremap <leader>k <C-w>k| "switching to above window
 noremap <leader>l <C-w>l| "switching to right window 
 noremap <leader>h <C-w>h| "switching to left window
 
+" Resizing Panes
+noremap <leader>J <C-w>10- 
+noremap <leader>K <C-w>10+ 
+noremap <leader>L <C-w>10> 
+noremap <leader>H <C-w>10< 
 
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
@@ -159,8 +199,21 @@ set splitbelow
 "  <C-v><C-u><C-c>ga
 " You need to do this for <S-space> command to work and map iterms mapping in profile to the hex key
 noremap <space> /
+
+
+" Wildcard opening new files in buffers, tabs, splits
+noremap <c-e> :edit *
+noremap <c-t> :tabnew *
 noremap <c-f> :vs *
+noremap <c-v> :88vs *
+noremap <c-s> :split *
+nnoremap <leader>v :vertical resize 88<cr>
+nnoremap <leader>`v :vertical resize 26<cr>
+
+noremap <c-b> <c-v>
 noremap <c-space> ?
+noremap <leader>] gt
+noremap <leader>[ gT
 
 " Useful noremappings for managing tabs
 noremap <leader>tn :tabnew<cr>
@@ -174,9 +227,30 @@ noremap <leader><Tab> :tabnext<cr>
 
 
 
+augroup Example
+    autocmd!
+    autocmd TextYankPost * if v:event.operator ==# 'y' | echo "Yanked Text" | endif
+augroup END
 
 
 
+
+" Tab in or out visually selected lines
+xnoremap > >gv
+xnoremap < <gv
+xnoremap <Tab> >gv
+xnoremap <S-Tab> <gv
+nnoremap <Tab> V>
+nnoremap <S-Tab> V<
+
+" Select all line but not the newline
+nnoremap <leader>Y mm^v$hy`m
+nnoremap <leader>D mm^v$hd`m
+inoremap <C-v> <esc>pa
+" inoremap <leader>w <esc>:w<cr>
+" inoremap <leader>x <esc>:x<cr>
+" inoremap :w <esc>:w
+" inoremap :W <esc>:w
 
 
 
@@ -212,6 +286,8 @@ noremap 0 ^
 
 "" Aliases
 :command Vimrc :vs ~/.vimrc
+source ~/.dotfiles/vim/abreviations.vim
+:command VimAbreviations :vs ~/.dotfiles/vim/abreviations.vim
 :command VimPlugins :vs ~/.dotfiles/vim/plugins.vim
 :command VimFiletypes :vs ~/.dotfiles/vim/filetypes.vim
 :command VimSpellDict :vs ~/.dotfiles/vim/bundle/Vundle.vim/spell/en.utf-8.add
@@ -223,8 +299,18 @@ noremap 0 ^
 :command Dotfiles :vs ~/.dotfiles/
 :command TempVim :vs ~/.dotfiles/vim/temp.vim
 :command PyBoiler :vs ~/.dotfiles/vim/boilerplate/python/riley_base.py
+" :command OctaveBoiler :vs ~/.dotfiles/vim/boilerplate/octave/riley_base.m
 :command TexBoiler :vs ~/.dotfiles/vim/boilerplate/latex/riley_base.tex
 
+
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" Folding
+""""""""""""""""""""""""""""""""""""""""""""""
+au FileType cpp set foldmethod=syntax 
+au FileType cpp set foldnestmax=10
+au FileType cpp set nofoldenable
+au FileType cpp set foldlevel=2
 
 
 
@@ -284,8 +370,44 @@ endtry
 let dir = expand('%:p:h')
 
 nnoremap <leader>d :call VimuxRunCommand("cd '" . dir . "'")<cr>
-nnoremap <leader><leader> :call VimuxPromptCommand()<cr>
+nnoremap <leader>. :call VimuxPromptCommand()<cr>
+nnoremap <leader>saf :call VimuxPromptCommand("safari-search ")<cr>
 let g:VimuxOrientation = "v"
+
+fun Foo(bar)
+    echo a:bar
+endfun
+
+fun! SafariSearch(search_term="false00")
+    if a:search_term=="false00"
+        let local_search=input("Safari Search? ")
+    else
+        let local_search=a:search_term
+    endif
+    VimuxRunCommand('safari-search "' . local_search . '" && open /Applications/Safari.app')
+endfun
+
+nnoremap <leader>saf :call SafariSearch()<cr>
+function! s:get_visual_selection()
+    " Credit to xolox at https://stackoverflow.com/questions/1533565/how-to-get-visually-selected-text-in-vimscript
+    " Why is this not a built-in Vim script function?!
+    let [line_start, column_start] = getpos("'<")[1:2]
+    let [line_end, column_end] = getpos("'>")[1:2]
+    let lines = getline(line_start, line_end)
+    if len(lines) == 0
+        return ''
+    endif
+    let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
+    let lines[0] = lines[0][column_start - 1:]
+    return join(lines, "\n")
+endfunction
+
+function! VisualSearch()
+    let search=s:get_visual_selection()
+    call SafariSearch(search)
+endfunction
+xnoremap <leader>saf :call VisualSearch()<cr>
+
 
 " Saves file Run script in tmux shell bellow (doesnt need executible if sh or py)
 fun! RunCurrentScript()
@@ -299,6 +421,11 @@ endfun
 
 
 "" Vimtex
+" Haven't figure it out yet, but try mess around with lualatex, and 
+" specifically with the \math
+
+
+
 " To use with MacTex run the following:
 "   % type latexmk
 "   latexmk is /usr/loval/bin/latexmk
@@ -319,22 +446,107 @@ endfun
 "
 "
 " Set tex type to latex
-let g:tex_flavor = 'latex' "Never got working
-let g:vimtex_compiler_enabled = 1 " Disables Compiler
-let g:vimtex_compiler_method = 'latexmk' "Default setting
-"let g:vimtex_compiler_latexmk = {
-        "\ 'build_dir' : '',
-        "\ 'callback' : 1,
-        "\ 'continuous' : 1,
-        "\ 'executable' : 'latexmk',
-        "\ 'hooks' : [],
-        "\ 'options' : [
-        "\   '-verbose',
-        "\   '-file-line-error',
-        "\   '-synctex=1',
-        "\   '-interaction=nonstopmode',
-        "\ ],
-        "\}
+" let g:tex_flavor = 'latex' "Never got working
+let g:vimtex_compiler_enabled = 1 " (Dis/En)ables Compiler
+" let g:vimtex_compiler_progname = 'latexmk'
+let g:vimtex_view_method = 'skim'
+let g:vimtex_compiler_latexmk_engines = {
+        \ '_'                : '-pdf',
+        \ 'pdflatex'         : '-pdf',
+        \ 'dvipdfex'         : '-pdfdvi',
+        \ 'lualatex'         : '-lualatex',
+        \ 'xelatex'          : '-xelatex',
+        \ 'context (pdftex)' : '-pdf -pdflatex=texexec',
+        \ 'context (luatex)' : '-pdf -pdflatex=context',
+        \ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
+        \}
+" let g:vimtex_compiler_engine = 'latexmk'
+" let g:vimtex_compiler_method = 'latexmk' "Default setting
+" let g:vimtex_compiler_method = 'lualatex' "Default setting
+" let g:vimtex_compiler_latexmk = {
+"         \ 'build_dir' : '',
+"         \ 'callback' : 1,
+"         \ 'continuous' : 1,
+"         \ 'executable' : 'latexmk',
+"         \ 'hooks' : [],
+"         \ 'options' : [
+"         \   '-lualatex',
+"         \   '-quiet',
+"         \   '-file-line-error',
+"         \   '-synctex=1',
+"         \   '-interaction=nonstopmode',
+"         \ ],
+"         \}
+" let g:vimtex_compiler_latexmk = {
+"         \ 'build_dir' : '',
+"         \ 'callback' : 1,
+"         \ 'continuous' : 1,
+"         \ 'executable' : 'latexmk',
+"         \ 'hooks' : [],
+"         \ 'options' : [
+"         \   '-lualatex',
+"         \   '-quiet',
+"         \ ],
+"         \}
+let g:vimtex_compiler_latexrun = {
+        \ 'build_dir' : '',
+        \ 'options' : [
+        \   '-verbose-cmds',
+        \   '--latex-args="-synctex=1"',
+        \ ],
+        \}
+
+" let g:vimtex_syntax_conceal_default = 0 " Doesn't work....
+" let g:vimtex_compiler_latexmk = {
+"         \ 'build_dir' : '',
+"         \ 'callback' : 1,
+"         \ 'continuous' : 1,
+"         \ 'executable' : 'latexmk',
+"         \ 'hooks' : [],
+"         \ 'options' : [
+"         \   '-quiet',
+"         \   '-synctex=1',
+"         \   '-interaction=nonstopmode',
+"         \ ],
+"         \}
+" let g:vimtex_compiler_latexmk = {
+"     \ 'build_dir' : '',
+"     \ 'callback' : 1,
+"     \ 'continuous' : 1,
+"     \ 'executable' : 'latexmk',
+"     \ 'hooks' : [],
+"     \ 'options' : [
+"     \   '-verbose',
+"     \   '-file-line-error',
+"     \   '-synctex=1',
+"     \   '-interaction=nonstopmode',
+"     \ ],
+"     \}
+
+
+
+"--------------- Lualatex (Not Working) ---------------"
+" let g:vimtex_compiler_progname = 'nvr'
+" let g:vimtex_compiler_latexmk_engine = 'lualatex'
+" set nocompatible
+" filetype plugin indent on
+" syntax enable
+" let g:vimtex_compiler_progname = 'nvr'
+" let g:tex_flavor = 'latex'
+" let g:vimtex_view_method = 'skim'
+" let g:vimtex_quickfix_mode = 0
+" let g:vimtex_compiler_latexmk = {
+"   \ 'build_dir' : 'dist',
+"   \}
+
+
+
+
+
+
+
+
+
 syntax enable
 " Viewer options: One may configure the viewer either by specifying a built-in
 " viewer method:
@@ -358,11 +570,15 @@ let g:vimtex_quickfix_ignore_filters = [
   \'Overfull',
   \'tikz-feynman Warning',
   \"`h' float specifier",
+  \"requested document class",
+  \"Missing",
+  \"A float is stuck",
+  \"empty link",
+  \"Not loaded"
   \]
 
 " Vim-Latex " Disabled
 set iskeyword+=: "Enables fig:<autocompletion> with <C-n> 
-
 "let b:suppress_latex_suite = 1 "Disables vim-latex
 
 "" NERDTree 
@@ -379,6 +595,7 @@ let g:NERDTreeWinPos = "left"
 nmap <silent> <leader>y :NERDTreeFind<cr>
 "nmap <leader>n :NERDTreeToggle<cr>
 nmap <silent> <leader>\ :NERDTreeToggle<cr>
+
 
 
 
@@ -410,6 +627,9 @@ let g:VtrUseVtrmaps = 1
 
 
 
+"" Commentary
+
+
 :command VimVisuals :vs ~/.dotfiles/vim/visuals.vim
 
 
@@ -420,9 +640,6 @@ let g:VtrUseVtrmaps = 1
 if filereadable(expand("~/.dotfiles/vim/private.vim"))
     source ~/.dotfiles/vim/private.vim
 endif
-
-
-
 
 
 
@@ -446,13 +663,14 @@ source ~/.dotfiles/vim/visuals.vim
 
 
 
+
+
 """"""""""""""""""""""""""""""""""""""""""""""
 " Filetypes
 """"""""""""""""""""""""""""""""""""""""""""""
 
 
 source ~/.dotfiles/vim/filetypes.vim
-
 
 
 
@@ -504,7 +722,7 @@ source ~/.dotfiles/vim/temp.vim
 " Word Count
 
 
-"new in vim 7.4.1042
+" new in vim 7.4.1042
 let g:word_count=wordcount().words
 function WordCount()
     if has_key(wordcount(),'visual_words')
@@ -515,9 +733,62 @@ function WordCount()
     return g:word_count
 endfunction
 
-set statusline+=\ w:%{WordCount()},
-set laststatus=2 " show the statusline
 
 nnoremap <leader>W :echo WordCount()<cr>
 
+function! EpubClean()
+    if search("p><p","cwn")>0
+        %s/p><p/p>\r<p/g
+    endif
+endfunction
 
+let g:colorcolumnbool=0
+function! ToggleEightyLine()
+    if g:colorcolumnbool==0
+        set colorcolumn=80
+        let g:colorcolumnbool=1
+    else
+        set colorcolumn=200
+        let g:colorcolumnbool=0
+    endif
+endfunction
+
+function! FlashEigtyLine()
+    call ToggleEightyLine()
+    redraw
+    sleep 350m
+    call ToggleEightyLine()
+endfunction
+
+
+nnoremap <leader>lft :call ToggleEightyLine()<cr>
+nnoremap <leader>lff :call FlashEigtyLine()<cr>
+" Stop the 'n files to edit' error, doesn't work...
+" if argc() > 1
+"  silent blast " load last buffer
+"  silent bfirst " switch back to the first
+" endif
+
+set shortmess=at
+
+
+
+
+
+
+"--------------- Snippets ---------------"
+let g:UltiSnipsExpandTrigger = '§'
+let g:UltiSnipsJumpForwardTrigger = '§'
+let g:UltiSnipsJumpBackwardTrigger = '<s-§>'
+let g:UltiSnipsSnippetDirectories=["/users/riley/.dotfiles/vim/snippets"]
+
+
+
+
+
+
+
+"--------------- latex syntax  ---------------"
+" hi clear texStyleBold
+hi clear texStyleItal
+hi texStyleItal cterm=bold

@@ -1,0 +1,257 @@
+
+
+%--------------- Alternate Document Types  ---------------%
+% \documentclass[11pt,epsfig,number,sort&compress]{article}
+% \documentclass[aps,prd,twocolumn,superscriptaddress,nofootinbib]{revtex4}
+% \documentclass[aps,prd,twocolumn,groupedaddress,nofootinbib]{revtex4}
+% \documentclass[aps,prd,twocolumn,groupedaddress]{revtex4}
+% \pdfoutput=1  %
+
+
+\usepackage[dvipsnames]{xcolor} 
+    \definecolor{bleu_cite}{RGB}{12,127,172}
+%--------------- Standard Packages  ---------------%
+\usepackage{graphicx,color}
+\usepackage[margin=2.5cm]{geometry} % [margin=2.5cm] to chage the margin size
+\usepackage{relsize}
+% \usepackage{psfrag}
+\usepackage[titletoc,title]{appendix}
+\usepackage{latexsym,bbding,amssymb,amsmath,amsfonts,amssymb,graphicx,booktabs}
+\usepackage{upgreek,epsfig,lipsum}
+\usepackage{float}
+% \usepackage[symbol]{footmisc}
+\usepackage{hyperref}
+% \usepackage[style=numeric,sorting=none,url=false,doi=true,eprint=true]{biblatex}%<- specify style
+\usepackage[style=numeric-comp,sorting=none,url=false,doi=true,eprint=true,giveninits=true]{biblatex}%<- specify style
+% \usepackage{cite} % Used for bibtex
+\usepackage{cleveref}
+\numberwithin{equation}{section}
+% \usepackage[utf8]{inputenc} % Apparently no longer needed 
+% \usepackage[english]{babel}
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{tikz,tikz-cd}
+\usepackage[compat=1.1.0]{tikz-feynman}
+\tikzfeynmanset{warn luatex=false}
+\usepackage[font=small, width=0.9\textwidth]{caption}
+\usepackage{subcaption}
+\usepackage[normalem]{ulem} % either use this (simple) or
+\usepackage{mathtools} % Added for proper :=
+\usepackage{simplewick} % Example $\contraction{}{\phi}{}{\phi}\phi\phi'\equiv\contraction{}{\phi}{(x)}{\phi}\phi(x)\phi(x')$
+\usepackage{braket}   % For bra and kets, <k| and |k>
+\usepackage{etoolbox}
+\usepackage[UKenglish]{datetime} % added for manual time format
+
+%%% Get font matching greek letters
+% \usepackage{xltxtra}
+% \usepackage{xgreek}
+% \setmainfont[Mapping=tex-text]{GFSDidot.otf}
+% \setsansfont[Mapping=tex-text]{GFSDidot.otf}
+% \usepackage{times}
+
+
+
+%--------------- Formatting  ---------------%
+\marginparwidth 2 true cm
+\setlength{\unitlength}{1mm}
+% \textwidth 17.0 true cm
+% \textheight 22.0 true cm
+% \headheight 0 cm
+% \headsep 0 cm
+% \topmargin 0.4 true in
+% \oddsidemargin 0.25 true in
+% \input epsf
+% \thispagestyle{empty}
+
+
+%%% Font
+% \renewcommand{\familydefault}{\sfdefault}
+
+%%% Indentation
+\setlength{\parindent}{0pt}
+\newcommand{\ind}{\hspace{2em}} % manual indenting
+
+
+
+%%% Time Formating
+\newdateformat{atoday}{%
+\ordinaldate{\THEDAY}\ \shortmonthname[\THEMONTH], \THEYEAR}
+% \ddmmyydate 	% Format: 18/02/22
+\atoday			% Format: 18^th Oct, 2022
+
+
+
+\graphicspath{ {./plots/} } % Not used i think
+
+
+
+\presetkeys{todonotes}{linecolor=aqua,backgroundcolor=aqua}{}
+% \presetkeys{todonotes}{linecolor=barnred,backgroundcolor=barnred}{}
+
+
+
+%--------------- On the Fly Margin Adjustment  ---------------%
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+
+
+
+
+
+
+
+
+%--------------- User Commands  ---------------%
+\newcommand{\unit}{\hat{1\!\1}} % unit vector
+\newcommand{\define}{\coloneqq}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\abss}[1]{\lvert#1\rvert}
+\newcommand{\absv}[1]{\lvert\lvert#1\rvert\rvert}
+
+\definecolor{gray}{gray}{.5}
+\definecolor{aqua}{rgb}{.196,.764,.867}
+\definecolor{barnred}{rgb}{.684,.039,.199}
+\definecolor{purple}{rgb}{.616,.2,.839}
+\definecolor{navy}{rgb}{.133,.118,.498}
+\newcommand{\finish}{{\color{red}FINISH}}
+\newcommand{\black}[1]{{\color{black}#1}}
+\newcommand{\white}[1]{{\color{white}#1}}
+\newcommand{\red}[1]{{\color{red}#1}}
+\newcommand{\blue}[1]{{\color{blue}#1}}
+\newcommand{\green}[1]{{\color{green}#1}}
+\newcommand{\orange}[1]{{\color{orange}#1}}
+\newcommand{\aqua}[1]{{\color{aqua}#1}}
+\newcommand{\gray}[1]{{\color{gray}#1}}
+\newcommand{\purple}[1]{{\color{purple}#1}}
+\newcommand{\barnred}[1]{{\color{barnred}#1}}
+\newcommand{\colourRiley}[1]{{\color{barnred}#1}}
+\newcommand{\colourTomislav}[1]{{\color{green}#1}}
+
+\newcommand{\statement}[1]{{\large \bf \color{barnred}#1}\\}
+\newcommand{\note}[1]{{(\color{red}Note: #1})}
+\newcommand{\addcite}{{[\color{blue}??}]\todo[noline,backgroundcolor=white,bordercolor=white,textcolor=white]{Add Citation}}
+\newcommand{\addref}{{(\color{red}??}) \todo[noline,backgroundcolor=white,bordercolor=white,textcolor=white]{Add Citation}}
+\newcommand{\outline}[1]{\todo[inline, color=gray]{#1}}
+
+\newcommand{\linespace}{\par\noindent\rule{\textwidth}{0.4pt}}
+
+% \newcommand{\RK}[1]{}
+% \newcommand{\TP}[1]{}
+\newcommand{\RK}[1]{\colourRiley{\textbf{[Riley: #1]}}\todo[noline,backgroundcolor=white,bordercolor=white,textcolor=white]{Riley: #1}}
+\newcommand{\TP}[1]{\textcolor{blue}{\textbf{[Tomislav: #1]}}}
+
+
+
+
+\newcommand{\fntodo}[1]{\footnote{\color{red}#1}}
+
+
+ \hypersetup{
+    colorlinks=true,
+    linkcolor=barnred,
+    anchorcolor=black,
+    citecolor=blue,
+    filecolor=black,
+    menucolor=black,
+    runcolor=black,
+    urlcolor=black
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%--------------- MathSymbols  ---------------%
+\renewcommand{\hbar}{\hslash}
+% \DeclareMathOperator{\ii}{\mathit{i}}   % Dotted i
+\DeclareMathOperator{\ii}{\mathnormal{i}\hspace{-0.5mm}}   % Dotted i (Old)
+% \DeclareMathOperator{\ii}{\imath}       % Dotless i
+\newcommand{\Order}[1]{\mathcal{O}\left({#1}\right)} % General metric
+
+
+
+%%% Defining the bilocal metric (two forms)
+\newcommand{\bimetric}[2]{\left[{}_{#1}g_{#2}\right]}
+\newcommand{\bimetricdd}[2]{\big[{}_{#1}g_{#2}\big]}
+\newcommand{\bimetricdu}[2]{\big[{}_{#1}g^{#2}\big]}
+\newcommand{\bimetricud}[2]{\big[{}^{#1}g_{#2}\big]}
+\newcommand{\bimetricuu}[2]{\big[{}^{#1}g^{#2}\big]}
+% \newcommand{\bimetric}[2]{\hspace{1mm}{}_{#1}g_{#2}\hspace{1mm}}
+% \newcommand{\bimetric}[2]{\green{\left[{}_{#1}g_{#2}\right]}}
+\newcommand{\bsimetric}[2]{\hspace{1mm}{}_{#1}g_{#2}\hspace{1mm}}
+\newcommand{\bbimetric}[2]{\left[{}_{#1}g_{#2}\right]}
+\newcommand{\bjimetric}[2]{\tilde{\hspace{-0.5mm}g}_{#1#2'}}
+
+\newcommand{\Minkg}{\eta}      % Minkoski metric
+\newcommand{\dSg}{g}           % de Sitter metric
+\newcommand{\Geng}{g}          % General metric
+\newcommand{\Backg}{\bar{g}}          % Background metric
+% \newcommand{\Geng}{\mathrm{g}} % General metric
+
+\newcommand{\Pop}[2]{\Big[{}_{#1}\mathcal{P}_{#2}\Big]} % Useful Operators
+\newcommand{\Dop}[2]{\Big[{}_{#1}\mathcal{D}_{#2}\Big]} % ...
+
+
+
+\newcommand{\nCk}[2]{\begin{pmatrix} {#1}\\{#2} \end{pmatrix}}
+
+% \begin{align}
+%     \underbrace{E_{t-2}v_t}_\textrm{=0}
+% \end{align}
+
+% d'alembert symbol
+\def\dAlembert{\kern1pt\vbox{\hrule height 1.2pt\hbox{\vrule width 1.2pt\hskip 3pt
+   \vbox{\vskip 6pt}\hskip 3pt\vrule width 0.6pt}\hrule height 0.6pt}\kern1pt}
+
+
+\DeclareMathOperator{\sign}{sgn} % sign operator
+\DeclareMathOperator{\diag}{diag} % sign operator
+\DeclareMathOperator{\sgn}{sgn}  % ...
+\DeclareMathOperator{\tr}{Tr}    % Trace operator
+
+
+
+
+%--------------- Lualatex Checker for Compiling Differences  ---------------%
+\usepackage{iftex}  % Needed for the \iflualatex command
+% Note this compiles them with different spacing for some reason, such that one is an entire page longer ???
+\ifluatex
+    \mathscriptsmode 3
+\fi
+
+
+%--------------- Compiling Options  ---------------%
+
+\newtoggle{tikz-plots}
+
+% \toggletrue{paper}
+\toggletrue{tikz-plots}
+\togglefalse{tikz-plots}
+
+%--------------- Font  ---------------%
+%% Font (Didnt get working)
+% \usepackage[T1]{fontenc}
+
+\ifluatex
+    \usepackage{fontspec}
+%     \setmainfont{times}
+%     \setmainfont{tgpagella}
+%     \setmainfont{charter} % Nice font from Iris
+\else
+%     \usepackage{times}
+%     \usepackage{tgpagella}
+%     \usepackage{charter} % Nice font from Iris
+\fi
+
+% \setmainfont{aelita}

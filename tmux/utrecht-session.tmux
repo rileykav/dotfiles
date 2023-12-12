@@ -1,11 +1,22 @@
 #utrecht-session.tmux
 
-rename-window "Thesis"
-send-keys "cd '$HOME/Utrecht/NS-TP551 - Masters Thesis/Latex/General Writing' && clear" enter
+rename-window "Paper"
+send-keys "cd '$HOME/Utrecht/NS-TP551 - Masters Thesis' && clear" enter
 split-window -v -p 10
+select-pane -t 0
+resize-pane -Z
+new-window -n "Git"
+send-keys "cd '$HOME/Utrecht/NS-TP551 - Masters Thesis/Latex' && clear" enter
+split-window -v -p 10
+split-window -h -p 50
 select-pane -t 0
 new-window -n "PhD Applications"
 send-keys "cd '$HOME/Utrecht/General/Phd Applications' && clear" enter
+split-window -v -p 10
+split-window -h -p 50
+select-pane -t 0
+new-window -n "Coding"
+send-keys "cd '$HOME/Coding' && clear" enter
 split-window -v -p 10
 split-window -h -p 50
 select-pane -t 0

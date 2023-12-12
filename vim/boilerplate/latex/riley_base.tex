@@ -52,12 +52,31 @@
 % unit vector
 \newcommand{\unit}{\hat{1\!\1}}
 
+\definecolor{gray}{gray}{.5}
+\definecolor{aqua}{rgb}{.196,.764,.867}
+\definecolor{barnred}{rgb}{.684,.039,.199}
+\definecolor{purple}{rgb}{.616,.2,.839}
+\newcommand{\RK}[1]{\textcolor{red}{{\bf [Riley: #1]}}}
+\newcommand{\TP}[1]{\textcolor{blue}{{\bf [Tomislav: #1]}}}
+\newcommand{\finish}{{\color{red}FINISH}}
+\newcommand{\black}[1]{{\color{black}#1}}
+\newcommand{\white}[1]{{\color{white}#1}}
+\newcommand{\red}[1]{{\color{red}#1}}
+\newcommand{\blue}[1]{{\color{blue}#1}}
+\newcommand{\green}[1]{{\color{green}#1}}
+\newcommand{\orange}[1]{{\color{orange}#1}}
+\newcommand{\aqua}[1]{{\color{aqua}#1}}
+\newcommand{\gray}[1]{{\color{gray}#1}}
+\newcommand{\purple}[1]{{\color{purple}#1}}
+
+\newcommand{\statement}[1]{{\large \bf \color{barnred}#1}\\}
+\newcommand{\fntodo}[1]{\footnote{\color{red}#1}}
+
 
 \newcommand{\ind}{\hspace{2em}}
 \renewcommand{\hbar}{\hslash}
 \DeclareMathOperator{\ii}{\textit{i}}   % Dotted i
 %\DeclareMathOperator{\ii}{\imath}       % Dotless i
-\newcommand{\finish}{{\color{red}FINISH}}
 
 % d'alembert symbol
 \def\square{\kern1pt\vbox{\hrule height 1.2pt\hbox{\vrule width 1.2pt\hskip 3pt
@@ -79,6 +98,7 @@
 \setlength{\parindent}{0pt}
 
 
+% \pagenumbering{gobble}
 
 \graphicspath{ {./plots/} }
 \begin{document}

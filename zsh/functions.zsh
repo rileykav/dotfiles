@@ -112,72 +112,101 @@ function runc(){
     output_file=".$filename.out"
     if [[ $FILE_EXT == 'c' ]]; then
         gcc "$1" -o "$output_file"
-        ./"$output_file"
+        "$dir/$output_file"
     else
         echo "Error Code 1: Not a C file"
         echo "did you mean: $filename.c ?"
     fi 
 }
-function cleantex(){
-    local dir=$(dirname "$1")
-    if [[ -f "$dir/.clean_tex.sh" ]]; then # Check if the file exists
-        zsh "$dir/.clean_tex.sh"
-    fi
-    filename="${1%.*}"
-    # Ensures the wildfire matches something
-    touch pdflatextmp.txt
-    rm -f "$filename.aux" "$filename.fls" "$filename.log" "$filename.toc" "$filename.out" "$filename.fdb_latexmk" "$filename.synctex.gz" ".latexrun*"  "$filename.bcf" "$filename.blg" "$filename.run.xml" "$filename.synctex (busy)" "pdfa.xmpi" pdflatex*
-}
-
-function opentexpdf(){
-    local dir=$(dirname "$1")
-    if [[ -f "$dir/.pdf_open.sh" ]]; then # Check if the file exists
-        zsh "$dir/.pdf_open.sh"
+function runcpp(){
+    # Compiles and runs C files, makes a hidden .out file
+    dir=$(dirname "$1")
+    file=$(basename $1)
+    file_ext="$(echo ${file##*\.})"
+    filename="$(echo ${file%.*})"
+    output_file=".$filename.out"
+    if [[ $file_ext == 'cpp' ]]; then
+        g++ "$1" -std=c++17  -o "$output_file"
+        "$dir/$output_file"
     else
-        filename="${1%.*}"
-        open "$filename.pdf"
-        osascript "$HOME/.dotfiles/applescript/scripts/preview-remove-sidebar.scpt"
+        echo "Error Code 1: Not a C++ file"
+        echo "did you mean: $filename.cpp ?"
+    fi 
+}
+function getmaintexstem(){
+    local dir=$(dirname "$1")
+    if [[ -f "$dir/.tex_main" ]]; then # Check if the multifile config file exsits
+        local maintex=$(cat "$dir/.tex_main")
+        echo "${maintex%.*}"
+    else
+        echo "${1%.*}"
     fi
 }
-function touchpreviewnosidebar(){
-    open /System/Applications/Preview.app 
-    osascript "$HOME/.dotfiles/applescript/scripts/preview-remove-sidebar.scpt"
-    open /Applications/iTerm.app 
+function cleantex(){
+    local filename=$(getmaintexstem $1)
+    # Ensures the wildfire matches something
+    #     touch "pdflatextmp.txt"
+    #     touch "$filname""_vimtex.txt"
+    rm -f "$filename.aux" "$filename.bbl" "$filename.tex.bbl" "$filename.tex.blg" "$filename.fls" "$filename.log" "$filename.toc" "$filename.out" "$filename.fdb_latexmk" "$filename.synctex(busy)" "$filename.synctex.gz" ".latexrun*"  "$filename.bcf" "$filename.blg" "$filename.run.xml" "$filename.synctex (busy)" "pdfa.xmpi" "texput.fls" "texput.log" pdflatex*(N) *vimtex*(N) *.aux(N)
+    #     "$filename""_vimtex"*
 }
-
-function opencurrenttexmaker(){
-    filename="${1%.*}"
-    open /Applications/texmaker.app "$filename.tex"
+function opentexpdf(){
+    open $(getmaintexstem $1)".pdf"
+}
+function updateduplicatetexpdf(){
+    local filename=$(getmaintexstem $1)
+    if [[ -f "$filename.duplicate.pdf" ]]; then # Check if the Duplicate file exists
+        cp "$filename.pdf" "$filename.duplicate.pdf" 
+    fi
+}
+function openduplicatetexpdf(){
+    local filename=$(getmaintexstem $1)
+    cp "$filename.pdf" "$filename.duplicate.pdf" 
+    open "$filename.duplicate.pdf"
 }
 function cdtofile(){
-    #file_directory=$(dirname $1) # Not relative
     directory=$(pwd)
     echo $directory
     cd $directory
 }
 
-
-function touchpreview(){
-    #open /System/Applications/Preview.app
-    osascript "$HOME/.dotfiles/applescript/scripts/preview-remove-sidebar.scpt"
-    open /Applications/iTerm.app
+function testepub(){
+    local filename="${1%.*}"
+    local dir="$filename-epub-files"
+    mv $1 $filename"-old.epub"
+    unzip $1"-old" -d $dir
+    vim $dir
+    zip -X0 $1 $dir/mimetype
+    zip -Xur9D $1 $dir/*
+    
 }
 
+
+# function touchpreviewnosidebar(){
+#     open /System/Applications/Preview.app 
+#     osascript "$HOME/.dotfiles/applescript/scripts/preview-remove-sidebar.scpt"
+#     open /Applications/iTerm.app 
+# }
+# function opencurrenttexmaker(){
+#     filename="${1%.*}"
+#     open /Applications/texmaker.app "$filename.tex"
+# }
+
+# Switched to Skim instead, so no longer used
+# function touchpreview(){
+#     open /System/Applications/Preview.app
+#     osascript "$HOME/.dotfiles/applescript/scripts/preview-remove-sidebar.scpt"
+#     open /Applications/iTerm.app
+# }
+
 function runtex(){
-    #latexmk -lualatex --pdf -quiet $1
-    #latexmk -lualatex -silent -latexoption="-synctex=1" $1
-    local dir=$(dirname "$1")
-    if [[ -f "$dir/.tex_compile.sh" ]]; then # Check if the file exists
-        echo "File Exisits!"
-        zsh "$dir/.tex_compile.sh"
-    else
-        echo "File Does Not Exisit!"
-        latexmk -lualatex -quiet  $1
-        filename="${1%.*}"
-    fi
+#     latexmk -lualatex --pdf -quiet $1
+#     latexmk -lualatex -silent -latexoption="-synctex=1" $1
+    latexmk -lualatex -quiet $(getmaintexstem $1)
 }
 
 function run-script(){
+    filename="${1%.*}"
     FILE_EXT="${1##*\.}"
     if [[ $FILE_EXT == 'sh' ]]; then
         /bin/zsh $1
@@ -187,15 +216,30 @@ function run-script(){
         osascript $1
     elif [[ $FILE_EXT == 'c' ]]; then
         runc $1 
+    elif [[ $FILE_EXT == 'cpp' ]]; then
+        runcpp $1 
+    elif [[ $FILE_EXT == 'bib' ]]; then
+        runtex $1 
     elif [[ $FILE_EXT == 'tex' ]]; then
         runtex $1 
     elif [[ $FILE_EXT == 'R' ]]; then
         Rscript $1 
+    elif [[ $FILE_EXT == 'm' ]]; then
+        octave $1 
+    elif [[ $FILE_EXT == 'swift' ]]; then
+        swift $1 
+    elif [[ $FILE_EXT == 'wls' ]]; then
+        wolframscript -f $1
     else
-        echo "Not python, applesctipt, zsh, tex or R file, please edit run-script in zshrc"
+        echo "Not a known script, please edit run-script in zshrc"
         echo "$1"
     fi
 }
+
+function safari-search(){
+    osascript -e 'tell application "Safari" to search the web for "'$1'"'
+}
+
 
 function zsh-temp(){
     DOTFILES_TEMP="$HOME/.dotfiles/temp"
@@ -218,9 +262,9 @@ function zsh-temp(){
 }
 
 function vim-temp(){
-    FILE_EXT="${1##*\.}"
+    file_ext="${1##*\.}"
     filename="${1%.*}"
-    if [[ $FILE_EXT == '.vimrc' || $filename == 'vimrc' ]]; then
+    if [[ $file_ext == '.vimrc' || $filename == 'vimrc' ]]; then
         vim -u $1
     elif read -q "REPLY?File not a zshrc, do you want to run anyway [y/n]?"; then
         vim -u 
@@ -396,6 +440,30 @@ function msgif(){
     cd $here
 }
 
+function converttogif(){
+    ## Function to generate a gif from a colection of images.
+    ## png files work best. To convert from pdf see
+    ## convertpdftopng
+    ## Usage: Given a collection of files, eg by some wild
+    ## card finder - files* -; run the following
+    # $ converttogif files*
+    convert -dispose previous -delay 20 -loop 5 $@ out.gif
+}
+
+
+## Convert requires - imagemagick - to work, run
+# $ brew install imagemagick
+## to intall this. If you run into issues try googleing
+## imagemagick convert 
+function convertpdftopng(){
+    ## Function to convert a list of pdf files to images
+
+    for file in $@; do
+        file_ext="${file##*\.}"    # Gives the file extension
+        filename="${file%.*}"      # Strips the file extension
+        convert -density 600 -quality 90 $file "$filename.png"
+    done
+}
 function pdfmerge(){ 
     gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile="$1" "${@:2}"
 }
@@ -405,6 +473,9 @@ function pngmerge(){
 }
 
 function tns(){
+    tmux new-session -A -s $1
+}
+function tnsprim(){
     tmux new-session -A -s $1 \; \
         source $HOME/.dotfiles/tmux/primary-session.tmux
 }
@@ -413,9 +484,25 @@ function tnsuu(){
         source $HOME/.dotfiles/tmux/utrecht-session.tmux
 }
 
-function thesis(){
+function generalwriting(){
     cd $HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Latex/General\ Writing
     vim general-writing.main.tex
+}
+function notes(){
+    cd $HOME/Utrecht/Gravitational\ Waves/Notes
+    vim notes.main.tex
+}
+function paper(){
+    cd $HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Latex/Paper\ Draft
+    vim paper.thoughts.tex
+}
+function cdpaper(){
+    cd $HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Latex/
+}
+
+function thesis(){
+    cd $HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Latex/Thesis
+    vim thesis.thoughts.tex
 }
 function resume(){
     cd $HOME/Utrecht/General/CV:Resume
@@ -438,14 +525,95 @@ function phdapp(){
 
 
 function uupload(){
-    rclone -P sync $HOME/Utrecht/ mydrive:Utrecht --filter-from $HOME/.dotfiles/rclone/filter-list.txt 
+#     echo "###### Syncing to Google Drive ######"
+#     rclone -PL sync $HOME/Utrecht/ mydrive:Utrecht --filter-from $HOME/.dotfiles/rclone/filter-list.txt 
+#     echo 
+    echo "###### Syncing to UU Drive ######"
+    rclone -PL sync $HOME/Utrecht/ uudrive:Utrecht --filter-from $HOME/.dotfiles/rclone/filter-list.txt 
     osascript "$HOME/.dotfiles/automator/sync-uu.scpt"
+}
+function uuonedrive(){
+    rclone -PL sync $HOME/Utrecht/ uudrive:Utrecht --filter-from $HOME/.dotfiles/rclone/filter-list.txt 
+
 }
 
 
 
 
+function doiname(){
+    echo $2
+    filename=$(python $HOME/Coding/Python/SchemanticScholor/schpapers.py "$2")
+    mv "$1" "$filename"
+}
 
 
 
+function arxivname(){
+    for x in $@; do
+        echo $x
+        arxivlink="${x%.*}"
+        filename=$(python $HOME/Coding/Python/arXiv-scrapper/arXiv-metadata.py $arxivlink)
+        mv "$x" "$filename"
+    done
+}
 
+function ZoteroArchive(){
+    for x in $@; do
+        echo $x
+        IFS=$'\n' arr=($(python $HOME/Coding/Python/ZoteroParser/ZoteroRename.py $x))
+        filename=${arr[1]}
+        fileLocation=${arr[2]}
+        echo $fileLocation
+        cp "$fileLocation" "$filename"
+    done
+}
+# function arxivdownload(){
+#     for x in $@; do
+#         arxivlink="$x"
+#         python $HOME/Coding/Python/arXiv-scrapper/arXiv-download.py "$arxivlink"
+#         (cd "$HOME/Downloads" && arxivname "$arxivlink.pdf")
+#     done
+# }
+
+
+function clock(){
+    hidecursor
+    while :; do 
+        printf '\r%s ' "$(date +%r)"
+        sleep 1 
+    done
+}
+
+
+function paperArchive(){
+    zsh $HOME/Coding/Zsh/paperArchive.sh
+}
+
+# setopt localoptions rmstarsilent
+# rm -rf $ZipLocation/*
+
+
+
+function runDiff(){
+    setopt localoptions rmstarsilent
+    DiffLocation=$HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Latex/Paper\ Draft/Diff
+    rm -rf $DiffLocation
+    mkdir $DiffLocation
+
+    here=$(pwd)
+    cd $DiffLocation
+
+    ZipLocation=$HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Latex/Paper\ Archive
+    OldZip=$(<$ZipLocation/.archive_recent)
+    New=/Users/riley/Utrecht/NS-TP551\ -\ Masters\ Thesis/Latex/Paper\ Draft/paper.tex 
+    cleantex $New
+#     echo $New
+#     echo "$ZipLocation/$OldZip" 
+    zsh $HOME/Coding/Zsh/latexdiff.sh $ZipLocation/$OldZip $New
+
+
+    cd $here
+}
+function newTexProj(){
+    zsh $HOME/Coding/Zsh/new-latex-project.sh $1
+}

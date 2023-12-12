@@ -63,6 +63,14 @@ set novisualbell
 set t_vb=
 set tm=5000
 
+" Cursor line in insert mode 
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+set ttimeout
+set ttimeoutlen=1
+set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
+set ttyfast
+"
 " Properly disable sound on errors on MacVim
 if has("gui_macvim")
     autocmd GUIEnter * set vb t_vb=
@@ -191,8 +199,8 @@ function! CustomizedTabLine()
     return s
 endfunction
 
-set stal=2
-set tabline=%!CustomizedTabLine()
+" set stal=2
+" set tabline=%!CustomizedTabLine()
 
 
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -249,3 +257,4 @@ let g:lightline = {
       \ 'subseparator': { 'left': ' ', 'right': ' ' }
       \ }
 
+colorscheme xcodedark

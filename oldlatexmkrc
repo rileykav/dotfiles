@@ -1,0 +1,2 @@
+$pdflatex = 'lualatex --shell-escape --interaction=nonstopmode --synctex=1 %O %S;';
+set_tex_cmds('-synctex=1 -interaction=nonstopmode --shell-escape %O %S');

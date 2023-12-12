@@ -31,8 +31,13 @@ Plugin 'arzg/vim-colors-xcode' "Highly Reccomend
 Plugin 'sainnhe/everforest'
 Plugin 'pseewald/vim-anyfold'
 Plugin 'aclements/latexrun'
+Plugin 'jvirtanen/vim-octave'
+Plugin 'LucHermitte/lh-cpp'    " C/C++ general purpose
+Plugin 'SirVer/ultisnips'
 "Plugin 'sirver/UltiSnips'
-Plugin 'honza/vim-snippets'
+"Plugin 'honza/vim-snippets'
+Plugin 'keith/swift.vim'
+Plugin 'arnoudbuzing/wolfram-vim'
 """"""""" End of Plugins
 call vundle#end()
 filetype plugin indent on
