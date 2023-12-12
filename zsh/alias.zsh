@@ -165,7 +165,9 @@ alias glg='git lg'
 
 # Github (gh)
 alias gi='gh issue'
-alias gp='gh project'
+alias gil='gh issue list'
+alias gie='gh issue edit'
+alias gp='gh project --owner rileykav'
 
 
 
