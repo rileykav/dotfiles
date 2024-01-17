@@ -60,7 +60,8 @@ au FocusGained,BufEnter * checktime
 
 
 
-
+nnoremap <Up> gk
+nnoremap <Down> gj
 
 
 
@@ -542,8 +543,12 @@ let g:vimtex_compiler_latexrun = {
 
 
 
-
-
+"--------------- Markdown ---------------"
+" fun MarkdownCompile()
+"     call VimuxRunCommandInDir("", 0)
+" endfun
+"     
+" autocmd BufWrite FileType markdown :call MarkdownCompile
 
 
 
@@ -792,3 +797,5 @@ let g:UltiSnipsSnippetDirectories=["/users/riley/.dotfiles/vim/snippets"]
 " hi clear texStyleBold
 hi clear texStyleItal
 hi texStyleItal cterm=bold
+hi clear mdStyleItal
+hi mdStyleItal cterm=bold
