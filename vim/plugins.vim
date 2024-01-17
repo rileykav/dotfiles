@@ -38,6 +38,7 @@ Plugin 'SirVer/ultisnips'
 "Plugin 'honza/vim-snippets'
 Plugin 'keith/swift.vim'
 Plugin 'arnoudbuzing/wolfram-vim'
+Plugin 'preservim/vim-markdown'
 """"""""" End of Plugins
 call vundle#end()
 filetype plugin indent on
