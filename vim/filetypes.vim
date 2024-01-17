@@ -225,8 +225,9 @@ autocmd BufRead *.htm call Epublean()
 """"""""""""""""""""""""""""""""""""""""""""""
 
 let vim_markdown_folding_disabled = 1
-
-
+let g:vim_markdown_math = 1
+autocmd BufRead Markdown set textwidth=0 wrapmargin=0
+nnoremap <leader>i i$\quad$<esc>o
 """"""""""""""""""""""""""""""""""""""""""""""
 " Latex
 """"""""""""""""""""""""""""""""""""""""""""""
