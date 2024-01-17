@@ -205,6 +205,20 @@ function runtex(){
     latexmk -lualatex -quiet $(getmaintexstem $1)
 }
 
+function runmdtohtml(){
+    filename="${1%.*}"
+    markdown $1 > "$filename.html"
+    open "$filename.html"
+    open /Applications/iTerm.app
+}
+function runmd(){
+#     filename="${1%.*}"
+#     markdown $1 > "$filename.html"
+#     open "$filename.html"
+#     open /Applications/iTerm.app
+    open $1 -a /Applications/Obsidian.app
+}
+
 function run-script(){
     filename="${1%.*}"
     FILE_EXT="${1##*\.}"
@@ -222,6 +236,8 @@ function run-script(){
         runtex $1 
     elif [[ $FILE_EXT == 'tex' ]]; then
         runtex $1 
+    elif [[ $FILE_EXT == 'md' ]]; then
+        runmd $1 
     elif [[ $FILE_EXT == 'R' ]]; then
         Rscript $1 
     elif [[ $FILE_EXT == 'm' ]]; then

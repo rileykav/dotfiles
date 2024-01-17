@@ -190,6 +190,14 @@ alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && 
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
 
+### Safari pdf Rules (Doesn't work)
+# alias safaripdfdowndef="defaults write com.apple.Safari WebKitOmitPDFSupport -bool YES"
+# alias safaripdfopendef="defaults write com.apple.Safari WebKitOmitPDFSupport -bool NO"
+# 
+# alias safariopenpdfondownon="defaults write com.apple.Safari AutoOpenSafeDownloads -bool YES"
+# alias safariopenpdfondownoff="defaults write com.apple.Safari AutoOpenSafeDownloads -bool NO"
+
+
 # Hiding and showing Hidden Files
 alias hidehiddenfiles='defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder'
 alias showhiddenfiles='defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder'
