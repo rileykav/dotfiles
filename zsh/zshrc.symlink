@@ -199,7 +199,7 @@ fi
 export PYTHONPATH=/usr/local/bin/python3.10
 
 
-
+export PATH=$HOME/Coding/bin:$PATH
 
 
 
