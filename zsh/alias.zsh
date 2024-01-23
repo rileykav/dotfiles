@@ -107,6 +107,9 @@ alias rcloneignore="vim $HOME/.dotfiles/rclone/filter-list.txt"
 alias rc-help='echo "zshrc\nvimrc\ntmuxrc\ntmuxbase16"'
 
 
+# Sourcing zshrc
+alias sourcezshrc="source $HOME/.zshrc"
+
 # txt files
 alias current="vim $HOME/current.txt"
 alias journal="vim $HOME/journal.txt"
@@ -165,10 +168,15 @@ alias glg='git lg'
 
 # Github (gh)
 alias gi='gh issue'
-alias gil='gh issue list'
+
+alias gil='gh issue list $1 --search "is:issue is:open sort:created-asc"'
+alias gli='gh issue list $1 --search "is:issue is:open sort:created-asc"'
 alias gie='gh issue edit'
 alias gp='gh project --owner rileykav'
 
+function reminders(){
+    /usr/local/bin/reminders "$@" 2>/dev/null 
+}
 
 
 
