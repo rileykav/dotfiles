@@ -625,6 +625,7 @@ function runDiff(){
     cleantex $New
 #     echo $New
 #     echo "$ZipLocation/$OldZip" 
+    echo $ZipLocation/$OldZip
     zsh $HOME/Coding/Zsh/latexdiff.sh $ZipLocation/$OldZip $New
 
 
