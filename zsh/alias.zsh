@@ -170,7 +170,7 @@ alias glg='git lg'
 alias gi='gh issue'
 
 alias gil='gh issue list $1 --search "is:issue is:open sort:created-asc"'
-alias gli='gh issue list $1 --search "is:issue is:open sort:created-asc"'
+# alias gli="gh ils --label=$1"
 alias gie='gh issue edit'
 alias gp='gh project --owner rileykav'
 
@@ -178,7 +178,23 @@ function reminders(){
     /usr/local/bin/reminders "$@" 2>/dev/null 
 }
 
-
+# 
+function gli(){
+    gh ils --label=$1
+}
+function gll(){
+    gll_temp=""
+    for i in $@ ; do gll_temp="${gll_temp},$i" ; done
+    gh issue list --label=${gll_temp:1}
+}
+function test(){
+#     printf '%s %s\n' "$@[out]"
+#     for i in $@ ; do echo $i ; done
+#     for ((i=1; i<=$#; i++)) ; do echo $*[i] ; done
+    test_temp=""
+    for i in $@ ; do test_temp="${test_temp},$i" ; done
+    echo ${test_temp:1}
+}
 
 ### Python
 #Specifing a Python Version
