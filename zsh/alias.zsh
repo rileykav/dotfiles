@@ -361,9 +361,13 @@ alias clamshellon="brew services stop noclamshell &>/dev/null"
 
 
 
-
-
-
+# Calander
+alias plusschedule="(cd $HOME/Coding/Python/Calander && python cal.py)"
+alias newplusschedule="mv $HOME/Documents/Plus.ics $HOME/Coding/Python/Calander"
+function test(){
+    mv /Users/riley/Documents/Test1.ics /Users/riley/Coding/Python/Calander/
+    mv /Users/riley/Documents/Test2.ics /Users/riley/Coding/Python/Calander/
+}
 
 # Cursor
 alias showcursor="tput cnorm"
