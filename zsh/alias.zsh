@@ -168,8 +168,10 @@ alias glg='git lg'
 
 # Github (gh)
 alias gi='gh issue'
+alias giuntrack='gh issue edit --add-label untracked'
+alias giretrack='gh issue edit --remove-label untracked'
 
-alias gil='gh issue list $1 --search "is:issue is:open sort:created-asc"'
+# alias gil='gh issue list $1 --search "is:issue is:open sort:created-asc"'
 # alias gli="gh ils --label=$1"
 alias gie='gh issue edit'
 alias gp='gh project --owner rileykav'
@@ -178,14 +180,11 @@ function reminders(){
     /usr/local/bin/reminders "$@" 2>/dev/null 
 }
 
-# 
-function gli(){
-    gh ils --label=$1
-}
-function gll(){
+# List issues, optional argument to add labels 
+function gil(){
     gll_temp=""
     for i in $@ ; do gll_temp="${gll_temp},$i" ; done
-    gh issue list --label=${gll_temp:1}
+    gh issue list --label="${gll_temp:1}" --search '-label:untracked, sort:created-asc'
 }
 function test(){
 #     printf '%s %s\n' "$@[out]"
