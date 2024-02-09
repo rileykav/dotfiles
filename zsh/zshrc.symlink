@@ -149,21 +149,41 @@ setopt PROMPT_SUBST
 
 prompt_vcs_info_on=true
 
+# Powerlevel10k can allow nice custimization, like only shw dir on line before current:
+#
+#   $ command_1
+#   $ command_2
+#   /Path/to/dir
+#   $ |
+# I would maybe like that, or have it set in stone at the top?
+
+
+
+# MY_PROMPT='%F{80}'$USER's-macbook%f %F{78}%2~%f '
+PROMPT='%F{78}%1~%f %F{80}> %f'
 if [[ $prompt_vcs_info_on = true ]]; then
     precmd() {
         vcs_info
         if [[ -n ${vcs_info_msg_0_} ]]; then
             STATUS=$(command git status --porcelain 2> /dev/null | tail -n1)
             if [[ -n $STATUS ]]; then
-                col='red' 
-                PROMPT='%F{80}'$USER's-macbook%f %F{78}%2~%f %F{124}%B${vcs_info_msg_0_}%b%f'
+#                 PROMPT=$MY_PROMPT' %F{124}%B${vcs_info_msg_0_}%b%f'
+                RPROMPT='%F{124}%B${vcs_info_msg_0_}%b%f'
+#                 PROMPT='%F{80}'$USER's-macbook%f %F{78}%2~%f %F{124}%B${vcs_info_msg_0_}%b%f'
             else
-                PROMPT='%F{80}'$USER's-macbook%f %F{78}%2~%f %F{242}%B${vcs_info_msg_0_}%b%f'
+#                 PROMPT='%F{80}'$USER's-macbook%f %F{78}%2~%f %F{242}%B${vcs_info_msg_0_}%b%f'
+#                 PROMPT=$MY_PROMPT' %F{242}%B${vcs_info_msg_0_}%b%f'
+                RPROMPT='%F{242}%B${vcs_info_msg_0_}%b%f'
             fi
+        else
+            RPROMPT=$rand_rprompy
         fi
     }
 else
-    PROMPT='%F{80}'$USER's-macbook%f %F{78}%2~%f '
+    # Only neede if I want to turn off above.
+    RPROMPT=$rand_rprompy
+#     PROMPT=$MY_PROMPT
+#     PROMPT='%F{80}'$USER's-macbook%f %F{78}%2~%f '
 fi
 
 # precmd() {vcs_info}
