@@ -136,7 +136,8 @@ noremap <c-x> <esc>:x<cr>
 nnoremap <leader>t :term<cr>
 
 " Undo and Redo
-nnoremap <leader>u :redo<cr>
+" nnoremap <leader>u :redo<cr>
+nnoremap U :redo<cr>
 
 inoremap <C-y> <esc>:redo<cr>i
 inoremap <C-z> <esc>ui
