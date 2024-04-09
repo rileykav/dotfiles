@@ -182,9 +182,12 @@ function reminders(){
 
 # List issues, optional argument to add labels 
 function gil(){
+    # Alias for listing issues, the additional filtering requires it
+    # be a function. To add additional filters they must be placed like this
+    clear
     gll_temp=""
     for i in $@ ; do gll_temp="${gll_temp},$i" ; done
-    gh issue list --label="${gll_temp:1}" --search '-label:untracked, sort:created-asc'
+    gh issue list --label="${gll_temp:1}" --search '-label:untracked, sort:created-asc' --limit 1000
 }
 function test(){
 #     printf '%s %s\n' "$@[out]"
