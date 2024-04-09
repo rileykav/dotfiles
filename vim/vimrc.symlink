@@ -748,7 +748,7 @@ function! EpubClean()
 endfunction
 
 let g:colorcolumnbool=0
-function! ToggleEightyLine()
+function! EightyLineToggle()
     if g:colorcolumnbool==0
         set colorcolumn=80
         let g:colorcolumnbool=1
@@ -758,16 +758,18 @@ function! ToggleEightyLine()
     endif
 endfunction
 
-function! FlashEigtyLine()
-    call ToggleEightyLine()
+function! EightyLineFlash()
+    call EightyLineToggle()
     redraw
     sleep 350m
-    call ToggleEightyLine()
+    call EightyLineToggle()
 endfunction
 
 
-nnoremap <leader>lft :call ToggleEightyLine()<cr>
-nnoremap <leader>lff :call FlashEigtyLine()<cr>
+command EightyLineToggle call EightyLineToggle()
+command EightyLineFlash call EightyLineFlash()
+nnoremap <leader>ft :call EightyLineToggle()<cr>
+nnoremap <leader>ff :call EightyLineFlash()<cr>
 " Stop the 'n files to edit' error, doesn't work...
 " if argc() > 1
 "  silent blast " load last buffer
