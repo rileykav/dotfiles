@@ -293,3 +293,8 @@ source $DOTFILES/zsh/LS_COLORS-master/lscolors.sh
 #
 # Crontab 
 # 00 12 * * * zsh ~/.dotfiles/automator/auto_uu_sync.sh
+
+
+
+# https://unix.stackexchange.com/questions/230742/bash-zsh-tab-autocomplete-given-initial-command-ignore-certain-files-in-direct
+zstyle ':completion:*:*:vim:*' file-patterns '^*.(aux|log|pdf):source-files' '*:all-files'
