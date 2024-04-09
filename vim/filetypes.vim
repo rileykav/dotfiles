@@ -421,10 +421,10 @@ autocmd BufNewFile *.tex call LoadTexTemplate()
 
 
 " Latex writing 
-autocmd FileType tex nnoremap <leader>bb i\begin{align}<esc>o\end{align}<esc>O<tab><backspace>
-autocmd FileType tex nnoremap <leader>bl i\begin{itemize}<esc>o\end{itemize}<esc>O<tab><backspace><backspace>\item<space>
-autocmd FileType tex nnoremap <leader>be i\begin{enumerate}<esc>o\end{enumerate}<esc>O<backspace>\item<space>
-autocmd FileType tex nnoremap <leader>bi i\begin{figure}<esc>o\end{figure}<esc>O\centering<cr>\includegraphics{images/}<cr>\label{fig1}<esc>kA<esc>i
+" autocmd FileType tex nnoremap <leader>bb i\begin{align}<esc>o\end{align}<esc>O<tab><backspace>
+" autocmd FileType tex nnoremap <leader>bl i\begin{itemize}<esc>o\end{itemize}<esc>O<tab><backspace><backspace>\item<space>
+" autocmd FileType tex nnoremap <leader>be i\begin{enumerate}<esc>o\end{enumerate}<esc>O<backspace>\item<space>
+" autocmd FileType tex nnoremap <leader>bi i\begin{figure}<esc>o\end{figure}<esc>O\centering<cr>\includegraphics{images/}<cr>\label{fig1}<esc>kA<esc>i
 
 "inoremap <C-i> <cr><backspace>\item<space>
 " autocmd FileType tex nnoremap <leader>CM
