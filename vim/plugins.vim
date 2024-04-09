@@ -39,6 +39,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'keith/swift.vim'
 Plugin 'arnoudbuzing/wolfram-vim'
 Plugin 'preservim/vim-markdown'
+Plugin 'vim-scripts/applescript.vim'
 """"""""" End of Plugins
 call vundle#end()
 filetype plugin indent on
