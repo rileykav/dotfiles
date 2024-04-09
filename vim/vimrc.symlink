@@ -584,6 +584,7 @@ let g:vimtex_quickfix_ignore_filters = [
 
 " Vim-Latex " Disabled
 set iskeyword+=: "Enables fig:<autocompletion> with <C-n> 
+" set iskeyword+=} " word boundary
 "let b:suppress_latex_suite = 1 "Disables vim-latex
 
 "" NERDTree 
