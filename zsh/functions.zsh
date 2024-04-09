@@ -634,7 +634,6 @@ function runDiff(){
     cd $DiffLocation
 
     ZipLocation=$HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Project\ Code/Paper\ Archive
-    OldZip=$(<$ZipLocation/.archive_recent)
 
 
     if (( ${+1} )); then
@@ -649,7 +648,6 @@ function runDiff(){
     cleantex $New
 #     echo $New
 #     echo "$ZipLocation/$OldZip" 
-    echo $ZipLocation/$OldZip
 #     echo $ZipLocation/$OldZip
     zsh $HOME/Coding/Zsh/latexdiff.sh $ZipLocation/$OldZip $New
 
