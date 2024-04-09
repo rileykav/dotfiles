@@ -614,6 +614,15 @@ function paperArchive(){
 # rm -rf $ZipLocation/*
 
 
+function checkInput(){
+    if (( ${+1} )); then
+        echo $1
+    else
+        echo "No input variable found!"
+        return
+    fi
+    echo "Done"
+}
 
 function runDiff(){
     setopt localoptions rmstarsilent
