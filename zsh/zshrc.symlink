@@ -280,6 +280,7 @@ source $DOTFILES/zsh/LS_COLORS-master/lscolors.sh
 
 
 
+# echo "$(xclip -o | cut -c -20)..." && echo "Words: $(xclip -o | wc -w)" && echo "Characters: $(xclip -o | wc -c)"
 
 
 
