@@ -540,6 +540,11 @@ function phdapp(){
 
 
 
+function uuicloud(){
+    rclone -PL sync "/Users/riley/Utrecht/NS-TP551 - Masters Thesis/Project Code/Paper Draft" ~/iCloud/Paper/Paper\ Draft/
+    rclone -PL sync "/Users/riley/Utrecht/NS-TP551 - Masters Thesis/Project Code/Paper Archive" ~/iCloud/Paper/Paper\ Archive/
+    rclone -PL sync "/Users/riley/Utrecht/NS-TP551 - Masters Thesis/Project Code/Meeting" ~/iCloud/Paper/Meeting
+}
 function uupload(){
 #     echo "###### Syncing to Google Drive ######"
 #     rclone -PL sync $HOME/Utrecht/ mydrive:Utrecht --filter-from $HOME/.dotfiles/rclone/filter-list.txt 
