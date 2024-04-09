@@ -297,7 +297,6 @@ oop 0 plots/*.png spin.gif"
 
 alias grindupload="rclone -P sync $HOME/Bookshelf/Grinds/ mydrive:Grinds"
 
-alias storage="osascript $HOME/.dotfiles/tmux/disk-usage.scpt"
 
 # Italiano
 alias ittest="(cd $HOME/Bookshelf/Italiano && py test-words.py)"
