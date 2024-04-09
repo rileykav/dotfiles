@@ -635,11 +635,22 @@ function runDiff(){
 
     ZipLocation=$HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Project\ Code/Paper\ Archive
     OldZip=$(<$ZipLocation/.archive_recent)
+
+
+    if (( ${+1} )); then
+        OldZip=$(basename $1)
+    else
+        echo "Using .archive_recent"
+        OldZip=$(<$ZipLocation/.archive_recent)
+    fi
+    echo "Old files: $OldZip"
+
     New=/Users/riley/Utrecht/NS-TP551\ -\ Masters\ Thesis/Project\ Code/Paper\ Draft/paper.tex 
     cleantex $New
 #     echo $New
 #     echo "$ZipLocation/$OldZip" 
     echo $ZipLocation/$OldZip
+#     echo $ZipLocation/$OldZip
     zsh $HOME/Coding/Zsh/latexdiff.sh $ZipLocation/$OldZip $New
 
 
