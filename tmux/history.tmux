@@ -42,3 +42,9 @@ command:Thesis
 command:q
 command:w
 command:Paper
+command:split-window -v
+command:split-window -v -p 10
+command:help split-window
+command:help
+command:select-pane 0
+command:select-pane -t 0

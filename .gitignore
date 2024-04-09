@@ -13,3 +13,4 @@ vim/private.vim
 #Ignore DS.Store files
 **/.DS_Store
 .DS_Store
+tmux/history.tmux
