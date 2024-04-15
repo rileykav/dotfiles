@@ -561,10 +561,13 @@ function uuonedrive(){
 # alias storage="osascript $HOME/.dotfiles/tmux/disk-usage.scpt"
 function storage(){
     laptop_storage=$(osascript $HOME/.dotfiles/tmux/disk-usage.scpt) 
-    seagate_storage=$(osascript $HOME/.dotfiles/tmux/seagate-usage.scpt)
 
     echo "Internal: $laptop_storage"
-    echo "External: $seagate_storage"
+    if [[ -d "/Volumes/Seagate 4TB" ]]; then
+        seagate_storage=$(osascript $HOME/.dotfiles/tmux/seagate-usage.scpt)
+        echo "External: $seagate_storage"
+    fi 
+}
 }
 
 
