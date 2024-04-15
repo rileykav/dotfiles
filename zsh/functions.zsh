@@ -568,9 +568,90 @@ function storage(){
         echo "External: $seagate_storage"
     fi 
 }
+
+function timeCurrent(){
+    while true; do printf '%s\r' "$(date)"; done
+
 }
 
+function timeStopwatch(){
+    start=$(date +%s)
+    while true; do
+        time="$(($(date +%s) - $start))"
+        printf '%s\r' "$(date -u -d "@$time" +%H:%M:%S)"
+    done
 
+}
+
+function time_func()
+{
+   date2=$((`date +%s` + $1));
+   date1=`date +%s`;
+   date_finish="$(date --date @$(($date2)) +%T )"
+
+   echo "Start at `date +%T`   Will finish at $date_finish"
+
+    while [ "$date2" -ne `date +%s` ]; do
+     echo -ne "     Since start: $(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)     Till end:  $(date -u --date @$(($date2 - `date +%s`)) +%H:%M:%S)\r";
+     sleep 1
+    done
+
+    printf "\nTimer finished!\n"
+    osascript -e beep
+}
+function test(){
+    local verbose hours minutes seconds
+    zparseopts -D -E -K -- \
+        {v,-verbose}=verbose \
+        {h,-hours}:=hours \
+        {m,-mins,-minutes}:=minutes \
+        {s,-secs,-seconds}:=seconds
+    
+    if [[ -n ${verbose} ]]; then
+        echo ${verbose}
+        echo "Test Verbose Statement"
+    fi
+
+    if (( ${+1} )); then
+        total_seconds=$1
+    else
+        total_seconds=0
+    fi
+    if (( $#hours )); then
+        hours=${(q+)hours[-1]}
+        total_seconds=$(( $total_seconds + ( $hours*3600 ) ))
+        echo "hours = $hours"
+    fi
+    if (( $#minutes )); then
+        minutes=${(q+)minutes[-1]}
+        total_seconds=$(( $total_seconds + ( $minutes*60 ) ))
+        echo "minutes = $minutes"
+    fi
+    if (( $#seconds )); then
+        seconds=${(q+)seconds[-1]}
+        total_seconds=$(( $total_seconds + $seconds ))
+        echo "seconds = $seconds"
+    fi
+    print -rC1 -- "Total Time in Seconds: $total_seconds"
+
+    for i in `seq $total_seconds -1 1` ; do echo -ne "\r$i " ; sleep 1 ; done
+    #
+#     start="$(( $(date '+%s') + $total_seconds))"
+#     while [ $start -ge $(date +%s) ]; do
+#         time="$(( $start - $(date +%s) ))"
+#         echo -ne "$(date -ju -f %s $(($date1 - date +%s)) +%H:%M:%S)\r"
+#         sleep 0.1
+#     done
+}
+
+# function timeCountdown(){
+#     start="$(( $(date '+%s') + $1))"
+#     while [ $start -ge $(date +%s) ]; do
+#         time="$(( $start - $(date +%s) ))"
+#         echo -ne "$(date -ju -f %s $(($date1 - date +%s)) +%H:%M:%S)\r"
+#         sleep 0.1
+#     done
+# }
 function doiname(){
     echo $2
     filename=$(python $HOME/Coding/Python/SchemanticScholor/schpapers.py "$2")
