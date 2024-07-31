@@ -166,7 +166,7 @@ alias gst='git status'
 alias ghp='echo "ga = git add\ngc = git commit\ngph= git push\ngpl= git push\ngst= git status"    
 '
 alias glg='git lg'
-
+alias github='open "/Applications/GitHub Desktop.app"'
 
 # Github (gh)
 alias gi='gh issue'
