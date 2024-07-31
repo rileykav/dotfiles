@@ -147,6 +147,15 @@ inoremap <C-z> <esc>ui
 inoremap <C-u> <esc>mmviwU`ma
 noremap <C-u> mmviwU`m
 
+" Goes to the end of the last word
+nnoremap E wbbe
+command B b#
+
+"" https://stackoverflow.com/questions/78349073/vim-unmap-predefined-command-specifically-x/78349258#78349258
+cnoremap <expr> X getcmdpos() == 1 ? 'x' : 'X'
+
+" command Enc[rypt] echo 'test'
+
 
 " inoremap <C-q> <esc>
 "inoremap <esc> <esc>:echo "don't use escape"<cr>i
@@ -255,9 +264,16 @@ inoremap <C-v> <esc>pa
 " inoremap :w <esc>:w
 " inoremap :W <esc>:w
 
+" Delete only after paste, works only for full line
+" nnoremap <leader>m yymd
+" nnoremap <leader>p p`ddd
 
 
 " Move current line up or down
+nnoremap ; :m +1<cr>
+nnoremap ' :m -2<cr>
+nnoremap <leader>k :m -2<cr>
+nnoremap <leader>k :m -2<cr>
 
 
 
