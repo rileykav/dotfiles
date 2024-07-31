@@ -1,3 +1,4 @@
+iabbrev thsi this
 iabbrev adn and
 iabbrev teh the
 iabbrev hte the
