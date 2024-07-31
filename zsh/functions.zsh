@@ -715,6 +715,26 @@ function checkInput(){
     echo "Done"
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function runDiff(){
     setopt localoptions rmstarsilent
     DiffLocation=$HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Project\ Code/Paper\ Draft/Diff
