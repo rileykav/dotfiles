@@ -406,6 +406,37 @@ let g:vimtex_toc_config = {
 
 
 
+
+
+
+
+""" Context aware highlighting
+" function! MathHighlight()
+""""" Define certain regions
+""""" Block math. Look for "$$[anything]$$"
+"     syn region red start="/\red/{" end="/}"
+""""" inline math. Look for "$[not $][anything]$"
+"     syn match math_block '\$[^$].\{-}\$'
+
+"" Actually highlight those regions.
+"       hi red ctermfg=red
+" endfunction
+" autocmd BufRead,BufNewFile,BufEnter *.md,*.markdown call MathHighlight()
+
+" Example for setting bold text to red
+" hi texStlyeBold ctermfg=red
+
+
+
+
+
+
+
+
+
+
+
+
 "
 " Updates preview after every succesful compile, which is after every save
 """""""""""""""""""""""""""""""""""""""
