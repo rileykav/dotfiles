@@ -129,12 +129,13 @@ command Q q!
 nnoremap <leader>Q :q!<cr>
 
 " Quick Save & Quit
+" command X x<cr>
 nnoremap <leader>x :x<cr>
 noremap <c-x> <esc>:x<cr>
 
 " Open Vim terminal split
 nnoremap <leader>t :term<cr>
-
+" unmap :X
 " Undo and Redo
 " nnoremap <leader>u :redo<cr>
 nnoremap U :redo<cr>
