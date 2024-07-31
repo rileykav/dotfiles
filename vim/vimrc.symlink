@@ -603,7 +603,7 @@ let g:vimtex_quickfix_ignore_filters = [
 
 " Vim-Latex " Disabled
 set iskeyword+=: "Enables fig:<autocompletion> with <C-n> 
-" set iskeyword+=} " word boundary
+set iskeyword-=} " word boundary
 "let b:suppress_latex_suite = 1 "Disables vim-latex
 
 
@@ -740,9 +740,8 @@ source ~/.dotfiles/vim/temp.vim
 
 
 
-
-
-
+set iskeyword+=: "Enables fig:<autocompletion> with <C-n> 
+" set iskeyword+=} " word boundary
 
 
 
@@ -823,3 +822,8 @@ hi clear texStyleItal
 hi texStyleItal cterm=bold
 hi clear mdStyleItal
 hi mdStyleItal cterm=bold
+hi clear mdStyleBold
+hi mdStyleBold cterm=bold
+
+set iskeyword+={ " word boundary
+set iskeyword+=} " word boundary
