@@ -736,6 +736,7 @@ function checkInput(){
 
 
 function runDiff(){
+    # Meta function to aid in automating diff. Defaults to diffing paper with backup
     setopt localoptions rmstarsilent
     DiffLocation=$HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Project\ Code/Paper\ Draft/Diff
     rm -rf $DiffLocation
@@ -757,9 +758,6 @@ function runDiff(){
 
     New=/Users/riley/Utrecht/NS-TP551\ -\ Masters\ Thesis/Project\ Code/Paper\ Draft/paper.tex 
     cleantex $New
-#     echo $New
-#     echo "$ZipLocation/$OldZip" 
-#     echo $ZipLocation/$OldZip
     zsh $HOME/Coding/Zsh/latexdiff.sh $ZipLocation/$OldZip $New
 
 
