@@ -388,4 +388,9 @@ alias m4b-tool='docker run -it --rm -u $(id -u):$(id -g) -v "$(pwd)":/mnt sandre
 alias flattenpaper="(cd /Users/riley/Utrecht/NS-TP551\ -\ Masters\ Thesis/Project\ Code/Paper\ Draft/ && latexpand --keep-comments /Users/riley/Utrecht/NS-TP551\ -\ Masters\ Thesis/Project\ Code/Paper\ Draft/paper.tex > paper-full.tex)"
 
 
-
+### Suspended Jobs in Zsh (What are they though?)
+# https://stephencharlesweiss.com/zsh-suspended-jobs
+# https://unix.stackexchange.com/questions/45025/how-to-suspend-and-bring-a-background-process-to-foreground
+alias suspendedjobsStart='fg'
+alias suspendedjobsList='jobs'
+alias suspendedjobsKill='jobs -s | kill %1'
