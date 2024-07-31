@@ -1,6 +1,6 @@
 " Code Commenting
 
-let s:comment_map = { 
+let s:comment_map = {
     \   "c": '\/\/',
     \   "cpp": '\/\/',
     \   "go": '\/\/',
@@ -32,16 +32,16 @@ let s:comment_map = {
     \   "sift": '//',
     \ }
 
-        
+
 
 
 function! ToggleCommentRelativePosition()
     if has_key(s:comment_map, &filetype)
         let comment_leader = s:comment_map[&filetype]
-        if getline('.') =~ "^\\s*" . comment_leader . " " 
+        if getline('.') =~ "^\\s*" . comment_leader . " "
             " Uncomment the line
             execute "silent s/^\\(\\s*\\)" . comment_leader . " /\\1/"
-        else 
+        else
             if getline('.') =~ "^\\s*" . comment_leader
                 " Uncomment the line
                 execute "silent s/^\\(\\s*\\)" . comment_leader . "/\\1/"
@@ -57,10 +57,10 @@ endfunction
 function! ToggleCommentZeroPosition()
     if has_key(s:comment_map, &filetype)
         let comment_leader = s:comment_map[&filetype]
-        if getline('.') =~ "^\\s*" . comment_leader . " " 
+        if getline('.') =~ "^\\s*" . comment_leader . " "
             " Uncomment the line
             execute "silent s/^" . comment_leader . " //"
-        else 
+        else
             if getline('.') =~ "^\\s*" . comment_leader
                 " Uncomment the line
                 execute "silent s/^\\(\\s*\\)" . comment_leader . " //"
@@ -101,16 +101,16 @@ au BufNewFile,BufRead *.mako set ft=mako
 
 au FileType python map <buffer> F :set foldmethod=indent<cr>
 
-au FileType python inoremap <buffer> $r return 
-au FileType python inoremap <buffer> $i import 
-au FileType python inoremap <buffer> $p print 
+au FileType python inoremap <buffer> $r return
+au FileType python inoremap <buffer> $i import
+au FileType python inoremap <buffer> $p print
 au FileType python inoremap <buffer> $f # --- <esc>a
-au FileType python map <buffer> <leader>1 /class 
-au FileType python map <buffer> <leader>2 /def 
-au FileType python map <buffer> <leader>C ?class 
-au FileType python map <buffer> <leader>D ?def 
-au FileType python nnoremap <leader>; mmgI#<esc>`mh 
-au FileType python nnoremap <leader>' mmgI<esc>x`mh 
+au FileType python map <buffer> <leader>1 /class
+au FileType python map <buffer> <leader>2 /def
+au FileType python map <buffer> <leader>C ?class
+au FileType python map <buffer> <leader>D ?def
+au FileType python nnoremap <leader>; mmgI#<esc>`mh
+au FileType python nnoremap <leader>' mmgI<esc>x`mh
 " au FileType python nnoremap <leader>` :call VimuxRunCommand('./'w:filename)
 au FileType python nnoremap <leader>` :call VimuxRunCommand("py ".expand("%"))<cr>
 au FileType python let comment = "#"
@@ -171,10 +171,10 @@ au FileType javascript setl nocindent
 au FileType javascript imap <C-t> $log();<esc>hi
 au FileType javascript imap <C-a> alert();<esc>hi
 
-au FileType javascript inoremap <buffer> $r return 
+au FileType javascript inoremap <buffer> $r return
 au FileType javascript inoremap <buffer> $f // --- PH<esc>FP2xi
 
-function! JavaScriptFold() 
+function! JavaScriptFold()
     setl foldmethod=syntax
     setl foldlevelstart=1
     syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
@@ -202,11 +202,11 @@ au FileType gitcommit call setpos('.', [0, 1, 1, 0])
 """"""""""""""""""""""""""""""""""""""""""""""
 
 
-" if exists('$TMUX') 
+" if exists('$TMUX')
 "     if has('nvim')
 "         set termguicolors
 "     else
-"         set term=screen-256color 
+"         set term=screen-256color
 "     endif
 " endif
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -370,16 +370,16 @@ autocmd FileType tex nnoremap <leader>; :call VimtexSaveCompileOnce()<cr>
 
 autocmd FileType tex nnoremap <leader>td i\todo[inline]{}<esc>
 
-autocmd FileType tex set iskeyword-=_ 
+autocmd FileType tex set iskeyword-=_
 
 
 
 " Table of Contents
 let g:vimtex_toc_config = {
     \ 'layer_status': {
-        \ 'content': 1, 
-        \ 'label': 0, 
-        \ 'todo': 0, 
+        \ 'content': 1,
+        \ 'label': 0,
+        \ 'todo': 0,
         \ 'include': 0
     \ },
     \ 'show_help': 0,
@@ -420,7 +420,7 @@ autocmd BufNewFile *.tex call LoadTexTemplate()
 
 
 
-" Latex writing 
+" Latex writing
 " autocmd FileType tex nnoremap <leader>bb i\begin{align}<esc>o\end{align}<esc>O<tab><backspace>
 " autocmd FileType tex nnoremap <leader>bl i\begin{itemize}<esc>o\end{itemize}<esc>O<tab><backspace><backspace>\item<space>
 " autocmd FileType tex nnoremap <leader>be i\begin{enumerate}<esc>o\end{enumerate}<esc>O<backspace>\item<space>
@@ -430,9 +430,9 @@ autocmd BufNewFile *.tex call LoadTexTemplate()
 " autocmd FileType tex nnoremap <leader>CM
 
 " Checkmark
-autocmd FileType tex nnoremap <leader>/\ mm0eea[\checkmark]<esc>`m14l 
-" autocmd FileType tex nnoremap <leader>/\ mm0eea[\XSolidBrush]<esc>`m14l 
-autocmd FileType tex nnoremap <leader>/. 0et]di]hxx 
+autocmd FileType tex nnoremap <leader>/\ mm0eea[\checkmark]<esc>`m14l
+" autocmd FileType tex nnoremap <leader>/\ mm0eea[\XSolidBrush]<esc>`m14l
+autocmd FileType tex nnoremap <leader>/. 0et]di]hxx
 autocmd FileType tex nnoremap <leader>aa mmA\\<esc>0t=a&<esc>`ml
 autocmd FileType tex vnoremap <C-w> g<C-g>
 autocmd FileType tex set complete-=i
