@@ -175,6 +175,28 @@ nnoremap <leader>r :source ~/.vimrc<cr>
 " Clears search highlighting
 nnoremap <CR> :noh<CR><CR>
 
+" In iTerm, you need to fix how how <s-cr> is interpreted, vim expects <esc>+[13;2u for some reason.
+" https://stackoverflow.com/questions/16359878/how-to-map-shift-enter
+" I managed to correct my terminal key-code for Shift+Enter by sending the key-code Vim apparently expects. Depending on your terminal, (Adding Ctrl+Enter as a bonus!)
+
+" iTerm2
+" 
+" For a single Profile open Preferences → Profiles → Keys → [+] (Add)
+" For all profiles open Preferences → Keys → [+] (Add)
+" 
+" Keyboard shortcut: (Hit Shift+Enter)
+" Action: Send Escape Sequence
+" Esc+ [13;2u
+" 
+" Repeat for Ctrl+Enter, with sequence: [13;5u
+"
+function RedrawCR()
+    redraw!
+    echo ":redraw!"
+endfun
+nnoremap <S-CR> :call RedrawCR()<cr><cr>
+" nnoremap <S-CR> :redraw!<CR><CR>
+
 " Spliting New Panes
 " nnoremap <leader>v :vnew<CR> " Create a vertical Split
 nnoremap <leader>- :new<CR> " Create a Hotizontal Split
