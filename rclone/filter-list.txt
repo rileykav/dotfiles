@@ -1,7 +1,10 @@
-- *.dat
-- *.DS_Store
-- *.xcodeproj/
-- *.git/
-- *.webloc
-- *DerivedData/
-- env/
+#- *.dat
+#- *.DS_Store
+#- *DS_Store
+#- DS_Store
+.DS_Store
+#- *.xcodeproj/
+#- *.git/
+#- *.webloc
+#- *DerivedData/
+#- env/
