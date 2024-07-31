@@ -765,6 +765,27 @@ function runDiff(){
 
     cd $here
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function newTexProj(){
     zsh $HOME/Coding/Zsh/new-latex-project.sh $1
 }
