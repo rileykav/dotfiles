@@ -220,14 +220,27 @@ autocmd BufRead *.twig set syntax=html filetype=html
 autocmd BufRead *.htm call Epublean()
 
 
+
+autocmd BufRead *.md nnoremap o A<cr>
+
+
 """"""""""""""""""""""""""""""""""""""""""""""
 " Markdown
 """"""""""""""""""""""""""""""""""""""""""""""
+function! OpenMarkdownViewer()
+    call VimuxRunCommandInDir("open", 1)
 
+
+endfunction    
 let vim_markdown_folding_disabled = 1
 let g:vim_markdown_math = 1
 autocmd BufRead Markdown set textwidth=0 wrapmargin=0
+autocmd BufRead Markdown nnoremap <leader>a mm0la~~<esc>A~~<esc>`m
+autocmd BufRead *md nnoremap <leader>a mm0la~~<esc>A~~<esc>`m
+autocmd BufRead *md nnoremap <leader>A mm0llxxA<esc>xx`m
 nnoremap <leader>i i$\quad$<esc>o
+autocmd FileType Markdown nnoremap <leader>o :call OpenMarkdownViewer()<cr>
+
 """"""""""""""""""""""""""""""""""""""""""""""
 " Latex
 """"""""""""""""""""""""""""""""""""""""""""""
