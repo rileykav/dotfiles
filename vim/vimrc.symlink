@@ -761,9 +761,9 @@ source ~/.dotfiles/vim/temp.vim
 
 
 
-
 set iskeyword+=: "Enables fig:<autocompletion> with <C-n> 
 " set iskeyword+=} " word boundary
+
 
 
 
