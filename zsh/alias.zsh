@@ -80,6 +80,7 @@ alias cleanup="find . -name '*.DS_STORE' -type f -ls -delete"
 
 
 # tmux aliases
+alias tmux="env TERM=screen-256color tmux"
 alias ta='tmux attach'
 alias tls='tmux ls'
 alias tat='tmux attach -t'
