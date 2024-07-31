@@ -378,8 +378,11 @@ alias showcursor="tput cnorm"
 alias hidecursor="tput civis"
 
 
-
+# https://github.com/sandreas/m4b-tool
 alias m4b-tool='docker run -it --rm -u $(id -u):$(id -g) -v "$(pwd)":/mnt sandreas/m4b-tool:latest'
+#
+# Usuage: 
+# m4b-tool merge "data/my-audio-book/" --output-file="data/merged.m4b"
 
 
 alias flattenpaper="(cd /Users/riley/Utrecht/NS-TP551\ -\ Masters\ Thesis/Project\ Code/Paper\ Draft/ && latexpand --keep-comments /Users/riley/Utrecht/NS-TP551\ -\ Masters\ Thesis/Project\ Code/Paper\ Draft/paper.tex > paper-full.tex)"
