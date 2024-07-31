@@ -61,6 +61,7 @@ alias vtree="tree file-tree.txt"
 alias grep="grep --color=auto"
 alias df="df -h" # Disk free in bytes
 alias du="du -hc -d 1 2>/dev/null" # Disk usage of folder
+alias dugig="du -hc -d 1 -t 1G 2>/dev/null" # Disk usage of folder
 alias duriley="du -d 1 $HOME"
 alias duhere="du -d 1"
 
