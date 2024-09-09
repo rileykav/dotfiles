@@ -332,7 +332,7 @@ if has("win32")
     :command Vimrc :vs ~/_vimrc
 else
     if has("unix")
-        if s:uname == "Darwin\n"
+        if has("macunix")
             "Mac options here
             :command Vimrc :vs ~/.vimrc
         endif
@@ -870,8 +870,7 @@ if has("win32")
     source ~/.dotfiles/vim/windows.vim
 else
     if has("unix")
-        let s:uname = system("uname")
-        if s:uname == "Darwin\n"
+        if has("macunix")
             "Mac options here
             source ~/.dotfiles/vim/mac.vim
             "--------------- Snippets ---------------"

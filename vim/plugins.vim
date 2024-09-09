@@ -31,8 +31,7 @@ if has("win32")
     " Windows Options
 else
     if has("unix")
-        let s:uname = system("uname")
-        if s:uname == "Darwin\n"
+        if has("macunix")
         " Mac options here
 "         Plugin 'ycm-core/YouCompleteMe' 
 "         Plugin 'tpope/vim-fugitive'
