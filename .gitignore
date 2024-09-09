@@ -14,3 +14,4 @@ vim/private.vim
 **/.DS_Store
 .DS_Store
 tmux/history.tmux
+tmux/history.tmux

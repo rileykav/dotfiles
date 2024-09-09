@@ -48,3 +48,4 @@ command:help split-window
 command:help
 command:select-pane 0
 command:select-pane -t 0
+command:split-window
