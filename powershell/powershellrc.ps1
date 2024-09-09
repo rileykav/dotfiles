@@ -70,23 +70,27 @@ function Write-BranchName () {
         if ($branch -eq "HEAD") {
             # we're probably in detached HEAD state, so print the SHA
             $branch = git rev-parse --short HEAD
-            Write-Host " ($branch)" -ForegroundColor "red" -NoNewline
+#             Write-Host " ($branch)" -ForegroundColor "red" -NoNewline
+            Write-Host "$($PSStyle.Foreground.FromRgb(0xa020f0))" ($branch)"$($PSStyle.Reset)" -NoNewline
         }
         else {
             # we're on an actual branch, so print it
             $Status=$null;
             $Status=$(git status -porcelain)
             if ($null -eq $Status ){
-                Write-Host " ($branch)" -ForegroundColor "grey" -NoNewline
+#                 Write-Host " ($branch)" -ForegroundColor "grey" -NoNewline
+                Write-Host "$($PSStyle.Foreground.FromRgb(0x5a6374))" ($branch)"$($PSStyle.Reset)" -NoNewline
             }
             else{
                     
-                Write-Host " ($branch)" -ForegroundColor "yellow" -NoNewline
+#                 Write-Host " ($branch)" -ForegroundColor "yellow" -NoNewline
+                Write-Host "$($PSStyle.Foreground.FromRgb(0xa020f0))" ($branch)"$($PSStyle.Reset)" -NoNewline
             }
         }
     } catch {
         # we'll end up here if we're in a newly initiated git repo
-        Write-Host " (no branches yet)" -ForegroundColor "cyan" -NoNewline
+#         Write-Host " (no branches yet)" -ForegroundColor "cyan" -NoNewline
+        Write-Host "$($PSStyle.Foreground.FromRgb(0x5a6374))" ($branch)"$($PSStyle.Reset)" -NoNewline
     }
 }
 
