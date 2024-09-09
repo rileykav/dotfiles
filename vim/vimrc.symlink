@@ -1,8 +1,10 @@
 """"""""""""""""""""""""""""""""""""""""""""""
 " Add Plugins (seems important to put this hear)
 """"""""""""""""""""""""""""""""""""""""""""""
-
 source ~/.dotfiles/vim/plugins.vim
+
+
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -99,7 +101,6 @@ fun! LocalFilename()
     let l:filenamedotextension=expand("%")
     return l:filename
 endfun
-
 
 
 
@@ -356,6 +357,8 @@ au FileType cpp set foldlevel=2
 
 
 
+
+
 """"""""""""""""""""""""""""""""""""""""""""""
 " Useful
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -372,6 +375,19 @@ fun! CleanExtraSpaces()
     call setpos('.', save_cursor)
     call setreg('/', old_query)
 endfun
+
+
+
+
+
+
+"--------------- latex syntax  ---------------"
+" hi clear texStyleBold
+hi clear texStyleItal
+hi texStyleItal cterm=bold
+hi clear mdStyleItal
+hi mdStyleItal cterm=bold
+
 
 
 if has("autocmd")
@@ -598,9 +614,9 @@ syntax enable
 let maplocalleader = ","
 let g:vimtex_indent_enabled = 0
 " UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Ignores unnecessary warnings
 let g:vimtex_quickfix_ignore_filters = [
@@ -664,9 +680,6 @@ set completeopt-=preview
 
 
 
-"" Vim-Tmux-Navigator
-" Write all buffers before navigating from Vim to tmux pane
-let g:tmux_navigator_save_on_switch = 1
 
 
 
@@ -825,6 +838,50 @@ nnoremap <leader>ff :call EightyLineFlash()<cr>
 " endif
 
 set shortmess=at
+
+
+
+
+
+
+
+
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
+nnoremap <leader>? :call SynStack()<cr>
+
+if has("win32")
+    " Windows Options
+    source ~/.dotfiles/vim/windows.vim
+else
+    if has("unix")
+        let s:uname = system("uname")
+        if s:uname == "Darwin\n"
+            "Mac options here
+            source ~/.dotfiles/vim/mac.vim
+            "--------------- Snippets ---------------"
+            let g:UltiSnipsExpandTrigger = '§'
+            let g:UltiSnipsJumpForwardTrigger = '§'
+            let g:UltiSnipsJumpBackwardTrigger = '<s-§>'
+            let g:UltiSnipsSnippetDirectories=["/users/riley/.dotfiles/vim/snippets"]
+            "" Vim-Tmux-Navigator
+            " Write all buffers before navigating from Vim to tmux pane
+            let g:tmux_navigator_save_on_switch = 1
+
+        endif
+    endif
+endif
+
+
+set nospell
+autocmd BufRead,BufNewFile *tex set spell
+autocmd BufRead,BufNewFile *md set spell
+autocmd BufRead,BufNewFile *txt set spell
 
 
 
