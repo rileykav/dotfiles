@@ -74,7 +74,14 @@ function Write-BranchName () {
         }
         else {
             # we're on an actual branch, so print it
-            Write-Host " ($branch)" -ForegroundColor "blue" -NoNewline
+            $Status=$(git status -porcelain)
+            if ($Status -ne $null){
+                Write-Host " ($branch)" -ForegroundColor "green" -NoNewline
+            }
+            else{
+                    
+                Write-Host " ($branch)" -ForegroundColor "yellow" -NoNewline
+            }
         }
     } catch {
         # we'll end up here if we're in a newly initiated git repo
@@ -108,7 +115,6 @@ function prompt {
 
 #     Write-Host "`n$base " -NoNewline
     if (Test-Path .git) {
-        $Status = $(git status)
         Write-Host "$($PSStyle.Foreground.FromRgb(0xacda8a))$path$($PSStyle.Reset)" -NoNewline
         Write-BranchName 
     }
