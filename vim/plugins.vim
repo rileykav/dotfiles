@@ -29,6 +29,7 @@ Plugin 'vim-scripts/applescript.vim'
 
 if has("win32")
     " Windows Options
+    Plugin 'pprovost/vim-ps1'
 else
     if has("unix")
         let s:uname = system("uname")
@@ -44,7 +45,6 @@ else
         Plugin 'preservim/vimux' " Requires Tmux
         Plugin 'christoomey/vim-tmux-navigator'
         Plugin 'christoomey/vim-tmux-runner'
- 
  
         Plugin 'SirVer/ultisnips'
 "         Plugin 'honza/vim-snippets'
