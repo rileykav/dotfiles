@@ -144,6 +144,7 @@ function getmaintexstem(){
 }
 function cleantex(){
     local filename=$(getmaintexstem $1)
+    echo 'cleaning tex'
     # Ensures the wildfire matches something
     #     touch "pdflatextmp.txt"
     #     touch "$filname""_vimtex.txt"
