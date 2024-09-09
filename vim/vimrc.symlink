@@ -823,6 +823,12 @@ else
 endif
 
 
+set nospell
+autocmd BufRead,BufNewFile *tex set spell
+autocmd BufRead,BufNewFile *md set spell
+autocmd BufRead,BufNewFile *txt set spell
+
+
 
 "--------------- latex syntax  ---------------"
 " hi clear texStyleBold
