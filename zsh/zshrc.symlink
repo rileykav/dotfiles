@@ -149,7 +149,6 @@ setopt PROMPT_SUBST
 # PROMPT='%F{80}'$USER's-macbook%f %F{78}%2~ %f%F{red}%B${vcs_info_msg_0_}%b%f'
 # 
 
-prompt_vcs_info_on=true
 
 # Powerlevel10k can allow nice custimization, like only shw dir on line before current:
 #
@@ -163,16 +162,20 @@ prompt_vcs_info_on=true
 
 # MY_PROMPT='%F{80}'$USER's-macbook%f %F{78}%2~%f '
 PROMPT='%F{78}%1~%f %F{80}> %f'
+PROMPT='%F{#acda8a}%1~%f %F{#56B6C2}> %f'
+prompt_vcs_info_on=true
 if [[ $prompt_vcs_info_on = true ]]; then
     precmd() {
         vcs_info
         if [[ -n ${vcs_info_msg_0_} ]]; then
             STATUS=$(command git status --porcelain 2> /dev/null | tail -n1)
             if [[ -n $STATUS ]]; then
-#                 PROMPT=$MY_PROMPT' %F{124}%B${vcs_info_msg_0_}%b%f'
+                # Git is Modified
                 RPROMPT='%F{124}%B${vcs_info_msg_0_}%b%f'
+                RPROMPT='%F{#E06C75}%B${vcs_info_msg_0_}%b%f'
 #                 PROMPT='%F{80}'$USER's-macbook%f %F{78}%2~%f %F{124}%B${vcs_info_msg_0_}%b%f'
             else
+                # Git is Up to Date
 #                 PROMPT='%F{80}'$USER's-macbook%f %F{78}%2~%f %F{242}%B${vcs_info_msg_0_}%b%f'
 #                 PROMPT=$MY_PROMPT' %F{242}%B${vcs_info_msg_0_}%b%f'
                 RPROMPT='%F{242}%B${vcs_info_msg_0_}%b%f'
