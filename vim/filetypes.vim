@@ -1,5 +1,5 @@
 " Code Commenting
-
+" Use `:set filetype?` to check 
 let s:comment_map = {
     \   "c": '\/\/',
     \   "cpp": '\/\/',
@@ -21,6 +21,7 @@ let s:comment_map = {
     \   "profile": '#',
     \   "bashrc": '#',
     \   "bash_profile": '#',
+    \   "ps1": '#',
     \   "mail": '>',
     \   "eml": '>',
     \   "bat": 'REM',
