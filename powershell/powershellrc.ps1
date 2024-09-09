@@ -76,7 +76,7 @@ function Write-BranchName () {
             # we're on an actual branch, so print it
             $Status=$null;
             $Status=$(git status -porcelain)
-            if ($Status ){
+            if ($null -eq $Status ){
                 Write-Host " ($branch)" -ForegroundColor "green" -NoNewline
             }
             else{
