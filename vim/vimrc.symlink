@@ -342,6 +342,15 @@ endfun
 
 
 
+"--------------- latex syntax  ---------------"
+" hi clear texStyleBold
+hi clear texStyleItal
+hi texStyleItal cterm=bold
+hi clear mdStyleItal
+hi mdStyleItal cterm=bold
+
+
+
 if has("autocmd")
     autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 endif
@@ -830,9 +839,6 @@ autocmd BufRead,BufNewFile *txt set spell
 
 
 
-"--------------- latex syntax  ---------------"
-" hi clear texStyleBold
-hi clear texStyleItal
-hi texStyleItal cterm=bold
-hi clear mdStyleItal
-hi mdStyleItal cterm=bold
+
+
+
