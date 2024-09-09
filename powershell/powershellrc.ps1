@@ -62,6 +62,15 @@ function FancyPrompt {
 } #end prompt function
 
 
+if (test-path env:posh_git) {
+    . $env:posh_git
+}
+
+
+
+
+
+
 # See https://stackoverflow.com/questions/1287718/how-can-i-display-my-current-git-branch-name-in-my-powershell-prompt
 function Write-BranchName () {
     try {
@@ -118,18 +127,18 @@ FirstSessionPrint
 function prompt {
     $path = "$($executionContext.SessionState.Path.CurrentLocation)"
     $userPrompt = " $('>' * ($nestedPromptLevel + 1)) "
-
-#     Write-Host "`n$base " -NoNewline
+    $prompt=""
+    $prompt+=Write-Host "$($PSStyle.Foreground.FromRgb(0xacda8a))$path$($PSStyle.Reset)" -NoNewline
+    $prompt+= Write-VcsStatus
+    $prompt += Write-Prompt "$(if ($PsDebugContext) {' [DBG]: '} else {''})" -ForegroundColor Magenta
     if (Test-Path .git) {
-        Write-Host "$($PSStyle.Foreground.FromRgb(0xacda8a))$path$($PSStyle.Reset)" -NoNewline
-        Write-BranchName 
-    }
-    else {
-        # we're not in a repo so don't bother displaying branch name/sha
-        Write-Host "$($PSStyle.Foreground.FromRgb(0xacda8a))$path$($PSStyle.Reset)" -NoNewline
+        # Defualt
+#         & $GitPromptScriptBlock
+#         Write-BranchName 
     }
 
-    return $userPrompt
+    $prompt+=" > "
+    return $prompt
 }
 
 
@@ -168,9 +177,6 @@ set-alias -name psrc -value powershellprofile
 function make-link ($link, $target) {
 	New-Item -Path $link -ItemType SymbolicLink -Value $target
 }
-
-
-
 
 
 
