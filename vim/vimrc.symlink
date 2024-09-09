@@ -604,16 +604,21 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Ignores unnecessary warnings
 let g:vimtex_quickfix_ignore_filters = [
+  \'Package natbib Warning: Citation',  
+  \'LaTeX Warning: Reference',          
+  \'LaTeX Warning: There were undefined references',          
   \'Underfull \\hbox (badness [0-9]*) in ',
   \'Overfull \\hbox ([0-9]*.[0-9]*pt too wide) in ',
   \'Overfull \\vbox ([0-9]*.[0-9]*pt too high) detected ',
   \'Package hyperref Warning: Token not allowed in a PDF string',
   \"Package option `hyperref' is obsolete and ignored",
   \'Package typearea Warning: Bad type area settings!',
+  \'Package nameref Warning: The definition of \\label has changed!',
   \'Marginpar on page[0-9]* moved',
   \'Marginpar on page[0-9]* moved',
   \'Marginpar',
   \'Overfull',
+  \'LaTeX Warning: Float too large for page',
   \'tikz-feynman Warning',
   \"`h' float specifier",
   \"requested document class",
