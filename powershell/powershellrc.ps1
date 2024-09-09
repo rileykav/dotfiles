@@ -62,7 +62,7 @@ function FancyPrompt {
 } #end prompt function
 
 
-
+# See https://stackoverflow.com/questions/1287718/how-can-i-display-my-current-git-branch-name-in-my-powershell-prompt
 function Write-BranchName () {
     try {
         $branch = git rev-parse --abbrev-ref HEAD
@@ -82,24 +82,42 @@ function Write-BranchName () {
     }
 }
 
+
+#"$($PSStyle.Foreground.FromRgb(0xa020f0))$base$($PSStyle.Reset)"
+function PowershellVersion { 
+
+    $psvmajor="$($host.version.major)"
+    $psvminor="$($host.version.minor)"
+    $psvbuild="$($host.version.build)"
+    $base = "Powershell $psvmajor.$psvminor.$psvbuild"  
+#     Write-Host "$($PSStyle.Foreground.FromRgb(0xa020f0))$base$($PSStyle.Reset)"
+    return $base
+}
+function FirstSessionPrint {
+    $psversion=PowershellVersion
+    $Date = Get-Date -Format 'dddd HH:mm:ss'
+#     Write-Host $psversion $Date -ForegroundColor "darkgray"
+    Write-Host $psversion $Date 
+}   
+cls
+FirstSessionPrint
+
 function prompt {
-    $base = "PS "
     $path = "$($executionContext.SessionState.Path.CurrentLocation)"
-    $userPrompt = "$(' >' * ($nestedPromptLevel + 1)) "
+    $userPrompt = " $('>' * ($nestedPromptLevel + 1)) "
 
-
+#     Write-Host "`n$base " -NoNewline
     if (Test-Path .git) {
-        Write-Host $path  -ForegroundColor "green" -NoNewline
+        Write-Host "$($PSStyle.Foreground.FromRgb(0xacda8a))$path$($PSStyle.Reset)" -NoNewline
         Write-BranchName 
     }
     else {
         # we're not in a repo so don't bother displaying branch name/sha
-        Write-Host $path -ForegroundColor "green" -NoNewline
+        Write-Host "$($PSStyle.Foreground.FromRgb(0xacda8a))$path$($PSStyle.Reset)" -NoNewline
     }
 
     return $userPrompt
 }
-
 
 
 
