@@ -11,10 +11,12 @@ split-window -v -l 10%
 split-window -h -l 50%
 select-pane -t 0
 new-window -n "PhD Applications"
-send-keys "cd '$HOME/Utrecht/General/Phd Applications' && clear" enter
+send-keys "cd '$HOME/Work/Phd Applications' && clear" enter
 split-window -v -l 10%
 split-window -h -l 50%
 select-pane -t 0
+new-window -n "Pages"
+send-keys "cd '$HOME/Work/Page' && clear" enter
 new-window -n "Coding"
 send-keys "cd '$HOME/Coding' && clear" enter
 split-window -v -l 10%
