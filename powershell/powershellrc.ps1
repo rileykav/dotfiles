@@ -62,6 +62,15 @@ function FancyPrompt {
 } #end prompt function
 
 
+if (test-path env:posh_git) {
+    . $env:posh_git
+}
+
+
+
+
+
+
 # See https://stackoverflow.com/questions/1287718/how-can-i-display-my-current-git-branch-name-in-my-powershell-prompt
 function Write-BranchName () {
     try {
@@ -70,15 +79,28 @@ function Write-BranchName () {
         if ($branch -eq "HEAD") {
             # we're probably in detached HEAD state, so print the SHA
             $branch = git rev-parse --short HEAD
-            Write-Host " ($branch)" -ForegroundColor "red" -NoNewline
+#             Write-Host " ($branch)" -ForegroundColor "red" -NoNewline
+            Write-Host "$($PSStyle.Foreground.FromRgb(0xa020f0))" ($branch)"$($PSStyle.Reset)" -NoNewline
         }
         else {
             # we're on an actual branch, so print it
-            Write-Host " ($branch)" -ForegroundColor "blue" -NoNewline
+            $Status=$(git status -porcelain)
+            if ($null -ne $(git status -porcelain) ){
+#               Changes to Git
+#                 Write-Host " ($branch)" -ForegroundColor "grey" -NoNewline
+                Write-Host "$($PSStyle.Foreground.FromRgb(0x5a6374))" 1($branch)"$($PSStyle.Reset)" -NoNewline
+            }
+            else{
+#               Git Up to Date
+                    
+#                 Write-Host " ($branch)" -ForegroundColor "yellow" -NoNewline
+                Write-Host "$($PSStyle.Foreground.FromRgb(0xa020f0))" 2($branch)"$($PSStyle.Reset)" -NoNewline
+            }
         }
     } catch {
         # we'll end up here if we're in a newly initiated git repo
-        Write-Host " (no branches yet)" -ForegroundColor "yellow" -NoNewline
+#         Write-Host " (no branches yet)" -ForegroundColor "cyan" -NoNewline
+        Write-Host "$($PSStyle.Foreground.FromRgb(0x5a6374))" ($branch)"$($PSStyle.Reset)" -NoNewline
     }
 }
 
@@ -105,23 +127,23 @@ FirstSessionPrint
 function prompt {
     $path = "$($executionContext.SessionState.Path.CurrentLocation)"
     $userPrompt = " $('>' * ($nestedPromptLevel + 1)) "
-
-#     Write-Host "`n$base " -NoNewline
+    $prompt=""
+    $prompt+=Write-Host "$($PSStyle.Foreground.FromRgb(0xacda8a))$path$($PSStyle.Reset)" -NoNewline
+    $prompt+= Write-VcsStatus
+    $prompt += Write-Prompt "$(if ($PsDebugContext) {' [DBG]: '} else {''})" -ForegroundColor Magenta
     if (Test-Path .git) {
-        Write-Host "$($PSStyle.Foreground.FromRgb(0xacda8a))$path$($PSStyle.Reset)" -NoNewline
-        Write-BranchName 
-    }
-    else {
-        # we're not in a repo so don't bother displaying branch name/sha
-        Write-Host "$($PSStyle.Foreground.FromRgb(0xacda8a))$path$($PSStyle.Reset)" -NoNewline
+        # Defualt
+#         & $GitPromptScriptBlock
+#         Write-BranchName 
     }
 
-    return $userPrompt
+    $prompt+=" > "
+    return $prompt
 }
 
 
 
-
+#test
 
 
 
@@ -155,9 +177,6 @@ set-alias -name psrc -value powershellprofile
 function make-link ($link, $target) {
 	New-Item -Path $link -ItemType SymbolicLink -Value $target
 }
-
-
-
 
 
 
