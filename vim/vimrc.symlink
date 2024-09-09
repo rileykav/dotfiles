@@ -566,9 +566,9 @@ syntax enable
 let maplocalleader = ","
 let g:vimtex_indent_enabled = 0
 " UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Ignores unnecessary warnings
 let g:vimtex_quickfix_ignore_filters = [
@@ -624,9 +624,6 @@ set completeopt-=preview
 
 
 
-"" Vim-Tmux-Navigator
-" Write all buffers before navigating from Vim to tmux pane
-let g:tmux_navigator_save_on_switch = 1
 
 
 
@@ -817,6 +814,9 @@ else
             let g:UltiSnipsJumpForwardTrigger = '§'
             let g:UltiSnipsJumpBackwardTrigger = '<s-§>'
             let g:UltiSnipsSnippetDirectories=["/users/riley/.dotfiles/vim/snippets"]
+            "" Vim-Tmux-Navigator
+            " Write all buffers before navigating from Vim to tmux pane
+            let g:tmux_navigator_save_on_switch = 1
 
         endif
     endif
