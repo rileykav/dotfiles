@@ -1,8 +1,10 @@
 """"""""""""""""""""""""""""""""""""""""""""""
 " Add Plugins (seems important to put this hear)
 """"""""""""""""""""""""""""""""""""""""""""""
-
 source ~/.dotfiles/vim/plugins.vim
+
+
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -99,7 +101,6 @@ fun! LocalFilename()
     let l:filenamedotextension=expand("%")
     return l:filename
 endfun
-
 
 
 
@@ -317,6 +318,8 @@ au FileType cpp set foldlevel=2
 
 
 
+
+
 """"""""""""""""""""""""""""""""""""""""""""""
 " Useful
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -333,6 +336,10 @@ fun! CleanExtraSpaces()
     call setpos('.', save_cursor)
     call setreg('/', old_query)
 endfun
+
+
+
+
 
 
 if has("autocmd")
