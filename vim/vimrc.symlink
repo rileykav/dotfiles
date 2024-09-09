@@ -792,15 +792,28 @@ set shortmess=at
 
 
 
-"--------------- Snippets ---------------"
-let g:UltiSnipsExpandTrigger = '§'
-let g:UltiSnipsJumpForwardTrigger = '§'
-let g:UltiSnipsJumpBackwardTrigger = '<s-§>'
-let g:UltiSnipsSnippetDirectories=["/users/riley/.dotfiles/vim/snippets"]
 
 
 
 
+if has("win32")
+    " Windows Options
+    source ~/.dotfiles/vim/windows.vim
+else
+    if has("unix")
+        let s:uname = system("uname")
+        if s:uname == "Darwin\n"
+            "Mac options here
+            source ~/.dotfiles/vim/mac.vim
+            "--------------- Snippets ---------------"
+            let g:UltiSnipsExpandTrigger = '§'
+            let g:UltiSnipsJumpForwardTrigger = '§'
+            let g:UltiSnipsJumpBackwardTrigger = '<s-§>'
+            let g:UltiSnipsSnippetDirectories=["/users/riley/.dotfiles/vim/snippets"]
+
+        endif
+    endif
+endif
 
 
 
