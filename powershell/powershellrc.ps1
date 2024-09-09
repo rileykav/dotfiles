@@ -75,16 +75,17 @@ function Write-BranchName () {
         }
         else {
             # we're on an actual branch, so print it
-            $Status=$null;
             $Status=$(git status -porcelain)
-            if ($null -eq $Status ){
+            if ($null -ne $(git status -porcelain) ){
+#               Changes to Git
 #                 Write-Host " ($branch)" -ForegroundColor "grey" -NoNewline
-                Write-Host "$($PSStyle.Foreground.FromRgb(0x5a6374))" ($branch)"$($PSStyle.Reset)" -NoNewline
+                Write-Host "$($PSStyle.Foreground.FromRgb(0x5a6374))" 1($branch)"$($PSStyle.Reset)" -NoNewline
             }
             else{
+#               Git Up to Date
                     
 #                 Write-Host " ($branch)" -ForegroundColor "yellow" -NoNewline
-                Write-Host "$($PSStyle.Foreground.FromRgb(0xa020f0))" ($branch)"$($PSStyle.Reset)" -NoNewline
+                Write-Host "$($PSStyle.Foreground.FromRgb(0xa020f0))" 2($branch)"$($PSStyle.Reset)" -NoNewline
             }
         }
     } catch {
