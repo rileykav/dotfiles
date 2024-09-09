@@ -108,6 +108,7 @@ function prompt {
 
 #     Write-Host "`n$base " -NoNewline
     if (Test-Path .git) {
+        $Status = $(git status)
         Write-Host "$($PSStyle.Foreground.FromRgb(0xacda8a))$path$($PSStyle.Reset)" -NoNewline
         Write-BranchName 
     }
