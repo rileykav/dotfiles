@@ -327,7 +327,17 @@ noremap 0 ^
 
 
 "" Aliases
-:command Vimrc :vs ~/.vimrc
+if has("win32")
+    " Windows Options
+    :command Vimrc :vs ~/_vimrc
+else
+    if has("unix")
+        if s:uname == "Darwin\n"
+            "Mac options here
+            :command Vimrc :vs ~/.vimrc
+        endif
+    endif
+endif
 source ~/.dotfiles/vim/abreviations.vim
 :command VimAbreviations :vs ~/.dotfiles/vim/abreviations.vim
 :command VimPlugins :vs ~/.dotfiles/vim/plugins.vim
