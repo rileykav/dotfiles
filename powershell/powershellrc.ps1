@@ -1,6 +1,9 @@
 #https://stackoverflow.com/questions/12143245/powershell-configuration-with-an-rc-like-file
 
 
+Import-Module $HOME\.dotfiles\powershell\alias.ps1
+
+
 $PSStyle.FileInfo.Directory = "`e[36m"
 
 
@@ -141,10 +144,6 @@ function prompt {
     return $prompt
 }
 
-
-
-#test
-#new test
 
 
 
