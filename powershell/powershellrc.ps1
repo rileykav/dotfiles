@@ -86,7 +86,7 @@ function Write-BranchName () {
         }
     } catch {
         # we'll end up here if we're in a newly initiated git repo
-        Write-Host " (no branches yet)" -ForegroundColor "yellow" -NoNewline
+        Write-Host " (no branches yet)" -ForegroundColor "cyan" -NoNewline
     }
 }
 
