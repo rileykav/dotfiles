@@ -32,3 +32,8 @@ function .... {cd ..\..\..}
 
 # Python Alias
 function py {python}
+
+
+# Termianl Alias
+function x {exit} # I'd like to use ,x (same as vim) but powershell gets mad :(
+
