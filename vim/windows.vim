@@ -22,3 +22,19 @@ colorscheme xcodedark
 let &t_EI .= "\<Esc>[2 q"
 " insert mode
 let &t_SI .= "\<Esc>[5 q"
+
+
+
+
+
+
+
+
+
+
+" Set Default shell to Powershell
+:set shell=pwsh " See `:set shell=powershell shellcmdflag=-c shellquote=\" shellxquote=` and the formum https://stackoverflow.com/questions/63607183/open-a-terminal-in-vim-and-execute-a-command-inside-this-terminal-on-windows 
+
+
+
+
