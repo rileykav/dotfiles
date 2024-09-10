@@ -124,11 +124,14 @@ function FirstSessionPrint {
 #     Write-Host $psversion $Date -ForegroundColor "darkgray"
     Write-Host $psversion $Date 
 }   
-cls
+# cls
 FirstSessionPrint
-
+$username
 function prompt {
-    $path = "$($executionContext.SessionState.Path.CurrentLocation)"
+#     $path = "$($executionContext.SessionState.Path.CurrentLocation)"
+#     $path = "$((''+$PWD).replace($HOME, '~'))"
+    $path = Split-Path -leaf -path (Get-Location)
+    $path = $path.replace("$Env:UserName", '~')
     $userPrompt = " $('>' * ($nestedPromptLevel + 1)) "
     $prompt=""
     $prompt+=Write-Host "$($PSStyle.Foreground.FromRgb(0xacda8a))$path$($PSStyle.Reset)" -NoNewline
