@@ -18,6 +18,8 @@ function vimswapfiles {cd $dotfiles\vim\swapfiles}
 function vimbasic {vim -u $dotfiles\vim\basic.vim}
 function vimbasicedit {vim $dotfiles\vim\basic.vim}
 
+function windowsinstall {vim $dotfiles\install-files\windows-install.ps1}
+
 
 function terminalrc {vim $dotfiles\windows-terminal\windows-terminal-settings.json}
 function test {echo test1}
