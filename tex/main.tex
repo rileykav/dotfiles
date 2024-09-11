@@ -1,11 +1,77 @@
 %! TEX root = paper.tex
 % \documentclass[12pt]{book}
 \documentclass[12pt]{article}
-% \documentclass[aps,prl]{revtex4-2}
-% \documentclass[aps,prl,twocolumn]{revtex4-2}
 
-% To compile with XeLatex, use %! TEX program = xelatex on the first line
+%--------------- Standard Packages  ---------------%
+\usepackage[margin=2.5cm]{geometry} % [margin=2.5cm] to change the margin size
+\usepackage[titletoc,title]{appendix}
+\usepackage{color} % So we can mark changes/notes in red
+\usepackage{amssymb} % Contains hslash command, nicer than hbar
+\usepackage{amsmath}
+\usepackage{graphicx} % Including images
+% \usepackage{amsfonts}  % Don't Seem to need
+% \usepackage{amssymb}   % Don't Seem to need
+% \usepackage{cleveref} % Requires amsmath, Dont Seem to need 
+% \usepackage{hyperref} % Needed to change colours, allow for clickable links
+% \hypersetup{
+%     colorlinks=true,
+%     linkcolor=black,
+%     anchorcolor=black,
+%     citecolor=blue,
+%     filecolor=black,
+%     menucolor=black,
+%     runcolor=black,
+%     urlcolor=black
+% }
 
-%%%    %! TEX program = xelatex    (fonts are broken)
-%%%    %! TEX program = lualatex   (doesn't seem to use lualatex)
-%%%    %! TEX program = pdflatex   
+
+
+
+%--------------- Formatting  ---------------%
+% \marginparwidth 2 true cm
+% \setlength{\unitlength}{1mm}
+
+
+%%% Manually place paragraph indentation
+% \setlength{\parindent}{0pt}
+% \newcommand{\ind}{\hspace{2em}} % manual indenting
+\newcommand{\ind}{\hspace{0mm}} % manual indenting
+\numberwithin{equation}{section}
+
+
+
+
+
+
+%--------------- User Commands  ---------------%
+\newcommand{\todo}[1]{{\color{red}Todo: #1}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\red}[1]{{\color{red}#1}}
+\newcommand{\blue}[1]{{\color{blue}#1}}
+\newcommand{\note}[1]{{(\color{red}Note: #1})}
+\newcommand{\addcite}{{[\color{blue}??}]}
+% \newcommand{\addref}{{[\color{red}?find-ref?}]}
+
+
+
+
+%--------------- MathSymbols  ---------------%
+% \renewcommand{\hbar}{\hbar} % hslash requires amssymb
+
+%%% d'alembert symbol (source: paper from Madrid Uni I think)
+\def\dAlembert{\kern1pt\vbox{\hrule height 1.2pt\hbox{\vrule width 1.2pt\hskip 3pt
+   \vbox{\vskip 6pt}\hskip 3pt\vrule width 0.6pt}\hrule height 0.6pt}\kern1pt}
+%% Alternative
+
+% \newcommand{\dAlembert}{\square}
+
+
+
+
+\begin{document}
+
+
+
+
+\end{document}
+
