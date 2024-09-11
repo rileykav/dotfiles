@@ -20,7 +20,6 @@ function vimbasicedit {vim $dotfiles\vim\basic.vim}
 
 function windowsinstall {vim $dotfiles\install-files\windows-install.ps1}
 
-
 function terminalrc {vim $dotfiles\windows-terminal\windows-terminal-settings.json}
 function test {echo test1}
 
@@ -30,6 +29,8 @@ function test {echo test1}
 function o {ii .}
 function winscp {C:\Users\lykav\Documents\Applications\WinSCP.lnk}
 function vlc {& 'C:\Users\lykav\Documents\Applications\VLC media player.lnk'}
+function edge {& "C:\Users\lykav\Documents\Applications\edge.lnk"}
+# function okular {'.\$HOME\AppData\Local\Okular\bin\okular.exe'}
 
 # cd
 function .. {cd ..}
