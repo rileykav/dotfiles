@@ -10,8 +10,13 @@ function psrc {vim $profile}
 function psalias {vim $home\.dotfiles\powershell\alias.ps1}
 function vimrc {vim $home\_vimrc}
 function vimalias {vim $dotfiles\vim\alias.vim}
+function vimfunctions {vim $dotfiles\vim\functions.vim}
+function vimvisuals {vim $dotfiles\vim\visuals.vim}
+function vimfiletypes {vim $dotfiles\vim\filetypes.vim}
 function vimwindows {vim $dotfiles\vim\windows.vim}
 function vimswapfiles {cd $dotfiles\vim\swapfiles}
+function vimbasic {vim -u $dotfiles\vim\basic.vim}
+function vimbasicedit {vim $dotfiles\vim\basic.vim}
 
 
 function terminalrc {vim $dotfiles\windows-terminal\windows-terminal-settings.json}
@@ -35,5 +40,5 @@ function py {python}
 
 
 # Termianl Alias
-function x {exit} # I'd like to use ,x (same as vim) but powershell gets mad :(
+function :x {exit} # I'd like to use ,x (same as vim) but powershell gets mad :(
 
