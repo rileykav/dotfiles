@@ -4,6 +4,11 @@
     "actions": 
     [
         {
+            "command": "closeWindow",
+            "id": "User.closeWindow",
+            "keys": "ctrl+shift+w"
+        },
+        {
             "command": 
             {
                 "action": "multipleActions",
@@ -32,6 +37,7 @@
                     }
                 ]
             },
+            "id": "User.multipleActions.E89B9EB8",
             "name": "Multiplex 2"
         },
         {
@@ -65,15 +71,8 @@
                     }
                 ]
             },
+            "id": "User.multipleActions.C81F58CE",
             "name": "Multiplex 4"
-        },
-        {
-            "command": 
-            {
-                "action": "commandPalette"
-            },
-            "id": "User.commandPalette.D3F0B923",
-            "keys": "f1"
         },
         {
             "command": 
@@ -92,7 +91,31 @@
                 "split": "auto",
                 "splitMode": "duplicate"
             },
+            "keys": "ctrl+shift+\\"
+        },
+        {
+            "command": 
+            {
+                "action": "commandPalette"
+            },
+            "id": "User.commandPalette.D3F0B923",
+            "keys": "f1"
+        },
+        {
+            "command": "unbound",
+            "keys": "alt+f4"
+        },
+        {
+            "command": "unbound",
             "keys": "ctrl+pgup"
+        },
+        {
+            "command": "unbound",
+            "keys": "alt+shift+minus"
+        },
+        {
+            "command": "unbound",
+            "keys": "alt+shift+plus"
         },
         {
             "command": 
@@ -102,25 +125,6 @@
             },
             "id": "User.copy.644BA8F2",
             "keys": "ctrl+c"
-        },
-        {
-            "command": "unbound",
-            "keys": "alt+f4"
-        },
-        {
-            "command": "restartConnection",
-            "id": "User.restartConnection",
-            "keys": "ctrl+r"
-        },
-        {
-            "command": "paste",
-            "id": "User.paste",
-            "keys": "ctrl+v"
-        },
-        {
-            "command": "find",
-            "id": "User.find",
-            "keys": "ctrl+shift+f"
         },
         {
             "command": 
@@ -141,7 +145,31 @@
                     "closePane"
                 ]
             },
+            "id": "User.multipleActions.3E0327E4",
             "name": "restart tab"
+        },
+        {
+            "command": "paste",
+            "id": "User.paste",
+            "keys": "ctrl+v"
+        },
+        {
+            "command": "restartConnection",
+            "id": "User.restartConnection",
+            "keys": "ctrl+r"
+        },
+        {
+            "command": "find",
+            "id": "User.find",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "command": 
+            {
+                "action": "newTab"
+            },
+            "id": "User.newTab.5DEADB41",
+            "keys": "ctrl+t"
         },
         {
             "command": 
@@ -155,6 +183,7 @@
                     "restoreLastClosed"
                 ]
             },
+            "id": "User.multipleActions.B13C4ED4",
             "name": "Restart tab"
         },
         {
@@ -167,22 +196,32 @@
             "keys": "ctrl+l"
         },
         {
-            "command": 
-            {
-                "action": "newTab"
-            },
-            "id": "User.newTab.5DEADB41",
-            "keys": "ctrl+t"
-        },
-        {
-            "command": "closeWindow",
-            "id": "User.closeWindow",
-            "keys": "ctrl+shift+w"
+            "command": "togglePaneZoom",
+            "id": "User.togglePaneZoom",
+            "keys": "ctrl+z"
         },
         {
             "command": "closePane",
             "id": "User.closePane",
             "keys": "ctrl+w"
+        },
+        {
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "down",
+                "splitMode": "duplicate"
+            },
+            "keys": "ctrl+minus"
+        },
+        {
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "right",
+                "splitMode": "duplicate"
+            },
+            "keys": "ctrl+plus"
         }
     ],
     "alwaysShowTabs": true,
