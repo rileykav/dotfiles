@@ -250,8 +250,13 @@ let g:vimtex_compiler_latexmk = {
 " let g:vimtex_compiler_progname = 'latexmk'
 if has("win32")
 "         There is a command to view pdf in VimTex: VimTexView
-"         let g:vimtex_view_method = 'edge'   "Invalid viewer
-"         let g:vimtex_view_method = '$HOME\Documents\Applications\SumatraPDF-3.5.2-64.exe'   "Invalid viewer
+        let g:vimtex_view_method = 'general'
+        let g:vimtex_view_general_viewer = 'sumatra'
+"         let g:vimtex_view_general_viewer = 'msedge'
+"         let g:vimtex_view_general_viewer = 'arc'   " Refuses to open files?
+"         let g:vimtex_view_general_viewer = 'okular'
+"         let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'   " Broken?
+"         let g:vimtex_view_general_viewer = 'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'   "Invalid viewer
 else
     if has("macunix")
         let g:vimtex_view_method = 'skim'
@@ -434,7 +439,7 @@ au FileType tex nnoremap <leader>o :VimtexView<cr>
 if has("win32")
     " Windows Options
     
-            au User VimtexEventCompileSuccess :echo "done"
+"             au User VimtexEventCompileSuccess :echo "done"
 
 else
     if has("unix")
