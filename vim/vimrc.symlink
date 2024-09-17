@@ -638,7 +638,7 @@ else
             let g:UltiSnipsExpandTrigger = '§'
             let g:UltiSnipsJumpForwardTrigger = '§'
             let g:UltiSnipsJumpBackwardTrigger = '<s-§>'
-            let g:UltiSnipsSnippetDirectories=["$HOME/.dotfiles/vim/snippets"]
+            let g:UltiSnipsSnippetDirectories=["/users/riley/.dotfiles/vim/snippets"] " Cannot use $HOME here?
             "" Vim-Tmux-Navigator
             " Write all buffers before navigating from Vim to tmux pane
             let g:tmux_navigator_save_on_switch = 1
@@ -658,11 +658,6 @@ autocmd BufRead,BufNewFile *txt set spell
 
 
 
-"--------------- Snippets ---------------"
-let g:UltiSnipsExpandTrigger = '§'
-let g:UltiSnipsJumpForwardTrigger = '§'
-let g:UltiSnipsJumpBackwardTrigger = '<s-§>'
-let g:UltiSnipsSnippetDirectories=["$HOME/.dotfiles/vim/snippets"]
 
 
 
