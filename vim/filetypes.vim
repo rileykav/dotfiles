@@ -360,8 +360,11 @@ endif
 " endfun
 "     
 " autocmd BufWrite FileType markdown :call MarkdownCompile
-
-
+" augroup markdown
+"     au!
+"     au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+" augroup END
+set conceallevel=2
 
 " syntax enable
 " Viewer options: One may configure the viewer either by specifying a built-in
@@ -514,10 +517,13 @@ fun! LoadTexTemplate()
     set cmdheight=2
 "     0r $HOME/.dotfiles/vim/boilerplate/latex/riley_base.tex
     0r $HOME/.dotfiles/tex/main.tex
+"     0r $HOME/.dotfiles/vim/boilerplate/latex/riley_base.tex
+    0r $HOME/.dotfiles/tex/main.tex
     set cmdheight=1
 endfun
 
 autocmd BufNewFile *.tex call LoadTexTemplate()
+" autocmd BufNewFile *.tex 0r $HOME/.dotfiles/vim/boilerplate/latex/riley_base.tex
 " autocmd BufNewFile *.tex 0r $HOME/.dotfiles/vim/boilerplate/latex/riley_base.tex
 "
 "
