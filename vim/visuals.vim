@@ -257,4 +257,6 @@ let g:lightline = {
       \ 'subseparator': { 'left': ' ', 'right': ' ' }
       \ }
 
-colorscheme xcodedark
+" colorscheme xcodedark
+" colorscheme everforest
+colorscheme edge
