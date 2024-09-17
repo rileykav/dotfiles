@@ -24,6 +24,7 @@ function terminalrc {vim $dotfiles\windows-terminal\windows-terminal-settings.js
 function test {echo test1}
 
 
+Set-Alias -name todo -value ttdl
 
 # Applications
 function o {ii .}
@@ -45,3 +46,6 @@ function py {python}
 # Termianl Alias
 function :x {exit} # I'd like to use ,x (same as vim) but powershell gets mad :(
 
+
+
+function pshistory {cat (Get-PSReadlineOption).HistorySavePath | Select-String -Pattern "winget install" -SimpleMatch | Set-Content winget-installes.txt}
