@@ -15,6 +15,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'arzg/vim-colors-xcode' "Highly Recommend
 Plugin 'preservim/nerdtree'
 Plugin 'sainnhe/everforest'
+Plugin 'sainnhe/edge'
 Plugin 'pseewald/vim-anyfold'
 Plugin 'itchyny/lightline.vim'
 Plugin 'tpope/vim-surround'
