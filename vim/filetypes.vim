@@ -113,53 +113,18 @@ au FileType python map <buffer> <leader>D ?def
 au FileType python nnoremap <leader>; mmgI#<esc>`mh
 au FileType python nnoremap <leader>' mmgI<esc>x`mh
 " au FileType python nnoremap <leader>` :call VimuxRunCommand('./'w:filename)
-au FileType python nnoremap <leader>` :call VimuxRunCommand("py ".expand("%"))<cr>
-au FileType python let comment = "#"
+" au FileType python nnoremap <leader>` :call VimuxRunCommand("py ".expand("%"))<cr>
 
 
 
 
 
 " Adds python boilerplate
-" autocmd BufNewFile *.py 0r /Users/riley/.dotfiles/vim/boilerplate/python/riley_base.py
-autocmd BufNewFile *.py call NewPythonFile()
-function NewPythonFile()
-    let date=system('date')[0:-2] " Slice removes a ^@ character at end?
-    let user='riley'
-"     let pypath='/usr/local/bin/python3.10'
-    let pypath=system('echo $PYTHONPATH')[0:-2]
-    call append(0, "#!".pypath)
-    call append(1, "# -*- coding: utf-8 -*-")
-    call append(2, '"""')
-    call append(3, "Created on ".date)
-    call append(4, "")
-    call append(5, "@author: ".user)
-    call append(6, '"""')
-endfunction
-
-
-""""""""""""""""""""""""""""""""""""""""""""""
-" C Section
-""""""""""""""""""""""""""""""""""""""""""""""
+" autocmd BufNewFile *.py 0r $HOME/.dotfiles/vim/boilerplate/python/riley_base.py
 
 
 
 
-
-
-""""""""""""""""""""""""""""""""""""""""""""""
-" C++ Section
-""""""""""""""""""""""""""""""""""""""""""""""
-autocmd BufNewFile *.cpp call NewCPPFile()
-function NewCPPFile()
-    let date=system('date')[0:-2] " Slice removes a ^@ character at end?
-    let user='riley'
-"     let pypath='/usr/local/bin/python3.10'
-    call append(0, "// Created on ".date)
-    call append(1, "// @author: ".user)
-    call append(2, "")
-    call append(3, "#include <iostream>")
-endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " Javascript Section
@@ -228,11 +193,6 @@ autocmd BufRead *.md nnoremap o A<cr>
 """"""""""""""""""""""""""""""""""""""""""""""
 " Markdown
 """"""""""""""""""""""""""""""""""""""""""""""
-function! OpenMarkdownViewer()
-    call VimuxRunCommandInDir("open", 1)
-
-
-endfunction    
 let vim_markdown_folding_disabled = 1
 let g:vim_markdown_math = 1
 autocmd BufRead Markdown set textwidth=0 wrapmargin=0
@@ -240,12 +200,11 @@ autocmd BufRead Markdown nnoremap <leader>a mm0la~~<esc>A~~<esc>`m
 autocmd BufRead *md nnoremap <leader>a mm0la~~<esc>A~~<esc>`m
 autocmd BufRead *md nnoremap <leader>A mm0llxxA<esc>xx`m
 nnoremap <leader>i i$\quad$<esc>o
-autocmd FileType Markdown nnoremap <leader>o :call OpenMarkdownViewer()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " Latex
 """"""""""""""""""""""""""""""""""""""""""""""
-
+set noshellslash
 " Latex Compilation
 " There are two ways to compile latex code:
 "   1. vimtex
@@ -253,59 +212,352 @@ autocmd FileType Markdown nnoremap <leader>o :call OpenMarkdownViewer()<cr>
 " Using vimtex will compile the code inside vim and gives very good error documentation
 " Using vimux, ie. vim+tmux, we send a runner to compile latex manually in a terminal
 
+"" Vimtex
+" Haven't figure it out yet, but try mess around with lualatex, and 
+" specifically with the \math
+
+
+
+" To use with MacTex run the following:
+"   % type latexmk
+"   latexmk is /usr/loval/bin/latexmk
+"   % sudo ln -s /usr/../latexmk /usr/local/bin
+"
+" Or try the directory: /Library/TeX/texbin/latexmk
+" Might be the same file ?
+"
+" For multifle support, use one of the following
+" 1. Set up a main.tex file, and the following to your vimrc
+"   autocmd BufReadPre *.tex let b:vimtex_main = 'main.tex'
+"
+" 2. At the start of all none main files include as the first line:
+"   %! TEX root = <main-tex-file-name>.tex
+"
+" I have the second set up so that my tex files follow a patern of name.tex 
+" as the main file, and all subiles are name.appendix.tex, name.bib.tex etc.
+"
+let g:vimtex_compiler_enabled = 1 " (Dis/En)ables Compiler
+"
+let g:vimtex_view_method = 'general'
+let g:vimtex_view_general_viewer = 'texworks.exe'
+let g:vimtex_compiler_latexmk = {
+    \ 'callback' : 0,
+    \ 'continuous' : 0,
+    \}
+" Set tex type to latex
+" let g:tex_flavor = 'latex' "Never got working
+" let g:vimtex_compiler_progname = 'latexmk'
+" let g:vimtex_compiler_progname = 'latexmk'
+if has("win32")
+"         There is a command to view pdf in VimTex: VimTexView
+        let g:vimtex_view_method = 'general'
+        let g:vimtex_view_general_viewer = 'sumatra'
+"         let g:vimtex_view_general_viewer = 'msedge'
+"         let g:vimtex_view_general_viewer = 'arc'   " Refuses to open files?
+"         let g:vimtex_view_general_viewer = 'okular'
+"         let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'   " Broken?
+"         let g:vimtex_view_general_viewer = 'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'   "Invalid viewer
+else
+    if has("macunix")
+        let g:vimtex_view_method = 'skim'
+    endif
+endif
+" let g:vimtex_compiler_latexmk_engines = {
+"         \ '_'                : '-pdf',
+"         \ 'pdflatex'         : '-pdf',
+"         \ 'dvipdfex'         : '-pdfdvi',
+"         \ 'lualatex'         : '-lualatex',
+"         \ 'xelatex'          : '-xelatex',
+"         \ 'context (pdftex)' : '-pdf -pdflatex=texexec',
+"         \ 'context (luatex)' : '-pdf -pdflatex=context',
+"         \ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
+"         \}
+" let g:vimtex_compiler_engine = 'latexmk'
+" let g:vimtex_compiler_method = 'latexmk' "Default setting
+" let g:vimtex_compiler_method = 'lualatex' "Default setting
+" let g:vimtex_compiler_latexmk = {
+"         \ 'build_dir' : '',
+"         \ 'callback' : 1,
+"         \ 'continuous' : 1,
+"         \ 'executable' : 'latexmk',
+"         \ 'hooks' : [],
+"         \ 'options' : [
+"         \   '-lualatex',
+"         \   '-quiet',
+"         \   '-file-line-error',
+"         \   '-synctex=1',
+"         \   '-interaction=nonstopmode',
+"         \ ],
+"         \}
+" let g:vimtex_compiler_latexmk = {
+"         \ 'build_dir' : '',
+"         \ 'callback' : 1,
+"         \ 'continuous' : 1,
+"         \ 'executable' : 'latexmk',
+"         \ 'hooks' : [],
+"         \ 'options' : [
+"         \   '-lualatex',
+"         \   '-quiet',
+"         \ ],
+        \}
+" let g:vimtex_compiler_latexrun = {
+"         \ 'build_dir' : '',
+"         \ 'options' : [
+"         \   '-verbose-cmds',
+"         \   '--latex-args="-synctex=1"',
+"         \ ],
+"         \}
+
+" let g:vimtex_syntax_conceal_default = 0 " Doesn't work....
+" let g:vimtex_compiler_latexmk = {
+"         \ 'build_dir' : '',
+"         \ 'callback' : 1,
+"         \ 'continuous' : 1,
+"         \ 'executable' : 'latexmk',
+"         \ 'hooks' : [],
+"         \ 'options' : [
+"         \   '-quiet',
+"         \   '-synctex=1',
+"         \   '-interaction=nonstopmode',
+"         \ ],
+"         \}
+" let g:vimtex_compiler_latexmk = {
+"     \ 'build_dir' : '',
+"     \ 'callback' : 1,
+"     \ 'continuous' : 1,
+"     \ 'executable' : 'latexmk',
+"     \ 'hooks' : [],
+"     \ 'options' : [
+"     \   '-verbose',
+"     \   '-file-line-error',
+"     \   '-synctex=1',
+"     \   '-interaction=nonstopmode',
+"     \ ],
+"     \}
+
+
+
+"--------------- Lualatex (Not Working) ---------------"
+" let g:vimtex_compiler_progname = 'nvr'
+" let g:vimtex_compiler_latexmk_engine = 'lualatex'
+" set nocompatible
+" filetype plugin indent on
+" syntax enable
+" let g:vimtex_compiler_progname = 'nvr'
+" let g:tex_flavor = 'latex'
+" let g:vimtex_view_method = 'skim'
+" let g:vimtex_quickfix_mode = 0
+" let g:vimtex_compiler_latexmk = {
+"   \ 'build_dir' : 'dist',
+"   \}
+
+
+
+
+"--------------- Markdown ---------------"
+" fun MarkdownCompile()
+"     call VimuxRunCommandInDir("", 0)
+" endfun
+"     
+" autocmd BufWrite FileType markdown :call MarkdownCompile
+
+
+
+" syntax enable
+" Viewer options: One may configure the viewer either by specifying a built-in
+" viewer method:
+let maplocalleader = ","
+" let g:vimtex_indent_enabled = 0
+" UltiSnips
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" Ignores unnecessary warnings
+let g:vimtex_quickfix_ignore_filters = [
+  \'Package natbib Warning: Citation',  
+  \'LaTeX Warning: Reference',          
+  \'LaTeX Warning: There were undefined references',          
+  \'LaTeX Warning: Label(s) may have changed.',          
+  \'Underfull \\hbox (badness [0-9]*) in ',
+  \'Overfull \\hbox ([0-9]*.[0-9]*pt too wide) in ',
+  \'Overfull \\vbox ([0-9]*.[0-9]*pt too high) detected ',
+  \'Package hyperref Warning: Token not allowed in a PDF string',
+  \"Package option `hyperref' is obsolete and ignored",
+  \'Package typearea Warning: Bad type area settings!',
+  \'Package nameref Warning: The definition of \\label has changed!',
+  \'Marginpar on page[0-9]* moved',
+  \'Marginpar on page[0-9]* moved',
+  \'Marginpar',
+  \'Overfull',
+  \'LaTeX Warning: Float too large for page',
+  \'tikz-feynman Warning',
+  \"`h' float specifier",
+  \"requested document class",
+  \"Missing",
+  \"A float is stuck",
+  \"empty link",
+  \"Not loaded"
+  \]
+
+" Vim-Latex " Disabled
+set iskeyword+=: "Enables fig:<autocompletion> with <C-n> 
+set iskeyword-=} " word boundary
+"let b:suppress_latex_suite = 1 "Disables vim-latex
+
+
 
 set shortmess=a
-""" Vimux
-fun! CleanCurrentTex()
-    call VimuxRunCommandInDir("cleantex", 1)
-endfun
-fun! OpenTexPdf()
-    call VimuxRunCommandInDir("opentexpdf", 1)
-    call VimuxRunCommandInDir("updateduplicatetexpdf", 1)
-endfun
-fun! OpenDuplicateTexPdf()
-    call VimuxRunCommandInDir("openduplicatetexpdf", 1)
-endfun
-fun! OpenCurrentTexmaker()
-    w
-    call VimuxRunCommandInDir("opencurrenttexmaker", 1)
-endfun
-fun! RunCurrentScriptandOpenTexPdf()
-    w
-    call VimuxRunCommandInDir("run-script", 1)
-    call VimuxRunCommandInDir("opentexpdf", 1)
+
+""" Vimtex
+fun! VimtexSaveContinuesCompileStart()
     set cmdheight=2
-    set cmdheight=1
-    echo "Latexmk: Compilation Complete, touching Preview"
-endfun
-fun! RunCurrentScriptNoSaveandUpdatePreview()
-    call VimuxRunCommandInDir("run-script", 1)
-    call VimuxRunCommandInDir("opentexpdf", 1)
-    call VimuxRunCommandInDir("updateduplicatetexpdf", 1)
-    set cmdheight=2
-    set cmdheight=1
-    echo "Latexmk: Compilation Complete, touching Preview"
-endfun
-fun! RunCurrentScriptandUpdatePreview()
     w
-    call VimuxRunCommandInDir("run-script", 1)
-    call VimuxRunCommandInDir("opentexpdf", 1)
-    call VimuxRunCommandInDir("updateduplicatetexpdf", 1)
-    set cmdheight=2
-    echo "Latexmk: Compilation Complete, touching Preview"
+    VimtexCompile
     set cmdheight=1
 endfun
-fun! CdToFileDirectory()
+fun! VimtexSaveCompileOnce()
+    set cmdheight=2
     w
-    call VimuxRunCommandInDir("cdtofile", 1)
+    VimtexCompileSS
+    set cmdheight=1
+endfun
+autocmd FileType tex nnoremap <leader>ll :call VimtexSaveContinuesCompileStart()<cr>
+autocmd FileType tex nnoremap <leader>; :call VimtexSaveCompileOnce()<cr>
+autocmd FileType tex nnoremap <leader>td i\todo[inline]{}<esc>
+autocmd FileType tex set iskeyword-=_
+
+"
+" Updates preview after every succesful compile, which is after every save
+"""""""""""""""""""""""""""""""""""""""
+""""" !!!! Important, keep only one enabled
+" au User VimtexEventCompileSuccess :call VimuxRunCommandInDir("touchpreviewnosidebar", 1)
+" autocmd BufWrite *.tex :call RunCurrentScriptNoSaveandUpdatePreview()
+
+au FileType tex nnoremap <leader>o :VimtexView<cr>
+
+if has("win32")
+    " Windows Options
+    
+"             au User VimtexEventCompileSuccess :echo "done"
+
+else
+    if has("unix")
+        if has("macunix")
+
+            au User VimtexEventCompileSuccess :call VimuxRunCommandInDir("updateduplicatetexpdf", 1)
+        endif
+    endif
+endif
+
+
+" Table of Contents
+" let g:vimtex_toc_config = {
+"     \ 'layer_status': {
+"         \ 'content': 1,
+"         \ 'label': 0,
+"         \ 'todo': 0,
+"         \ 'include': 0
+"     \ },
+"     \ 'show_help': 0,
+"     \ 'indent_levels': 0
+" \ }
+
+"     \ 'resize': 1,
+"     \ 'split_width': 26
+
+" let g:vimtex_fold_enabled=1
+
+
+
+
+
+
+
+""" Context aware highlighting
+" function! MathHighlight()
+""""" Define certain regions
+""""" Block math. Look for "$$[anything]$$"
+"     syn region red start="/\red/{" end="/}"
+""""" inline math. Look for "$[not $][anything]$"
+"     syn match math_block '\$[^$].\{-}\$'
+
+"" Actually highlight those regions.
+"       hi red ctermfg=red
+" endfunction
+" autocmd BufRead,BufNewFile,BufEnter *.md,*.markdown call MathHighlight()
+
+" Example for setting bold text to red
+" hi texStlyeBold ctermfg=red
+
+
+
+
+
+
+
+
+
+
+
+
+"
+" Updates preview after every succesful compile, which is after every save
+"""""""""""""""""""""""""""""""""""""""
+""""" !!!! Important, keep only one enabled
+" au User VimtexEventCompileSuccess :call VimuxRunCommandInDir("touchpreviewnosidebar", 1)
+" autocmd BufWrite *.tex :call RunCurrentScriptNoSaveandUpdatePreview()
+
+
+
+fun! LoadTexTemplate()
+    set cmdheight=2
+"     0r $HOME/.dotfiles/vim/boilerplate/latex/riley_base.tex
+    0r $HOME/.dotfiles/tex/main.tex
+    set cmdheight=1
 endfun
 
-fun! TexOpenCitations()
-    call VimuxRunCommandInDir("open -a Skim Citations/Other/*", 0)
-    call VimuxRunCommandInDir("opentexpdf", 1)
-    call VimuxRunCommandInDir("osascript $HOME/.dotfiles/applescript/scripts/preview-merge-all.scpt", 0)
-    call VimuxRunCommandInDir("touchpreview", 1)
-endfun
+autocmd BufNewFile *.tex call LoadTexTemplate()
+" autocmd BufNewFile *.tex 0r $HOME/.dotfiles/vim/boilerplate/latex/riley_base.tex
+"
+"
+"
+" autocmd FileType tex nnoremap <leader>; :call VimtexSaveCompile()<cr>
+
+
+
+
+
+" Latex writing
+" autocmd FileType tex nnoremap <leader>bb i\begin{align}<esc>o\end{align}<esc>O<tab><backspace>
+" autocmd FileType tex nnoremap <leader>bl i\begin{itemize}<esc>o\end{itemize}<esc>O<tab><backspace><backspace>\item<space>
+" autocmd FileType tex nnoremap <leader>be i\begin{enumerate}<esc>o\end{enumerate}<esc>O<backspace>\item<space>
+" autocmd FileType tex nnoremap <leader>bi i\begin{figure}<esc>o\end{figure}<esc>O\centering<cr>\includegraphics{images/}<cr>\label{fig1}<esc>kA<esc>i
+
+"inoremap <C-i> <cr><backspace>\item<space>
+" autocmd FileType tex nnoremap <leader>CM
+
+" Checkmark
+autocmd FileType tex nnoremap <leader>/\ mm0eea[\checkmark]<esc>`m14l
+" autocmd FileType tex nnoremap <leader>/\ mm0eea[\XSolidBrush]<esc>`m14l
+autocmd FileType tex nnoremap <leader>/. 0et]di]hxx
+autocmd FileType tex nnoremap <leader>aa mmA\\<esc>0t=a&<esc>`ml
+autocmd FileType tex vnoremap <C-w> g<C-g>
+autocmd FileType tex set complete-=i
+" autocmd FileType tex inoremap <tab> <c-x><c-o>
+" autocmd FileType tex inoremap <c-tab> <tab>
+
+function! CleverTab()
+	   if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+	      return "\<Tab>"
+	   else
+	      return "\<C-x>\<C-o>"
+	   endif
+endfunction
+autocmd FileType tex inoremap <Tab> <C-R>=CleverTab()<CR>
+autocmd FileType tex nnoremap <leader>w :wa
+" inoremap <Tab> <C-x>CleverTab()
+
 
 function! NotesOpen()
     let NumFiles=0
@@ -356,156 +608,6 @@ function! ThesisOpen()
     echo "Opened ".NumFiles." Files"
 endfunction
 command ThesisOpen call ThesisOpen()
-
-nnoremap <leader>z :call RunCurrentScript()<cr>
-autocmd FileType tex nnoremap <leader>~ :call RunCurrentScriptandOpenTexPdf()<cr>
-autocmd FileType tex nnoremap <leader>` :call RunCurrentScriptandUpdatePreview()<cr>
-autocmd FileType tex nnoremap <leader>c :call CleanCurrentTex()<cr>
-autocmd FileType tex nnoremap <leader>o :call OpenTexPdf()<cr>
-autocmd FileType tex nnoremap <leader>O :call OpenDuplicateTexPdf()<cr>
-autocmd FileType tex nnoremap <leader>m :call OpenCurrentTexmaker()<cr>
-autocmd FileType tex nnoremap <leader>tc :call TexOpenCitations()<cr>
-
-""" Vimtex
-fun! VimtexSaveContinuesCompileStart()
-    set cmdheight=2
-    w
-    VimtexCompile
-    set cmdheight=1
-endfun
-fun! VimtexSaveCompileOnce()
-    set cmdheight=2
-    w
-    VimtexCompileSS
-    set cmdheight=1
-endfun
-autocmd FileType tex nnoremap <leader>ll :call VimtexSaveContinuesCompileStart()<cr>
-autocmd FileType tex nnoremap <leader>; :call VimtexSaveCompileOnce()<cr>
-
-autocmd FileType tex nnoremap <leader>td i\todo[inline]{}<esc>
-
-autocmd FileType tex set iskeyword-=_
-
-
-
-" Table of Contents
-let g:vimtex_toc_config = {
-    \ 'layer_status': {
-        \ 'content': 1,
-        \ 'label': 0,
-        \ 'todo': 0,
-        \ 'include': 0
-    \ },
-    \ 'show_help': 0,
-    \ 'indent_levels': 0
-\ }
-
-"     \ 'resize': 1,
-"     \ 'split_width': 26
-
-" let g:vimtex_fold_enabled=1
-
-
-
-
-
-
-
-""" Context aware highlighting
-" function! MathHighlight()
-""""" Define certain regions
-""""" Block math. Look for "$$[anything]$$"
-"     syn region red start="/\red/{" end="/}"
-""""" inline math. Look for "$[not $][anything]$"
-"     syn match math_block '\$[^$].\{-}\$'
-
-"" Actually highlight those regions.
-"       hi red ctermfg=red
-" endfunction
-" autocmd BufRead,BufNewFile,BufEnter *.md,*.markdown call MathHighlight()
-
-" Example for setting bold text to red
-" hi texStlyeBold ctermfg=red
-
-
-
-
-
-
-
-
-
-
-
-
-"
-" Updates preview after every succesful compile, which is after every save
-"""""""""""""""""""""""""""""""""""""""
-""""" !!!! Important, keep only one enabled
-" au User VimtexEventCompileSuccess :call VimuxRunCommandInDir("touchpreviewnosidebar", 1)
-" autocmd BufWrite *.tex :call RunCurrentScriptNoSaveandUpdatePreview()
-
-au User VimtexEventCompileSuccess :call VimuxRunCommandInDir("updateduplicatetexpdf", 1)
-
-
-fun! LoadTexTemplate()
-    set cmdheight=2
-    0r /Users/riley/.dotfiles/vim/boilerplate/latex/riley_base.tex
-    set cmdheight=1
-endfun
-
-autocmd BufNewFile *.tex call LoadTexTemplate()
-" autocmd BufNewFile *.tex 0r /Users/riley/.dotfiles/vim/boilerplate/latex/riley_base.tex
-"
-"
-"
-" autocmd FileType tex nnoremap <leader>; :call VimtexSaveCompile()<cr>
-
-
-
-
-
-" Latex writing
-" autocmd FileType tex nnoremap <leader>bb i\begin{align}<esc>o\end{align}<esc>O<tab><backspace>
-" autocmd FileType tex nnoremap <leader>bl i\begin{itemize}<esc>o\end{itemize}<esc>O<tab><backspace><backspace>\item<space>
-" autocmd FileType tex nnoremap <leader>be i\begin{enumerate}<esc>o\end{enumerate}<esc>O<backspace>\item<space>
-" autocmd FileType tex nnoremap <leader>bi i\begin{figure}<esc>o\end{figure}<esc>O\centering<cr>\includegraphics{images/}<cr>\label{fig1}<esc>kA<esc>i
-
-"inoremap <C-i> <cr><backspace>\item<space>
-" autocmd FileType tex nnoremap <leader>CM
-
-" Checkmark
-autocmd FileType tex nnoremap <leader>/\ mm0eea[\checkmark]<esc>`m14l
-" autocmd FileType tex nnoremap <leader>/\ mm0eea[\XSolidBrush]<esc>`m14l
-autocmd FileType tex nnoremap <leader>/. 0et]di]hxx
-autocmd FileType tex nnoremap <leader>aa mmA\\<esc>0t=a&<esc>`ml
-autocmd FileType tex vnoremap <C-w> g<C-g>
-autocmd FileType tex set complete-=i
-" autocmd FileType tex inoremap <tab> <c-x><c-o>
-" autocmd FileType tex inoremap <c-tab> <tab>
-
-function! CleverTab()
-	   if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-	      return "\<Tab>"
-	   else
-	      return "\<C-x>\<C-o>"
-	   endif
-endfunction
-autocmd FileType tex inoremap <Tab> <C-R>=CleverTab()<CR>
-autocmd FileType tex nnoremap <leader>w :wa
-" inoremap <Tab> <C-x>CleverTab()
-""""""""""""""""""""""""""""""""""""""""""""""
-" Octave Section
-""""""""""""""""""""""""""""""""""""""""""""""
-au FileType octave nnoremap ; mmA;<esc>`m
-function SaveAndRunOctave()
-    w
-    VimuxRunCommand(LocalFilename())
-
-endfunction
-au FileType octave nnoremap <leader>z :call SaveAndRunOctave()<cr>
-au FileType octave nnoremap <leader>cl :VimuxRunCommand('clc')<cr>
-
 
 
 
