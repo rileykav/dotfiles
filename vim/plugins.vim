@@ -28,8 +28,10 @@ Plugin 'vim-scripts/applescript.vim'
 Plugin 'lervag/vimtex'          " Latex
 Plugin 'aclements/latexrun'
 Plugin 'jvirtanen/vim-octave'
+Plugin 'preservim/vim-markdown' 
+" Plugin 'tpope/vim-markdown'   
+" Plugin 'jtratner/vim-flavored-markdown'
 
-Plugin 'preservim/vim-markdown'
 
 
 if has("win32")
@@ -50,7 +52,7 @@ else
         Plugin 'christoomey/vim-tmux-navigator'
         Plugin 'christoomey/vim-tmux-runner'
  
-        Plugin 'SirVer/ultisnips'
+        Plugin 'sirver/ultisnips'
 "         Plugin 'honza/vim-snippets'
         endif
     endif

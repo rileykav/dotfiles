@@ -1,11 +1,8 @@
+
 """"""""""""""""""""""""""""""""""""""""""""""
 " Add Plugins (seems important to put this hear)
 """"""""""""""""""""""""""""""""""""""""""""""
 source ~/.dotfiles/vim/plugins.vim
-
-
-
-
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " Core Vim Setting
@@ -301,7 +298,6 @@ nnoremap <leader>k :m -2<cr>
 
 
 
-
 " Parenthesis and Brackets
 
 "vnorenoremap $1 <esc>`>a)<esc>`<i(<esc>
@@ -404,9 +400,6 @@ if has("autocmd")
     autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 endif
 
-autocmd QuitPre *.tex {
-    call CleanCurrentTex()
-    }
 
 
 " Pressing ,ss will toggle and untoggle spell checking
@@ -433,231 +426,10 @@ endtry
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""
 
-"" Vimux
-let dir = expand('%:p:h')
-
-nnoremap <leader>d :call VimuxRunCommand("cd '" . dir . "'")<cr>
-nnoremap <leader>. :call VimuxPromptCommand()<cr>
-nnoremap <leader>saf :call VimuxPromptCommand("safari-search ")<cr>
-let g:VimuxOrientation = "v"
-
-fun Foo(bar)
-    echo a:bar
-endfun
-
-fun! SafariSearch(search_term="false00")
-    if a:search_term=="false00"
-        let local_search=input("Safari Search? ")
-    else
-        let local_search=a:search_term
-    endif
-    VimuxRunCommand('safari-search "' . local_search . '" && open /Applications/Safari.app')
-endfun
-
-nnoremap <leader>saf :call SafariSearch()<cr>
-function! s:get_visual_selection()
-    " Credit to xolox at https://stackoverflow.com/questions/1533565/how-to-get-visually-selected-text-in-vimscript
-    " Why is this not a built-in Vim script function?!
-    let [line_start, column_start] = getpos("'<")[1:2]
-    let [line_end, column_end] = getpos("'>")[1:2]
-    let lines = getline(line_start, line_end)
-    if len(lines) == 0
-        return ''
-    endif
-    let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
-    let lines[0] = lines[0][column_start - 1:]
-    return join(lines, "\n")
-endfunction
-
-function! VisualSearch()
-    let search=s:get_visual_selection()
-    call SafariSearch(search)
-endfunction
-xnoremap <leader>saf :call VisualSearch()<cr>
-
-
-" Saves file Run script in tmux shell bellow (doesnt need executible if sh or py)
-fun! RunCurrentScript()
-    w
-    call VimuxRunCommandInDir("run-script", 1)
-    set cmdheight=2
-    echo "Script Complete"
-    set cmdheight=1
-endfun
-
-
-
-"" Vimtex
-" Haven't figure it out yet, but try mess around with lualatex, and 
-" specifically with the \math
-
-
-
-" To use with MacTex run the following:
-"   % type latexmk
-"   latexmk is /usr/loval/bin/latexmk
-"   % sudo ln -s /usr/../latexmk /usr/local/bin
-"
-" Or try the directory: /Library/TeX/texbin/latexmk
-" Might be the same file ?
-"
-" For multifle support, use one of the following
-" 1. Set up a main.tex file, and the following to your vimrc
-"   autocmd BufReadPre *.tex let b:vimtex_main = 'main.tex'
-"
-" 2. At the start of all none main files include as the first line:
-"   %! TEX root = <main-tex-file-name>.tex
-"
-" I have the second set up so that my tex files follow a patern of name.tex 
-" as the main file, and all subiles are name.appendix.tex, name.bib.tex etc.
-"
-"
-" Set tex type to latex
-" let g:tex_flavor = 'latex' "Never got working
-let g:vimtex_compiler_enabled = 1 " (Dis/En)ables Compiler
-" let g:vimtex_compiler_progname = 'latexmk'
-let g:vimtex_view_method = 'skim'
-let g:vimtex_compiler_latexmk_engines = {
-        \ '_'                : '-pdf',
-        \ 'pdflatex'         : '-pdf',
-        \ 'dvipdfex'         : '-pdfdvi',
-        \ 'lualatex'         : '-lualatex',
-        \ 'xelatex'          : '-xelatex',
-        \ 'context (pdftex)' : '-pdf -pdflatex=texexec',
-        \ 'context (luatex)' : '-pdf -pdflatex=context',
-        \ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
-        \}
-" let g:vimtex_compiler_engine = 'latexmk'
-" let g:vimtex_compiler_method = 'latexmk' "Default setting
-" let g:vimtex_compiler_method = 'lualatex' "Default setting
-" let g:vimtex_compiler_latexmk = {
-"         \ 'build_dir' : '',
-"         \ 'callback' : 1,
-"         \ 'continuous' : 1,
-"         \ 'executable' : 'latexmk',
-"         \ 'hooks' : [],
-"         \ 'options' : [
-"         \   '-lualatex',
-"         \   '-quiet',
-"         \   '-file-line-error',
-"         \   '-synctex=1',
-"         \   '-interaction=nonstopmode',
-"         \ ],
-"         \}
-" let g:vimtex_compiler_latexmk = {
-"         \ 'build_dir' : '',
-"         \ 'callback' : 1,
-"         \ 'continuous' : 1,
-"         \ 'executable' : 'latexmk',
-"         \ 'hooks' : [],
-"         \ 'options' : [
-"         \   '-lualatex',
-"         \   '-quiet',
-"         \ ],
-"         \}
-let g:vimtex_compiler_latexrun = {
-        \ 'build_dir' : '',
-        \ 'options' : [
-        \   '-verbose-cmds',
-        \   '--latex-args="-synctex=1"',
-        \ ],
-        \}
-
-" let g:vimtex_syntax_conceal_default = 0 " Doesn't work....
-" let g:vimtex_compiler_latexmk = {
-"         \ 'build_dir' : '',
-"         \ 'callback' : 1,
-"         \ 'continuous' : 1,
-"         \ 'executable' : 'latexmk',
-"         \ 'hooks' : [],
-"         \ 'options' : [
-"         \   '-quiet',
-"         \   '-synctex=1',
-"         \   '-interaction=nonstopmode',
-"         \ ],
-"         \}
-" let g:vimtex_compiler_latexmk = {
-"     \ 'build_dir' : '',
-"     \ 'callback' : 1,
-"     \ 'continuous' : 1,
-"     \ 'executable' : 'latexmk',
-"     \ 'hooks' : [],
-"     \ 'options' : [
-"     \   '-verbose',
-"     \   '-file-line-error',
-"     \   '-synctex=1',
-"     \   '-interaction=nonstopmode',
-"     \ ],
-"     \}
-
-
-
-"--------------- Lualatex (Not Working) ---------------"
-" let g:vimtex_compiler_progname = 'nvr'
-" let g:vimtex_compiler_latexmk_engine = 'lualatex'
-" set nocompatible
-" filetype plugin indent on
-" syntax enable
-" let g:vimtex_compiler_progname = 'nvr'
-" let g:tex_flavor = 'latex'
-" let g:vimtex_view_method = 'skim'
-" let g:vimtex_quickfix_mode = 0
-" let g:vimtex_compiler_latexmk = {
-"   \ 'build_dir' : 'dist',
-"   \}
 
 
 
 
-"--------------- Markdown ---------------"
-" fun MarkdownCompile()
-"     call VimuxRunCommandInDir("", 0)
-" endfun
-"     
-" autocmd BufWrite FileType markdown :call MarkdownCompile
-
-
-
-syntax enable
-" Viewer options: One may configure the viewer either by specifying a built-in
-" viewer method:
-let maplocalleader = ","
-let g:vimtex_indent_enabled = 0
-" UltiSnips
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-b>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" Ignores unnecessary warnings
-let g:vimtex_quickfix_ignore_filters = [
-  \'Package natbib Warning: Citation',  
-  \'LaTeX Warning: Reference',          
-  \'LaTeX Warning: There were undefined references',          
-  \'Underfull \\hbox (badness [0-9]*) in ',
-  \'Overfull \\hbox ([0-9]*.[0-9]*pt too wide) in ',
-  \'Overfull \\vbox ([0-9]*.[0-9]*pt too high) detected ',
-  \'Package hyperref Warning: Token not allowed in a PDF string',
-  \"Package option `hyperref' is obsolete and ignored",
-  \'Package typearea Warning: Bad type area settings!',
-  \'Package nameref Warning: The definition of \\label has changed!',
-  \'Marginpar on page[0-9]* moved',
-  \'Marginpar on page[0-9]* moved',
-  \'Marginpar',
-  \'Overfull',
-  \'LaTeX Warning: Float too large for page',
-  \'tikz-feynman Warning',
-  \"`h' float specifier",
-  \"requested document class",
-  \"Missing",
-  \"A float is stuck",
-  \"empty link",
-  \"Not loaded"
-  \]
-
-" Vim-Latex " Disabled
-set iskeyword+=: "Enables fig:<autocompletion> with <C-n> 
-set iskeyword-=} " word boundary
-"let b:suppress_latex_suite = 1 "Disables vim-latex
 
 
 
@@ -681,6 +453,7 @@ nmap <silent> <leader>\ :NERDTreeToggle<cr>
 
 
 
+
 "" YouCompleteMe
 " Closes YCM window i think???
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -690,17 +463,6 @@ set completeopt-=preview
 
 
 
-
-
-
-"" vim-tmux-runner (Use VIMUX to doe this?)
-" Helps make python work right
-let g:VtrStripLeadingWhitespace = 0
-let g:VtrClearEmptyLines = 0
-let g:VtrAppendNewline = 1
-
-"nmap <leader>ta :call VtrSendLinesToRunner()<cr>
-let g:VtrUseVtrmaps = 1
 
 
 
@@ -745,7 +507,6 @@ source ~/.dotfiles/vim/visuals.vim
 """"""""""""""""""""""""""""""""""""""""""""""
 " Filetypes
 """"""""""""""""""""""""""""""""""""""""""""""
-
 
 source ~/.dotfiles/vim/filetypes.vim
 
@@ -920,3 +681,9 @@ hi mdStyleBold cterm=bold
 
 set iskeyword+={ " word boundary
 set iskeyword+=} " word boundary
+
+
+
+
+" source ~/.dotfiles/vim/basic.vim
+" finish
