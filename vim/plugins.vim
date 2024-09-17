@@ -11,21 +11,26 @@ call vundle#begin('~/.dotfiles/vim/bundle/')
 " let Vundle manage Vundle
 Plugin 'VundleVim/Vundle.vim'
 """"""""" User Plugins
-Plugin 'preservim/nerdtree'
-Plugin 'lervag/vimtex'
+" Layout, Visual Colours and Style
 Plugin 'arzg/vim-colors-xcode' "Highly Recommend
+Plugin 'preservim/nerdtree'
 Plugin 'sainnhe/everforest'
 Plugin 'pseewald/vim-anyfold'
-Plugin 'aclements/latexrun'
-Plugin 'jvirtanen/vim-octave'
-Plugin 'LucHermitte/lh-cpp'    " C/C++ general purpose
 Plugin 'itchyny/lightline.vim'
 Plugin 'tpope/vim-surround'
+
+" Syntax Highlighting and Additional Language Support
+Plugin 'LucHermitte/lh-cpp'    " C/C++ general purpose
 Plugin 'pulkomandy/c.vim'
 Plugin 'keith/swift.vim'
 Plugin 'arnoudbuzing/wolfram-vim'
-Plugin 'preservim/vim-markdown'
 Plugin 'vim-scripts/applescript.vim'
+Plugin 'lervag/vimtex'          " Latex
+Plugin 'aclements/latexrun'
+Plugin 'jvirtanen/vim-octave'
+
+Plugin 'preservim/vim-markdown'
+
 
 if has("win32")
     " Windows Options
