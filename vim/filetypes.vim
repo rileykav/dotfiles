@@ -262,6 +262,7 @@ set noshellslash
 " as the main file, and all subiles are name.appendix.tex, name.bib.tex etc.
 "
 let g:vimtex_compiler_enabled = 1 " (Dis/En)ables Compiler
+"let b:suppress_latex_suite = 1 "Disables vim-latex
 "
 let g:vimtex_view_method = 'general'
 let g:vimtex_view_general_viewer = 'texworks.exe'
@@ -269,136 +270,21 @@ let g:vimtex_compiler_latexmk = {
     \ 'callback' : 0,
     \ 'continuous' : 0,
     \}
-" Set tex type to latex
-" let g:tex_flavor = 'latex' "Never got working
-" let g:vimtex_compiler_progname = 'latexmk'
-" let g:vimtex_compiler_progname = 'latexmk'
 if has("win32")
-"         There is a command to view pdf in VimTex: VimTexView
+"         There is a command to view pdf in VimTex: VimTexView (must be able to open from terminal
         let g:vimtex_view_method = 'general'
         let g:vimtex_view_general_viewer = 'sumatra'
 "         let g:vimtex_view_general_viewer = 'msedge'
 "         let g:vimtex_view_general_viewer = 'arc'   " Refuses to open files?
 "         let g:vimtex_view_general_viewer = 'okular'
-"         let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'   " Broken?
-"         let g:vimtex_view_general_viewer = 'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'   "Invalid viewer
 else
     if has("macunix")
         let g:vimtex_view_method = 'skim'
     endif
 endif
-" let g:vimtex_compiler_latexmk_engines = {
-"         \ '_'                : '-pdf',
-"         \ 'pdflatex'         : '-pdf',
-"         \ 'dvipdfex'         : '-pdfdvi',
-"         \ 'lualatex'         : '-lualatex',
-"         \ 'xelatex'          : '-xelatex',
-"         \ 'context (pdftex)' : '-pdf -pdflatex=texexec',
-"         \ 'context (luatex)' : '-pdf -pdflatex=context',
-"         \ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
-"         \}
-" let g:vimtex_compiler_engine = 'latexmk'
-" let g:vimtex_compiler_method = 'latexmk' "Default setting
-" let g:vimtex_compiler_method = 'lualatex' "Default setting
-" let g:vimtex_compiler_latexmk = {
-"         \ 'build_dir' : '',
-"         \ 'callback' : 1,
-"         \ 'continuous' : 1,
-"         \ 'executable' : 'latexmk',
-"         \ 'hooks' : [],
-"         \ 'options' : [
-"         \   '-lualatex',
-"         \   '-quiet',
-"         \   '-file-line-error',
-"         \   '-synctex=1',
-"         \   '-interaction=nonstopmode',
-"         \ ],
-"         \}
-" let g:vimtex_compiler_latexmk = {
-"         \ 'build_dir' : '',
-"         \ 'callback' : 1,
-"         \ 'continuous' : 1,
-"         \ 'executable' : 'latexmk',
-"         \ 'hooks' : [],
-"         \ 'options' : [
-"         \   '-lualatex',
-"         \   '-quiet',
-"         \ ],
-        \}
-" let g:vimtex_compiler_latexrun = {
-"         \ 'build_dir' : '',
-"         \ 'options' : [
-"         \   '-verbose-cmds',
-"         \   '--latex-args="-synctex=1"',
-"         \ ],
-"         \}
 
-" let g:vimtex_syntax_conceal_default = 0 " Doesn't work....
-" let g:vimtex_compiler_latexmk = {
-"         \ 'build_dir' : '',
-"         \ 'callback' : 1,
-"         \ 'continuous' : 1,
-"         \ 'executable' : 'latexmk',
-"         \ 'hooks' : [],
-"         \ 'options' : [
-"         \   '-quiet',
-"         \   '-synctex=1',
-"         \   '-interaction=nonstopmode',
-"         \ ],
-"         \}
-" let g:vimtex_compiler_latexmk = {
-"     \ 'build_dir' : '',
-"     \ 'callback' : 1,
-"     \ 'continuous' : 1,
-"     \ 'executable' : 'latexmk',
-"     \ 'hooks' : [],
-"     \ 'options' : [
-"     \   '-verbose',
-"     \   '-file-line-error',
-"     \   '-synctex=1',
-"     \   '-interaction=nonstopmode',
-"     \ ],
-"     \}
-
-
-
-"--------------- Lualatex (Not Working) ---------------"
-" let g:vimtex_compiler_progname = 'nvr'
-" let g:vimtex_compiler_latexmk_engine = 'lualatex'
-" set nocompatible
-" filetype plugin indent on
-" syntax enable
-" let g:vimtex_compiler_progname = 'nvr'
-" let g:tex_flavor = 'latex'
-" let g:vimtex_view_method = 'skim'
-" let g:vimtex_quickfix_mode = 0
-" let g:vimtex_compiler_latexmk = {
-"   \ 'build_dir' : 'dist',
-"   \}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-" syntax enable
-" Viewer options: One may configure the viewer either by specifying a built-in
-" viewer method:
 let maplocalleader = ","
-" let g:vimtex_indent_enabled = 0
-" UltiSnips
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-b>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
+"
 " Ignores unnecessary warnings
 let g:vimtex_quickfix_ignore_filters = [
   \'Package natbib Warning: Citation',  
@@ -426,12 +312,8 @@ let g:vimtex_quickfix_ignore_filters = [
   \"Not loaded"
   \]
 
-" Vim-Latex " Disabled
 set iskeyword+=: "Enables fig:<autocompletion> with <C-n> 
 set iskeyword-=} " word boundary
-"let b:suppress_latex_suite = 1 "Disables vim-latex
-
-
 
 set shortmess=a
 
@@ -464,9 +346,7 @@ au FileType tex nnoremap <leader>o :VimtexView<cr>
 
 if has("win32")
     " Windows Options
-    
 "             au User VimtexEventCompileSuccess :echo "done"
-
 else
     if has("unix")
         if has("macunix")
@@ -507,25 +387,7 @@ fun! LoadTexTemplate()
 endfun
 
 autocmd BufNewFile *.tex call LoadTexTemplate()
-" autocmd BufNewFile *.tex 0r $HOME/.dotfiles/vim/boilerplate/latex/riley_base.tex
-" autocmd BufNewFile *.tex 0r $HOME/.dotfiles/vim/boilerplate/latex/riley_base.tex
-"
-"
-"
-" autocmd FileType tex nnoremap <leader>; :call VimtexSaveCompile()<cr>
 
-
-
-
-
-" Latex writing
-" autocmd FileType tex nnoremap <leader>bb i\begin{align}<esc>o\end{align}<esc>O<tab><backspace>
-" autocmd FileType tex nnoremap <leader>bl i\begin{itemize}<esc>o\end{itemize}<esc>O<tab><backspace><backspace>\item<space>
-" autocmd FileType tex nnoremap <leader>be i\begin{enumerate}<esc>o\end{enumerate}<esc>O<backspace>\item<space>
-" autocmd FileType tex nnoremap <leader>bi i\begin{figure}<esc>o\end{figure}<esc>O\centering<cr>\includegraphics{images/}<cr>\label{fig1}<esc>kA<esc>i
-
-"inoremap <C-i> <cr><backspace>\item<space>
-" autocmd FileType tex nnoremap <leader>CM
 
 " Checkmark
 autocmd FileType tex nnoremap <leader>/\ mm0eea[\checkmark]<esc>`m14l
@@ -600,10 +462,6 @@ endfunction
 command ThesisOpen call ThesisOpen()
 
 
-
-"--------------- Txt ---------------"
-"" Set the sytax style to markdown
-au BufRead *txt set syntax=markdown
 
 
 
