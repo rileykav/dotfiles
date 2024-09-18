@@ -187,12 +187,13 @@ autocmd BufRead *.htm call Epublean()
 
 
 
-autocmd BufRead *.md nnoremap o A<cr>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " Markdown
 """"""""""""""""""""""""""""""""""""""""""""""
+autocmd BufRead *.md nnoremap o A<cr>
+
 let vim_markdown_folding_disabled = 1
 let g:vim_markdown_math = 1
 autocmd BufRead Markdown set textwidth=0 wrapmargin=0
@@ -200,6 +201,26 @@ autocmd BufRead Markdown nnoremap <leader>a mm0la~~<esc>A~~<esc>`m
 autocmd BufRead *md nnoremap <leader>a mm0la~~<esc>A~~<esc>`m
 autocmd BufRead *md nnoremap <leader>A mm0llxxA<esc>xx`m
 nnoremap <leader>i i$\quad$<esc>o
+
+set conceallevel=2  " From preservim/vim-markdown
+
+" Edit selected text to add combined characters to give strikethrough, underline etc.
+" modify selected text using combining diacritics
+command! -range -nargs=0 Overline        call s:CombineSelection(<line1>, <line2>, '0305')
+command! -range -nargs=0 Underline       call s:CombineSelection(<line1>, <line2>, '0332')
+command! -range -nargs=0 DoubleUnderline call s:CombineSelection(<line1>, <line2>, '0333')
+command! -range -nargs=0 Strikethrough   call s:CombineSelection(<line1>, <line2>, '0336')
+
+function! s:CombineSelection(line1, line2, cp)
+  execute 'let char = "\u'.a:cp.'"'
+  execute a:line1.','.a:line2.'s/\%V[^[:cntrl:]]/&'.char.'/ge'
+endfunction
+
+vnoremap  :Strikethrough<CR>
+vnoremap __ :Underline<CR>
+
+
+
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " Latex
@@ -354,32 +375,6 @@ endif
 
 
 
-"--------------- Markdown ---------------"
-" fun MarkdownCompile()
-"     call VimuxRunCommandInDir("", 0)
-" endfun
-"     
-" autocmd BufWrite FileType markdown :call MarkdownCompile
-" augroup markdown
-"     au!
-"     au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
-" augroup END
-set conceallevel=2
-
-
-" modify selected text using combining diacritics
-command! -range -nargs=0 Overline        call s:CombineSelection(<line1>, <line2>, '0305')
-command! -range -nargs=0 Underline       call s:CombineSelection(<line1>, <line2>, '0332')
-command! -range -nargs=0 DoubleUnderline call s:CombineSelection(<line1>, <line2>, '0333')
-command! -range -nargs=0 Strikethrough   call s:CombineSelection(<line1>, <line2>, '0336')
-
-function! s:CombineSelection(line1, line2, cp)
-  execute 'let char = "\u'.a:cp.'"'
-  execute a:line1.','.a:line2.'s/\%V[^[:cntrl:]]/&'.char.'/ge'
-endfunction
-
-vnoremap  :Strikethrough<CR>
-vnoremap __ :Underline<CR>
 
 
 
@@ -495,45 +490,6 @@ endif
 
 " let g:vimtex_fold_enabled=1
 
-
-
-
-
-
-
-""" Context aware highlighting
-" function! MathHighlight()
-""""" Define certain regions
-""""" Block math. Look for "$$[anything]$$"
-"     syn region red start="/\red/{" end="/}"
-""""" inline math. Look for "$[not $][anything]$"
-"     syn match math_block '\$[^$].\{-}\$'
-
-"" Actually highlight those regions.
-"       hi red ctermfg=red
-" endfunction
-" autocmd BufRead,BufNewFile,BufEnter *.md,*.markdown call MathHighlight()
-
-" Example for setting bold text to red
-" hi texStlyeBold ctermfg=red
-
-
-
-
-
-
-
-
-
-
-
-
-"
-" Updates preview after every succesful compile, which is after every save
-"""""""""""""""""""""""""""""""""""""""
-""""" !!!! Important, keep only one enabled
-" au User VimtexEventCompileSuccess :call VimuxRunCommandInDir("touchpreviewnosidebar", 1)
-" autocmd BufWrite *.tex :call RunCurrentScriptNoSaveandUpdatePreview()
 
 
 
