@@ -381,8 +381,6 @@ fun! LoadTexTemplate()
     set cmdheight=2
 "     0r $HOME/.dotfiles/vim/boilerplate/latex/riley_base.tex
     0r $HOME/.dotfiles/tex/main.tex
-"     0r $HOME/.dotfiles/vim/boilerplate/latex/riley_base.tex
-    0r $HOME/.dotfiles/tex/main.tex
     set cmdheight=1
 endfun
 
