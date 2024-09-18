@@ -220,6 +220,10 @@ vnoremap  :Strikethrough<CR>
 vnoremap __ :Underline<CR>
 
 
+"--------------- Txt ---------------"
+"" Set the sytax style to markdown
+au BufRead *txt set syntax=markdown
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""
