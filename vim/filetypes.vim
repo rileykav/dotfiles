@@ -176,7 +176,7 @@ au FileType gitcommit call setpos('.', [0, 1, 1, 0])
 "     endif
 " endif
 """"""""""""""""""""""""""""""""""""""""""""""
-" Twig Section
+" Html Section
 """"""""""""""""""""""""""""""""""""""""""""""
 
 autocmd BufRead *.twig set syntax=html filetype=html
