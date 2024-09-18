@@ -202,22 +202,31 @@ autocmd BufRead *md nnoremap <leader>a mm0la~~<esc>A~~<esc>`m
 autocmd BufRead *md nnoremap <leader>A mm0llxxA<esc>xx`m
 nnoremap <leader>i i$\quad$<esc>o
 
+autocmd BufRead *.md hi mkdCode cterm=strikethrough
 set conceallevel=2  " From preservim/vim-markdown
 
-" Edit selected text to add combined characters to give strikethrough, underline etc.
-" modify selected text using combining diacritics
-command! -range -nargs=0 Overline        call s:CombineSelection(<line1>, <line2>, '0305')
-command! -range -nargs=0 Underline       call s:CombineSelection(<line1>, <line2>, '0332')
-command! -range -nargs=0 DoubleUnderline call s:CombineSelection(<line1>, <line2>, '0333')
-command! -range -nargs=0 Strikethrough   call s:CombineSelection(<line1>, <line2>, '0336')
+fun! Strike()
+    " Go to first non whitespace character
+    normal ^
+    let l:FirstCharacter =  getline(".")[col(".")-1]
+    let l:ListOfCharsStartingListMD = [ "-", "*", "+", ">" ]
+    if index(l:ListOfCharsStartingListMD, l:FirstCharacter) >= 0  " If item is in the list.
+        normal ll
+    elseif index(["1","2","3","4","5","6","7","8","9"], l:FirstCharacter) >= 0  " If item is in the list.
+        normal ww
+    endif
 
-function! s:CombineSelection(line1, line2, cp)
-  execute 'let char = "\u'.a:cp.'"'
-  execute a:line1.','.a:line2.'s/\%V[^[:cntrl:]]/&'.char.'/ge'
-endfunction
+    let l:FirstRealCharacter =  getline(".")[col(".")-1]
+    if l:FirstRealCharacter  == "~"
+        normal xxA
+        normal xx
+    else
+        normal i~~
+        normal A~~
+    endif
+endfun
 
-vnoremap  :Strikethrough<CR>
-vnoremap __ :Underline<CR>
+nnoremap ~ mm:call Strike()<cr>`m
 
 
 "--------------- Txt ---------------"
