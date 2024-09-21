@@ -97,7 +97,7 @@ endif
 
 
 "colorscheme peaksea
-colorscheme xcodedark
+" colorscheme xcodedark
 "colorscheme xcodewwdc
 
 " Set extra options when running in GUI mode
@@ -259,7 +259,7 @@ let g:lightline = {
 
 " colorscheme xcodedark
 " colorscheme everforest
-colorscheme edge
+colorscheme edge  " Also in Windows.vim
 
 
 

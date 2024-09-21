@@ -5,8 +5,8 @@
 
 set termguicolors
 set t_Co=256
-
-colorscheme xcodedark
+" colorscheme xcodedark
+colorscheme edge
 
 
 " Cursor in terminal
