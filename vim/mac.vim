@@ -159,3 +159,14 @@ function SaveAndRunOctave()
 endfunction
 au FileType octave nnoremap <leader>z :call SaveAndRunOctave()<cr>
 au FileType octave nnoremap <leader>cl :VimuxRunCommand('clc')<cr>
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" Markdown Section
+""""""""""""""""""""""""""""""""""""""""""""""
+" command! Synctodo silent !cp ~/todo.md ~/Documents<cr> | redraw!
+au BufWinLeave ~/todo.md !cp ~/todo.md ~/iCloud/Documents/todo.md
+au BufWinLeave ~/iCloud/Documents/todo.md !cp ~/iCloud/Documents/todo.md ~/todo.md
+" au BufWinLeave todo.md !cp ~/todo.md "/Users/riley/Library/Mobile\ Documents/9CR7T2DMDG~com~ngocluu~onewriter/Documents/todo.md"
+
