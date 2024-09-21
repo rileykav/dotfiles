@@ -103,12 +103,16 @@ alias zshfunctions="vim $HOME/.dotfiles/zsh/functions.zsh"
 alias zshdefinitions="vim $HOME/.dotfiles/zsh/definitions.zsh"
 alias vimrc="vim $HOME/.vimrc"
 alias vimfiletypes="vim $HOME/.dotfiles/vim/filetypes.vim"
+alias vimmac="vim $HOME/.dotfiles/vim/mac.vim"
 alias tmuxrc="vim $HOME/.tmux.conf"
 alias tmuxbase16="vim $HOME/.dotfiles/tmux/base16.sh"
 alias rcloneignore="vim $HOME/.dotfiles/rclone/filter-list.txt"
 alias rc-help='echo "zshrc\nvimrc\ntmuxrc\ntmuxbase16"'
 alias gitconfig="vim $HOME/.gitconfig"
-alias todo="vim $HOME/todo.md"
+alias todo="vim $HOME/iCloud/Documents/todo.md"
+alias todoi="vim $HOME/iCloud/Documents/todo.md"
+alias todol="vim $HOME/todo.md"
+
 
 
 # Sourcing zshrc
