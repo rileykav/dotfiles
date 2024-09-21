@@ -34,3 +34,4 @@ winget install Git.git
 winget install MiKTeX
 winget install "Strawberry Perl"
 winget install qbittorrent --id qBittorrent.qBittorrentinget install Microsoft.PowerToys -s winget
+winget search icloud --id Apple.iCloud --source winget
