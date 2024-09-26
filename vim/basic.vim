@@ -15,6 +15,7 @@ call vundle#begin('~/.dotfiles/vim/bundle/')
 Plugin 'VundleVim/Vundle.vim'
 """"""""" User Plugins
 Plugin 'lervag/vimtex'
+Plugin 'preservim/vim-markdown'
 """"""""" End of Plugins
 call vundle#end()
 filetype plugin indent on

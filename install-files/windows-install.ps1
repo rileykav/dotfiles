@@ -35,3 +35,23 @@ winget install MiKTeX
 winget install "Strawberry Perl"
 winget install qbittorrent --id qBittorrent.qBittorrentinget install Microsoft.PowerToys -s winget
 winget search icloud --id Apple.iCloud --source winget
+winget install whatsapp --source msstore
+winget install windhawk
+
+
+# Manual Install
+curl -O "https://download01.logi.com/web/ftp/pub/techsupport/gaming/lghub_installer.exe" --output-dir $home/Download
+url -O "https://rawaccel.net/wp-content/uploads/2023/12/RawAccel_v1.6.1.zip"  --output-dir $home/Downloads
+curl -O "https://origin-a.akamaihd.net/EA-Desktop-Client-Download/installer-releases/EAappInstaller.exe" --output-dir $home/Download
+
+
+
+# Manual Github Links
+# https://github.com/White-Tiger/T-Cloc://github.com/White-Tiger/T-Clock
+
+
+
+# True Manual
+# https://getfancontrol.com/
+# https://www.youtube.com/watch?v=XqY-BL5pLjQ&t=358s
+# https://www.hwinfo.com/download/
