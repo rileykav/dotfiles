@@ -109,7 +109,20 @@ alias tmuxbase16="vim $HOME/.dotfiles/tmux/base16.sh"
 alias rcloneignore="vim $HOME/.dotfiles/rclone/filter-list.txt"
 alias rc-help='echo "zshrc\nvimrc\ntmuxrc\ntmuxbase16"'
 alias gitconfig="vim $HOME/.gitconfig"
-alias todo="vim $HOME/iCloud/Documents/todo.md"
+
+
+function todo {
+    if [[ $HOME/iCloud/Documents/todo.md -nt $HOME/todo.md ]]; then
+        cp $HOME/iCloud/Documents/todo.md $HOME/todo.md
+        vim $HOME/todo.md
+    else
+        vim $HOME/todo.md
+    fi
+
+}
+
+
+# alias todo="vim $HOME/iCloud/Documents/todo.md"
 alias todoi="vim $HOME/iCloud/Documents/todo.md"
 alias todol="vim $HOME/todo.md"
 
