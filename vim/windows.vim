@@ -4,6 +4,10 @@
 
 
 set termguicolors
+" let &t_Ts = "\e[2m"
+" let &t_Te = "\e[29m"
+" hi mkdCode cterm=strikethrough
+" finish
 set t_Co=256
 " colorscheme xcodedark
 colorscheme edge
