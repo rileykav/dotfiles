@@ -23,8 +23,15 @@ function windowsinstall {vim $dotfiles\install-files\windows-install.ps1}
 function terminalrc {vim $dotfiles\windows-terminal\windows-terminal-settings.json}
 function test {echo test1}
 
+# Set-Alias -name todo -value ttdl
+function todo {
+    cp ~/iCloudDrive/Documents/todo.md ~/todo.md
+    vim ~/todo.md
+    
+}
+function todoi {vim ~/iCloudDrive/Documents/todo.md}
+function todol {vim ~/todo.md}
 
-Set-Alias -name todo -value ttdl
 
 # Applications
 function o {ii .}
