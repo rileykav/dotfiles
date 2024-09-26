@@ -39,7 +39,7 @@ au BufWinLeave ~/iCloudDrive/Documents/todo.md !cp ~/iCloudDrive/Documents/todo.
 
 
 " Set Default shell to Powershell
-":set shell=pwsh 
+set shell=pwsh 
 " See `:set shell=powershell shellcmdflag=-c shellquote=\" shellxquote=` and the formum https://stackoverflow.com/questions/63607184/open-a-terminal-in-vim-and-execute-a-command-inside-this-terminal-on-windows 
 
 
