@@ -29,6 +29,8 @@ let &t_SI .= "\<Esc>[5 q"
 
 
 
+au BufWinLeave ~/todo.md !cp ~/todo.md ~/iCloudDrive/Documents/todo.md
+au BufWinLeave ~/iCloudDrive/Documents/todo.md !cp ~/iCloudDrive/Documents/todo.md ~/todo.md
 
 
 
