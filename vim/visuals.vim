@@ -260,7 +260,8 @@ let g:lightline = {
 " colorscheme xcodedark
 " colorscheme everforest
 colorscheme edge  " Also in Windows.vim
-
+" highlight Normal ctermfg=grey ctermbg=black
+highlight Normal ctermbg=none
 
 
 function! SynStack ()
