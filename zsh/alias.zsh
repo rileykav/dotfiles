@@ -109,6 +109,10 @@ alias tmuxbase16="vim $HOME/.dotfiles/tmux/base16.sh"
 alias rcloneignore="vim $HOME/.dotfiles/rclone/filter-list.txt"
 alias rc-help='echo "zshrc\nvimrc\ntmuxrc\ntmuxbase16"'
 alias gitconfig="vim $HOME/.gitconfig"
+alias vimbasicedit="vim $HOME/.dotfiles/vim/basic.vim"
+function vimbasic {
+    vim -u $HOME/.dotfiles/vim/basic.vim $1
+}
 
 
 function todo {
