@@ -2,7 +2,7 @@ syntax enable
 fun! SetMyTodos()
     syn match myTodos /\%(NOTE:\)/
     hi link myTodos Todo
-endfu
+endfun
 autocmd bufenter * :call SetMyTodos()
 autocmd filetype * :call SetMyTodos()
 
