@@ -349,6 +349,7 @@ source ~/.dotfiles/vim/abreviations.vim
 :command PyBoiler :vs ~/.dotfiles/vim/boilerplate/python/riley_base.py
 " :command OctaveBoiler :vs ~/.dotfiles/vim/boilerplate/octave/riley_base.m
 :command TexBoiler :vs ~/.dotfiles/vim/boilerplate/latex/riley_base.tex
+:command Todo :vs ~/todo.md
 
 
 
