@@ -28,7 +28,7 @@ let &t_EI .= "\<Esc>[2 q"
 " insert mode
 let &t_SI .= "\<Esc>[5 q"
 
-
+nnoremap <leader> :source ~/_vimrc
 
 au BufWinLeave ~/todo.md !cp ~/todo.md ~/iCloudDrive/Documents/todo.md
 au BufWinLeave ~/iCloudDrive/Documents/todo.md !cp ~/iCloudDrive/Documents/todo.md ~/todo.md
