@@ -6,6 +6,7 @@
 set termguicolors
 " let &t_Ts = "\e[2m"
 " let &t_Te = "\e[29m"
+au BufRead *md hi mkdCode ctermfg=2 
 " hi mkdCode cterm=strikethrough
 " finish
 set t_Co=256
@@ -27,14 +28,24 @@ let &t_EI .= "\<Esc>[2 q"
 " insert mode
 let &t_SI .= "\<Esc>[5 q"
 
-
+nnoremap <leader> :source ~/_vimrc
 
 au BufWinLeave ~/todo.md !cp ~/todo.md ~/iCloudDrive/Documents/todo.md
 au BufWinLeave ~/iCloudDrive/Documents/todo.md !cp ~/iCloudDrive/Documents/todo.md ~/todo.md
 
 
+autocmd BufRead,BufNewFile *md syn match parens /[(){}]/ | hi parens ctermfg=red
+autocmd BufRead,BufNewFile *md command Test echo "test"
 
 
+function! HighlightDoubleAngleBrackets() abort
+    syn match strayClosingDoubleAngleBracket "\]"
+    syn region textWithinDoubleAngleBracketPair matchgroup=doubleAngleBracketPair start="\[" end="\]"
+    hi link strayClosingDoubleAngleBracket Error
+    hi link doubleAngleBracketPair Delimiter
+endfunction
+
+autocmd BufNewFile,BufRead *.md call HighlightDoubleAngleBrackets()
 
 
 

@@ -7,7 +7,8 @@ autocmd bufenter * :call SetMyTodos()
 autocmd filetype * :call SetMyTodos()
 
 
-let &t_Ts = "\e[9m"
-let &t_Te = "\e[29m"
-hi myTodos cterm=strikethrough
+" set termguicolors
+" let &t_Ts = "\e[9m"
+" let &t_Te = "\e[29m"
+hi myTodos gui=bold ctermfg=green
 

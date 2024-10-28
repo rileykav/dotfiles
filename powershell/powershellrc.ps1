@@ -18,3 +18,11 @@ function make-link ($link, $target) {
 	New-Item -Path $link -ItemType SymbolicLink -Value $target
 }
 
+
+
+function mcmods ( $mcversion ) {
+    wget -qO- https://raw.githubusercontent.com/aayushdutt/modrinth-collection-downloader/master/main.py | python - -v $mcversion -l fabric -c 9zXT2dGO -d "$HOME/Personal/Games/minecraft/mods $mcversion" -u
+    rm "$HOME/AppData/Roaming/.minecraft/mods/*"
+    cp "$HOME/Personal/Games/minecraft/mods $mcversion/*" "$HOME/AppData/Roaming/.minecraft/mods"
+}
+

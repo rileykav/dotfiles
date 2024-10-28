@@ -1,3 +1,8 @@
+### Basic Install Instructions
+# Allow all applications to make a desktop shortcut, then mve it from there to a Applications folder for ease of later access
+
+
+
 Type Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 
 
@@ -37,7 +42,13 @@ winget install qbittorrent --id qBittorrent.qBittorrentinget install Microsoft.P
 winget search icloud --id Apple.iCloud --source winget
 winget install whatsapp --source msstore
 winget install windhawk
-
+winget install Plex --source winget
+winget install Plexamp --source winget
+winget install "Plex Media Server" --source winget
+winget install "Blue Mail" --id 9PMHZVM588P4
+winget install firefox --id Mozilla.Firefox --source winget
+winget install "Docker Desktop" --id Docker.DockerDesktop --source winget
+winget install wget --id JernejSimoncic.Wget
 
 # Manual Install
 curl -O "https://download01.logi.com/web/ftp/pub/techsupport/gaming/lghub_installer.exe" --output-dir $home/Download
@@ -47,11 +58,13 @@ curl -O "https://origin-a.akamaihd.net/EA-Desktop-Client-Download/installer-rele
 
 
 # Manual Github Links
-# https://github.com/White-Tiger/T-Cloc://github.com/White-Tiger/T-Clock
-
+# https://github.com/White-Tiger/T-Cloc
+# https://github.com/clsid2/mpc-hc
 
 
 # True Manual
 # https://getfancontrol.com/
 # https://www.youtube.com/watch?v=XqY-BL5pLjQ&t=358s
 # https://www.hwinfo.com/download/
+# https://zen-browser.app/download
+# Apples Devices App
