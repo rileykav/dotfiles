@@ -1,3 +1,8 @@
+### Basic Install Instructions
+# Allow all applications to make a desktop shortcut, then mve it from there to a Applications folder for ease of later access
+
+
+
 Type Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 
 
@@ -53,11 +58,13 @@ curl -O "https://origin-a.akamaihd.net/EA-Desktop-Client-Download/installer-rele
 
 
 # Manual Github Links
-# https://github.com/White-Tiger/T-Cloc://github.com/White-Tiger/T-Clock
-
+# https://github.com/White-Tiger/T-Cloc
+# https://github.com/clsid2/mpc-hc
 
 
 # True Manual
 # https://getfancontrol.com/
 # https://www.youtube.com/watch?v=XqY-BL5pLjQ&t=358s
 # https://www.hwinfo.com/download/
+# https://zen-browser.app/download
+# Apples Devices App
