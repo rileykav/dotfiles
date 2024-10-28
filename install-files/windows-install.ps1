@@ -37,7 +37,13 @@ winget install qbittorrent --id qBittorrent.qBittorrentinget install Microsoft.P
 winget search icloud --id Apple.iCloud --source winget
 winget install whatsapp --source msstore
 winget install windhawk
-
+winget install Plex --source winget
+winget install Plexamp --source winget
+winget install "Plex Media Server" --source winget
+winget install "Blue Mail" --id 9PMHZVM588P4
+winget install firefox --id Mozilla.Firefox --source winget
+winget install "Docker Desktop" --id Docker.DockerDesktop --source winget
+winget install wget --id JernejSimoncic.Wget
 
 # Manual Install
 curl -O "https://download01.logi.com/web/ftp/pub/techsupport/gaming/lghub_installer.exe" --output-dir $home/Download
