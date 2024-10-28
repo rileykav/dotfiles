@@ -38,7 +38,14 @@ autocmd BufRead,BufNewFile *md syn match parens /[(){}]/ | hi parens ctermfg=red
 autocmd BufRead,BufNewFile *md command Test echo "test"
 
 
+function! HighlightDoubleAngleBrackets() abort
+    syn match strayClosingDoubleAngleBracket "\]"
+    syn region textWithinDoubleAngleBracketPair matchgroup=doubleAngleBracketPair start="\[" end="\]"
+    hi link strayClosingDoubleAngleBracket Error
+    hi link doubleAngleBracketPair Delimiter
+endfunction
 
+autocmd BufNewFile,BufRead *.md call HighlightDoubleAngleBrackets()
 
 
 
