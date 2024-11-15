@@ -136,7 +136,7 @@ autocmd FileType tex nnoremap <leader>O :call OpenDuplicateTexPdf()<cr>
 autocmd FileType tex nnoremap <leader>m :call OpenCurrentTexmaker()<cr>
 autocmd FileType tex nnoremap <leader>tc :call TexOpenCitations()<cr>
 
-autocmd QuitPre *.tex {call CleanCurrentTex()}
+autocmd QuitPre *.tex call CleanCurrentTex()
 "" vim-tmux-runner (Use VIMUX to doe this?)
 " Helps make python work right
 let g:VtrStripLeadingWhitespace = 0
