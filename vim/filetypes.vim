@@ -321,6 +321,20 @@ let g:vimtex_quickfix_ignore_filters = [
   \"Not loaded"
   \]
 
+let g:ConcealTexBool=0
+function! ToggleConcelTex()
+    " n-state toggle, adjust the mod to task
+    " https://stackoverflow.com/questions/44601752/triple-n-state-variable-toggle-in-vim#44601807
+    let g:ConcealTexBool= ( ( g:ConcealTexBool + 1 ) % 2 ) 
+    execute "set conceallevel=" . g:ConcealTexBool * 2
+    echom g:ConcealTexBool
+endfunction
+
+autocmd BufRead *.tex set conceallevel=0  " From preservim/vim-markdown
+autocmd BufRead *.tex nnoremap <leader>= :call ToggleConcelTex()<cr>
+
+
+
 set iskeyword+=: "Enables fig:<autocompletion> with <C-n> 
 set iskeyword-=} " word boundary
 
