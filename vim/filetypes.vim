@@ -203,7 +203,7 @@ autocmd BufRead *md nnoremap <leader>A mm0llxxA<esc>xx`m
 nnoremap <leader>i i$\quad$<esc>o
 
 autocmd BufRead *.md hi mkdCode cterm=strikethrough
-set conceallevel=2  " From preservim/vim-markdown
+autocmd BufRead *.md set conceallevel=2  " From preservim/vim-markdown
 
 fun! Strike()
     " Go to first non whitespace character
