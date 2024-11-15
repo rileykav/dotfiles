@@ -12,7 +12,7 @@ set theList to paragraphs of text of (do shell script "pmset -g batt")
 set thePct to word 6 of theList's item 2 as integer
 set status to word 7 of theList's item 2
 if thePct is greater than 90 then
-    return "Full Battery - " & thePct
+    return thePct
 else if thePct less than 20 then
     if not status is "charging" then
         return "WARNING!! BATERY LOW > NOT CHARGING - " & thePct 
