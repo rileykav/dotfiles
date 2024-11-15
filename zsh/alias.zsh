@@ -147,6 +147,14 @@ alias zshdir="cd $HOME/Coding/Zsh"
 alias osascriptdir="cd $HOME/Coding/Applescript"
 
 
+function mcmods {
+    readonly mcversion=${1:?"Minecraft version must be specified"}
+    echo "Download mods..."
+    curl -sL https://raw.githubusercontent.com/aayushdutt/modrinth-collection-downloader/master/main.py --output "$HOME/Personal/Games/minecraft/mods $mcversion"| python - -v $mcversion -l fabric -c 9zXT2dGO -d "$HOME/Personal/Games/minecraft/mods $mcversion" -u 
+#     wget -qO- https://raw.githubusercontent.com/aayushdutt/modrinth-collection-downloader/master/main.py | python - -v $mcversion -l fabric -c 9zXT2dGO -d "$HOME/Personal/Games/minecraft/mods $mcversion" -u
+    rm "$HOME/Library/Application Support/minecraft/mods"
+    cp "$HOME/Personal/Games/minecraft/mods $mcversion/*" "$HOME/Library/Application Support/minecraft/mods"
+}
 
 
 #--------------- Vim Aliases  ---------------#
