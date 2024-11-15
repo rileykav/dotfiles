@@ -67,6 +67,7 @@ alias duhere="du -d 1"
 
 alias o="open ."
 alias cl='clear'
+alias cls='clear'
 
 # Disable and enable .DS_STORE files
 alias disabledsstore='defaults write com.apple.desktopservices DSDontWriteNetworkStores true'
