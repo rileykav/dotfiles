@@ -10,8 +10,8 @@ send-keys "cd '$HOME/Utrecht/NS-TP551 - Masters Thesis/Project Code' && clear" e
 split-window -v -l 10%
 split-window -h -l 50%
 select-pane -t 0
-new-window -n "PhD Applications"
-send-keys "cd '$HOME/Work/Phd Applications' && clear" enter
+new-window -n "Job Applications"
+send-keys "cd '$HOME/Work' && clear" enter
 split-window -v -l 10%
 split-window -h -l 50%
 select-pane -t 0
