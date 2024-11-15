@@ -13,6 +13,6 @@ set thePct to word 3 of theList's item 2
 set theHr to word 5 of theList's item 2
 
 
-set outOf to theHr & " of " & thePct
+set outOf to "Internal Disk " & theHr & " / " & thePct
 
 return outOf
