@@ -9,5 +9,7 @@ brew install mkvtoolnix
 # https://pilotmoon.com/scrollreverser      # Allows independent reversal of mouse and trackpad scrolling
 
 
+# Github Downloads
+#https://github.com/Caldis/Mos/releases/tag/3.4.1
 
 
