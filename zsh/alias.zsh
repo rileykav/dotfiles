@@ -180,8 +180,6 @@ alias author-cbz="for i in **; do cd $i;zip *.cbz cover.jpg; cd ..; done"
 
 
 
-# Backup dotfiles (defunct now that .dotfiles git is working)
-alias dot-backup="/bin/zsh $HOME/riley-dotfiles/install/new_backup.sh"
 
 
 
