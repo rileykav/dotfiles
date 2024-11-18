@@ -210,6 +210,10 @@ alias giretrack='gh issue edit --remove-label untracked'
 alias gie='gh issue edit'
 alias gp='gh project --owner rileykav'
 
+alias lg="lazygit"
+
+
+
 function reminders(){
     /usr/local/bin/reminders "$@" 2>/dev/null 
 }
