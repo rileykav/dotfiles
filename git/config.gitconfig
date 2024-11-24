@@ -19,3 +19,5 @@ lg = lg1
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+[pull]
+	rebase = true
