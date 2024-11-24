@@ -32,10 +32,13 @@ choco install vim
 # Maybe add these only to $profile
 
 # Winget
+
+### Winget
 winget install --id Microsoft.PowerShell --source winget
 # winget install vim   # Doesnt set Path?
 winget install python
 winget install Git.git
+winget install lazygit
 winget install MiKTeX
 winget install "Strawberry Perl"
 winget install qbittorrent --id qBittorrent.qBittorrentinget install Microsoft.PowerToys -s winget
@@ -45,10 +48,17 @@ winget install windhawk
 winget install Plex --source winget
 winget install Plexamp --source winget
 winget install "Plex Media Server" --source winget
+winget install "PLex HTPC"
 winget install "Blue Mail" --id 9PMHZVM588P4
 winget install firefox --id Mozilla.Firefox --source winget
 winget install "Docker Desktop" --id Docker.DockerDesktop --source winget
 winget install wget --id JernejSimoncic.Wget
+winget install Malwarebytes --source winget --id Malwarebytes.Malwarebytes
+# winget install vpkedit
+winget install brave --source winget
+winget install chrome --source winget
+
+
 
 # Manual Install
 curl -O "https://download01.logi.com/web/ftp/pub/techsupport/gaming/lghub_installer.exe" --output-dir $home/Download
@@ -68,3 +78,4 @@ curl -O "https://origin-a.akamaihd.net/EA-Desktop-Client-Download/installer-rele
 # https://www.hwinfo.com/download/
 # https://zen-browser.app/download
 # Apples Devices App
+# https://www.curseforge.com/download/app
