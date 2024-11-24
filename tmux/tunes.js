@@ -15,9 +15,30 @@ if (Application("Music").running()) {
         const track = Application("Music").currentTrack;
         const artist = track.artist();
         const title = track.name();
-        output += dualoutput
+        output += dualoutput ? " | " : ""; // Add a separator if needed
         output += `${title} - ${artist}`.substr(0, 100)
     }
+}
+if ( (Application("Brave").running()) || (Application("Plexamp").running())) {
+    if ( output=="" ){
+        try {
+            const app = Application.currentApplication();
+            app.includeStandardAdditions = true;
+            const title = app.doShellScript("nowplaying-cli get title");
+            const artist = app.doShellScript("nowplaying-cli get artist");
+            if (title != "" || artist != ""){
+                output += dualoutput ? " | " : ""; // Add a separator if needed
+                output += `${title} - ${artist}`.substr(0, 100)
+            }
+        } catch (e) {
+            // Handle errors in executing the shell command
+            output += " (Error running Zsh command)";
+        }
+    }
+}
+
+if (output == ""){
+    output+= "Not Playing"
 }
 
 output;
