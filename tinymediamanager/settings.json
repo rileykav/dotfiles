@@ -1,0 +1,15 @@
+{
+    "MOVIES": {
+        "renamer": {
+            "Folder name": "${title} ${- ,edition,} (${year})",
+            "Filename": "${title} ${- ,edition,} (${year}) ${videoFormat} ${audioCodec}"
+        }
+    },
+    "TVSHOWS": {
+        "renamer": {
+            "TV Show folder name": "${showTitle} (${showYear})",
+            "Season folder name": "Season ${seasonNr}",
+            "Episode filename": "${episodeNr}. ${title}/${showTitle} - S${seasonNr2}E${episodeNr2} - ${title}"
+        }
+    }
+}
