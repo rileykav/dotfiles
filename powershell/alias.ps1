@@ -2,6 +2,7 @@
 
 # Git Alias
 function gst {git status}
+function lg {lazygit.exe}
 
 $dotfiles="$home\.dotfiles"
 
