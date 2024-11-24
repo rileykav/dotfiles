@@ -31,7 +31,11 @@ choco install vim
 #
 # Maybe add these only to $profile
 
-# Winget
+
+### Regedits
+# Reverse Scrolling
+# https://superuser.com/questions/310681/inverting-direction-of-mouse-scroll-wheel
+Get-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Enum\HID\*\*\Device` Parameters FlipFlopWheel -EA 0 | ForEach-Object { Set-ItemProperty $_.PSPath FlipFlopWheel 1 }
 
 ### Winget
 winget install --id Microsoft.PowerShell --source winget
