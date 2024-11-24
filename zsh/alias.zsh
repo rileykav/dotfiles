@@ -258,6 +258,12 @@ alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && 
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
 
+### System Power
+system-sleep() {osascript -e 'tell app "System Events" to sleep'}
+system-shutdown() {osascript -e 'tell app "System Events" to shut down'}
+
+
+
 ### Safari pdf Rules (Doesn't work)
 # alias safaripdfdowndef="defaults write com.apple.Safari WebKitOmitPDFSupport -bool YES"
 # alias safaripdfopendef="defaults write com.apple.Safari WebKitOmitPDFSupport -bool NO"
