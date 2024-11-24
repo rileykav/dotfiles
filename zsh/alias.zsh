@@ -236,6 +236,10 @@ function test(){
     echo ${test_temp:1}
 }
 
+### Javascript
+alias js="osascript -l JavasSript"
+
+
 ### Python
 #Specifing a Python Version
 alias py='python3.10'
