@@ -67,6 +67,7 @@ alias duhere="du -d 1"
 
 alias o="open ."
 alias cl='clear'
+alias cls='clear'
 
 # Disable and enable .DS_STORE files
 alias disabledsstore='defaults write com.apple.desktopservices DSDontWriteNetworkStores true'
@@ -146,6 +147,16 @@ alias zshdir="cd $HOME/Coding/Zsh"
 alias osascriptdir="cd $HOME/Coding/Applescript"
 
 
+function mcmods {
+    readonly mcversion=${1:?"Minecraft version must be specified"}
+    echo "Download mods..."
+    mkdir -p "$HOME/Personal/Games/minecraft/mods $mcversion"
+    curl -sL https://raw.githubusercontent.com/aayushdutt/modrinth-collection-downloader/master/main.py | python - -v $mcversion -l fabric -c 9zXT2dGO -d "$HOME/Personal/Games/minecraft/mods $mcversion" -u 
+#     wget -qO- https://raw.githubusercontent.com/aayushdutt/modrinth-collection-downloader/master/main.py | python - -v $mcversion -l fabric -c 9zXT2dGO -d "$HOME/Personal/Games/minecraft/mods $mcversion" -u
+    setopt localoptions rmstarsilent
+    rm -f "$HOME/Library/Application Support/minecraft/mods/"*
+    cp "$HOME/Personal/Games/minecraft/mods $mcversion/"* "$HOME/Library/Application Support/minecraft/mods"
+}
 
 
 #--------------- Vim Aliases  ---------------#
@@ -169,8 +180,6 @@ alias author-cbz="for i in **; do cd $i;zip *.cbz cover.jpg; cd ..; done"
 
 
 
-# Backup dotfiles (defunct now that .dotfiles git is working)
-alias dot-backup="/bin/zsh $HOME/riley-dotfiles/install/new_backup.sh"
 
 
 
@@ -200,6 +209,10 @@ alias giretrack='gh issue edit --remove-label untracked'
 # alias gli="gh ils --label=$1"
 alias gie='gh issue edit'
 alias gp='gh project --owner rileykav'
+
+alias lg="lazygit"
+
+
 
 function reminders(){
     /usr/local/bin/reminders "$@" 2>/dev/null 

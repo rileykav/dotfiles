@@ -496,10 +496,11 @@ function tnsprim(){
     tmux new-session -A -s $1 \; \
         source $HOME/.dotfiles/tmux/primary-session.tmux
 }
-function tnsuu(){
-    tmux new-session -A -s Utrecht \; \
-        source $HOME/.dotfiles/tmux/utrecht-session.tmux
+function tnsm(){
+    tmux new-session -A -s Main \; \
+        source $HOME/.dotfiles/tmux/main-session.tmux
 }
+alias tnsuu="tnsm"
 
 function generalwriting(){
     cd $HOME/Utrecht/NS-TP551\ -\ Masters\ Thesis/Project\ Code/General\ Writing
