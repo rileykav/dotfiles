@@ -19,7 +19,7 @@ if (Application("Music").running()) {
         output += `${title} - ${artist}`.substr(0, 100)
     }
 }
-if ( (Application("Brave").running()) || (Application("Plexamp").running())) {
+if ( (Application("Safari").running()) || (Application("Plexamp").running())) {
     if ( output=="" ){
         try {
             const app = Application.currentApplication();
