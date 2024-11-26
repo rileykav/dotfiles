@@ -261,6 +261,7 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 ### System Power
 system-sleep() {osascript -e 'tell app "System Events" to sleep'}
 system-shutdown() {osascript -e 'tell app "System Events" to shut down'}
+system-restart() {osascript -e 'tell app "System Events" to restart'}
 
 
 
@@ -384,7 +385,8 @@ alias anapy="/Users/riley/opt/anaconda3/bin/python"
 alias img="imgcat"
 
 
-
+# Speedtest
+alias speedtest="speedtest 2>/dev/null"
 
 
 # Vim Stuff
