@@ -772,11 +772,62 @@ function runDiff(){
 
 
 
+function testing_zshoptions() {
+  # Define option variables
+  local verbose=0
 
+  # Parse options
+  zparseopts -D -E v=verbose_flag
 
+  # Check if the verbose flag was set
+  if [[ -n $verbose_flag ]]; then
+    verbose=1
+  fi
 
+  # Rest of the function logic
+  if (( verbose )); then
+    echo "Verbose mode is ON."
+  else
+    echo "Verbose mode is OFF."
+  fi
+}
 
+function shell-watch(){
 
+    # Define option variables
+    local terminal_message=0
+
+    # Parse options
+    zparseopts -D -E m=message_flag
+
+    # Check if the verbose flag was set
+    if [[ -n $message_flag ]]; then
+      terminal_message=1
+    fi
+
+    if [[ $terminal_message == 0 ]] then
+        echo "How do you want to be Notified?"
+        echo "a. terminal message"
+        echo "b. email"
+        echo "c. text message"
+        read i"?a/b/c? " 
+    else
+        i="a"
+    fi
+    
+
+    if [[ "$i" == "a" ]] then
+
+        
+        while ps -p "$1" > /dev/null 2>&1; do
+            sleep 1
+        done
+
+        echo "Shell Done!" && date
+    else
+        echo "Not supported yet"
+    fi
+}
 
 
 
