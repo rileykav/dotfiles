@@ -1,4 +1,3 @@
-
 """"""""""""""""""""""""""""""""""""""""""""""
 " Add Plugins (seems important to put this hear)
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -426,8 +425,12 @@ endtry
 """"""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""
+"" gx-extended: stsewd/gx-extended
+" Due to the default gx command being overridden by 'preservim/vim-markdown', we
+" need to redefine the keybind here.
 
 
+nnoremap gl :call gxext#normal()<cr>
 
 
 
