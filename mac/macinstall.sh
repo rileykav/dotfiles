@@ -14,3 +14,10 @@ brew install mkvtoolnix
 #https://github.com/rembo10/headphones/wiki/Installation#macos
 
 
+
+
+# System Preferences
+## Keybinds
+#Safari > File > Open Location: Command-/ (Default: Command-L)
+
+
