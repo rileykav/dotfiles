@@ -245,6 +245,8 @@ function run-script(){
         octave $1 
     elif [[ $FILE_EXT == 'swift' ]]; then
         swift $1 
+    elif [[ $FILE_EXT == 'applescript' ]]; then
+        osascript -l AppleScript $1
     elif [[ $FILE_EXT == 'js' ]]; then
         osascript -l JavaScript $1
     elif [[ $FILE_EXT == 'wls' ]]; then
