@@ -207,6 +207,16 @@ autocmd BufRead *.md hi mkdCode cterm=strikethrough
 autocmd BufRead *.md set conceallevel=2  " From preservim/vim-markdown
 
 autocmd BufRead *.md nnoremap <c-w> :call gxext#normal()<cr>
+
+
+" Folding
+let g:markdown_folding = 1
+let g:markdown_folding_level = 6
+set foldlevel=2
+
+
+
+
 fun! Strike()
     " Go to first non whitespace character
     normal ^
