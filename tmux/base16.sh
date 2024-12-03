@@ -50,5 +50,5 @@ tm_exdisk="#[fg=$base08, bg=$base00] #(osascript ~/.dotfiles/tmux/seagate-usage.
 tm_weeknum="#[fg=$base0D, bg=$base00]Week #(date +'%V')"
 tm_date="#[default,bg=$base00,fg=$base0C]%a %d %b %Y %R"
 #tm_date="#[default,bg=$base00,fg=$base0C] #(date +%A\ %d\ %b\ %Y)"
-tm_host="#[fg=$base0E,bg=$base00] ⚢ $USER""s-macbook "
-set -g status-right "$tm_tunes $tm_battery $tm_disk $tm_exdisk $tm_weeknum $tm_date $tm_host"
+tm_host="#[fg=$base0E,bg=$base00]⚢ $USER""s-macbook"
+set -g status-right "$tm_tunes $tm_battery $tm_disk$tm_exdisk $tm_weeknum $tm_date $tm_host"
