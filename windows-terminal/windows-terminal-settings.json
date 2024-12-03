@@ -241,9 +241,9 @@
         "defaults": 
         {
             "colorScheme": "One Half Dark (modified)",
-            "opacity": 70,
+            "opacity": 80,
             "scrollbarState": "hidden",
-            "useAcrylic": true
+            "useAcrylic": false
         },
         "list": 
         [
