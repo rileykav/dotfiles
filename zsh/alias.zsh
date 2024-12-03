@@ -237,7 +237,7 @@ function test(){
 }
 
 ### Javascript
-alias js="osascript -l JavasSript"
+alias js="run-script $1"
 
 
 ### Python
