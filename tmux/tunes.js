@@ -39,6 +39,8 @@ if ( (Application("Safari").running()) || (Application("Plexamp").running())) {
 
 if (output == ""){
     output+= "Not Playing"
+} else {
+    output = output.substr(0,30)
 }
 
 output;
