@@ -30,6 +30,7 @@ Plugin 'lervag/vimtex'          " Latex
 Plugin 'aclements/latexrun'
 Plugin 'jvirtanen/vim-octave'
 Plugin 'preservim/vim-markdown' 
+Plugin 'stsewd/gx-extended.vim'
 " Plugin 'tpope/vim-markdown'   
 " Plugin 'jtratner/vim-flavored-markdown'
 
