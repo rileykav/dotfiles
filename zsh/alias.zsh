@@ -242,9 +242,9 @@ alias js="run-script $1"
 
 ### Python
 #Specifing a Python Version
-alias py='python3.10'
-alias python='python3.10'
-alias pip='pip3.10'
+# alias py='python3.13'
+# alias python='python3.13'
+# alias pip='pip3.13'
 # Virtual Enviornments
 alias act="source env/bin/activate"
 alias deact="deactivate"
