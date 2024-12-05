@@ -17,3 +17,4 @@ tmux/history.tmux
 vim/bundle/Vundle.vim/autoload/.DS_Store
 vim/bundle/Vundle.vim/test/.DS_Store
 vim/bundle/Vundle.vim/test/.DS_Store
+tmux/history.tmux
