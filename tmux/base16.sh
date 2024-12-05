@@ -1,4 +1,8 @@
 #Base16 Styling Guidlines
+# Source: [vim + tmux - OMG!Code](https://youtu.be/5r6yzFEXajQ?si=rufoPP1SpBgl_d4k)
+
+
+
 
 base00=default      # - Default
 base01='#151515'    # - Lighter Background (Used for statubars)
