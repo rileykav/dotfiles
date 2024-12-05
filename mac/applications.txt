@@ -1,0 +1,71 @@
+AS Timer
+AdBlock Pro
+AdBlock
+Anaconda-Navigator
+Arc
+Blender
+Brave Browser
+CurseForge
+DB Browser for SQLite
+Docker
+Firefox
+GIMP
+GitHub Desktop
+Goodnotes
+Google Chrome
+Horo
+JDownloader2
+JabRef
+Karabiner-Elements
+Karabiner-EventViewer
+KeePassXC
+Keynote
+Lazy Mac Pack v0.47.05 dfhack-r1
+MATLAB_R2023a
+MKVToolNix-73.0.0
+Mathematica
+Messenger
+Meta
+Microsoft Teams classic
+Minecraft
+Mos
+Notability
+Numbers
+Obsidian
+OpenAudible
+OpenMTP
+Pages
+Plex Media Server
+Plexamp
+Raycast
+Rectangle
+Safari
+Script Debugger
+Skim
+Spotify
+Spyder
+Stardew Valley
+Steam
+Sublime Text
+TeX
+The Unarchiver
+Tor Browser
+Utilities
+VLC
+VOX
+Vimari
+Visual Studio Code
+Wacom Tablet.localized
+What
+WolframScript
+XLD
+Xcode
+Yate
+Zotero
+calibre
+coconutBattery
+foobar2000
+iTerm
+qbittorrent
+tinyMediaManager
+zoom.us
