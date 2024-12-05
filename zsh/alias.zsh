@@ -35,6 +35,7 @@ alias .....="cd ../../../.."
 
 # Terminal "Handeling"
 alias ,x="exit"
+alias :x="exit"
 alias zshempty="zsh -f"
 alias chm7='chmod 700'
 
@@ -242,9 +243,11 @@ alias js="run-script $1"
 
 ### Python
 #Specifing a Python Version
-# alias py='python3.13'
-# alias python='python3.13'
-# alias pip='pip3.13'
+alias py='python'
+alias pybrew='/usr/local/Cellar/python@3.13/3.13.0_1/bin/python3'
+alias pyconda="/Users/riley/opt/anaconda3/bin/python" 
+alias base_ana=". /Users/riley/opt/anaconda3/bin/activate && conda activate /Users/riley/opt/anaconda3;"
+alias anaconda3=". /Users/riley/opt/anaconda3/bin/activate && conda activate /opt/anaconda3;"
 # Virtual Enviornments
 alias act="source env/bin/activate"
 alias deact="deactivate"
@@ -368,10 +371,6 @@ alias ittest="(cd $HOME/Bookshelf/Italiano && py test-words.py)"
 
 
 
-# Anaconda 
-alias base_ana=". /Users/riley/opt/anaconda3/bin/activate && conda activate /Users/riley/opt/anaconda3;"
-alias anaconda3=". /Users/riley/opt/anaconda3/bin/activate && conda activate /opt/anaconda3;"
-alias anapy="/Users/riley/opt/anaconda3/bin/python" 
 
 
 
