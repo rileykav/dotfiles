@@ -214,6 +214,7 @@ alias gie='gh issue edit'
 alias gp='gh project --owner rileykav'
 
 alias lg="lazygit"
+alias lgdotfiles="(cd $HOME/.dotfiles && lazygit)"
 
 
 
