@@ -481,10 +481,10 @@ keybinding:
     createRebaseOptionsMenu: m
 
     # 'Files' appended for legacy reasons
-    pushFiles: p
+    pushFiles: P
 
     # 'Files' appended for legacy reasons
-    pullFiles: P
+    pullFiles: p
     refresh: R
     createPatchOptionsMenu: <c-p>
     nextTab: ']'
