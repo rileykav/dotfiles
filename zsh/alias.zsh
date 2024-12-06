@@ -127,6 +127,8 @@ function todo {
 
 }
 
+alias bookmarks="vim ~/.dotfiles/browsers/bookmarks.md"
+
 
 # alias todo="vim $HOME/iCloud/Documents/todo.md"
 alias todoi="vim $HOME/iCloud/Documents/todo.md"
