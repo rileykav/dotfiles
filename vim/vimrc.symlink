@@ -656,6 +656,7 @@ set nospell
 autocmd BufRead,BufNewFile *tex set spell
 autocmd BufRead,BufNewFile *md set spell
 autocmd BufRead,BufNewFile *txt set spell
+set spellfile=~/.dotfiles/vim/spell/test.utf-8.add
 
 
 
