@@ -65,7 +65,23 @@ bind A setw synchronize-panes
 bind S source ~/.dotfiles/tmux/primary-session.tmux
 
 # Enable mosue pane selection 
-setw -g mouse on 
+setw -g mouse on
+setw -g mode-keys vi
+bind -T copy-mode-vi v send -X begin-selection
+bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
+bind p paste-buffer
+# bind -T copy-mode-vi MouseDown1Pane select-pane
+bind -T copy-mode-vi MouseDrag1Pane send -X begin-selection
+bind -T copy-mode-vi MouseDragEnd1Pane send -X stop-selection
+bind-key -T copy-mode-vi MouseDown1Pane send -X cancel
+bind-key -T copy-mode-vi C-c send -X copy-pipe-and-cancel "pbcopy"
+
+
+
+
+
+
+
 
 set -g default-terminal "screen-256color"
 
