@@ -575,7 +575,7 @@
 - [Audio Tracks for Movies](http://audio-track.com/en)
 - [Libgen](https://libgen.is/)
 - [Nyaa.si Anime &amp; Manga Torrent Site](https://nyaa.si/)
-- [zlibrary](https://z-lib.org/)
+- [zlibrary](https://z-lib.gs)
 - [The Pirate Bay](https://thepirate-bay.org/en)
 - [CloudLoad](https://portal.cloudload.com/)
 - [The List Details - The Greatest Books](https://thegreatestbooks.org/lists/details)
