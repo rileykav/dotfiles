@@ -831,7 +831,13 @@ function shell-watch(){
 
 
 
+function mount-desktop() {
+    osascript -e 'mount volume "smb://lykav@rileys-desktop/Users"'
+    osascript -e 'mount volume "smb://lykav@rileys-desktop/Seagate 4TB"'
+    osascript -e 'mount volume "smb://lykav@rileys-desktop/Seagate HDD (E)"'
 
+
+}
 
 
 
