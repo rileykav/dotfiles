@@ -309,8 +309,8 @@ zstyle ':completion:*:*:vim:*' file-patterns '^*.(aux|log|pdf):source-files' '*:
 
 
 
-
-
+# Lazygit (though i think this is more general)
+export XDG_CONFIG_HOME="$HOME/.dotfiles"
 
 
 
