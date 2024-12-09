@@ -104,6 +104,10 @@ alias tka='tmux kill-session -a'
 alias tks='tmux kill-server'
 alias thelp='echo "ta    = Attach to most recent\ntls   = List current tmux sessions\ntat   = Attach with -t\ntns   = start new session (give name)\ntka   = Kill all current tmux sessions\ntko   = Kill all other tmux sessions\nthelp = List current tmux aliases"'
 
+function tmuxtuneslength(){
+    sed -E -i '' 's/output = output\.substr\(0,[0-9]+\)/output = output.substr(0,'$1')/' ~/.dotfiles/tmux/tunes.js
+}
+
 
 
 # dotfile aliases
@@ -453,3 +457,8 @@ alias flattenpaper="(cd /Users/riley/Utrecht/NS-TP551\ -\ Masters\ Thesis/Projec
 alias suspendedjobsStart='fg'
 alias suspendedjobsList='jobs'
 alias suspendedjobsKill='jobs -s | kill %1'
+
+
+
+
+
