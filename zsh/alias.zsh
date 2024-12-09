@@ -59,6 +59,15 @@ alias lt5l="less -L 5 -C | less"
 alias treehere="tree . -oN file-tree.txt"
 alias vtree="tree file-tree.txt"
 
+
+
+# Finder Move and Copy (broken!)
+function cpfinder() {osascript -e 'tell application "Finder" to duplicate POSIX file \"$1\" to POSIX file \"$2\"'}
+function mvfinder() {osascript -e 'tell application "Finder" to move POSIX file \"$1\" to POSIX file \"$2\"'}
+
+
+
+
 alias grep="grep --color=auto"
 alias df="df -h" # Disk free in bytes
 alias du="du -hc -d 1 2>/dev/null" # Disk usage of folder
