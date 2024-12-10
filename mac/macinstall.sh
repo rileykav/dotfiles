@@ -3,6 +3,13 @@
 # brew install mkvtoolnix
 
 
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+###!!!! Add brew to path
+
+brew install readline xz
+brew install
+
 
 
 # Manual site downloads
@@ -48,8 +55,8 @@ defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 echo "Show Path bar in Finder"
 defaults write com.apple.finder ShowPathbar -bool true
 
-echo "Show Status bar in Finder"
-defaults write com.apple.finder ShowStatusBar -bool true
+# echo "Show Status bar in Finder"   # I don't like this
+# defaults write com.apple.finder ShowStatusBar -bool true
 
 echo "Disable press-and-hold for keys in favor of key repeat"
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
