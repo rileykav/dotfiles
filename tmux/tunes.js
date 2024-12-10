@@ -1,15 +1,15 @@
 let output = "";
 let dualoutput = "";
 try {
-    if (Application("Spotify").running()) {
-        if (Application("Spotify").playerState() == "playing") {
-            const track = Application("Spotify").currentTrack;
-            const artist = track.artist();
-            const title = track.name();
-            output += title + " - " + artist
-            dualoutput = " & "
-        }
-    }
+//     if (Application("Spotify").running()) {
+//         if (Application("Spotify").playerState() == "playing") {
+//             const track = Application("Spotify").currentTrack;
+//             const artist = track.artist();
+//             const title = track.name();
+//             output += title + " - " + artist
+//             dualoutput = " & "
+//         }
+//     }
 
     if (Application("Music").running()) {
         if (Application("Music").playerState() == "playing") {
@@ -20,7 +20,8 @@ try {
             output += title + " - " + artist
         }
     }
-    if ( (Application("Safari").running()) || (Application("Plexamp").running())) {
+//     if ( (Application("Safari").running()) || (Application("Plexamp").running())) {
+    if (Application("Safari").running()) {
         if ( output=="" ){
             try {
                 const app = Application.currentApplication();
@@ -41,13 +42,15 @@ try {
                 // Handle errors in executing the shell command
                 output += " (Error running Zsh command)";
             }
+        } else {
+            output+="AAAA"
         }
     }
 
     if (output == ""){
         output+= "Not Playing"
     } else {
-        output = output.substr(0,100)
+        output = output.substr(0,30)
     }
 
 } catch (error) {
