@@ -54,7 +54,7 @@ else
         Plugin 'christoomey/vim-tmux-navigator'
         Plugin 'christoomey/vim-tmux-runner'
  
-        Plugin 'sirver/ultisnips'
+"         Plugin 'sirver/ultisnips' broken
 "         Plugin 'honza/vim-snippets'
         endif
     endif
