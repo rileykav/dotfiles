@@ -5,6 +5,7 @@ recentrepos:
 startuppopupversion: 5
 lastversion: 0.44.1
 customcommandshistory:
+    - git config --global user.email "lykavanagh1@gamil.com"
     - x
     - git fetch
 hidecommandlog: false
