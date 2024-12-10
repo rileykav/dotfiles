@@ -292,7 +292,7 @@ let g:vimtex_view_method = 'general'
 let g:vimtex_view_general_viewer = 'texworks.exe'
 let g:vimtex_compiler_latexmk = {
     \ 'callback' : 0,
-    \ 'continuous' : 0,
+    \ 'continuous' : 1,
     \}
 if has("win32")
 "         There is a command to view pdf in VimTex: VimTexView (must be able to open from terminal
