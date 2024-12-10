@@ -831,6 +831,11 @@ function shell-watch(){
 
 
 
+
+function mount-macbook2015() {
+    osascript -e 'mount volume "smb://riley@rileys-mbp-2015/riley"'
+}
+
 function mount-desktop() {
     osascript -e 'mount volume "smb://lykav@rileys-desktop/Users"'
     osascript -e 'mount volume "smb://lykav@rileys-desktop/Seagate 4TB"'
