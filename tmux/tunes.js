@@ -50,7 +50,7 @@ try {
     if (output == ""){
         output+= "Not Playing"
     } else {
-        output = output.substr(0,30)
+        output = output.substr(0,100)
     }
 
 } catch (error) {
