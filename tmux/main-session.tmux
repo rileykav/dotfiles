@@ -15,7 +15,4 @@ send-keys "cd '$HOME' && clear" enter
 split-window -v -l 10%
 split-window -h -l 50%
 select-pane -t 0
-split-window -v -l 10%
-split-window -h -l 50%
-select-pane -t 0
 select-window -t 0
