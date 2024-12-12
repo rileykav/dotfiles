@@ -226,7 +226,7 @@ function run-script(){
     if [[ $FILE_EXT == 'sh' ]]; then
         /bin/zsh $1
     elif [[ $FILE_EXT == 'py' ]]; then
-        /usr/local/bin/python3.10 $1
+        python $1
     elif [[ $FILE_EXT == 'scpt' ]]; then
         osascript $1
     elif [[ $FILE_EXT == 'c' ]]; then
