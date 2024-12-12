@@ -441,6 +441,9 @@ alias showcursor="tput cnorm"
 alias hidecursor="tput civis"
 
 
+# NetBios Name
+alias netbios-name="plutil -p /Library/Preferences/SystemConfiguration/com.apple.smb.server.plist"
+
 # https://github.com/sandreas/m4b-tool
 alias m4b-tool='docker run -it --rm -u $(id -u):$(id -g) -v "$(pwd)":/mnt sandreas/m4b-tool:latest'
 #
