@@ -846,7 +846,10 @@ function mount-desktop() {
 
 
 
-
+function myip(){
+    ipconfig getifaddr en0
+    ipconfig getifaddr en1
+}
 
 
 
