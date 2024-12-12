@@ -43,7 +43,6 @@ else
     if has("unix")
         if has("macunix")
         " Mac options here
-"         Plugin 'ycm-core/YouCompleteMe' 
 "         Plugin 'tpope/vim-fugitive'
 "         Plugin 'vim-syntastic/syntastic'	" Was getting error, try again?
 "         Plugin 'neoclide/coc.nvim'
@@ -54,7 +53,8 @@ else
         Plugin 'christoomey/vim-tmux-navigator'
         Plugin 'christoomey/vim-tmux-runner'
  
-"         Plugin 'sirver/ultisnips' broken
+        Plugin 'ycm-core/YouCompleteMe' 
+        Plugin 'sirver/ultisnips' " broken Requires YouCompleteMe?
 "         Plugin 'honza/vim-snippets'
         endif
     endif
