@@ -217,7 +217,7 @@ let g:markdown_folding = 1
 let g:markdown_folding_level = 6
 set foldlevel=2
 
-
+command UrlLink :echo "[Name](Url.com)"
 
 
 fun! Strike()
