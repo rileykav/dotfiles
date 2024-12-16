@@ -1129,6 +1129,7 @@
 - [Starsector » Preorder](https://fractalsoftworks.com/preorder/)
 - [The Expanse series (2011-2021) by James S. A. Corey : AudiobookCovers](https://www.reddit.com/r/AudiobookCovers/comments/rsuueg/the_expanse_series_20112021_by_james_s_a_corey/)
 - [Memory's Legion (2022) by James S. A. Corey [matches my Dark Crayon Expanse set] : AudiobookCovers](https://www.reddit.com/r/AudiobookCovers/comments/17d0lqy/memorys_legion_2022_by_james_s_a_corey_matches_my/)
+- [Space Mouse in the Expanse](https://www.amazon.co.uk/3DConnexion-3DX-700040-Space-Mouse-Pro/dp/B006GPYZ40/ref=pd_vtp_h_pd_vtp_h_d_sccl_5/260-7288444-2771826?pd_rd_w=7indn&content-id=amzn1.sym.27b8d297-93e8-4664-82f7-98afee526b43&pf_rd_p=27b8d297-93e8-4664-82f7-98afee526b43&pf_rd_r=4KECYJJRCJ8ZMQC4VGGS&pd_rd_wg=WnjOH&pd_rd_r=a977779c-8a88-49ae-a5ab-8c83f5307c31&pd_rd_i=B006GPYZ40&psc=1)
 ### Programming
 - [TTSReader | Text To Speech Reader. Online, Free &amp; Unlimited](https://ttsreader.com/)
 - [learnbyexample - GNU BRE/ERE cheatsheet and differences between grep, sed and awk](https://learnbyexample.github.io/gnu-bre-ere-cheatsheet/)
