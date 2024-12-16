@@ -215,7 +215,7 @@ autocmd BufRead *.md nnoremap <c-w> :call gxext#normal()<cr>
 " Folding
 let g:markdown_folding = 1
 let g:markdown_folding_level = 6
-set foldlevel=2
+set foldlevel=4
 
 command UrlLink :echo "[Name](Url.com)"
 
