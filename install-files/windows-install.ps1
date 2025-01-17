@@ -49,6 +49,7 @@ winget install qbittorrent --id qBittorrent.qBittorrentinget install Microsoft.P
 winget search icloud --id Apple.iCloud --source winget
 winget install whatsapp --source msstore
 winget install windhawk
+winget install powertoys --source winget
 winget install Plex --source winget
 winget install Plexamp --source winget
 winget install "Plex Media Server" --source winget
