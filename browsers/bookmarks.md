@@ -472,6 +472,7 @@
 - [The Soup Thickener You've Probably Never Thought Of | Allrecipes](https://www.allrecipes.com/article/soup-thickener-frozen-hash-browns/)
 - [Mama's Italian Wedding Soup Recipe | Allrecipes](https://www.allrecipes.com/recipe/13434/mamas-italian-wedding-soup/)
 - [Potatoes in Tomato Sauce &nbsp;|&nbsp; Kitchen Nostalgia](https://www.kitchennostalgia.com/vegetables/potatoes-in-tomato-sauce.html)
+- [Darto Pans](https://www.dartointernational.com/product/Sautepan-n20/5?cs=true&cst=custom)
 ### Streaming
 - [Disney+](https://www.disneyplus.com/home)
 - [Twitch](https://www.twitch.tv/)
@@ -576,6 +577,7 @@
 - [Libgen](https://libgen.is/)
 - [Nyaa.si Anime &amp; Manga Torrent Site](https://nyaa.si/)
 - [zlibrary](https://z-lib.gs)
+- [How to access Zlibrary : zlibrary](https://www.reddit.com/r/zlibrary/comments/16xtf95/how_to_access_zlibrary/)
 - [The Pirate Bay](https://thepirate-bay.org/en)
 - [CloudLoad](https://portal.cloudload.com/)
 - [The List Details - The Greatest Books](https://thegreatestbooks.org/lists/details)
@@ -594,9 +596,6 @@
 - [Welcome! | VK](https://vk.com/)
 - [Digitaal loket / Mijn BghU](https://mijn.bghu.nl/digid.info.php)
 - [Audiobookbay](http://audiobookbay.nl/)
-- [How to access Zlibrary : zlibrary](https://www.reddit.com/r/zlibrary/comments/16xtf95/how_to_access_zlibrary/)
-- [Z-Library](https://singlelogin.re/)
-- [Z-Library](https://z-library.se/?signAll=1&amp;ts=1508)
 - [ctrl-shift-alt-d netflix at DuckDuckGo](https://duckduckgo.com/?q=ctrl-shift-alt-d+netflix&amp;t=osx&amp;ia=web)
 - [BitSearch](https://www.bitsearch.to/)
 ### Canvas
@@ -740,6 +739,9 @@
 - [Elagabalus - Wikipedia](https://en.wikipedia.org/wiki/Elagabalus)
 ###### My Transition
 - [HSE Waiting List](https://www.waitinglist.ie/)
+##### Queer P
+- [Reddit thred discussing Rosie and Alena](https://www.reddit.com/r/actuallesbians/comments/1htfdp1/girls_i_need_your_help_to_find_a_porn_channel/)
+- [Rosie and Alena](https://www.pornhub.com/model/rosie-and-alena)
 #### Intersting
 - [Text-Book of Seamanship](https://maritime.org/doc/luce/index.htm)
 - [Wellerman Sea Shanty Mix - YouTube](https://www.youtube.com/watch?v=oFeLvGhZ4YU)
@@ -1420,7 +1422,7 @@
 - [terminal - How can I trigger a Notification Center notification from an AppleScript or shell script? - Ask Different](https://apple.stackexchange.com/questions/57412/how-can-i-trigger-a-notification-center-notification-from-an-applescript-or-shel)
 #### Books
 - [Must Read Books ? : learnprogramming](https://www.reddit.com/r/learnprogramming/comments/83xyow/must_read_books/)
-- [O'Reilly Media: free download. Ebooks library. On-line books store on Z-Library](https://2lib.org/s/?q=O%27Reilly+Media)
+- [O'Reilly Media: free download. Ebooks library. On-line books store on Z-Library](https://duckduckgo.com/?t=osx&q=O%27Reilly+Media%3A+free+download.+Ebooks+library.+On-line+books+store+on+Z-Library&ia=web)
 #### image-to-text
 - [dotfiles/ocr at master · sdushantha/dotfiles · GitHub](https://github.com/sdushantha/dotfiles/blob/master/bin/bin/utils/ocr)
 - [tessdata/eng.traineddata at master · tesseract-ocr/tessdata · GitHub](https://github.com/tesseract-ocr/tessdata/blob/master/eng.traineddata)
@@ -1472,6 +1474,7 @@
 - [Minecraft Best IRON FARM - 1.20+ Iron Farm Tutorial - YouTube](https://www.youtube.com/watch?v=jZgoD93YnCw)
 - [Brewing](https://gamepedia.cursecdn.com/minecraft_gamepedia/archive/7/7b/20141207040837!Minecraft_brewing_en.png?version=992dfe06c7b61ede13971eb6d61364f4)
 - [Potions](https://external-preview.redd.it/nVOCo_fVAiDjRh1aYuXKuIIREEECOrXo1Q1zbChTuuA.png?auto=webp&amp;s=110fc21b73df9bd9596b9fa93a4741bdd12b0ce6)
+- [Lego Minecreaft Texture Pack (Buy Preemium, AUthor died of cancer at 18)](https://brickcraft.de/download/)
 #### Elite Dangerous
 - [Best Ship Yard? :: Elite Dangerous General Discussions](https://steamcommunity.com/app/359320/discussions/0/3051733836210072907/)
 - [Elite: Dangerous Database - EDDB](https://eddb.io/)
