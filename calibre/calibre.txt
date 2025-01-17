@@ -1,6 +1,6 @@
 # In tweaks set:
 title_series_sorting = 'strictly_alphabetic'
-save_template_title_series_sorting = 'strictly_alphabetic'
+Tweaks > Control formatting of title and series when used in templates > save_template_title_series_sorting = 'strictly_alphabetic'
 
 
 ### Save to disk setting
