@@ -35,7 +35,7 @@ try {
                     output += title
                 } else {
                     output += dualoutput ? " | " : ""; // Add a separator if needed
-                    output += title + " - " + artist
+                    output += title.substr(0,30) + " - " + artist.substr(0,30)
                 }
 
             } catch (e) {
@@ -50,7 +50,7 @@ try {
     if (output == ""){
         output+= "Not Playing"
     } else {
-        output = output.substr(0,62)
+        output = output.substr(0,60)
     }
 
 } catch (error) {
