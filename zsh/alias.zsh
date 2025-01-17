@@ -298,6 +298,15 @@ alias showhiddenfiles='defaults write com.apple.Finder AppleShowAllFiles -bool t
 #https://www.chriswrites.com/how-to-place-any-dashboard-widget-on-your-macs-desktop/
 #alias hidewidgets="defaults write com.apple.dashboard && devmode YES"
 
+# Microsft AutoUpdater
+# https://superuser.com/questions/1544338/turn-off-microsoft-apps-microsoft-autoupdate-app-on-a-mac
+# alias disablemsautoupdate="launchctl disable gui/$(id -u)/com.microsoft.update.agent"
+# alias enablemsautoupdate="launchctl enable gui/$(id -u)/com.microsoft.update.agent"
+# alias checkmsautoupdate="launchctl print-disabled gui/$(id -u) | grep -o microsoft | sed 's/^[[:space:]]*//'"
+alias disablemsautoupdate="sudo mv /Library/Application\ Support/Microsoft/MAU2.0/Microsoft\ AutoUpdate.app /Library/Application\ Support/Microsoft/MAU2.0/Microsoft\ AutoUpdate.backup.app "
+alias enablemsautoupdate="sudo mv /Library/Application\ Support/Microsoft/MAU2.0/Microsoft\ AutoUpdate.backup.app /Library/Application\ Support/Microsoft/MAU2.0/Microsoft\ AutoUpdate.app "
+alias checkmsautoupdate="echo $(ls /Library/Application\ Support/Microsoft/MAU2.0)"
+
 
 #Unmount Drives
 alias unmountseagate='diskutil unmount /Volumes/Seagate\ 4TB'
