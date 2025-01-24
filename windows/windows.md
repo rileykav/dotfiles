@@ -35,7 +35,10 @@ Run `Type Set-ExecutionPolicy Unrestricted -Scope CurrentUser`, (then click A?)
 https://www.reddit.com/r/computer/comments/uxdek5/file_cannot_be_loaded_because_running_scripts_is/
 
 
-
+## Windows Security Systems
+Sometimes the windows ransomware protection will falsely trigger, causing certain actions to be blocked. For example:
+1. Apple Music will be refused access to the AMPLibraryAgent.exe file prevent the home page from loading
+2. bakkesmod may be regected access from an update causeing the old version to still be ran
 
 ## Connecting Mac -> Windows
 If logged in with a microsoft account, you must use the microsoft password as the login details
