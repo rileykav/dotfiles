@@ -60,7 +60,8 @@ au FocusGained,BufEnter * checktime
 
 nnoremap <Up> gk
 nnoremap <Down> gj
-
+nnoremap <s-up> gk
+nnoremap <s-down> gj
 
 
 
