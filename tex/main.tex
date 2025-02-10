@@ -9,9 +9,16 @@
 \usepackage{amssymb} % Contains hslash command, nicer than hbar
 \usepackage{amsmath}
 \usepackage{graphicx} % Including images
-% \usepackage{amsfonts}  % Don't Seem to need
-% \usepackage{amssymb}   % Don't Seem to need
-% \usepackage{cleveref} % Requires amsmath, Dont Seem to need 
+\usepackage{xcolor}
+\newcommand{\black}[1]{{\color{black}#1}}
+\newcommand{\red}[1]{{\color{red}#1}}
+
+% Manual Indentation
+\setlength{\parindent}{0pt}
+\newcommand{\ind}{\hspace{2em}}
+% Page Numbering
+\pagenumbering{gobble}
+
 % \usepackage{hyperref} % Needed to change colours, allow for clickable links
 % \hypersetup{
 %     colorlinks=true,
@@ -23,48 +30,6 @@
 %     runcolor=black,
 %     urlcolor=black
 % }
-
-
-
-
-%--------------- Formatting  ---------------%
-% \marginparwidth 2 true cm
-% \setlength{\unitlength}{1mm}
-
-
-%%% Manually place paragraph indentation
-% \setlength{\parindent}{0pt}
-% \newcommand{\ind}{\hspace{2em}} % manual indenting
-\newcommand{\ind}{\hspace{0mm}} % manual indenting
-\numberwithin{equation}{section}
-
-
-
-
-
-
-%--------------- User Commands  ---------------%
-\newcommand{\todo}[1]{{\color{red}Todo: #1}}
-\newcommand{\abs}[1]{\lvert#1\rvert}
-\newcommand{\red}[1]{{\color{red}#1}}
-\newcommand{\blue}[1]{{\color{blue}#1}}
-\newcommand{\note}[1]{{(\color{red}Note: #1})}
-\newcommand{\addcite}{{[\color{blue}??}]}
-% \newcommand{\addref}{{[\color{red}?find-ref?}]}
-
-
-
-
-%--------------- MathSymbols  ---------------%
-% \renewcommand{\hbar}{\hbar} % hslash requires amssymb
-
-%%% d'alembert symbol (source: paper from Madrid Uni I think)
-\def\dAlembert{\kern1pt\vbox{\hrule height 1.2pt\hbox{\vrule width 1.2pt\hskip 3pt
-   \vbox{\vskip 6pt}\hskip 3pt\vrule width 0.6pt}\hrule height 0.6pt}\kern1pt}
-%% Alternative
-
-% \newcommand{\dAlembert}{\square}
-
 
 
 
