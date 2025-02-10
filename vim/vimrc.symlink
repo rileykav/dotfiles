@@ -684,10 +684,10 @@ hi clear mdStyleItal
 hi mdStyleItal cterm=bold
 hi clear mdStyleBold
 hi mdStyleBold cterm=bold
+hi SpellBad cterm=underline
 
 set iskeyword+={ " word boundary
 set iskeyword+=} " word boundary
-
 
 
 
