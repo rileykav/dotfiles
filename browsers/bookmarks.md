@@ -577,6 +577,7 @@
 - [Libgen](https://libgen.is/)
 - [Nyaa.si Anime &amp; Manga Torrent Site](https://nyaa.si/)
 - [zlibrary](https://z-lib.gs)
+- [Annas Archive](https://annas-archive.org)
 - [How to access Zlibrary : zlibrary](https://www.reddit.com/r/zlibrary/comments/16xtf95/how_to_access_zlibrary/)
 - [The Pirate Bay](https://thepirate-bay.org/en)
 - [CloudLoad](https://portal.cloudload.com/)
