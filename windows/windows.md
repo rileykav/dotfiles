@@ -20,6 +20,15 @@ To add additional fonts to cmd, first install as normal and check its name; then
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Console\TrueTypeFont
 and add a new string value, with name '000' and the Value data as the name of the font.
 
+### Reverse Scrolling Direaction
+1. Open Start.
+2. Search for regedit and click the top result to open the Registry Editor.
+3. Browse the following path:HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\HID
+4. Expand the key (folder) that matches the "VID ID" of your mouse — for example, VID_0E0F&PID_0003&MI_01.
+5. Expand the available key.
+6. Select the Device Parameters key.
+7. Double-click the FlipFlopWheel DWORD and set the value from 0 to 1.
+
 ## Installing Windows 11 on Unsupported Hardware
 Windows 11 has a couple of requirements that provide an initial hard lock-out of installing / upgrading to Windows 11. The three primary checks the installer makes are:
 - TPM 2.0 compatibility, this is based on your motherboard having the required TPM *chip*. Post 2016 Motherboards normally just have this turned off in BIOS. Set TPM To firmware.
