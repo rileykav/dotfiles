@@ -435,14 +435,14 @@ autocmd FileType tex set complete-=i
 " autocmd FileType tex inoremap <tab> <c-x><c-o>
 " autocmd FileType tex inoremap <c-tab> <tab>
 
-function! CleverTab()
-	   if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-	      return "\<Tab>"
-	   else
-	      return "\<C-x>\<C-o>"
-	   endif
-endfunction
-autocmd FileType tex inoremap <Tab> <C-R>=CleverTab()<CR>
+" function! CleverTab()
+" 	   if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+" 	      return "\<Tab>"
+" 	   else
+" 	      return "\<C-x>\<C-o>"
+" 	   endif
+" endfunction
+" autocmd FileType tex inoremap <Tab> <C-R>=CleverTab()<CR>
 autocmd FileType tex nnoremap <leader>w :wa
 " inoremap <Tab> <C-x>CleverTab()
 
