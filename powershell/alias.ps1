@@ -54,6 +54,10 @@ function py {python}
 # Termianl Alias
 function :x {exit} # I'd like to use ,x (same as vim) but powershell gets mad :(
 
-
+function FlipMouseScrollDirection{
+    echo "Are you Admin? If not, open an admin terminal."
+    $mode = Read-host "How do you like your mouse scroll (0 or 1)?"; Get-PnpDevice -Class Mouse -PresentOnly -Status OK | ForEach-Object { "$($_.Name): $($_.DeviceID)"; Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Enum\$($_.DeviceID)\Device Parameters" -Name FlipFlopWheel -Value $mode; "+--- Value of FlipFlopWheel is set to " + (Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Enum\$($_.DeviceID)\Device Parameters").FlipFlopWheel + "`n" }
+    echo "If successful, please restart to see changes."
+}
 
 function pshistory {cat (Get-PSReadlineOption).HistorySavePath | Select-String -Pattern "winget install" -SimpleMatch | Set-Content winget-installes.txt}
