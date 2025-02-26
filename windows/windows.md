@@ -21,6 +21,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Console\TrueType
 and add a new string value, with name '000' and the Value data as the name of the font.
 
 ### Reverse Scrolling Direaction
+Manual Method:
 1. Open Start.
 2. Search for regedit and click the top result to open the Registry Editor.
 3. Browse the following path:HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\HID
@@ -28,7 +29,8 @@ and add a new string value, with name '000' and the Value data as the name of th
 5. Expand the available key.
 6. Select the Device Parameters key.
 7. Double-click the FlipFlopWheel DWORD and set the value from 0 to 1.
-
+Or the automated way:
+`$mode = Read-host "How do you like your mouse scroll (0 or 1)?"; Get-PnpDevice -Class Mouse -PresentOnly -Status OK | ForEach-Object { "$($_.Name): $($_.DeviceID)"; Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Enum\$($_.DeviceID)\Device Parameters" -Name FlipFlopWheel -Value $mode; "+--- Value of FlipFlopWheel is set to " + (Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Enum\$($_.DeviceID)\Device Parameters").FlipFlopWheel + "`n" }`
 ## Installing Windows 11 on Unsupported Hardware
 Windows 11 has a couple of requirements that provide an initial hard lock-out of installing / upgrading to Windows 11. The three primary checks the installer makes are:
 - TPM 2.0 compatibility, this is based on your motherboard having the required TPM *chip*. Post 2016 Motherboards normally just have this turned off in BIOS. Set TPM To firmware.
