@@ -116,6 +116,8 @@
 #### PhD July
 ### Paper
 ## Folders
+## Work
+- [Dungarvan Career Office](https://mycareercompass.ie/contact/)
 ### Codig
 - [GitHub - GeostatsGuy/PythonNumericalDemos: Well-documented Python demonstrations for spatial data analytics, geostatistical and machine learning to support my courses.](https://github.com/GeostatsGuy/PythonNumericalDemos)
 - [sshx](https://sshx.io/)
@@ -206,6 +208,8 @@
 - [audio - ffmpeg consolidating multiple mp3 files into 1 m4b file - Super User](https://superuser.com/questions/819769/ffmpeg-consolidating-multiple-mp3-files-into-1-m4b-file)
 ### Keyboard To Buy
 - [Keychron | Custom Mechanical Keyboards for Mac, Windows and Phones – Keychron | Mechanical Keyboards for Mac, Windows and Android](https://www.keychron.com/)
+- [Aula Keyboard (calm tapping noise see twitch.tv/soap)](https://www.aulainnovations.com/products/aula-f75-gasket-mechanical-keyboard)
+- [Creamy Sounding Keyboard](https://www.youtube.com/watch?v=t-5ZEKG6Miw&t=2s)
 ### Dungeons and Dragons
 - [Trove](https://thetrove.net/)
 - [Owlbear Rodeo](https://www.owlbear.rodeo/game/Wz1OwoMxp)
