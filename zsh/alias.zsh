@@ -141,7 +141,10 @@ function todo {
 
 }
 
+# Markdownaliases
 alias bookmarks="vim ~/.dotfiles/browsers/bookmarks.md"
+alias markdownfiles="cd ~/iCloud/Documents"
+alias civguide="vim ~/iCloud/Documents/Markdown\ Files/Games/CivVI.md"
 
 
 # alias todo="vim $HOME/iCloud/Documents/todo.md"
