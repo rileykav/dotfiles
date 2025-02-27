@@ -336,3 +336,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+# Autocomplete patterns to ignore
+zstyle ':completion:*:*:-command-:*:*' ignored-patterns "${(@f)$(<$HOME/.dotfiles/zsh/ignore-autocomplete.zsh)}"
