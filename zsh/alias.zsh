@@ -305,6 +305,7 @@ alias showhiddenfiles='defaults write com.apple.Finder AppleShowAllFiles -bool t
 # Import/Export App Keyboard Shortcuts
 alias exportkeyboardshortcuts="defaults export com.apple.symbolichotkeys - > $HOME/.dotfiles/mac/macos-keyboard-shortcuts.xml"
 alias importkeyboardshortcuts="defaults import com.apple.symbolichotkeys $HOME/.dotfiles/mac/macos-keyboard-shortcuts.xml"
+alias releadsystemsettings="System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u"
 
 
 
