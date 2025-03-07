@@ -318,9 +318,6 @@ alias enablemsautoupdate="sudo mv /Library/Application\ Support/Microsoft/MAU2.0
 alias checkmsautoupdate="echo $(ls /Library/Application\ Support/Microsoft/MAU2.0)"
 
 
-#Unmount Drives
-alias unmountseagate='diskutil unmount /Volumes/Seagate\ 4TB'
-alias ejectseagate='diskutil eject /Volumes/Seagate\ 4TB'
 #alias unmountall  #Not sure how to work this, see https://stackoverflow.com/questions/2049758/is-there-a-way-to-eject-all-external-hard-drives-from-the-command-line-os-x
 
 
