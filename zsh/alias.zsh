@@ -302,6 +302,12 @@ alias showhiddenfiles='defaults write com.apple.Finder AppleShowAllFiles -bool t
 #https://www.chriswrites.com/how-to-place-any-dashboard-widget-on-your-macs-desktop/
 #alias hidewidgets="defaults write com.apple.dashboard && devmode YES"
 
+# Import/Export App Keyboard Shortcuts
+alias exportkeyboardshortcuts="defaults export com.apple.symbolichotkeys - > $HOME/.dotfiles/mac/macos-keyboard-shortcuts.xml"
+alias importkeyboardshortcuts="defaults import com.apple.symbolichotkeys $HOME/.dotfiles/mac/macos-keyboard-shortcuts.xml"
+
+
+
 # Microsft AutoUpdater
 # https://superuser.com/questions/1544338/turn-off-microsoft-apps-microsoft-autoupdate-app-on-a-mac
 # alias disablemsautoupdate="launchctl disable gui/$(id -u)/com.microsoft.update.agent"
