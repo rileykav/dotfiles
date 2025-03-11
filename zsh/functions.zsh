@@ -832,6 +832,29 @@ function shell-watch(){
 
 
 
+function icns_from_png() {
+    filename="${1%.*}"
+#     filename=shortcut
+
+    folder="$filename.iconset"
+
+    mkdir $folder
+    magick $1 -resize 16x16 $folder/icon_16x16.png
+    magick $1 -resize 32x32 $folder/icon_32x32.png
+    magick $1 -resize 64x64 $folder/icon_64x64.png
+    magick $1 -resize 128x128 $folder/icon_128x128.png
+    magick $1 -resize 256x256 $folder/icon_256x256.png
+    magick $1 -resize 512x512 $folder/icon_512x512.png
+    magick $1 -resize 1024x1024 $folder/icon_1024x1024.png
+
+    iconutil -c icns $folder
+    
+    rm -r $folder
+
+
+}
+
+
 
 function mount-desktop() {
     osascript -e 'mount volume "smb://lykav@rileys-desktop/Users"'
