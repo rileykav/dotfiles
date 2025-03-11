@@ -353,7 +353,11 @@ alias mult-vlc-playing="osascript -l JavaScript $HOME/.dotfiles/tmux/mult-vlc.js
 
 
 
-
+# CPDF (Command Line PDF Tools)
+alias cpdf="$HOME/Bookshelf/Coding/cpdf-binaries-master/OSX-ARM/cpdf"
+# Examples:
+# cpdf -add-page-labels in.pdf 1-4 -label-style LowercaseRoman -o out.pdf
+# cpdf -add-page-labels out.pdf 5-14 -o out2.pdf
 
 
 alias grmerge="/bin/zsh $HOME/Utrecht/NS-TP428M\ -\ General\ Relativity/Problem\ Sheets/.joingr.sh"
