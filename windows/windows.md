@@ -46,6 +46,14 @@ Run `Type Set-ExecutionPolicy Unrestricted -Scope CurrentUser`, (then click A?)
 https://www.reddit.com/r/computer/comments/uxdek5/file_cannot_be_loaded_because_running_scripts_is/
 
 
+
+### Making Symlinks with mklink 
+#https://www.howtogeek.com/16226/complete-guide-to-symbolic-links-symlinks-on-windows-or-linux/
+We only care about poiting at files for now, though /D and /J can be used for direactories.
+Soft links arte closer to shortcuts in how they are seen by the system, while a hard link is normally interpretted as if the symlink was the actual file, this is the default behavior we want.
+For a Hard Link: mklink /H Link Tarket 
+For a Soft Link: mklink Link Tarket 
+
 ## Windows Security Systems
 Sometimes the windows ransomware protection will falsely trigger, causing certain actions to be blocked. For example:
 1. Apple Music will be refused access to the AMPLibraryAgent.exe file prevent the home page from loading
