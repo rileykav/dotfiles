@@ -40,10 +40,35 @@
 
 
 
-LWin & Tab::
+
+
+*LWin::
 {
-    Send("{LAlt Down}{Tab}")          
-    KeyWait("LWin")  ; Wait for Left Win key to be released
-    Send("{LAlt Up}") ; Close switcher on hotkey release
+    global
+    LWinDownTime := A_TickCount
+    Send("{Blind}{LAlt down}")  ; Treat LWin as LAlt when pressed
+
+    ; Wait for LWin release and check if Tab was pressed in that time
+    KeyWait("LWin")  ; Wait until LWin is released
+    
+    ; Check if Tab was pressed after LWin down
+    if (A_PRIORKEY = "Tab" && (A_TickCount - LWinDownTime) < 500)
+    {
+        Send("{Blind}{Tab down}")  ; Hold Tab
+        Send("{Blind}{Tab up}")    ; Release Tab to perform Alt+Tab
+    }
+    else
+    {
+        Send("{Blind}{LAlt up}")  ; Release LAlt if Tab wasn't pressed
+        if (A_TickCount - LWinDownTime) < 250
+        {
+            Send("{LWin}")  ; Send LWin if pressed quickly (default behavior)
+        }
+    }
+
+    ; Ensure LWin is released after logic completes
+    Send("{Blind}{LWin up}")  ; Explicitly release LWin
+
+    return
 }
 
