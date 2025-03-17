@@ -9,8 +9,7 @@
 #w::^w
 #c::^c
 #v::^v
-^q::WinClose('A')
-#q::Send('^q')
+#q::WinClose('A')
 #w::^w
 #z::^z
 #a::^a
