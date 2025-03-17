@@ -1,0 +1,1 @@
+powershell -ExecutionPolicy Bypass -File C:\Users\lykav\.dotfiles\windows\bootscript.ps1
