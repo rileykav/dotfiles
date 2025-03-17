@@ -41,33 +41,52 @@
 
 
 
-*LWin::
+
+
+
+
+*~LWin::
 {
+    ; Function to bind LWin in a Macos-like way. 
+    ; Two properties, when triggered with tab acts as alt-tab
+    ; when triggered alone LWin
+    ; when triggered with other binds remains as LWin. 
+    ; While one could change this behaviour to be LCtrl when with other binds, I prefer to retain certain 
+    ; LWin keybinds (like LWin-Shift-S for screenshots)
+    ; Above we rebind many simple LWin-Character binds to their control counterpart.
     global
     LWinDownTime := A_TickCount
-    Send("{Blind}{LAlt down}")  ; Treat LWin as LAlt when pressed
-
-    ; Wait for LWin release and check if Tab was pressed in that time
-    KeyWait("LWin")  ; Wait until LWin is released
-    
-    ; Check if Tab was pressed after LWin down
-    if (A_PRIORKEY = "Tab" && (A_TickCount - LWinDownTime) < 500)
+    while (GetKeyState("LWin", "P"))  ; Check if LWin is still pressed
     {
-        Send("{Blind}{Tab down}")  ; Hold Tab
-        Send("{Blind}{Tab up}")    ; Release Tab to perform Alt+Tab
-    }
-    else
-    {
-        Send("{Blind}{LAlt up}")  ; Release LAlt if Tab wasn't pressed
-        if (A_TickCount - LWinDownTime) < 250
+        if (A_PRIORKEY = "Tab" && (A_TickCount - LWinDownTime) < 300)
         {
-            Send("{LWin}")  ; Send LWin if pressed quickly (default behavior)
+            Send("{Blind}{LAlt down}")  ; Press LAlt if Tab wasn't pressed
+            KeyWait("LWin")  ; Wait until LWin is released
+            Send("{Blind}{LAlt up}")  ; Release LAlt if Tab wasn't pressed
+        }
+        if (A_PRIORKEY != "Tab" && A_PRIORKEY != "LWin")
+        {
+        ToolTip("Lwin triggered")
+            ; Place changes to key combinations here, will have to change how the return works as this triggers ~LWin
+            return
+        }
+        
+        if (A_TickCount - LWinDownTime) > 750
+        {
+            ; Timeout to avoid getting accidentily locked into this while loop
+            return  
         }
     }
-
-    ; Ensure LWin is released after logic completes
-    Send("{Blind}{LWin up}")  ; Explicitly release LWin
-
+    if (A_TickCount - LWinDownTime) < 250
+    {
+        ; Treat LWin normally for quick press. 
+        return  
+    }
     return
+
+    ; Bugs:
+    ; - Default Lwin-Tab behavior triggers when pressed simultanously maybe or maybe too quickly?
 }
+
+
 
