@@ -65,7 +65,6 @@
         }
         if (A_PRIORKEY != "Tab" && A_PRIORKEY != "LWin")
         {
-        ToolTip("Lwin triggered")
             ; Place changes to key combinations here, will have to change how the return works as this triggers ~LWin
             return
         }
