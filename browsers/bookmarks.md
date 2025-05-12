@@ -206,10 +206,13 @@
 #### m4b
 - [Convert multiple .mp3 files (or single .m4a) into .m4b with ffmpeg and afconvert on macOS - Ask Different](https://apple.stackexchange.com/questions/426094/convert-multiple-mp3-files-or-single-m4a-into-m4b-with-ffmpeg-and-afconvert)
 - [audio - ffmpeg consolidating multiple mp3 files into 1 m4b file - Super User](https://superuser.com/questions/819769/ffmpeg-consolidating-multiple-mp3-files-into-1-m4b-file)
+### Mouses
+- [Mouse Scrolling more Smoothly](https://www.reddit.com/r/mac/comments/jynb6s/mx_master_3_smooth_scroll_solution_to_mimic/)
 ### Keyboard To Buy
 - [Keychron | Custom Mechanical Keyboards for Mac, Windows and Phones – Keychron | Mechanical Keyboards for Mac, Windows and Android](https://www.keychron.com/)
 - [Aula Keyboard (calm tapping noise see twitch.tv/soap)](https://www.aulainnovations.com/products/aula-f75-gasket-mechanical-keyboard)
 - [Creamy Sounding Keyboard](https://www.youtube.com/watch?v=t-5ZEKG6Miw&t=2s)
+- [Silent Keybaords with ISO layout](https://varmilo.com)
 ### Dungeons and Dragons
 - [Trove](https://thetrove.net/)
 - [Owlbear Rodeo](https://www.owlbear.rodeo/game/Wz1OwoMxp)
@@ -582,6 +585,7 @@
 - [Nyaa.si Anime &amp; Manga Torrent Site](https://nyaa.si/)
 - [zlibrary](https://z-lib.gs)
 - [Annas Archive](https://annas-archive.org)
+- [FitGirl Repack Video Game Torrents](https://fitgirl-repacks.site)
 - [How to access Zlibrary : zlibrary](https://www.reddit.com/r/zlibrary/comments/16xtf95/how_to_access_zlibrary/)
 - [The Pirate Bay](https://thepirate-bay.org/en)
 - [CloudLoad](https://portal.cloudload.com/)
@@ -903,6 +907,7 @@
 - [F3L9ZLNXgAAY-Ou 2,048×1,550 pixels](https://pbs.twimg.com/media/F3L9ZLNXgAAY-Ou?format=jpg&amp;name=large)
 - [https://twitter.com/schley/status/1701999830279569497](https://twitter.com/schley/status/1701999830279569497)
 ### Books
+- [Curious Kings - Special Book Editions](https://curiousking.co.uk)
 - [[GUI Plugin] Count Pages - MobileRead Forums](https://www.mobileread.com/forums/showthread.php?t=134000)
 - [Amazon.com: Wolves at the Door: The True Story Of America's Greatest Female Spy: 9781599210728: Pearson, Judith: Books](https://www.amazon.com/Wolves-Door-Americas-Greatest-Female/dp/159921072X)
 - [Amazon.com: A Woman of No Importance: The Untold Story of the American Spy Who Helped Win World War II: 9780735225299: Purnell, Sonia: Books](https://www.amazon.com/Woman-No-Importance-Untold-American/dp/073522529X)
@@ -1333,12 +1338,17 @@
 - [macOS Environment variables - macOS - SS64.com](https://ss64.com/osx/syntax-env_vars.html)
 - [LaunchControl: The launchd GUI](https://www.soma-zone.com/LaunchControl/)
 - [Screen flickering issue with full screen ... - Apple Community](https://discussions.apple.com/thread/253296087)
+- [Keyboard Custimization](https://github.com/jtroo/kanata)
 ##### Mount Android Macos
 - [usb - Mount Android device directly in Mac OS X Finder - Android Enthusiasts Stack Exchange](https://android.stackexchange.com/questions/117354/mount-android-device-directly-in-mac-os-x-finder)
 - [OpenMTP | Android File Transfer for macOS](https://openmtp.ganeshrvel.com/)
 - [GitHub - ganeshrvel/openmtp: OpenMTP - Advanced Android File Transfer Application for macOS](https://github.com/ganeshrvel/openmtp)
 - [[APP][ROOT] USB MASS STORAGE Enabler v1.6 | XDA Developers Forums](https://forum.xda-developers.com/t/app-root-usb-mass-storage-enabler-v1-6.3240097/)
 - [Usb Share [Root] – Apps on Google Play](https://play.google.com/store/apps/details?id=os.devwom.usbsharer)
+##### Video Players
+- [IINA - Free Good Macos-Like UI](https://iina.io)
+- [VLC - Classic but laking in modern features](https://www.videolan.org/vlc/)
+- [Elmedia - Free and Paid Version](https://www.elmedia-video-player.com)
 #### Windows
 - [I don't have permission my external hard drive. - Microsoft Community](https://answers.microsoft.com/en-us/windows/forum/all/i-dont-have-permission-my-external-hard-drive/f0317ba6-3fbf-4207-aadb-6139254ca930)
 - [Windows Date-Time Taskbar Customisation](https://github.com/White-Tiger/T-Clock/releases/tag/v2.4.4%23492-rc)
@@ -1452,6 +1462,10 @@
 - [Account Data](https://help.steampowered.com/en/accountdata/AccountSpend)
 - [Steam Gauge | Steam Receipt](https://mysteamgauge.com/receipt)
 - [SWTOR](https://www.swtor.com/)
+#### Chess
+- [Tips to Learning Chess](https://www.reddit.com/r/chess/comments/k5hckp/tipresources_for_learning_players/geeyrdd/)
+- [Chess Learning Website](https://www.chessable.com)
+- [Open Source Chess Site](https://lichess.org)
 #### Stardew Valley
 - [Stardew Valley Wiki](https://www.stardewvalleywiki.com/Stardew_Valley_Wiki)
 - [Stardew Valley](https://www.reddit.com/r/StardewValley/)
