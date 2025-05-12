@@ -244,6 +244,38 @@ export PATH=$HOME/Coding/bin:$PATH
 #fi
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Zsh Autocomple
+bindkey '^[[Z' reverse-menu-complete
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Git
 autoload -Uz compinit && compinit
 export GIT_COMPLETION_CHECKOUT_NO_GUESS=1
