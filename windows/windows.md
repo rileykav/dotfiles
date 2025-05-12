@@ -30,7 +30,7 @@ Manual Method:
 6. Select the Device Parameters key.
 7. Double-click the FlipFlopWheel DWORD and set the value from 0 to 1.
 Or the automated way:
-`$mode = Read-host "How do you like your mouse scroll (0 or 1)?"; Get-PnpDevice -Class Mouse -PresentOnly -Status OK | ForEach-Object { "$($_.Name): $($_.DeviceID)"; Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Enum\$($_.DeviceID)\Device Parameters" -Name FlipFlopWheel -Value $mode; "+--- Value of FlipFlopWheel is set to " + (Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Enum\$($_.DeviceID)\Device Parameters").FlipFlopWheel + "`n" }`
+`$mode = Read-host "How do you like your mouse scroll (0 or 1)?"; Get-PnpDevice -Class Mouse -PresentOnly -Status OK | ForEach-Object { "$($_.Name): $($_.DeviceID)"; Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Enum\$($_.DeviceID)\Device Parameters" -Name FlipFlopWheel -Value $mode; "+--- Value of FlipFlopWheel is set to " + (Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Enum\$($_.DeviceID)\Device Parameters").FlipFlopWheel + "`n" }
 ## Installing Windows 11 on Unsupported Hardware
 Windows 11 has a couple of requirements that provide an initial hard lock-out of installing / upgrading to Windows 11. The three primary checks the installer makes are:
 - TPM 2.0 compatibility, this is based on your motherboard having the required TPM *chip*. Post 2016 Motherboards normally just have this turned off in BIOS. Set TPM To firmware.
@@ -61,3 +61,13 @@ Sometimes the windows ransomware protection will falsely trigger, causing certai
 
 ## Connecting Mac -> Windows
 If logged in with a microsoft account, you must use the microsoft password as the login details
+
+
+
+# Bugs
+## Bluetooth Disconnection (Code 54)
+Error probably in the driver, randomly disconnects (no known cause), with as reboot acting as a temporary fix (seems to disconnect again without a few hours or a few days)
+- [Dell forum (fix accepted)](https://www.dell.com/community/en/conversations/networking-internet-bluetooth/bluetooth-error-code-54/647fa096f4ccf8a8de5a07fb)
+- [Website walk-through of fix](https://thegeekpage.com/this-device-has-failed-error-code-54/)
+- [Redit Forum (some fixes suggested, not accepted)](https://www.reddit.com/r/Windows11/comments/17997au/bluetooth_disappears_code_54/)
+- [Reddit suggests  uninstall drivers and reinstall fresh copy from source](https://www.reddit.com/r/techsupport/comments/i04t42/laptop_bluetooth_this_device_has_failed_and_is/)
