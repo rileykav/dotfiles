@@ -323,6 +323,7 @@ let g:vimtex_quickfix_ignore_filters = [
   \"Package option `hyperref' is obsolete and ignored",
   \'Package typearea Warning: Bad type area settings!',
   \'Package nameref Warning: The definition of \\label has changed!',
+  \'Package pdfx Warning: Setting all color commands to rgb',
   \'Marginpar on page[0-9]* moved',
   \'Marginpar on page[0-9]* moved',
   \'Marginpar',
