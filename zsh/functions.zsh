@@ -834,7 +834,15 @@ function shell-watch(){
 
 function icns_from_png() {
     filename="${1%.*}"
-#     filename=shortcut
+    FILE_EXT="${1##*\.}"
+
+
+    if [[ ${FILE_EXT} == "ico" ]]; then
+#         magick $1 filename.png
+        echo "Please run magick to convert to png first (auto grab the best quality?)"
+        exit
+    fi
+
 
     folder="$filename.iconset"
 
@@ -849,8 +857,8 @@ function icns_from_png() {
 
     iconutil -c icns $folder
     
-    rm -r $folder
 
+    rm -r $folder
 
 }
 
