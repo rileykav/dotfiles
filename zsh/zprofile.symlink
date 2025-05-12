@@ -1,0 +1,1 @@
+/bin/launchctl setenv ROSETTA_ADVERTISE_AVX 1
