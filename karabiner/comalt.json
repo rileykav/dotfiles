@@ -1,0 +1,51 @@
+{
+    "description": "Toggle Left Command to Left Alt with F13",
+    "manipulators": [
+        {
+          "from": {
+            "key_code": "f13"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "toggle_left_command_to_left_alt",
+                "value": 1
+              }
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "f13"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "toggle_left_command_to_left_alt",
+                "value": 0
+              }
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "left_command"
+          },
+          "to": [
+            {
+              "key_code": "left_option"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "toggle_left_command_to_left_alt",
+              "value": 1
+            }
+          ],
+          "type": "basic"
+        }
+    ]
+}
