@@ -352,6 +352,36 @@ source ~/.dotfiles/vim/abreviations.vim
 :command Todo :vs ~/todo.md
 
 
+function! EditAndRebuildSpellfile()
+  if &spellfile == ''
+    echo "No spellfile set. Please set it with :set spellfile=~/.vim/spell/en.utf-8.add"
+    return
+  endif
+
+  " Open the spellfile in a new tab
+  execute 'tabedit ' . expand(&spellfile)
+
+  " Define an autocmd that triggers when this buffer is written or closed
+  augroup SpellfileRebuild
+    autocmd!
+    autocmd BufWritePost,BufUnload <buffer> call s:RebuildSpellfile()
+  augroup END
+endfunction
+
+function! s:RebuildSpellfile()
+  " Rebuild the .spl file after editing
+  execute 'mkspell! ' . expand(&spellfile)
+  echo "Spellfile rebuilt."
+  " Remove the autocmd group to avoid duplicate triggers
+  augroup SpellfileRebuild
+    autocmd!
+  augroup END
+endfunction
+
+command! EditSpellfile call EditAndRebuildSpellfile()
+
+
+
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " Folding
