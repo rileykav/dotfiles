@@ -863,7 +863,18 @@ function icns_from_png() {
 }
 
 
+function mp3-to-alac() {
+    for input in "$@"; do
+        filename="${input%.*}"
+        ffmpeg -i $input -c:a alac $filename.m4a
+    done
 
+}
+function mp3-to-flac() {
+    for input in "$@"; do
+        filename="${input%.*}"
+        ffmpeg -i $input -c:a flac $filename.flac
+    done
 function mount-desktop() {
     osascript -e 'mount volume "smb://lykav@rileys-desktop/Users"'
     osascript -e 'mount volume "smb://lykav@rileys-desktop/Seagate 4TB"'
