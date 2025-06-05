@@ -145,6 +145,8 @@ precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '(%b) '
 # 
 setopt PROMPT_SUBST
+setopt extendedglob # This is added to allow something like: $ mv ^foo* bar which will move everything except foo into bar
+
 # 
 # PROMPT='%F{80}'$USER's-macbook%f %F{78}%2~ %f%F{red}%B${vcs_info_msg_0_}%b%f'
 # 
