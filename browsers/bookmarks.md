@@ -116,8 +116,6 @@
 #### PhD July
 ### Paper
 ## Folders
-## Work
-- [Dungarvan Career Office](https://mycareercompass.ie/contact/)
 ### Codig
 - [GitHub - GeostatsGuy/PythonNumericalDemos: Well-documented Python demonstrations for spatial data analytics, geostatistical and machine learning to support my courses.](https://github.com/GeostatsGuy/PythonNumericalDemos)
 - [sshx](https://sshx.io/)
@@ -357,6 +355,8 @@
 - [(26) Pinterest](https://www.pinterest.ie/pin/348606827391308863/)
 - [Upload Image – remove.bg](https://www.remove.bg/upload)
 - [(26) Pinterest](https://www.pinterest.ie/pin/23995810506313990/)
+### Knots
+- [Sheet Knot - Useful for tieing two ropes together at a fixed point e.g. Forming a fixed loop](https://www.101knots.com/sheet-bend.html)
 ### Pathfinder
 - [List of Pathfinder books - Wikipedia](https://en.wikipedia.org/wiki/List_of_Pathfinder_books#Pathfinder_Second_Edition_(PF2e))
 - [Home - Archives of Nethys: Pathfinder 2nd Edition Database](https://2e.aonprd.com/?AspxAutoDetectCookieSupport=1)
@@ -583,10 +583,11 @@
 - [Audio Tracks for Movies](http://audio-track.com/en)
 - [Libgen](https://libgen.is/)
 - [Nyaa.si Anime &amp; Manga Torrent Site](https://nyaa.si/)
-- [zlibrary](https://z-lib.gs)
+- [zlibrary](https://z-lib.fo)
 - [Annas Archive](https://annas-archive.org)
 - [FitGirl Repack Video Game Torrents](https://fitgirl-repacks.site)
-- [How to access Zlibrary : zlibrary](https://www.reddit.com/r/zlibrary/comments/16xtf95/how_to_access_zlibrary/)
+- [QBitorrent Search Plugins](https://github.com/qbittorrent/search-plugins/wiki/Unofficial-search-plugins)
+- [How to access Zlibrary : zlibrary](https://www.reddit.com/r/zlibrary/wiki/index/access)
 - [The Pirate Bay](https://thepirate-bay.org/en)
 - [CloudLoad](https://portal.cloudload.com/)
 - [The List Details - The Greatest Books](https://thegreatestbooks.org/lists/details)
