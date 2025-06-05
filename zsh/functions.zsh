@@ -875,6 +875,16 @@ function mp3-to-flac() {
         filename="${input%.*}"
         ffmpeg -i $input -c:a flac $filename.flac
     done
+function m4baac_HE_to_LC() {
+    filename="${1%.*}"
+    outputstr=$(mp4art --extract $1)
+    outputcovername=${outputstr##* -> }
+    mv $outputcovername $filename.cover.jpg
+    ffmpeg -i $1 -vn -c:a aac -profile:a aac_low -b:a 96k -map_chapters 0 -movflags +faststart output.m4b 
+    mp4art --add $filename.cover.jpg output.m4b
+}
+
+
 function mount-desktop() {
     osascript -e 'mount volume "smb://lykav@rileys-desktop/Users"'
     osascript -e 'mount volume "smb://lykav@rileys-desktop/Seagate 4TB"'
