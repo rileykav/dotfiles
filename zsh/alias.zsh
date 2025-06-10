@@ -44,7 +44,25 @@ alias chm7='chmod 700'
 
 alias ls="ls -G1 $colorflag"
 alias la="ls -G1AFp $colorflag"
-alias ll="ls -G1lFhp $colorflag"
+function ll() {
+  ls -l --color=always -- "$@" | while IFS= read -r line; do
+    [[ "$line" == total* ]] && continue
+
+    permisions=$(echo "$line" | awk '{print $1}')
+    hardlinkcount=$(echo "$line" | awk '{print $2}')
+    owner=$(echo "$line" | awk '{print $3}')
+    group=$(echo "$line" | awk '{print $4}')
+    filesizebytes=$(echo "$line" | awk '{print $5}')
+    day=$(echo "$line" | awk '{print $6}')
+    month=$(echo "$line" | awk '{print $7}')
+    time_or_year=$(echo "$line" | awk '{print $8}') # If year matches current prints time, otherwise year
+    filename=$(echo "$line" | awk '{for (i=9; i<=NF; i++) printf "%s%s", $i, (i==NF ? "\n" : " ")}')
+
+    printf "%2s %3s %5s %s\n" "$day" "$month" "$time_or_year" "$filename"
+#     printf "%3s\n" "$month" 
+  done
+}
+# alias ll="ls -G1lFhp $colorflag"
 alias lls="ls -G1lFhp | rev|sort|rev"
 alias lla="ls -G1lahF $colorflag"
 alias lld="ls -1lF $colorflag | grep ^d"
