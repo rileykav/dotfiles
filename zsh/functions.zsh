@@ -875,6 +875,7 @@ function mp3-to-flac() {
         filename="${input%.*}"
         ffmpeg -i $input -c:a flac $filename.flac
     done
+}
 function m4baac_HE_to_LC() {
     filename="${1%.*}"
     outputstr=$(mp4art --extract $1)
@@ -910,3 +911,6 @@ function myip(){
 function newTexProj(){
     zsh $HOME/Coding/Zsh/new-latex-project.sh $1
 }
+
+
+
