@@ -370,6 +370,7 @@ fun! VimtexSaveCompileOnce()
     VimtexCompileSS
     set cmdheight=1
 endfun
+
 autocmd FileType tex nnoremap <leader>ll :call VimtexSaveContinuesCompileStart()<cr>
 autocmd FileType tex nnoremap <leader>; :call VimtexSaveCompileOnce()<cr>
 autocmd FileType tex nnoremap <leader>td i\todo[inline]{}<esc>
@@ -391,7 +392,9 @@ else
     if has("unix")
         if has("macunix")
 
-            au User VimtexEventCompileSuccess :call VimuxRunCommandInDir("updateduplicatetexpdf", 1)
+            if exists('$TMUX')
+                au User VimtexEventCompileSuccess :call VimuxRunCommandInDir("updateduplicatetexpdf", 1)
+            endif
         endif
     endif
 endif

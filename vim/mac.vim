@@ -128,15 +128,17 @@ fun! TexOpenCitations()
 endfun
 
 nnoremap <leader>z :call RunCurrentScript()<cr>
-autocmd FileType tex nnoremap <leader>~ :call RunCurrentScriptandOpenTexPdf()<cr>
-autocmd FileType tex nnoremap <leader>` :call RunCurrentScriptandUpdatePreview()<cr>
-autocmd FileType tex nnoremap <leader>c :call CleanCurrentTex()<cr>
-autocmd FileType tex nnoremap <leader>o :call OpenTexPdf()<cr>
-autocmd FileType tex nnoremap <leader>O :call OpenDuplicateTexPdf()<cr>
-autocmd FileType tex nnoremap <leader>m :call OpenCurrentTexmaker()<cr>
-autocmd FileType tex nnoremap <leader>tc :call TexOpenCitations()<cr>
 
-autocmd QuitPre *.tex call CleanCurrentTex()
+if exists('$TMUX')
+    autocmd FileType tex nnoremap <leader>~ :call RunCurrentScriptandOpenTexPdf()<cr>
+    autocmd FileType tex nnoremap <leader>` :call RunCurrentScriptandUpdatePreview()<cr>
+    autocmd FileType tex nnoremap <leader>c :call CleanCurrentTex()<cr>
+    autocmd FileType tex nnoremap <leader>o :call OpenTexPdf()<cr>
+    autocmd FileType tex nnoremap <leader>O :call OpenDuplicateTexPdf()<cr>
+    autocmd FileType tex nnoremap <leader>m :call OpenCurrentTexmaker()<cr>
+    autocmd FileType tex nnoremap <leader>tc :call TexOpenCitations()<cr>
+    autocmd QuitPre *.tex call CleanCurrentTex()
+endif
 "" vim-tmux-runner (Use VIMUX to doe this?)
 " Helps make python work right
 let g:VtrStripLeadingWhitespace = 0
