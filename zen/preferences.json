@@ -1,0 +1,16 @@
+{
+    main_settings: {
+        "General": {
+            "Continue where you left off": 0,
+            "Ask before quitting with Command-Q": 0
+        },
+        "Look and Feel": {
+            "Browser Layout": "Multiple toolbars",
+            "Show in compact view": "Hide Both",
+            "Briefly make the toolbar popup wheen switching or opening new tabs in comapct mode": 0
+        }
+    },
+    about_config: {
+        zen.theme.content-element-separation: 0
+    }
+}
