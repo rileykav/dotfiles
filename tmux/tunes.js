@@ -22,31 +22,31 @@ try {
     }
 //     if ( (Application("Safari").running()) || (Application("Plexamp").running())) {
     // No longer works as of MacOS 15.4
-//     if (Application("Safari").running()) {
-//         if ( output=="" ){
-//             try {
-//                 const app = Application.currentApplication();
-//                 app.includeStandardAdditions = true;
-//                 const title = app.doShellScript("nowplaying-cli get title");
-//                 const artist = app.doShellScript("nowplaying-cli get artist");
-//                 if (title == "" && artist == ""){
+    if (Application("Safari").running()) {
+        if ( output=="" ){
+            try {
+                const app = Application.currentApplication();
+                app.includeStandardAdditions = true;
+                const mediaDataJson = app.doShellScript("media-control get");
+                const attributes = JSON.parse(mediaDataJson);
+                const title = attributes["title"];
+                const artist = attributes["artist"];
+                if (title == "" && artist == ""){
                     // Do Nothing
-//                 } else if (artist == ""){
-//                     output += dualoutput ? " | " : ""; // Add a separator if needed
-//                     output += title
-//                 } else {
-//                     output += dualoutput ? " | " : ""; // Add a separator if needed
-//                     output += title.substr(0,30) + " - " + artist.substr(0,30)
-//                 }
-//
-//             } catch (e) {
-                // Handle errors in executing the shell command
-//                 output += " (Error running Zsh command)";
-//             }
-//         } else {
-//             output+="" // Testing Point
-//         }
-//     }
+                } else if (artist == "") {
+                    output += dualoutput ? " | " : ""; // Add a separator if needed
+                    output += title
+                } else {
+                    output += dualoutput ? " | " : ""; // Add a separator if needed
+                    output += title.substr(0,30) + " - " + artist.substr(0,30)
+                }
+            } catch (e) {    // Handle errors in executing the shell command
+                output += " (Error running Zsh command)";
+            }
+        } else {
+            output+="" // Testing Point
+        }
+    }
 
     if (output == ""){
         output+= "Not Playing"
@@ -60,6 +60,5 @@ try {
     console.log("Unexpected Error:", error);
     output = "Error Occured";
         }
-
 output;
 
