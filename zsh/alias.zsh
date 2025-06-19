@@ -56,6 +56,22 @@ function ll() {
         }
     '
 }
+function lla() {
+    # First awk skips the total line, then goes line by line and prints the desired lines
+    ls -al --color=always -- "$@" | awk '
+        /^total/ { next }
+        {
+            printf "%2s %3s %5s ", $6, $7, $8
+            for (i = 9; i <= NF; i++) {
+                printf "%s%s", $i, (i == NF ? "\n" : " ")
+            }
+        }
+    '
+}
+
+
+
+
 function ll2() {
     output=""
     ls -l --color=always -- "$@" | while IFS= read -r line; do
@@ -79,7 +95,7 @@ function ll2() {
 }
 # alias ll="ls -G1lFhp $colorflag"
 alias lls="ls -G1lFhp | rev|sort|rev"
-alias lla="ls -G1lahF $colorflag"
+# alias lla="ls -G1lahF $colorflag"
 alias lld="ls -1lF $colorflag | grep ^d"
 alias l.="ls -G1Fd $colorflag .*"
 alias lt="tree -C"
