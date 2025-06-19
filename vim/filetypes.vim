@@ -513,3 +513,10 @@ command ThesisOpen call ThesisOpen()
 autocmd BufNewFile,BufRead *.wl set syntax=wl
 autocmd BufNewFile,BufRead *.wls set syntax=wl
 autocmd BufNewFile,BufRead *.m set syntax=wl
+
+
+
+" Git
+autocmd BufNewFile,BufRead *.git set syntax=gitconfig
+autocmd BufNewFile,BufRead *.gitconfig set syntax=gitconfig
+
