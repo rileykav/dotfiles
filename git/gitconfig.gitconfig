@@ -1,8 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
-# Please adapt and uncomment the following lines:
+	email = lykavanagh1@gmail.com
 	name = rileykav
-	email = 65302238+rileykav@users.noreply.github.com
 
 [alias]
 lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
@@ -10,14 +9,17 @@ lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(
 lg = lg1
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RF
+	excludesfile = /Users/riley/.dotfiles/git/gitignore_global.git
 [interactive]
 	diffFilter = diff-so-fancy --patch
 [add "interactive"]
 	useBuiltin = false
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 [pull]
 	rebase = true
+[init]
+	templateDir = /Users/riley/.dotfiles/git/git-template

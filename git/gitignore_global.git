@@ -1,0 +1,8 @@
+**/.DS_Store
+.DS_Store
+*.out
+*.syntax.gz
+*.log
+*.aux
+.*.pdf
+._*.*
