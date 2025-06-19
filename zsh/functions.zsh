@@ -913,4 +913,11 @@ function newTexProj(){
 }
 
 
+function mcmods(){
+    mcversion=$1
+    curl https://raw.githubusercontent.com/aayushdutt/modrinth-collection-downloader/master/main.py | python - -v $mcversion -l fabric -c 9zXT2dGO -d "$HOME/Bookshelf/Games/minecraft/mods $mcversion" -u
+    setopt localoptions rmstarsilent
+    rm -f "/Users/riley/Library/Application Support/minecraft/mods/"*
+    cp "$HOME/Bookshelf/Games/minecraft/mods $mcversion/"* "/Users/riley/Library/Application Support/minecraft/mods"
 
+}
