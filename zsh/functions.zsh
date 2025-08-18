@@ -890,10 +890,12 @@ function mount-desktop() {
     osascript -e 'mount volume "smb://lykav@rileys-desktop/Users"'
     osascript -e 'mount volume "smb://lykav@rileys-desktop/Seagate 4TB"'
     osascript -e 'mount volume "smb://lykav@rileys-desktop/Seagate HDD (E)"'
+    osascript -e 'mount volume "smb://lykav@rileys-desktop/Ext-SSD 1TB"'
 }
 function unmount-desktop() {
     diskutil unmount "/Volumes/Seagate 4TB"
     diskutil unmount "/Volumes/Seagate HDD (E)"
+    diskutil unmount "/Volumes/Ext-SSD 1TB"
     diskutil unmount "/Volumes/Users"
 }
 
