@@ -613,6 +613,18 @@ endfunction
 
 nnoremap <leader>W :echo WordCount()<cr>
 
+function! LineWordCount()
+    return len(split(getline('.')))
+endfunction
+
+command LineWordCount echo LineWordCount()
+" nnoremap <leader>L :echo LineWordCount()<cr>
+
+
+xnoremap <silent> <leader>L g<c-g>
+
+
+
 function! EpubClean()
     if search("p><p","cwn")>0
         %s/p><p/p>\r<p/g
@@ -693,7 +705,6 @@ autocmd BufRead,BufNewFile *tex set spell
 autocmd BufRead,BufNewFile *md set spell
 autocmd BufRead,BufNewFile *txt set spell
 set spellfile=~/.dotfiles/vim/spell/test.utf-8.add
-
 
 
 
