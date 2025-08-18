@@ -240,7 +240,7 @@ noremap <c-f> :vs *
 noremap <c-v> :88vs *
 noremap <c-s> :split *
 nnoremap <leader>v :vertical resize 88<cr>
-nnoremap <leader>`v :vertical resize 26<cr>
+nnoremap <leader>§v :vertical resize 26<cr>
 
 noremap <c-b> <c-v>
 noremap <c-space> ?
