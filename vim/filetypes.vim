@@ -287,14 +287,15 @@ set noshellslash
 " as the main file, and all subiles are name.appendix.tex, name.bib.tex etc.
 "
 let g:vimtex_compiler_enabled = 1 " (Dis/En)ables Compiler
-"let b:suppress_latex_suite = 1 "Disables vim-latex
-"
+" let b:suppress_latex_suite = 1 "Disables vim-latex
+let g:vimtex_compiler_engine = 'lualatex'
 let g:vimtex_view_method = 'general'
 let g:vimtex_view_general_viewer = 'texworks.exe'
 let g:vimtex_compiler_latexmk = {
     \ 'callback' : 0,
     \ 'continuous' : 1,
     \}
+let g:vimtex_compiler_latexmk_engines = {'_' : 'lualatex'}
 if has("win32")
 "         There is a command to view pdf in VimTex: VimTexView (must be able to open from terminal
         let g:vimtex_view_method = 'general'
