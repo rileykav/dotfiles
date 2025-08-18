@@ -224,6 +224,8 @@
 - [I see maps are hot right now, so here's the map for my current campaign. : mattcolville](https://www.reddit.com/r/mattcolville/comments/lpmzik/i_see_maps_are_hot_right_now_so_heres_the_map_for/)
 - [Campfire Blaze - Campfire Technology](https://www.campfiretechnology.com/blaze/?utm_source=YouTube&amp;utm_medium=video&amp;utm_campaign=ShadQ420)
 - [The Seeker's Guide to Twisted Taverns by Eldermancy — Kickstarter](https://www.kickstarter.com/projects/415994272/the-seekers-guide-to-twisted-taverns?ref=6q7ojg&amp;utm_source=Jacob%204&amp;utm_medium=Kickstarter&amp;utm_campaign=Twisted%20Taverns)
+- [DScryb Mapmaker](https://dscryb.com/)
+- [Canvas of Kings Mapmaker](https://store.steampowered.com/app/2498570/Canvas_of_Kings/)
 - [Wonderdraft](https://www.wonderdraft.net/)
 - [A Map of Aendrim : mattcolville](https://www.reddit.com/r/mattcolville/comments/m7xbmr/a_map_of_aendrim/)
 - [(1) Hierarchy, Governance and Democracy on a Pirate Ship - YouTube](https://www.youtube.com/watch?v=KkR6lORwNbM)
@@ -749,6 +751,8 @@
 - [Elagabalus - Wikipedia](https://en.wikipedia.org/wiki/Elagabalus)
 ###### My Transition
 - [HSE Waiting List](https://www.waitinglist.ie/)
+##### Sex Toys
+- [Bellesa Boutique Sex Toys](https://www.bboutique.co)
 ##### Queer P
 - [Reddit thred discussing Rosie and Alena](https://www.reddit.com/r/actuallesbians/comments/1htfdp1/girls_i_need_your_help_to_find_a_porn_channel/)
 - [Rosie and Alena](https://www.pornhub.com/model/rosie-and-alena)
@@ -908,6 +912,7 @@
 - [F3L9ZLNXgAAY-Ou 2,048×1,550 pixels](https://pbs.twimg.com/media/F3L9ZLNXgAAY-Ou?format=jpg&amp;name=large)
 - [https://twitter.com/schley/status/1701999830279569497](https://twitter.com/schley/status/1701999830279569497)
 ### Books
+- [Conversation Tree Press](https://conversationtreepress.com/collections/all)
 - [Curious Kings - Special Book Editions](https://curiousking.co.uk)
 - [[GUI Plugin] Count Pages - MobileRead Forums](https://www.mobileread.com/forums/showthread.php?t=134000)
 - [Amazon.com: Wolves at the Door: The True Story Of America's Greatest Female Spy: 9781599210728: Pearson, Judith: Books](https://www.amazon.com/Wolves-Door-Americas-Greatest-Female/dp/159921072X)
