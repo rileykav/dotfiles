@@ -148,7 +148,7 @@ function cleantex(){
     # Ensures the wildfire matches something
     #     touch "pdflatextmp.txt"
     #     touch "$filname""_vimtex.txt"
-    rm -f "$filename.aux" "$filename.bbl" "$filename.tex.bbl" "$filename.tex.blg" "$filename.fls" "$filename.log" "$filename.toc" "$filename.out" "$filename.fdb_latexmk" "$filename.synctex(busy)" "$filename.synctex.gz" ".latexrun*"  "$filename.bcf" "$filename.dvi" "$filename.blg" "$filename.run.xml" "$filename.synctex (busy)" "pdfa.xmpi" "texput.fls" "texput.log" pdflatex*(N) *vimtex*(N) *.aux(N)
+    rm -f "$filename.aux" "$filename.bbl" "$filename.tex.bbl" "$filename.tex.blg" "$filename.fls" "$filename.log" "$filename.toc" "$filename.out" "$filename.fdb_latexmk" "$filename.synctex(busy)" "$filename.synctex.gz" ".latexrun*"  "$filename.bcf" "$filename.dvi" "$filename.blg" "$filename.run.xml" "$filename.lnks" "$filename.synctex (busy)" "pdfa.xmpi" "texput.fls" "texput.log" pdflatex*(N) *vimtex*(N) *.aux(N)
     #     "$filename""_vimtex"*
 }
 function opentexpdf(){
