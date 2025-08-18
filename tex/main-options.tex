@@ -22,7 +22,8 @@
 }
 % Adding a red circle to denote web-link
 \let\orighref\href
-\renewcommand{\href}[2]{\orighref{#1}{#2\textsuperscript{\color{Maroon}\circ}}\,} 
+\renewcommand{\href}[2]{\orighref{#1}{#2\footnote{\url{#1}}}} 
+% \renewcommand{\href}[2]{\orighref{#1}{#2\textsuperscript{\color{Maroon}$\circ$}}}
 \begin{document}
 
 
