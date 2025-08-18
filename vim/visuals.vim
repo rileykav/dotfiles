@@ -233,7 +233,17 @@ fun MyStatus()
     return ""
 endfun
     
-
+function! MyStatus() abort
+  let wc = wordcount()
+  if has_key(wc, 'visual_words')
+    " Show visual selection word count if exists
+    return wc.visual_words . ' words'
+  else
+    " Otherwise show word count of the current line
+    let line_words = len(split(getline('.'), '\W\+'))
+    return line_words . ' words'
+  endif
+endfunction
 
 let g:lightline = {
       \ 'colorscheme': 'solarized',
@@ -246,7 +256,7 @@ let g:lightline = {
       \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
       \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
-      \   'custom': MyStatus()
+      \   'custom': 'custom'
       \ },
       \ 'component_visible_condition': {
       \   'readonly': '(&filetype!="help"&& &readonly)',
@@ -256,6 +266,8 @@ let g:lightline = {
       \ 'separator': { 'left': ' ', 'right': ' ' },
       \ 'subseparator': { 'left': ' ', 'right': ' ' }
       \ }
+
+let g:lightline.component_function = { 'custom': 'MyStatus' }
 
 " colorscheme xcodedark
 " colorscheme everforest
