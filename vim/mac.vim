@@ -69,12 +69,6 @@ autocmd FileType Markdown nnoremap <leader>o :call OpenMarkdownViewer()<cr>
 """"""""""""""""""""""""""""""""""""""""""""""
 " Latex
 """"""""""""""""""""""""""""""""""""""""""""""
-" Latex Compilation
-" There are two ways to compile latex code:
-"   1. vimtex
-"   2. vimux
-" Using vimtex will compile the code inside vim and gives very good error documentation
-" Using vimux, ie. vim+tmux, we send a runner to compile latex manually in a terminal
 """ Vimux
 fun! CleanCurrentTex()
     call VimuxRunCommandInDir("cleantex", 1)
