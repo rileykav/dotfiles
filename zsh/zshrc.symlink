@@ -229,6 +229,8 @@ export PYTHONPATH=/usr/local/bin/python3.10
 export PATH=$HOME/Coding/bin:$PATH
 
 
+export LANG=en_GB.UTF-8
+export LC_ALL=en_GB.UTF-8
 
 
 
@@ -362,7 +364,7 @@ export RCLONE_STATS_FILE_NAME_LENGTH=0 # 0=unlimited, defualt is 40
 export HOMEBREW_NO_ENV_HINTS=1
 
 
-export PATH="/usr/local/opt/openjdk/bin:$PATH"
+# export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
 

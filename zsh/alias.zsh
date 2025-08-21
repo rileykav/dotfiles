@@ -445,6 +445,7 @@ alias ittest="(cd $HOME/Bookshelf/Italiano && py test-words.py)"
 
 
 
+alias tmm="(cd /Applications/tinyMediaManager.app/Contents/Resources/Java && java -cp 'tmm.jar:lib/*' org.tinymediamanager.TinyMediaManager)"
 
 
 
