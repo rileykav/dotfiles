@@ -12,6 +12,7 @@ let s:comment_map = {
     \   "php": '\/\/',
     \   "python": '#',
     \   "ruby": '#',
+    \   "perl": '#',
     \   "snippets": '#',
     \   "rust": '\/\/',
     \   "sh": '#',
