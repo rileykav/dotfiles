@@ -1,0 +1,21 @@
+# vim: filetype=perl
+
+### Old Latexmkrc file
+# $pdflatex = 'lualatex --shell-escape --interaction=nonstopmode --synctex=1 %O %S;';
+# set_tex_cmds('-synctex=1 -interaction=nonstopmode --shell-escape %O %S');
+
+
+
+$pdf_mode = 4;  # Use LuaLaTeX for PDF output
+
+# Set the LuaLaTeX command explicitly (optional)
+$lualatex = "lualatex -interaction=batchmode %O %S | grep -A3 '^!'";
+
+# Optional debug output to confirm rc file is loaded
+# print ">> .latexmkrc loaded: using lualatex\n";
+# $silent = 1;       # No messages from latexmk unless there's an error
+# $warnings = 0;     # Don't show warnings unless compilation fails
+# $diagnostics = 0;  # Don't show extra diagnostics
+# $quiet = 1;
+
+print ">> Compiling with LuaLaTeX (quiet mode)\n";
