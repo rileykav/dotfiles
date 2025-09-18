@@ -567,10 +567,18 @@ function uuonedrive(){
 # alias storage="osascript $HOME/.dotfiles/tmux/disk-usage.scpt"
 function storage(){
     laptop_storage=$(osascript $HOME/.dotfiles/tmux/disk-usage.applescript) 
-
+    seagate="/Volumes/Seagate 4TB"
     echo "Internal: $laptop_storage"
-    if [[ -d "/Volumes/Seagate 4TB" ]]; then
-        seagate_storage=$(osascript $HOME/.dotfiles/tmux/seagate-usage.applescript)
+    # See ~/.dotfiles/tmux/seagate-storage.sh
+    if [[ -d $seagate ]]; then
+        if mount | grep -q "$seagate" && mount | grep "$seagate" | grep -Eq 'smbfs|afpfs|nfs'; then
+            seagate_storage=$(osascript $HOME/.dotfiles/tmux/seagate-usage-networkversion.applescript)
+    #       echo "$seagate is a network volume"
+        else
+            seagate_storage=$(osascript $HOME/.dotfiles/tmux/seagate-usage.applescript)
+    #       echo "$seagate is local"
+        fi
+
         echo "External: $seagate_storage"
     fi 
 }
