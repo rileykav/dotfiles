@@ -585,7 +585,7 @@
 - [Audio Tracks for Movies](http://audio-track.com/en)
 - [Libgen](https://libgen.is/)
 - [Nyaa.si Anime &amp; Manga Torrent Site](https://nyaa.si/)
-- [zlibrary](https://z-lib.fo)
+- [zlibrary](https://z-library.ec)
 - [Annas Archive](https://annas-archive.org)
 - [FitGirl Repack Video Game Torrents](https://fitgirl-repacks.site)
 - [QBitorrent Search Plugins](https://github.com/qbittorrent/search-plugins/wiki/Unofficial-search-plugins)
