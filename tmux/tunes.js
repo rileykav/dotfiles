@@ -13,6 +13,7 @@ try {
 
     if (Application("Music").running()) {
         if (Application("Music").playerState() == "playing") {
+            // MacOS 26 broke this feature for the Music app, though not for other playing now! Works for stuff in your library though?
             const track = Application("Music").currentTrack;
             const artist = track.artist();
             const title = track.name();
