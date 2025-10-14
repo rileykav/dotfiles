@@ -144,10 +144,14 @@ function getmaintexstem(){
 }
 function cleantex(){
     local filename=$(getmaintexstem $1)
-    echo 'cleaning tex'
+#     echo 'cleaning tex'
     # Ensures the wildfire matches something
     #     touch "pdflatextmp.txt"
     #     touch "$filname""_vimtex.txt"
+    rm -rf .aux-latexmk-files
+    rm -f "$filename.synctex.gz"
+
+    # Old Way of Cleaning
     rm -f "$filename.aux" "$filename.bbl" "$filename.tex.bbl" "$filename.tex.blg" "$filename.fls" "$filename.log" "$filename.toc" "$filename.out" "$filename.fdb_latexmk" "$filename.synctex(busy)" "$filename.synctex.gz" ".latexrun*"  "$filename.bcf" "$filename.dvi" "$filename.blg" "$filename.run.xml" "$filename.lnks" "$filename.synctex (busy)" "pdfa.xmpi" "texput.fls" "texput.log" pdflatex*(N) *vimtex*(N) *.aux(N)
     #     "$filename""_vimtex"*
 }
@@ -155,10 +159,14 @@ function opentexpdf(){
     open $(getmaintexstem $1)".pdf"
 }
 function updateduplicatetexpdf(){
+    # Ran when compilation is finished
     local filename=$(getmaintexstem $1)
     if [[ -f "$filename.duplicate.pdf" ]]; then # Check if the Duplicate file exists
         cp "$filename.pdf" "$filename.duplicate.pdf" 
     fi
+
+    if [[ -f "$filename.synctex.gz" ]]; then mv "$filename.synctex.gz" ".aux-latexmk-files"; fi
+
 }
 function openduplicatetexpdf(){
     local filename=$(getmaintexstem $1)
@@ -203,7 +211,8 @@ function testepub(){
 function runtex(){
 #     latexmk -lualatex --pdf -quiet $1
 #     latexmk -lualatex -silent -latexoption="-synctex=1" $1
-    latexmk -lualatex -quiet $(getmaintexstem $1)
+#     latexmk -lualatex -quiet $(getmaintexstem $1)
+    latexmk $1
 }
 
 function runmdtohtml(){
