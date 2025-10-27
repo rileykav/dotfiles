@@ -77,7 +77,9 @@ au FocusGained,BufEnter * checktime
 " Underlines cursor line in insert mode (I don't love it)
 "autocmd InsertEnter,InsertLeave * set cul!
 
-
+" Disables the annoying shift-arrow key page jump behavior (now just moves
+" like you shift wasn't pressed)
+set keymodel=startsel
 
 
 
