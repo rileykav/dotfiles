@@ -24,9 +24,11 @@ $pdf_previewer = 'open -a Skim';
 # $pdflatex = 'pdflatex -synctex=1 -interaction=nonstopmode';
 
 # $lualatex = "lualatex  -interaction=batchmode %O %S";
-$lualatex = "lualatex -synctex=0 -interaction=batchmode %O %S";
+$lualatex = "lualatex -synctex=0 -interaction=nonstopmode %O %S";
+# $lualatex = "lualatex -synctex=0 -interaction=batchmode %O %S";
 # $lualatex = "lualatex -interaction=batchmode %O %S | grep -A3 '^!'";
-
+## %O: Inserts Options at runtime
+## %S: Inserts filename at runtime
 # Optional debug output to confirm rc file is loaded
 # print ">> .latexmkrc loaded: using lualatex\n";
 # $silent = 1;       # No messages from latexmk unless there's an error
