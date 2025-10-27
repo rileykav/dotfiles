@@ -334,11 +334,12 @@ let g:vimtex_quickfix_ignore_filters = [
   \'tikz-feynman Warning',
   \"`h' float specifier",
   \"requested document class",
-  \"Missing",
   \"A float is stuck",
   \"empty link",
   \"Not loaded"
   \]
+"   \"Missing",    " Didnt read as error when missing }
+
 
 let g:ConcealTexBool=0
 function! ToggleConcelTex()
