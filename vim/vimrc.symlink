@@ -3,6 +3,29 @@
 """"""""""""""""""""""""""""""""""""""""""""""
 source ~/.dotfiles/vim/plugins.vim
 
+
+
+
+
+" VimVompletesMe
+augroup VimCompletesMeTex
+    autocmd!
+    autocmd FileType tex
+        \ let b:vcm_omni_pattern = g:vimtex#re#neocomplete
+augroup END
+
+
+
+
+inoremap <expr> <C-X><C-K> !empty(&dictionary) <bar><bar> &spell ? '<C-X><C-K>' : '<C-O>:call <SID>dictionary_complete_nospell()<CR><C-X><C-K>'
+
+function! s:dictionary_complete_nospell() abort
+  set spell
+  augroup dictionary_complete_nospell
+    autocmd!
+    autocmd CompleteDone <buffer> ++once set nospell
+  augroup END
+endfunction
 """"""""""""""""""""""""""""""""""""""""""""""
 " Core Vim Setting
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -465,8 +488,20 @@ nnoremap gl :call gxext#normal()<cr>
 
 
 
+set dictionary+=/usr/share/dict/words
+set complete+=k
+set completeopt=menu,menuone,preview
 
 
+set pumheight=10
+inoremap <C-d> <C-X><C-K>
+
+set tags+=/Users/riley/.dotfiles/vim/dictionary.tags
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_filetype_whitelist = {
+  \ 'tex': 1,
+  \ }
 
 "" NERDTree 
 " Show hidden files in NERDTree
