@@ -79,8 +79,12 @@ function! ToggleCommentZeroPosition()
 endfunction
 
 
-nnoremap <leader><leader> :call ToggleCommentZeroPosition()<cr>
-vnoremap <leader><leader> :call ToggleCommentZeroPosition()<cr>
+" Normal Mode mapping
+nnoremap <leader><leader> :call ToggleCommentRelativePosition()<cr>
+" nnoremap <leader>p :call ToggleCommentZeroPosition()<cr>
+" Visual Mode mapping
+vnoremap <leader><leader> :call ToggleCommentRelativePosition()<cr>
+" vnoremap <leader>p :call ToggleCommentZeroPosition()<cr>
 "--------------- This is a Header  ---------------"
 function InsertCommentHeader()
     let CommentPrefix=s:comment_map[&filetype]
