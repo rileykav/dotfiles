@@ -1,0 +1,10 @@
+plugins:
+  pycodestyle:
+    enabled: true
+    ignore:
+      - E226
+      - E302
+      - E303
+      - E401
+  pyflakes:
+    enabled: false
