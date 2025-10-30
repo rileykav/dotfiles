@@ -273,8 +273,14 @@ let g:lightline.component_function = { 'custom': 'MyStatus' }
 " colorscheme everforest
 colorscheme edge  " Also in Windows.vim
 " highlight Normal ctermfg=grey ctermbg=black
-highlight Normal ctermbg=none
-
+highlight Normal      ctermbg=none guibg=NONE
+highlight NormalNC    ctermbg=NONE guibg=NONE
+highlight NonText     ctermbg=NONE guibg=NONE
+highlight EndOfBuffer ctermbg=NONE guibg=NONE
+" set termguicolors
+" highlight Normal guibg=NONE ctermbg=NONE
+" highlight EndOfBuffer guibg=NONE ctermbg=NONE
+" highlight NonText guibg=NONE ctermbg=NONE
 
 function! SynStack ()
     for i1 in synstack(line("."), col("."))
