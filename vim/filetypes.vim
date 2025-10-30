@@ -115,6 +115,7 @@ au FileType python map <buffer> <leader>C ?class
 au FileType python map <buffer> <leader>D ?def
 au FileType python nnoremap <leader>; mmgI#<esc>`mh
 au FileType python nnoremap <leader>' mmgI<esc>x`mh
+au FileType python set signcolumn=yes
 " au FileType python nnoremap <leader>` :call VimuxRunCommand('./'w:filename)
 " au FileType python nnoremap <leader>` :call VimuxRunCommand("py ".expand("%"))<cr>
 

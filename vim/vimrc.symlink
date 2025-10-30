@@ -498,12 +498,72 @@ set completeopt=menu,menuone,preview
 set pumheight=10
 inoremap <C-d> <C-X><C-K>
 
-set tags+=/Users/riley/.dotfiles/vim/dictionary.tags
+au FileType markdown set tags+=/Users/riley/.dotfiles/vim/dictionary.tags
+
+" Trigger popup automatically after a short delay
+let g:ycm_auto_trigger = 1
+
+" Number of characters typed before popup appears
+let g:ycm_min_num_of_chars_for_completion = 1
+
+" Delay before the popup shows (ms)
+let g:ycm_completion_delay = 200
+
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_filetype_whitelist = {
-  \ 'tex': 1,
+" let g:ycm_filetype_whitelist = {
+"   \ 'tex': 1,
+"   \ }
+" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/simple_ycm_extra_conf.py'
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_server_python_interpreter = '/Users/riley/.pyenv/versions/3.13.1/bin/python'
+" set completeopt=menu
+set completeopt=menu,menuone,noselect
+
+
+let g:ycm_auto_trigger = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+autocmd FileType python let g:ycm_collect_identifiers_from_comments_and_strings = 0
+autocmd FileType python let g:ycm_seed_identifiers_with_syntax = 0
+autocmd FileType python let g:ycm_min_num_of_chars_for_completion = 99
+autocmd FileType tex let g:ycm_min_num_of_chars_for_completion = 2
+" make YCM compatible with UltiSnips (using <Ctrl-N>, <Ctrl-P>)
+" let g:ycm_key_list_select_completion=[]
+" let g:ycm_key_list_previous_completion=[]
+
+" commands mappings
+" nnoremap <F1> :pclose<CR>:silent YcmCompleter GetDoc<CR>
+" nnoremap <S-F1> :pclose<CR>
+" nnoremap <C-F1> :YcmCompleter GetType<CR>
+" nnoremap <F9> :YcmCompleter GoTo<CR>
+" nnoremap <S-F9> :YcmCompleter GoToReferences<CR>
+" nnoremap <F10> :YcmCompleter FixIt<CR>
+
+" let g:ycm_use_clangd = 1
+let g:ycm_use_clangd = 0
+let g:ycm_language_server = [
+  \ {
+  \   'name': 'pylsp',
+  \   'filetypes': ['python'],
+  \   'cmdline': ['pylsp']
   \ }
+\ ]
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+endif
+au VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
+" let g:ycm_semantic_triggers =  {
+"   \   'python': [ 're!\w{2}' ],
+"   \   'tex': ['re!\w{3}'],           
+"   \ }
+let g:ycm_python_interpreter_path = ''
+let g:ycm_python_sys_path = []
+let g:ycm_extra_conf_vim_data = [
+  \  'g:ycm_python_interpreter_path',
+  \  'g:ycm_python_sys_path'
+  \]
+let g:ycm_global_ycm_extra_conf = '~/.dotfiles/vim/ycm_global_extra_cong.py'
 
 "" NERDTree 
 " Show hidden files in NERDTree
@@ -522,7 +582,21 @@ nmap <silent> <leader>\ :NERDTreeToggle<cr>
 
 
 
+let g:ycm_enable_diagnostics_ui = 0
+let g:ycm_enable_diagnostic_signs = 1
+let g:ycm_enable_diagnostic_highlighting = 0
 
+" Keep your syntax colors, just show signs/underlines
+" highlight YcmErrorLine      gui=underline cterm=underline guibg=NONE ctermbg=NONE
+" highlight YcmWarningLine    gui=underline cterm=underline guibg=NONE ctermbg=NONE
+" highlight YcmErrorSection   gui=underline cterm=underline guibg=NONE ctermbg=NONE
+" highlight YcmWarningSection gui=underline cterm=underline guibg=NONE ctermbg=NONE
+" highlight YcmErrorLine guibg=#3f0000
+" Signs in the gutter (still visible)
+highlight YcmErrorSign      guifg=Red ctermfg=Red
+" highlight YcmWarningSign    guifg=Blue ctermfg=BLUE
+highlight YcmErrorSign guifg=#0000FF ctermfg=Blue
+highlight YcmWarningSign guifg=#0000FF ctermfg=Blue
 
 
 
@@ -770,3 +844,8 @@ hi SpellBad cterm=underline
 
 " source ~/.dotfiles/vim/basic.vim
 " finish
+
+
+" highlight YcmErrorSign   guifg=#800080 ctermfg=Magenta
+highlight YcmErrorSign   guifg=#FF0000 ctermfg=Red
+highlight YcmWarningSign guifg=#808080 ctermfg=Grey
