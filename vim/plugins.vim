@@ -31,7 +31,7 @@ Plugin 'aclements/latexrun'
 Plugin 'jvirtanen/vim-octave'
 Plugin 'preservim/vim-markdown' 
 Plugin 'stsewd/gx-extended.vim'
-Plugin 'ervandew/supertab'
+" Plugin 'ervandew/supertab'
 " Plugin 'tpope/vim-markdown'   
 " Plugin 'jtratner/vim-flavored-markdown'
 
@@ -49,7 +49,7 @@ else
 "         Plugin 'neoclide/coc.nvim'
 "         Plugin 'vim-latex/vim-latex'
         Plugin 'ctrlpvim/ctrlp.vim' "Breaking on Windows?
-        Plugin 'ajh17/VimCompletesMe' 		" Sign in to git failing
+"         Plugin 'ajh17/VimCompletesMe' 		" Sign in to git failing
         Plugin 'preservim/vimux' " Requires Tmux
         Plugin 'christoomey/vim-tmux-navigator'
         Plugin 'christoomey/vim-tmux-runner'
