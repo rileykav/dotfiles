@@ -38,7 +38,6 @@ let s:comment_map = {
 
 
 
-
 function! ToggleCommentRelativePosition()
     if has_key(s:comment_map, &filetype)
         let comment_leader = s:comment_map[&filetype]
@@ -51,40 +50,22 @@ function! ToggleCommentRelativePosition()
                 execute "silent s/^\\(\\s*\\)" . comment_leader . "/\\1/"
             else
                 " Comment the line
-                execute "silent s/^\\(\\s*\\)/\\1" . comment_leader . " /"
+                if getline('.') !~ '^\s*$'
+                    execute "silent s/^\\(\\s*\\)/\\1" . comment_leader . " /"
+                endif
             end
         end
     else
         echo "No comment leader found for filetype"
     end
 endfunction
-function! ToggleCommentZeroPosition()
-    if has_key(s:comment_map, &filetype)
-        let comment_leader = s:comment_map[&filetype]
-        if getline('.') =~ "^\\s*" . comment_leader . " "
-            " Uncomment the line
-            execute "silent s/^" . comment_leader . " //"
-        else
-            if getline('.') =~ "^\\s*" . comment_leader
-                " Uncomment the line
-                execute "silent s/^\\(\\s*\\)" . comment_leader . " //"
-            else
-                " Comment the line
-                execute "silent s/^/" . comment_leader . " /"
-            end
-        end
-    else
-        echo "No comment leader found for filetype"
-    end
-endfunction
+
 
 
 " Normal Mode mapping
 nnoremap <leader><leader> :call ToggleCommentRelativePosition()<cr>
-" nnoremap <leader>p :call ToggleCommentZeroPosition()<cr>
 " Visual Mode mapping
 vnoremap <leader><leader> :call ToggleCommentRelativePosition()<cr>
-" vnoremap <leader>p :call ToggleCommentZeroPosition()<cr>
 "--------------- This is a Header  ---------------"
 function InsertCommentHeader()
     let CommentPrefix=s:comment_map[&filetype]
