@@ -241,7 +241,8 @@ au BufRead *txt set syntax=markdown
 """"""""""""""""""""""""""""""""""""""""""""""
 " Latex
 """"""""""""""""""""""""""""""""""""""""""""""
-set noshellslash
+" Not sure what noshellslash does, broke nvim 
+" set noshellslash
 " Latex Compilation
 " There are two ways to compile latex code:
 "   1. vimtex
