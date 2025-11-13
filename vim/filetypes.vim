@@ -194,7 +194,9 @@ autocmd BufRead *md nnoremap <leader>a mm0la~~<esc>A~~<esc>`m
 autocmd BufRead *md nnoremap <leader>A mm0llxxA<esc>xx`m
 nnoremap <leader>i i$\quad$<esc>o
 
-autocmd BufRead *.md hi mkdCode cterm=strikethrough
+" Also applies striketrhough to backtick 'code'
+" autocmd BufRead *.md hi mkdCode cterm=strikethrough
+
 autocmd BufRead *.md set conceallevel=2  " From preservim/vim-markdown
 
 autocmd BufRead *.md nnoremap <c-w> :call gxext#normal()<cr>
