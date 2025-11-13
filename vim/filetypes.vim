@@ -198,6 +198,11 @@ nnoremap <leader>i i$\quad$<esc>o
 " autocmd BufRead *.md hi mkdCode cterm=strikethrough
 
 autocmd BufRead *.md set conceallevel=2  " From preservim/vim-markdown
+let g:vim_markdown_follow_anchor = 1
+let g:vim_markdown_anchorexpr = "'<<'.v:anchor.'>>'"
+let g:vim_markdown_no_extensions_in_markdown = 1
+
+
 
 autocmd BufRead *.md nnoremap <c-w> :call gxext#normal()<cr>
 

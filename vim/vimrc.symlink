@@ -547,6 +547,11 @@ let g:ycm_language_server = [
   \   'name': 'pylsp',
   \   'filetypes': ['python'],
   \   'cmdline': ['pylsp']
+  \ },
+  \ {
+  \     'name': 'marksman',
+  \     'filetypes': ['markdown'],
+  \     'cmdline': ['marksman']
   \ }
 \ ]
 if !exists('g:ycm_semantic_triggers')
