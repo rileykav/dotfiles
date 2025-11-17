@@ -230,6 +230,12 @@ nnoremap <S-CR> :call RedrawCR()<cr><cr>
 " nnoremap <leader>v :vnew<CR> " Create a vertical Split
 nnoremap <leader>- :new<CR> " Create a Hotizontal Split
 
+" Open file under cursor as split
+nnoremap gf <c-w>v
+nnoremap gs <c-w>f
+nnoremap gv <c-w>v
+" For full window, though gF also does this?
+nnoremap gh gf
 
 
 " Wrap word in douple quotes (same functionality as tpope's surround yss"
