@@ -138,7 +138,12 @@ let maplocalleader = "\\"
 " Set a second leader key?
 "nmap § <leader>
 
-
+" Avoid the shift-key required for :commands. The ; commands alow or <shift-:>
+" muscle memory to stile work but retain the ability to do ; commands
+nnoremap ; :
+nnoremap \; ;
+vnoremap ; :
+vnoremap \; ;
 
 " Quick Saving (note: all maps should be nore, this means noremap dd dd wont be recursive)
 nnoremap <leader>w :w<cr>
