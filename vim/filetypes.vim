@@ -188,7 +188,9 @@ autocmd BufRead *.md nnoremap o A<cr>
 
 let vim_markdown_folding_disabled = 1
 let g:vim_markdown_math = 1
-autocmd BufRead Markdown set textwidth=0 wrapmargin=0
+" autocmd BufRead markdown set textwidth=80 wrapmargin=0
+autocmd BufRead *md set textwidth=80 wrapmargin=0
+" set textwidth=80 wrapmargin=0
 autocmd BufRead Markdown nnoremap <leader>a mm0la~~<esc>A~~<esc>`m
 autocmd BufRead *md nnoremap <leader>a mm0la~~<esc>A~~<esc>`m
 autocmd BufRead *md nnoremap <leader>A mm0llxxA<esc>xx`m
@@ -204,7 +206,7 @@ let g:vim_markdown_no_extensions_in_markdown = 1
 
 
 
-autocmd BufRead *.md nnoremap <c-w> :call gxext#normal()<cr>
+" autocmd BufRead *.md nnoremap <c-w> :call gxext#normal()<cr>
 
 
 " Folding
