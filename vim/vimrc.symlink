@@ -512,15 +512,14 @@ inoremap <C-d> <C-X><C-K>
 
 au FileType markdown set tags+=/Users/riley/.dotfiles/vim/dictionary.tags
 
-" Trigger popup automatically after a short delay
-let g:ycm_auto_trigger = 1
 
 " Number of characters typed before popup appears
 let g:ycm_min_num_of_chars_for_completion = 1
 
 " Delay before the popup shows (ms)
 let g:ycm_completion_delay = 200
-
+set updatetime=500
+nmap <leader>D <plug>(YCMHover)
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 " let g:ycm_filetype_whitelist = {
@@ -531,13 +530,14 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_server_python_interpreter = '/Users/riley/.pyenv/versions/3.13.1/bin/python'
 " set completeopt=menu
 set completeopt=menu,menuone,noselect
+" noremap <leader>p <plug>(YCMHover) 
 
-
-let g:ycm_auto_trigger = 1
+" Trigger popup automatically after a short delay
+" let g:ycm_auto_trigger = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_seed_identifiers_with_syntax = 1
-autocmd FileType python let g:ycm_collect_identifiers_from_comments_and_strings = 0
-autocmd FileType python let g:ycm_seed_identifiers_with_syntax = 0
+autocmd FileType python let g:ycm_collect_identifiers_from_comments_and_strings = 1
+autocmd FileType python let g:ycm_seed_identifiers_with_syntax = 1
 autocmd FileType python let g:ycm_min_num_of_chars_for_completion = 99
 autocmd FileType tex let g:ycm_min_num_of_chars_for_completion = 2
 " make YCM compatible with UltiSnips (using <Ctrl-N>, <Ctrl-P>)
