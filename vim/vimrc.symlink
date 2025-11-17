@@ -149,7 +149,7 @@ vnoremap \; ;
 nnoremap <leader>w :w<cr>
 nnoremap <esc> :w<cr>
 command W w
-inoremap <c-w> <esc>:w<cr>a
+
 " Quick Quit
 nnoremap <leader>q :q<cr>
 command Q q!
@@ -321,8 +321,8 @@ inoremap <C-v> <esc>pa
 
 
 " Move current line up or down
-nnoremap ; :m +1<cr>
-nnoremap ' :m -2<cr>
+" nnoremap ; :m +1<cr>
+" nnoremap ' :m -2<cr>
 nnoremap <leader>k :m -2<cr>
 nnoremap <leader>k :m -2<cr>
 
