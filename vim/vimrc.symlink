@@ -3,9 +3,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""
 source ~/.dotfiles/vim/plugins.vim
 
-
-set runtimepath^=~/.dotfiles/vim
-
+" set runtimepath^=~/.dotfiles/vim " This breaks snippets?????
 
 
 " VimVompletesMe
